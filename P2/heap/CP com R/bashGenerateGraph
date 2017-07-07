@@ -1,0 +1,11 @@
+gcc CPmain.c heap.c priorityQueue.c graphPrepare.c -o main
+time ./main
+
+Rscript rPlotDequeue.R
+Rscript rPlotDequeueHeap.R
+Rscript rPlotDequeuePriorityQueue.R
+Rscript rPlotEnqueue.R
+Rscript rPlotEnqueueHeap.R
+Rscript rPlotEnqueuePriorityQueue.R
+
+okular R-Dequeue.pdf R-DequeueHeap.pdf R-DequeuePriorityQueue.pdf R-Enqueue.pdf R-EnqueueHeap.pdf R-EnqueuePriorityQueue.pdf
