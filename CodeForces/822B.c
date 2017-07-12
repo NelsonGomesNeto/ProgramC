@@ -16,8 +16,10 @@ int main()
     int aux[a];
     if (b - i >= a)
       for (j = 0, k = i, cont = 0; j < a && k < b; j ++, k ++)
+      {
         if (stringA[j] != stringB[k])
           aux[cont ++] = j + 1;
+      }
 
     if (cont < smallest)
     {
