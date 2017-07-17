@@ -5,7 +5,9 @@ int main()
 {
   long long int selos; int check;
   scanf("%Ld\n", &selos);
-  for (check = 2; check < sqrt(selos); check ++)
+
+  double limit = sqrt(selos);
+  for (check = 2; check < limit; check ++)
   {
     if (selos % check == 0)
     {
