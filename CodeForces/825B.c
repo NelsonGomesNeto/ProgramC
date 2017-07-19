@@ -3,26 +3,26 @@
 int dx[8] = {-1, -1, -1, 0, 0, 1, 1, 1};
 int dy[8] = {0, -1, 1, -1, 1, -1, 1, 0};
 
-int tryflood(char t[][12], int i, int j)
+int tryflood(char t[][10], int i, int j)
 {
-  int k, m, y, x;
+  int k, y, x;
   for (k = 0; k < 8; k ++)
   {
-    y = i; x = j;
-    int win = 0, freeSpaces = 0;
-    for (m = 0; m < 5; m ++)
-      if (y + dy[k] >= 0 && y + dy[k] <= 11
-        && x + dx[k] >= 0 && x + dx[k] <= 11)
-      {
-        if (t[y][x] == 'X')
-          win ++;
-        if (t[y][x] == '.')
-          freeSpaces ++;
+    y = i - dy[k]; x = j - dx[k];
+    int m = 0, win = 0, white = 0;
+    do
+    {
+      y += dy[k]; x += dx[k];
 
-        y += dy[k]; x += dx[k];
-      }
+      if (t[y][x] == '.')
+        white ++;
+      if (t[y][x] == 'X')
+        win ++;
 
-    if (win == 4 && freeSpaces == 1)
+      m ++;
+    } while (m < 5 && y + dy[k] >= 0 && y + dy[k] < 10 && x + dx[k] >= 0 && x + dx[k] < 10);
+
+    if (win == 4 && white == 1)
       return(1);
   }
   return(0);
@@ -30,17 +30,17 @@ int tryflood(char t[][12], int i, int j)
 
 int main()
 {
-  char table[12][12];
+  char table[10][10];
   int i, j;
-  for (i = 1; i < 11; i ++)
+  for (i = 0; i < 10; i ++)
   {
-    for (j = 1; j < 11; j ++)
+    for (j = 0; j < 10; j ++)
       scanf("%c", &table[i][j]);
     getchar();
   }
 
-  for (i = 1; i < 11; i ++)
-    for (j = 1; j < 11; j ++)
+  for (i = 0; i < 10; i ++)
+    for (j = 0; j < 10; j ++)
       if (table[i][j] == 'X')
         if (tryflood(table, i, j))
         {
