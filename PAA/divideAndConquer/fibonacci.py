@@ -1,5 +1,3 @@
-M = [[1, 1], [1, 0]]
-
 def multiplyMatrix(a, b):
     c = [[0, 0], [0, 0]]
     c[0][0] = (a[0][0] * b[0][0]) + (a[0][1] * b[1][0]);
@@ -23,7 +21,5 @@ def fib(n):
     result = pot(M, n)
     return(result[0][1])
 
-def bench():
-    start = time.time()
-    fib(100000000)
-    print("Elapsed: ", time.time() - start, "sec")
+M = [[1, 1], [1, 0]]
+print(fib(int(input())))

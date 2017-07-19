@@ -10,6 +10,9 @@ def pot(x, n):
         half = pot(x, (n - 1) / 2)
         return(half * half * x)
 
+x, n = map(int, input().split())
+print(pot(x, n))
+
 def compare(x, n):
     start = time.time()
     print(x**n)
