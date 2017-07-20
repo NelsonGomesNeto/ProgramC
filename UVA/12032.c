@@ -52,12 +52,12 @@ int guess(int b[], int begin, int end, int size)
 
 int wtfGuess(int b[], int size)
 {
-  int max = 0, i;
+  int max = b[0], i;
   for (i = 1; i < size; i ++)
     if (b[i] - b[i - 1] > max)
       max = b[i] - b[i - 1];
 
-  while (!evaluate(b, max, size))
+  if (!evaluate(b, max, size))
     max ++;
 
   return(max);
@@ -77,7 +77,7 @@ int main()
     // int k = bamboo[size - 1];
     // int best = guess(bamboo, 1, k, size);
     int best = wtfGuess(bamboo, size);
-    
+
     printf("Case %d: %d\n", run, best);
   }
   return(0);
