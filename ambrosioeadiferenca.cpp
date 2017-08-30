@@ -1,8 +1,6 @@
 #include <stdio.h>
-#include <iostream>
-using namespace std;
 
-void contadif(unsigned long long int num, unsigned long long int *conta)
+void contadif(long long int num, long long int *conta)
 {
   if (num > 0)
   {
@@ -16,11 +14,11 @@ int main()
   int tests; scanf("%d", &tests);
   while (tests > 0)
   {
-    unsigned long long int a, b, bin;
-    cin >> a;
-    cin >> b;
-    unsigned long long int dif = 0;
-    contadif(a ^ b, &dif);
+    long long int a, b, bin;
+    scanf("%Ld %Ld\n", &a, &b);
+    long long int dif = 0;
+    a = a ^ b;
+    contadif(a, &dif);
     printf("%Ld\n", dif);
     tests --;
   }
