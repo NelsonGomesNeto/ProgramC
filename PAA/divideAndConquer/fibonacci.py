@@ -22,4 +22,5 @@ def fib(n):
     return(result[0][1])
 
 M = [[1, 1], [1, 0]]
-print(fib(int(input())))
+def bench(n):
+    print(fib(n))
