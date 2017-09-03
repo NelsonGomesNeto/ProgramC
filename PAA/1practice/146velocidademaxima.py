@@ -12,10 +12,12 @@ def dijkstra(graph, cost, visited, path, start, end):
             visited[v] += 1
             for u in graph[v]:
                 if ((u[1] == 1 and time % 3 == 0) or (u[1] == 0 and time % 3 != 0)):
-                    if (u[0] != end or (u[0] == end and time + 1 < cost[u[0]])):
+                    if (u[0] == end):
                         cost[u[0]] = time + 1
-                        path[u[0]] = v
-                        heappush(queue, [cost[u[0]], u[0]])
+                        return
+                    cost[u[0]] = time + 1
+                    path[u[0]] = v
+                    heappush(queue, [cost[u[0]], u[0]])
 
 def shortestPath(path, start, end):
     p = []
