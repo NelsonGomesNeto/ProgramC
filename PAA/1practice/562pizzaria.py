@@ -3,20 +3,20 @@ from heapq import * #heapq is a minimum priority queue by default
 def dijkstra(graph, visited, cost, path, start):
     cost[start] = 0 # Setting cost to go to origin node
     queue = [] # Initializing the Priority Queue (PQ)
-    path[start] = start # Setting up the path
+    path[start] = [start] # Setting up the path
     heappush(queue, [cost[start], start]) # Adding first node to PQ, it will be ordered by the costs
 
     while (queue): # While queue not empty
-        v = heappop(queue)[1] # Pop the vertice to visit from PQ
+        v = heappop(queue)[1] # pop the vertice to visit from queue
 
         if (not visited[v]):
             visited[v] = 1
             for u in graph[v]:
                 # Cost until now + cost to this node < cost previously calculated to this node
                 if (cost[v] + u[1] < cost[u[0]]):
-                    cost[u[0]] = cost[v] + u[1] # Setting new cost
-                    path[u[0]] = v # Adding to the path
-                    heappush(queue, [cost[u[0]], u[0]]) # Adding to the PQ
+                    cost[u[0]] = cost[v] + u[1]
+                    path[u[0]] = [v]
+                    heappush(queue, [cost[u[0]], u[0]])
 
 tests, run = int(input()), 1
 while (run <= tests):

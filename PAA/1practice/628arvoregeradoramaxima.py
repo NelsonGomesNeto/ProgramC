@@ -1,19 +1,22 @@
 from heapq import *
 
 def prim(graph, cost, visited, path, start):
+    total = 0
     cost[start] = 0
     queue = []
     path[start] = start
     heappush(queue, [cost[start], start])
     while (queue):
-        v = heappop(queue)[1]
+        c, v = heappop(queue)
         if (not visited[v]):
             visited[v] = True
+            total += c
             for u in graph[v]:
-                if (cost[v] + u[1] < cost[u[0]]):
-                    cost[u[0]] = -u[1]
-                    path[u[0]] = v
-                    heappush(queue, [cost[u[0]], u[0]])
+                #if (cost[v] + u[1] < cost[u[0]]):
+                cost[u[0]] = u[1]
+                path[u[0]] = v
+                heappush(queue, [cost[u[0]], u[0]])
+    return(total)
 
 tests = int(input())
 while (tests > 0):
@@ -29,15 +32,10 @@ while (tests > 0):
 
 
     cost, visited, path = [9999999999] * (size + 1), [False] * (size + 1), [-1] * (size + 1)
-    prim(graph, cost, visited, path, 1)
+    totalWeight = prim(graph, cost, visited, path, 1)
     #print("Cost:", cost)
     #print("Path:", path)
 
-    #nodes = set(path)
-    totalWeight = 0
-    for i in cost[1:len(cost) - 1]:
-        totalWeight += i
-
-    print(totalWeight)
+    print(totalWeight * (-1))
 
     tests -= 1

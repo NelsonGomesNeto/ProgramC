@@ -1,14 +1,13 @@
 from heapq import *
 
 def dijkstra(graph, cost, visited, path, start, end):
-    time = 0
     cost[start] = 0
     queue = []
     path[start] = start
-    heappush(queue, [cost[start], start, time])
+    heappush(queue, [cost[start], start])
 
     while (queue):
-        v, time = heappop(queue)[1:]
+        time, v = heappop(queue)
         if (visited[v] < 3):
             visited[v] += 1
             for u in graph[v]:
@@ -16,7 +15,7 @@ def dijkstra(graph, cost, visited, path, start, end):
                     if (u[0] != end or (u[0] == end and time + 1 < cost[u[0]])):
                         cost[u[0]] = time + 1
                         path[u[0]] = v
-                        heappush(queue, [cost[u[0]], u[0], cost[u[0]]])
+                        heappush(queue, [cost[u[0]], u[0]])
 
 def shortestPath(path, start, end):
     p = []

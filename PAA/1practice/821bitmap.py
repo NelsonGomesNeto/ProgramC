@@ -14,8 +14,8 @@ def bitmap(m, li, hi, lj, hj, t):
 	if (li > hi or lj > hj):
 		return
 
-	midi = int((li + hi) / 2)
-	midj = int((lj + hj) / 2)
+	midi = (li + hi) // 2
+	midj = (lj + hj) // 2
 	checked = check(m, li, hi, lj, hj) 
 	if (t[0] == 50):
 		print()

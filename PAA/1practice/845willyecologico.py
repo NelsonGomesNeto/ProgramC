@@ -7,7 +7,7 @@ def cut(t, height):
 	return(cutted)
 
 def bestHeight(t, start, end, wanted):
-	mid = int((start + end) / 2)
+	mid = (start + end) // 2
 	#print(t[mid], start, end, mid, cutted)
 	if (start >= end - 1):
 		return(t[mid])

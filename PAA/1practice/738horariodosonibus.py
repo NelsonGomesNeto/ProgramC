@@ -4,8 +4,6 @@ inf = 2 ** 33
 def waitingTime(time, cic):
     if (time % cic == 0):
         return(0)
-    if (cic >= time):
-        return(cic - time)
     return(cic - (time % cic))
 
 def dijkstra(graph, cost, visited, start, end, tripTime):
@@ -20,14 +18,15 @@ def dijkstra(graph, cost, visited, start, end, tripTime):
         #v, time = v[1], v[0]
         #if (time > cost[v]):
             #continue
-        #if (not visited[v]):
-            #visited[v] = 1
-        for u in graph[v]:
-            if (cost[v] + waitingTime(time, u[1]) + tripTime < cost[u[0]]):
-                cost[u[0]] = cost[v] + waitingTime(time, u[1]) + tripTime
-                #path[u[0]] = v
-                #pq.put([cost[u[0]], u[0]])
-                heappush(pq, [cost[u[0]], u[0]])
+        if (not visited[v]):
+            visited[v] = 1
+            for u in graph[v]:
+                wait = waitingTime(time, u[1])
+                if (cost[v] + wait + tripTime < cost[u[0]]):
+                    cost[u[0]] = cost[v] + wait + tripTime
+                    #path[u[0]] = v
+                    #pq.put([cost[u[0]], u[0]])
+                    heappush(pq, [cost[u[0]], u[0]])
 
 def shortestPath(path, start, end):
     p = []

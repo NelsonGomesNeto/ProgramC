@@ -1,3 +1,4 @@
+from math import log, ceil
 dx = [1, 0, 0, 1]
 dy = [0, 0, 1, 1]
 
@@ -53,19 +54,28 @@ def fill(b, pi, pj, i0, iF, j0, jF):
         fill(b, midi + 1, midj + 1, midi + 1, iF, midj + 1, jF)
 
 
-def draw(b):
-    for i in b:
-        for j in i:
-            if (j >= 0 and j < 10):
-                print(" ", end='')
-            print(j, " ", end='')
-        print()
+def printSpaces(n, spaces):
+	if (n == -1):
+		n = 11
+	i = int(log(n, 10) + 1)
+	while (i <= spaces):
+		print(' ', sep='', end='')
+		i += 1
+
+def draw(b, spaces):
+	for i in b:
+		for j in i:
+			printSpaces(j, spaces)
+			print(j, sep='', end='')
+		print()
 
 tiles = [0]
 size = int(input())
+spaces = log(size**2, 10) + 1
 board = [[0] * size for i in range(size)]
 i, j = map(int, input().split())
 board[i][j] = -1
 print(board)
 fill(board, i, j, 0, size - 1, 0, size - 1)
-draw(board)
+draw(board, spaces)
+
