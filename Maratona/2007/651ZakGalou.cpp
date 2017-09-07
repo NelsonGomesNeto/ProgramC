@@ -50,11 +50,11 @@ int main()
   while (scanf("%lld %lld %lld %lld", &magics, &saloons, &galeries, &monsters)
       && !(magics == 0 && saloons == 0 && galeries == 0 && monsters == 0))
   {
-    vector<pair<lli, lli> > magic; lli c, d;
+    vector<pair<lli, lli> > magic; lli mana, damage;
     for (lli i = 0; i < magics; i ++)
     {
-      scanf("%lld %lld", &c, &d);
-      magic.pb(mp(c, d));
+      scanf("%lld %lld", &mana, &damage);
+      magic.pb(mp(mana, damage));
     }
 
     vector<vector<lli> > graph; lli a, b;
@@ -69,14 +69,14 @@ int main()
     for (int i = 0; i <= 1000; i ++)
       dp[i] = inf;
     dp[0] = 0;
-    for (int life = 0; life <= 1000; life ++) // Killing everysingle monster :)
+    for (int hp = 0; hp <= 1000; hp ++) // Killing everysingle monster :)
     {
       for (int i = 0; i < magics; i ++)
       {
-        if (life >= magic[i].second)
-          dp[life] = min(dp[life], dp[life - magic[i].second] + magic[i].first);
+        if (hp >= magic[i].second)
+          dp[hp] = min(dp[hp], dp[hp - magic[i].second] + magic[i].first);
         else
-          dp[life] = min(dp[life], magic[i].first);
+          dp[hp] = min(dp[hp], magic[i].first);
       }
     }
     if (DEBUG == 1)
@@ -88,14 +88,14 @@ int main()
       } printf("\n");
     }
 
-    lli neededMana[saloons + 1];
+    lli neededMana[saloons + 1]; lli place, hp;
     for (lli i = 0; i <= saloons; i ++)
       neededMana[i] = 0;
     for (lli i = 0; i < monsters; i ++)
     {
-      lli w, l; scanf("%lld %lld", &w, &l);
-      neededMana[w] += dp[l];
-      if (DEBUG == 1) printf("%lld %lld %lld %lld\n", w, l, dp[l], neededMana[w]);
+      scanf("%lld %lld", &place, &hp);
+      neededMana[place] += dp[hp];
+      if (DEBUG == 1) printf("%lld %lld %lld %lld\n", place, hp, dp[hp], neededMana[place]);
     }
 
     if (DEBUG == 1)
@@ -150,17 +150,17 @@ int main()
 }
 /*
 DP explanation:
-if (life >= magic[i].second)
-  I don't know how to kill it with that amount of life, but:
+if (hp >= magic[i].second)
+  I don't know how to kill it with that amount of hp, but:
   It is calculated above on else, so: I get the amount of mana needed to kill with
-  life - magic[i].second (damage) and then finally kill it with this magic :)
-  dp[life] = min(dp[life], dp[life - magic[i].second] + magic[i].first);
+  hp - magic[i].second (damage) and then finally kill it with this magic :)
+  dp[hp] = min(dp[hp], dp[hp - magic[i].second] + magic[i].first);
 else
-  dp[life] = min(dp[life], magic[i].first);
+  dp[hp] = min(dp[hp], magic[i].first);
 
 Example:
-life = 5, damage = 3
+hp = 5, damage = 3
 else have calculated dp[2]
 I don't know how to kill it with 5, but I know with 5 - 3, so:
-mana needed to kill that life(5) monster will be: previous + mana of this magic
+mana needed to kill that hp(5) monster will be: previous + mana of this magic
 */
