@@ -17,7 +17,17 @@ def thirdFor(n):
     #print("PAA é legal")
     thirdFor(n - 1)
 
-for i in range(100):
+def paaelegal(n):
+    counter = 0
+    for i in range(n + 1):
+        for j in range(i**2 + 1):
+            for k in range(j + 1):
+                counter += 1
+    return(counter)
+
+
+for i in range(30):
     counter[0] = 0
-    firstFor(i)
-    print(counter[0], i ** 5)
+    #firstFor(i)
+    print(paaelegal(i), ',', sep='', end='')
+
