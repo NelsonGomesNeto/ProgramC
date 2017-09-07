@@ -24,10 +24,13 @@ for i in range(connections):
     u, v, c = map(int, input().split())
     graph[u] += [[v, c]]
     graph[v] += [[u, c]]
-print("Graph:", graph)
+#print("Graph:", graph)
 
 cost, visited, path = [99999999] * stations, [0] * stations, [-1] * stations
 for i in range(stations):
     if (path[i] == -1):
         dijkstra(graph, cost, visited, path, i)
-        print(path)
+        for i, j in enumerate(cost):
+            if (j != 99999999 and len(graph[i]) > 2):
+                print(i, sep='', end=' ')
+        print()
