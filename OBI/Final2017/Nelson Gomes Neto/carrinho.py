@@ -18,7 +18,7 @@ while (i < bat):
     j = 2
     prev = (b[i + 1][0] - b[i][0])**2 / b[i][1]
     #print((b[i + j][0] - b[i][0])**2 / b[i][1], (b[i + j][0] - b[i + j - 1][0])**2 / b[i + j - 1][1])
-    while (i + j <= bat and (b[i + j][0] - b[i][0])**2 / b[i][1] <= (b[i + j][0] - b[i + j - 1][0])**2 / b[i + j - 1][1] + 0):
+    while (i + j <= bat and (b[i + j][0] - b[i][0])**2 / b[i][1] <= (b[i + j][0] - b[i + j - 1][0])**2 / b[i + j - 1][1] + prev):
         prev = (b[i + j][0] - b[i][0])**2 / b[i][1]
         j += 1
     t += prev
