@@ -1,20 +1,24 @@
-tests = int(input())
-while (tests > 0):
+tests, run = int(input()), 0
+while (run < tests):
     coins, queries = map(int, input().split())
     coin = list(map(int, input().split()))
-    #coin.sort()
 
-    coinChange = [[0] * (coin[coins - 1] + 1) for i in range(coins + 1)]
-    coinChange[0] = 1
+    biggest = 100000
+    coinChange = [[0] * (biggest + 1) for i in range(coins + 1)]
+    for i in range(coins + 1):
+        coinChange[i][0] = 1
+    for i in range(biggest + 1)[1:]:
+        coinChange[0][i] = 0
+
     for i in range(coins + 1)[1:]:
-        mini = coins[0:i]
-        mini.sort()
-        for j in range(coin[coins - 1] + 1):
-            for k in range(mini):
-                coinChange[i][j] += coinChange[i][j - k]
-
-    print(len(coinChange), len(coinChange[0]))
+        for fill in range(biggest + 1):
+            if (fill < coin[i - 1]):
+                coinChange[i][fill] = coinChange[i - 1][fill]
+            else:
+                coinChange[i][fill] = coinChange[i - 1][fill] or coinChange[i - 1][fill - coin[i - 1]]
+    run += 1
+    print("caso ", run, ":", sep='')
     for i in range(queries):
         elements, sumTarget = map(int, input().split())
-
-    tests -= 1
+        print(coinChange[elements][sumTarget], end=' ')
+    print("\b")
