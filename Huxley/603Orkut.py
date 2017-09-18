@@ -6,6 +6,8 @@ def topologicalSortBFS(graph):
     for u in graph:
         for v in u:
             inDegree[v] += 1
+    if (DEBUG):
+        print(inDegree)
     queue = Queue()
     for i, quantity in enumerate(inDegree):
         if (quantity == 0):
@@ -15,7 +17,7 @@ def topologicalSortBFS(graph):
     while(not queue.empty()):
         curr = queue.get()
         #print("now", curr)
-        answer += [curr]
+        answer.append(curr)# += [curr]
 
         for u in graph[curr]:
             inDegree[u] -= 1
