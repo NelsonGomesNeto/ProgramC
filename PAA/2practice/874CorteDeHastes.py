@@ -2,10 +2,20 @@ import sys
 sys.setrecursionlimit(2**20)
 DEBUG = 0
 
-def solve(dp, values, size):
+def solveRecursive(dp, values, size):
     if (dp[size] == -1):
         for i in range(size):
-            dp[size] = max(dp[size], values[i] + solve(dp, values, size - i - 1))
+            aux = values[i] + solveRecursive(dp, values, size - i - 1)
+            if (aux > dp[size]):
+                dp[size] = aux
+    return(dp[size])
+
+def solveIterative(dp, values, size):
+    for i in range(2, size + 1):
+        for j in range(i):
+            k = i - j - 1
+            if (dp[i] < values[j] + dp[k]):
+                dp[i] = values[j] + dp[k]
     return(dp[size])
 
 while (True):
@@ -13,14 +23,16 @@ while (True):
     if (size == 0):
         break
 
-    dp = [-1] * (size + 1)
-    dp[0] = 0
-
     values = []
     for i in range(size):
         values += [int(input())]
     if (DEBUG):
         print("values", values)
-        
-    answer = solve(dp, values, size)
+
+    #dp = [0] * (size + 1)
+    #dp[1] = values[0]
+    dp = [-1] * (size + 1)
+    dp[0] = 0
+
+    answer = solveRecursive(dp, values, size)
     print(answer)

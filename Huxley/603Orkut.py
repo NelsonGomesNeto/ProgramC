@@ -17,7 +17,7 @@ def topologicalSortBFS(graph):
     while(not queue.empty()):
         curr = queue.get()
         #print("now", curr)
-        answer.append(curr)# += [curr]
+        answer += [curr]
 
         for u in graph[curr]:
             inDegree[u] -= 1
@@ -47,7 +47,7 @@ while (True):
         line = input().split()
         u, uFriends = line[0], line[1:]
         for v in uFriends[1:]:
-            graph[stringToInt[u]] += [stringToInt[v]]
+            graph[stringToInt[v]] += [stringToInt[u]]
 
     if (DEBUG):
         print(graph)
@@ -65,7 +65,7 @@ while (True):
     if (len(answer) == 0):
         print("impossivel")
     else:
-        answer.reverse()
+        #answer.reverse()
         print(intToString[answer[0]], end='')
         for i in answer[1:]:
             print(' ', intToString[i], sep='', end='')
