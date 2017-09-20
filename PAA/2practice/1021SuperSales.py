@@ -1,20 +1,28 @@
 import sys
 sys.setrecursionlimit(2**20)
-DEBUG = 1
+DEBUG = 0
 
-def solve(obj, people, prev, i, end):
-    #print(people)
-    if (i == end):
+def knapsack(dp, obj, i, weight):
+    if (i == len(obj)):
         return(0)
 
-    best = solve(obj, people, -1, i + 1, end)
-    for j in range(len(people)):
-        if (prev != j and people[j] >= obj[i][1]):
-            people[j] -= obj[i][1]
-            best = max(best, solve(obj, people, j, i, end) + obj[i][0])
-            people[j] += obj[i][1]
-            #print(best)
-    return(best)
+    if (dp[i][weight] == -1):
+        dp[i][weight] = knapsack(dp, obj, i + 1, weight)
+        if (obj[i][1] <= weight):
+            dp[i][weight] = max(dp[i][weight], knapsack(dp, obj, i + 1, weight - obj[i][1]) + obj[i][0])
+
+    return(dp[i][weight])
+
+
+def solve(obj, people):
+    peopleDP = [-1] * 31
+    total = 0
+    for i in people:
+        if (peopleDP[i] == -1):
+            ksDP = [[-1] * (i + 1) for j in range(len(obj) + 1)]
+            peopleDP[i] = knapsack(ksDP, obj, 0, i)
+        total += peopleDP[i]
+    return(total)
 
 
 tests = int(input())
@@ -33,7 +41,7 @@ while (tests > 0):
     if (DEBUG):
         print("people", people)
 
-    answer = solve(obj, people, -1, 0, numObjects)
+    answer = solve(obj, people)
     print(answer)
 
     tests -= 1
