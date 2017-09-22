@@ -7,8 +7,6 @@ def dijkstra(graph, cost, visited, start, end):
     heappush(pq, [cost[start], start, 0])
     while (pq):
         v, paid = heappop(pq)[1:]
-        if (visited[v] == 2): continue
-        visited[v] += 1
         for u in graph[v]:
             if (cost[v][paid] + u[1] < cost[u[0]][1 - paid]):
                 cost[u[0]][1 - paid] = cost[v][paid] + u[1]

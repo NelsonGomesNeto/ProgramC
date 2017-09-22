@@ -5,29 +5,38 @@ using namespace std;
 #define mp(a,b) make_pair(a,b)
 #define inf INT_MAX
 
-void dijkstra(vector<vector<pair<int, int> > > graph, int cost[], int visited[], int start, int period)
+int waitTime(int period, int tempo)
 {
-  cost[start] = 0;
+  return(period - tempo % period);
+}
+
+void dijkstra(vector<vector<pair<int, int> > > graph, int **cost, int start, int period)
+{
+  for (int i = 0; i < period; i ++)
+    cost[start][i] = 0;
   priority_queue<pair<int, int>, vector<pair<int, int> >, greater<pair<int, int> > > pq;
-  pq.push({cost[start], start});
+  pq.push({cost[start][0], start});
   while (!pq.empty())
   {
     int tempo = pq.top().first, v = pq.top().second; pq.pop();
-    if (visited[v] == period) continue;
-    visited[v] ++;
     for (auto u : graph[v])
     {
       if (u.second == 0 || tempo % u.second == 0)
       {
-        if (tempo + 1 < cost[u.first])
-          cost[u.first] = tempo + 1;
-        pq.push({tempo + 1, u.first});
+        if (tempo + 1 < cost[u.first][(tempo + 1) % period])
+        {
+          cost[u.first][(tempo + 1) % period] = tempo + 1;
+          pq.push({tempo + 1, u.first});
+        }
       }
       else
       {
-        if (tempo + (u.second - tempo % u.second) + 1 < cost[u.first])
-          cost[u.first] = tempo + (u.second - tempo % u.second) + 1;
-        pq.push({tempo + (u.second - tempo % u.second) + 1, u.first});
+        int timeToWait = waitTime(u.second, tempo);
+        if (tempo + timeToWait + 1 < cost[u.first][(tempo + timeToWait + 1) % period])
+        {
+          cost[u.first][(tempo + timeToWait + 1) % period] = tempo + timeToWait + 1;
+          pq.push({tempo + timeToWait + 1, u.first});
+        }
       }
     }
   }
@@ -66,17 +75,23 @@ int main()
       graph[ui*x + uj].pb(mp(vi*x + vj, period));
     }
 
-    int visited[totalSize], cost[totalSize];
+    int **cost = (int**) malloc(totalSize * sizeof(int*));
     for (int i = 0; i < totalSize; i ++)
     {
-      visited[i] = 0;
-      cost[i] = inf;
+      cost[i] = (int*) malloc(period * sizeof(int));
+      for (int j = 0; j < period; j ++)
+        cost[i][j] = inf;
     }
 
-    dijkstra(graph, cost, visited, 0, period);
+    dijkstra(graph, cost, 0, period);
 
-    printf("%d: %d\n", run, cost[totalSize - 1]);
+    int smallestTime = inf;
+    for (int i = 0; i < period; i ++)
+      smallestTime = min(smallestTime, cost[totalSize - 1][i]);
 
+    printf("%d: %d\n", run, smallestTime);
+
+    free(cost);
     run ++;
   }
   return(0);
