@@ -18,13 +18,13 @@ def knapsack(dp, obj, i, weight):
 
 
 def solve(obj, people):
-    peopleDP = [-1] * 31
+    #peopleDP = [-1] * (max(people) + 1)
     ksDP = [[-1] * (max(people) + 1) for j in range(len(obj) + 1)]
     total = 0
     for i in people:
-        if (peopleDP[i] == -1):
-            peopleDP[i] = knapsack(ksDP, obj, 0, i)
-        total += peopleDP[i]
+        if (ksDP[0][i] == -1):
+            ksDP[0][i] = knapsack(ksDP, obj, 0, i)
+        total += ksDP[0][i]
     return(total)
 
 
