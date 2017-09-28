@@ -14,8 +14,6 @@ def prim(graph, visited):
         for u in graph[v]:
             if (not visited[u[0]]):
                 heappush(pq, [u[1], v, u[0]])
-    #for i, v in enumerate(mst):
-    #    print(i, v)
     return(mst)
 
 def floodFill(graph, visited, start):
