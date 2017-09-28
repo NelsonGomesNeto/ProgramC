@@ -7,7 +7,6 @@ while (tests > 0):
     robbers, leftTime = map(int, input().split())
     robbersTime = list(map(int, input().split()))
 
-    #dp = [[-1] * (leftTime + 1) for i in range(robbers + 1)]
     robbersTime.sort()
     maxSum = sum(robbersTime)
     subGroups = [0] * (maxSum + 1)
@@ -30,14 +29,12 @@ while (tests > 0):
         print("subGroups", subGroups)
         print("times", times)
 
-    # print(leftTime, maxSum - leftTime)
     isValid = 0
     for i in range(max(0, maxSum - leftTime), leftTime + 1):
+        if (i > maxSum):
+            break
         if (subGroups[i]):
             isValid = 1
-    # for i in range(leftTime, maxSum - leftTime):
-    #     if (subGroups[i]):
-    #         isValid = 1
 
     if (isValid):
         print("YES")
