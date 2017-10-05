@@ -1,25 +1,8 @@
 5
-Joao Maria Tadeu Jose Ricardo
-Joao 2 Maria Ricardo
-Maria 1 Tadeu
-Jose 1 Joao
-Tadeu 0
-Ricardo 0
-3
-Joao Maria Renata
-Maria 1 Joao
-Joao 1 Renata
-Renata 1 Maria
-5
-Joao Maria Tadeu Jose Ricardo
-Joao 2 Maria Ricardo
-Maria 1 Tadeu
-Jose 1 Joao
-Tadeu 1 Ricardo
-Ricardo 0
-3
-Joao Maria Renata
-Maria 1 Joao
-Joao 1 Renata
-Renata 2 Maria Joao
+5 1 2 3 4
+0
+6
+2 1 3
+5 4 6 2
+0
 0
