@@ -10,21 +10,25 @@ int max(int a, int b)
 
 int findExit(int i, int j, int x, int y, char labyrinth[][x + 1])
 {
-  //printf("%d %d\n", i, j);
   if (i < 0 || j < 0 || i >= y || j >= x) return(0);
   if (labyrinth[i][j] == '#') return(0);
   if (i == y - 1 && j == x - 1) return(1);
 
-  int k, hasExit = 0;
+  int k;
   for (k = 0; k < 4; k ++)
   {
     labyrinth[i][j] = '#';
-    hasExit = max(hasExit, findExit(i + dy[k], j + dx[k], x, y, labyrinth));
+    if (findExit(i + dy[k], j + dx[k], x, y, labyrinth))
+    {
+      labyrinth[i][j] = '.';
+      return(1);
+    }
     labyrinth[i][j] = '.';
   }
 
-  return(hasExit);
+  return(0);
 }
+
 
 int main()
 {

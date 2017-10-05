@@ -1,61 +1,55 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define valid i + dy[k] >= 0 && i + dy[k] < y && j + dx[k] >= 0 && j + dx[k] < x
 
-int dx[8] = {0, 0, 1, 1, 1, -1, -1, -1};
-int dy[8] = {1, -1, 0, 1, -1, 0, 1, -1};
+int dx[4] = {0, 0, 1, -1};
+int dy[4] = {1, -1, 0, 0};
 
-int hasNeighboors(int i, int j, int x, int y, char labyrinth[][x + 1], int visited[][x])
+int max(int a, int b)
 {
+  return(a > b ? a : b);
+}
+
+int findExit(int i, int j, int x, int y, char labyrinth[][x + 1])
+{
+  if (i < 0 || j < 0 || i >= y || j >= x) return(0);
+  if (labyrinth[i][j] == '#') return(0);
+  if (i == y - 1 && j == x - 1) return(1);
+
   int k;
-  for (k = 0; k < 8; k ++)
-    if (valid)
-      if (!visited[i + dy[k]][j + dx[k]])
-        return(1);
+  for (k = 0; k < 4; k ++)
+  {
+    labyrinth[i][j] = '#';
+    if (findExit(i + dy[k], j + dx[k], x, y, labyrinth))
+    {
+      labyrinth[i][j] = '.';
+      return(1);
+    }
+    labyrinth[i][j] = '.';
+  }
+
   return(0);
 }
 
-void createExit(int i, int j, int x, int y, char labyrinth[][x + 1], int visited[][x])
+void createExit(int y, int x, char labyrinth[][x + 1])
 {
-  int done = 1;
-  visited[i][j] = 1;
-  int currI = i, currJ = j;
-  int istack[x*y], jstack[x*y], now = 0;
-  do
+  int i, j, wice = 0;
+  while (wice < (y * x) / 5)
   {
-    int tries = 0;
-    if (hasNeighboors(currI, currJ, x, y, labyrinth, visited))
+    i = (rand() % y), j = (rand() % x);
+    if ((i == 0 && j == 0) || (i == y - 1 && j == x - 1)) continue;
+    labyrinth[i][j] = '#';
+    if (!findExit(0, 0, x, y, labyrinth))
     {
-      int k;
-      do
-      {
-        k = rand() % 8;
-        if (valid)
-          if (!visited[currI + dy[k]][currJ + dx[k]])
-            break;
-        tries ++;
-      } while(tries < 100);
-      if (tries == 100) break;
-      now ++;
-      istack[now] = currI;
-      jstack[now] = currJ;
-      labyrinth[currI][currJ] = '.';
-      visited[currI + dy[k]][currJ + dx[k]] = 1;
-      currI = currI + dy[k];
-      currJ = currJ + dx[k];
-      labyrinth[currI][currJ] = '.';
-      done += 2;
+      labyrinth[i][j] = '.';
+      wice += 1;
     }
-    else if (now != 0 && tries != 100)
-    {
-      currI = istack[now];
-      currJ = istack[now];
-      now --;
-    }
-  } while (done < x*y);//now != 0);
+  }
+  if (rand() - rand() >= 0)
+    labyrinth[i][j] = '.';
+  else
+    labyrinth[i][j] = '#';
 }
-
 
 int main()
 {
@@ -67,18 +61,18 @@ int main()
     sprintf(name, "%d.in", file);
     FILE *pFile = fopen(name, "wb");
 
-    int y = (rand() % 5) + 6, x = (rand() % 5) + 6, i, j;
+    int y = (rand() % 5) + 4, x = (rand() % 5) + 4, i, j;
 
-    char labyrinth[y][x + 1]; int visited[y][x];
+    char labyrinth[y][x + 1];
     fprintf(pFile, "%d %d\n", y, x);
     for (i = 0; i < y; i ++)
       for (j = 0; j < x; j ++)
       {
-        labyrinth[i][j] = '#';
-        visited[i][j] = 0;
+        labyrinth[i][j] = '.';
       }
 
-    createExit(0, 0, x, y, labyrinth, visited);
+    //printf("%d\n", file);
+    createExit(y, x, labyrinth);
 
     for (i = 0; i < y; i ++)
     {
