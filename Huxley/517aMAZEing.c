@@ -1,74 +1,75 @@
 #include <stdio.h>
+#include <string.h>
 #define DEBUG if(0)
-int dx[4] = {0, 0, -1, 1};
-int dy[4] = {1, -1, 0, 0};
-// DO IT WITH UNION FIND!!! 
-void printMatrix(int size, char m[][size + 1])
+int parent[1000000];
+
+int root(int v)
 {
-  int i, j;
-  for (i = 0; i < size; i ++)
+  if (parent[v] < 0)
+    return(v);
+  else
   {
-    for (j = 0; j < size; j ++)
-      printf("%c", m[i][j]);
-    printf("\n");
+    parent[v] = root(parent[v]);
+    return(parent[v]);
   }
 }
 
-int has;
-
-void hasExit(int i, int j, int size, char maze[][size + 1])
+int isSameSet(int v, int u)
 {
-  if (has) return;
-  if (i < 0 || j < 0 || i >= size || j >= size) return;
-  if (maze[i][j] == '#') return;
-  if (maze[i][j] == 'e') { has = 1; return; }
+  return(root(v) == root(u));
+}
 
-  int k;
-  for (k = 0; k < 4; k ++)
+void merge(int v, int u)
+{
+  v = root(v);
+  u = root(u);
+  if (v == u) return;
+
+  if (parent[u] < parent[v])
   {
-    maze[i][j] = '#';
-    hasExit(i + dy[k], j + dx[k], size, maze);
-    maze[i][j] = '.';
+    int aux = parent[u];
+    parent[u] = parent[v];
+    parent[v] = aux;
   }
+  parent[v] += parent[u];
+  parent[u] = v;
+}
+
+int setSize(int v)
+{
+  return(-1 * parent[root(v)]);
 }
 
 int main()
 {
-  int size, walls, queries, run = 0;
+  int size, originalSize, walls, queries, run = 0;
   while (scanf("%d %d %d", &size, &walls, &queries) != EOF)
   {
+    originalSize = size;
     if (run == 1) printf("\n");
+    memset(parent, -1, sizeof(parent));
 
     size = (2 * size) - 1;
-    char maze[size][size + 1];
-    int i, j, k = 1;
-    for (i = 0; i < size; i ++)
-    {
-      for (j = k; j < size; j += 2)
-        maze[i][j] = '#';
-      k = 1 - k;
-    }
-    //DEBUG { printMatrix(size, maze); printf("\n"); }
 
-    int wall;
+    // Execute unions
+    int wall, i;
     for (i = 0; i < walls; i ++)
     {
       scanf("%d", &wall);
-      DEBUG printf("%d %d\n", (2*wall + 1) / size, (2*wall + 1) % size);
-      maze[(2*wall + 1) / size][(2*wall + 1) % size] = '.';
+      if (wall == 15 || wall == 16)
+        printf("%d %d %d\n", (2*wall + 1) / size & 1, wall + 1, wall - originalSize);
+      if ((2*wall + 1) / size & 1) // Wall is on odd y
+        merge(wall + 1, wall - originalSize);
+      else
+        merge(wall - (2*wall + 1) / size, (wall - (2*wall + 1) / size) + 1);
     }
-    DEBUG printMatrix(size, maze);
 
+    // Queries
     int start, end;
     for (i = 0; i < queries; i ++)
     {
       scanf("%d %d", &start, &end);
-      DEBUG printf("%d %d %d %d\n", (2*start) / size, (2*start) % size, (2*end) / size, (2*end) % size);
-      //maze[(2*start) / size][(2*start) % size] = 's';
-      maze[(2*end) / size][(2*end) % size] = 'e';
-      has = 0; hasExit((2*start) / size, (2*start) % size, size, maze);
-      printf("%d.%d\n", i + 1, has);
-      maze[(2*end) / size][(2*end) % size] = '.';
+      printf("%d.%d\n", i + 1, isSameSet(start, end));
     }
     run = 1;
   }
