@@ -1,5 +1,5 @@
 inf = 2**33
-def bellmanFord(graph, visited, cost):
+def bellmanFord(graph, cost):
     for i in range(len(graph) - 1):
         for u in range(len(graph)):
             for v, c in graph[u]:
@@ -20,8 +20,8 @@ while (tests > 0):
         u, v, c = map(int, input().split())
         graph[u] += [[v, c]]
 
-    visited, cost = [0] * vertices, [inf] * vertices
-    canTravel = bellmanFord(graph, visited, cost)
+    cost = [inf] * vertices
+    canTravel = bellmanFord(graph, cost)
     possible = ["not possible", "possible"]
     print(possible[canTravel])
     tests -= 1
