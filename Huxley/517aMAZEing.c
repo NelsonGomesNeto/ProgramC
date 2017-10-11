@@ -56,12 +56,22 @@ int main()
     for (i = 0; i < walls; i ++)
     {
       scanf("%d", &wall);
-      if (wall == 15 || wall == 16)
-        printf("%d %d %d\n", (2*wall + 1) / size & 1, wall + 1, wall - originalSize);
-      if ((2*wall + 1) / size & 1) // Wall is on odd y
-        merge(wall + 1, wall - originalSize);
+      if ((2*wall + 1) / size & 1)
+      {
+        merge((((((2*wall + 1) / size) - 1) / 2) * originalSize) + (((2*wall + 1) % size) / 2),
+              (((((2*wall + 1) / size) - 1) / 2) * originalSize) + (((2*wall + 1) % size) / 2) + originalSize);
+        //printf("%d %d %d\n", (2*wall + 1) / size & 1,
+        //(((((2*wall + 1) / size) - 1) / 2) * originalSize) + (((2*wall + 1) % size) / 2),
+        //(((((2*wall + 1) / size) - 1) / 2) * originalSize) + (((2*wall + 1) % size) / 2) + originalSize);
+      } // Wall is on odd y
       else
-        merge(wall - (2*wall + 1) / size, (wall - (2*wall + 1) / size) + 1);
+      {
+        merge((((((2*wall + 1) / size) + 1) / 2) * originalSize) + ((((2*wall + 1) % size) - 1) / 2),
+              (((((2*wall + 1) / size) + 1) / 2) * originalSize) + ((((2*wall + 1) % size) - 1) / 2) + 1);
+        //printf("%d %d %d\n", (2*wall + 1) / size & 1,
+        //(((((2*wall + 1) / size) + 1) / 2) * originalSize) + ((((2*wall + 1) % size) - 1) / 2),
+        //(((((2*wall + 1) / size) + 1) / 2) * originalSize) + ((((2*wall + 1) % size) - 1) / 2) + 1);
+      }
     }
 
     // Queries

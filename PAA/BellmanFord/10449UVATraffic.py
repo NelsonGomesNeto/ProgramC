@@ -7,19 +7,22 @@ def bellmanFord(graph, cost, loop, start):
     for i in range(len(graph) - 1):
         for u in range(len(graph)):
             for v, c in graph[u]:
-                if (cost[u] + c < cost[v]):
+                if (cost[u] + c < cost[v] and cost[u] != inf):
                     parent[v] = u
                     cost[v] = cost[u] + c
 
+    if (DEBUG): print("parent", parent)
     for u in range(len(graph)):
         for v, c in graph[u]:
-            if (cost[u] + c < cost[v]):
-                loop[u], loop[v] = 1, 1
-                start, end, f = u, v, v
-                while (end != start):
+            if (cost[u] + c < cost[v] and cost[v] != inf):
+                #loop[u], loop[v] = 1, 1
+                #loop[v] = 1
+                start, end, done = v, u, 0
+                loop[end] = 1
+                while (end != start and done < len(graph)):
                     end = parent[end]
                     loop[end] = 1
-                    if (end == v): break
+                    done += 1
                 loop[end] = 1
     return(0)
 
@@ -54,7 +57,7 @@ while (True):
     for i in range(queries):
         query = int(input())
         query -= 1
-        if (cost[query] < 3 or loop[query] or cost[query] >= inf - 10000):
+        if (cost[query] < 3 or loop[query] or cost[query] == inf):
             print("?")
         else:
             print(cost[query])
