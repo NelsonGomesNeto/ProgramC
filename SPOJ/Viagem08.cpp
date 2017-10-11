@@ -1,45 +1,26 @@
 #include <bits/stdc++.h>
 int minInf = INT_MIN;
 using namespace std;
-int dp1[501][501];
-int dp2[501][501];
+int dp[501][501][501];
 
-int knapsack1(pair<int, int> place[], int before, int i, int places, int priceLimit)
+int knapsack(pair<int, int> place[], int before, int i, int places, int priceLimit, int end)
 {
-  if (i == places)
+  i %= places;
+  if (i == end)
   {
-    if (priceLimit - abs(place[0].second - place[before].second) >= 0)
+    if (priceLimit - abs(place[end].second - place[before].second) >= 0)
       return(0);
     return(-10000);
   }
 
-  //if (dp1[i][priceLimit] == -1)
-  //{
-    dp1[i][priceLimit] = knapsack1(place, before, i + 1, places, priceLimit);
-    if (abs(place[i].second - place[before].second) <= priceLimit)
-      dp1[i][priceLimit] = max(dp1[i][priceLimit], 1 + knapsack1(place, i, i + 1, places, priceLimit - abs(place[i].second - place[before].second)));
-  //}
-
-  return(dp1[i][priceLimit]);
-}
-
-int knapsack2(pair<int, int> place[], int before, int i, int places, int priceLimit)
-{
-  if (i == places)
+  if (dp[before][i][priceLimit] == -1)
   {
-    if (priceLimit - abs(place[0].second - place[before].second) >= 0)
-      return(0);
-    return(-10000);
+    dp[before][i][priceLimit] = knapsack(place, before, i + 1, places, priceLimit, end);
+    if (abs(place[i].second - place[before].second) <= priceLimit)
+      dp[before][i][priceLimit] = max(dp[before][i][priceLimit], 1 + knapsack(place, i, i + 1, places, priceLimit - abs(place[i].second - place[before].second), end));
   }
 
-  if (dp2[before][priceLimit] == -1)
-  {
-    dp2[before][priceLimit] = knapsack2(place, before, i + 1, places, priceLimit);
-    if (abs(place[i].second - place[before].second) <= priceLimit)
-      dp2[before][priceLimit] = max(dp2[before][priceLimit], 1 + knapsack2(place, i, i + 1, places, priceLimit - abs(place[i].second - place[before].second)));
-  }
-
-  return(dp2[before][priceLimit]);
+  return(dp[before][i][priceLimit]);
 }
 
 int main()
@@ -47,10 +28,9 @@ int main()
   int places, priceLimit; scanf("%d %d", &places, &priceLimit);
   pair<int, int> aux[places], start; int i, j, f = 0;
   int lat, lon;
+  memset(dp, -1, sizeof(dp));
   for (i = 0; i < places; i ++)
   {
-    memset(dp1[i], -1, sizeof(dp1[i]));
-    memset(dp2[i], -1, sizeof(dp2[i]));
     scanf("%d %d", &lat, &lon);
     if (!i) start = {lon, lat};
     //if (lon < 0) lon = 180 + (-lon);
@@ -59,22 +39,31 @@ int main()
 
   sort(aux, aux + places);
 
-  //for (i = 0; i < places; i ++)
-
   pair<int, int> place[places + 1];
-  for (i = 0, j = 0; j < places; i ++)
+  int k;
+  for (i = 0, k = 0; k < places; i ++)
   {
-    //printf("%d %d %d\n", j, aux[i].second, aux[i].first);
     i %= places;
-    if (aux[i] == start && f ++ == 0)
-      place[j ++] = aux[i];
+    //printf("%d %d %d\n", j, aux[i].second, aux[i].first);
+    if (aux[i].first == start.first && f == 0)
+    {
+      place[k ++] = aux[i];
+      f = 1;
+    }
     else if (f == 1)
-      place[j ++] = aux[i];
+      place[k ++] = aux[i];
+    if (aux[i] == start)
+      j = k - 1;
   }
-  //for (i = 0; i < places; i ++)
-  //  printf("%d %d\n", place[i].second, place[i].first);
+  for (i = 0; i < places; i ++)
+    printf("%d %d %d\n", i, place[i].second, place[i].first);
+  printf("%d %d\n", j, j + 1);
 
-  int answer = knapsack1(place, 0, 1, places, priceLimit);
+  // pair<int, int> a = place[j];
+  // place[j] = place[0];
+  // place[0] = a;
+
+  int answer = knapsack(place, j, j + 1, places, priceLimit, j);
   //answer = (answer + knapsack2(place, 0, 1, places, priceLimit)) / 2;
 
   printf("%d\n", answer);
