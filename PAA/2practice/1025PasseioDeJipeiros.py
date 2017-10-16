@@ -19,13 +19,12 @@ def dijkstra(graph, cost, visited, path, source):
                 heappush(pq, [cost[u[0]], u[0]])
 
 def runPath(path, placesCity, start, end):
-    newPath = []
+    newPath = set()
     while (end != start):
-        newPath += [placesCity[end]]
+        newPath.add(placesCity[end])
         end = path[end]
-    newPath += [end]
-    newPath.reverse()
-    return(set(newPath))
+    newPath.add(placesCity[end])
+    return(newPath)
 
 def bfs(graph, residualGraph, source, target, parent, placesCity, allowedCities):
     vertices = len(graph)
@@ -47,7 +46,7 @@ def bfs(graph, residualGraph, source, target, parent, placesCity, allowedCities)
 
 def fordFulkerson(graph, matrixGraph, source, target, placesCity, allowedCities):
     vertices = len(graph)
-    residualGraph = list(map(list, matrixGraph))
+    residualGraph = matrixGraph#list(map(list, matrixGraph))
     parent = [-1] * vertices
     maxFlow = 0
     while (bfs(graph, residualGraph, source, target, parent, placesCity, allowedCities)):
@@ -70,25 +69,31 @@ def fordFulkerson(graph, matrixGraph, source, target, placesCity, allowedCities)
 # Reading input
 places = int(input())
 cities = int(input())
-cityPlaces, placesCity = [[] for i in range(cities)], [0] * places
+placesCity = [0] * places
 for i in range(cities):
-    cityPlaces[i] += list(map(int, input().split()))
-    for j in cityPlaces[i]:
+    cityPlaces = list(map(int, input().split()))
+    for j in cityPlaces:
         placesCity[j] = i
 if (DEBUG):
-    print("cityPlaces", cityPlaces)
+    #print("cityPlaces", cityPlaces)
     print("placesCity", placesCity)
 
 # Mapping everything to a graph
 streets = int(input())
 graph = [[] for i in range(places)]
-matrixGraph = [[0] * places for i in range(places)]
+matrixGraph = {}
 for i in range(streets):
     u, v, c, d = map(int, input().split())
     graph[u] += [[v, c, d]]
+    if (u not in matrixGraph):
+        matrixGraph[u] = {}
     matrixGraph[u][v] = c
+    if (v not in matrixGraph):
+        matrixGraph[v] = {}
+    if (u not in matrixGraph[v]):
+        matrixGraph[v][u] = 0
 
-# Finding shortes path
+# Finding shortest path
 source, destination = map(int, input().split())
 cost, visited, path = [inf] * places, [0] * places, [-1] * places
 dijkstra(graph, cost, visited, path, source)
