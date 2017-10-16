@@ -55,7 +55,7 @@ def fordFulkerson(graph, matrixGraph, source, target, placesCity, allowedCities)
         v = target
         while (v != source):
             u = parent[v]
-            pathFlow = min(pathFlow, residualGraph[u][v])
+            pathFlow = pathFlow if (pathFlow < residualGraph[u][v]) else residualGraph[u][v]
             v = parent[v]
         v = target
         while (v != source):
@@ -87,7 +87,6 @@ for i in range(streets):
     u, v, c, d = map(int, input().split())
     graph[u] += [[v, c, d]]
     matrixGraph[u][v] = c
-    #graph[v] += [[u, c, d]]
 
 # Finding shortes path
 source, destination = map(int, input().split())
