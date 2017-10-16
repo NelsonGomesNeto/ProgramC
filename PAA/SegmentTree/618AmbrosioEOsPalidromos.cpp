@@ -42,12 +42,23 @@ void uv(int segmentTree[], int i, int diff, int lo, int hi, int pos)
   }
 }
 
+void updateValue(int **segmentTree, char array[], int size, char value, int pos)
+{
+  if (pos < 0 || pos > size - 1) return;
+  if (array[pos] != value)
+  {
+    uv(segmentTree[value - 'a'], 0, 1, 0, size - 1, pos);
+    uv(segmentTree[array[pos] - 'a'], 0, 1, 0, size - 1, pos);
+  }
+  array[pos] = value;
+}
+
 int main()
 {
-  int size, queries; scanf("%d %d", &size, &queries);
-  char string[size]; scanf("%s", string);
+  int size, queries; scanf("%d %d\n", &size, &queries);
+  char string[size + 10]; scanf("%s", string); int i, j;
 
-  int **segmentTree = (int**) malloc(26 * sizeof(int*)), i, j;
+  int **segmentTree = (int**) malloc(26 * sizeof(int*));
   for (i = 0; i < 26; i ++)
   {
     segmentTree[i] = (int*) malloc((2 * (lli) pow(2, (lli) log2(size) + 1) - 1) * sizeof(int));
@@ -67,12 +78,7 @@ int main()
     if (command == 1) // update
     {
       scanf("%d %c", &lo, &letter);
-      if (string[lo - 1] != letter)
-      {
-        uv(segmentTree[string[lo - 1] - 'a'], 0, 1, 0, size - 1, lo - 1);
-        uv(segmentTree[letter - 'a'], 0, 1, 0, size - 1, lo - 1);
-        string[lo - 1] = letter;
-      }
+      updateValue(segmentTree, string, size, letter, lo - 1);
     }
     else
     {
