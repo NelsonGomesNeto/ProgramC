@@ -1,6 +1,5 @@
 from heapq import *
-from queue import *
-inf = 2**33
+inf = 10**9
 DEBUG = 0
 
 def dijkstra(graph, cost, visited, path, source):
@@ -12,7 +11,8 @@ def dijkstra(graph, cost, visited, path, source):
         v = heappop(pq)[1]
         if (visited[v]): continue
         visited[v] = 1
-        for u in graph[v]:
+        for i in graph[v]:
+            u = [i] + graph[v][i]
             if (cost[v] + u[2] < cost[u[0]]):
                 cost[u[0]] = cost[v] + u[2]
                 path[u[0]] = v
@@ -26,41 +26,37 @@ def runPath(path, placesCity, start, end):
     newPath.add(placesCity[end])
     return(newPath)
 
-def bfs(graph, residualGraph, source, target, parent, placesCity, allowedCities):
-    vertices = len(graph)
-    visited = [0] * vertices
+def bfs(residualGraph, source, target, parent, placesCity, allowedCities):
+    visited = [0] * len(residualGraph)
     visited[0] = 1
     parent[source] = -1
-    queue = Queue()
-    queue.put(source)
-    while (not queue.empty()):
-        u = queue.get()
+    queue = [source]
+    while (queue):
+        u = queue.pop(0)
         for i in graph[u]:
-            v = i[0]
-            if (not visited[v] and residualGraph[u][v] > 0 and placesCity[v] in allowedCities):
+            v = i
+            if (not visited[v] and residualGraph[u][v][0] > 0 and placesCity[v] in allowedCities):
                 parent[v] = u
-                queue.put(v)
+                queue += [v]
                 visited[v] = 1
     return(visited[target])
 
 
-def fordFulkerson(graph, matrixGraph, source, target, placesCity, allowedCities):
-    vertices = len(graph)
-    residualGraph = matrixGraph#list(map(list, matrixGraph))
-    parent = [-1] * vertices
+def fordFulkerson(residualGraph, source, target, placesCity, allowedCities):
+    parent = [-1] * len(residualGraph)
     maxFlow = 0
-    while (bfs(graph, residualGraph, source, target, parent, placesCity, allowedCities)):
+    while (bfs(residualGraph, source, target, parent, placesCity, allowedCities)):
         pathFlow = inf
         v = target
         while (v != source):
             u = parent[v]
-            pathFlow = pathFlow if (pathFlow < residualGraph[u][v]) else residualGraph[u][v]
+            pathFlow = pathFlow if (pathFlow < residualGraph[u][v][0]) else residualGraph[u][v][0]
             v = parent[v]
         v = target
         while (v != source):
             u = parent[v]
-            residualGraph[u][v] -= pathFlow
-            residualGraph[v][u] += pathFlow
+            residualGraph[u][v][0] -= pathFlow
+            residualGraph[v][u][0] += pathFlow
             v = parent[v]
         maxFlow += pathFlow
     if (DEBUG): print("residualGraph", residualGraph)
@@ -80,18 +76,13 @@ if (DEBUG):
 
 # Mapping everything to a graph
 streets = int(input())
-graph = [[] for i in range(places)]
-matrixGraph = {}
+graph = {}
 for i in range(streets):
     u, v, c, d = map(int, input().split())
-    graph[u] += [[v, c, d]]
-    if (u not in matrixGraph):
-        matrixGraph[u] = {}
-    matrixGraph[u][v] = c
-    if (v not in matrixGraph):
-        matrixGraph[v] = {}
-    if (u not in matrixGraph[v]):
-        matrixGraph[v][u] = 0
+    if (u not in graph): graph[u] = {}
+    graph[u][v] = [c, d]
+    if (v not in graph): graph[v] = {}
+    if (u not in graph[v]): graph[v][u] = [0, 0]
 
 # Finding shortest path
 source, destination = map(int, input().split())
@@ -107,6 +98,6 @@ if (DEBUG):
     print("citiesPath", citiesPath)
 
 travelCost = cost[destination]
-maxPeople = fordFulkerson(graph, matrixGraph, source, destination, placesCity, citiesPath)
+maxPeople = fordFulkerson(graph, source, destination, placesCity, citiesPath)
 print(travelCost)
 print(maxPeople)
