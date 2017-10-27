@@ -36,21 +36,22 @@ int main()
     j = 0;
     while (j < go)
     {
-      printf("%d %d %d\n", i - j, y - 1 - j, j + (i / y));
-      mat[min(i, y - 1) - j][j + max(i - y + 1, 0)] = now ++;
+      if (i - j >= 0 && i - j < y  && j >= 0 && j < x)
+        mat[i - j][j] = now ++;
       j ++;
     }
-    // j = 0;
-    // while (j < go)
-    // {
-    //   if (i - j >= 0 && i - j < y  && j >= 0 && j < x)
-    //     mat[i - j][j] = now ++;
-    //   j ++;
-    // }
-    go = y - (y - i) + 2;
+    go ++;
   }
 
   printMatrix(y, x, mat);
 
   return(0);
 }
+
+// j = 0;
+// while (j < go)
+// {
+//   printf("%d %d %d\n", i - j, y - 1 - j, j + (i / y));
+//   mat[min(i, y - 1) - j][j + max(i - y + 1, 0)] = now ++;
+//   j ++;
+// }
