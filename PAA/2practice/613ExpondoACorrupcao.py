@@ -1,42 +1,50 @@
-def binpack(enemy, now, prism, i, end, numPD, budget):
-    if (i == end):
+DEBUG = 0
+
+def floodFill(graph, visited, price, u, pdMembers):
+    total, size = price[u], [0 + (u < pdMembers), 0 + (u >= pdMembers)]
+    visited[u] = 1
+    for v in graph[u]:
+        if (not visited[v]):
+            ret = floodFill(graph, visited, price, v, pdMembers)
+            total += ret[0]
+            size[0] += ret[1][0]
+            size[1] += ret[1][1]
+    return(total, size)
+
+def binpack(dp, packages, i, budget, w):
+    if (i == len(packages)):
         return(0)
 
-    best = binpack(enemy, now, prism, i + 1, end, numPD, budget)
-    if (i not in now and budget - prism[i - numPD] >= 0):
-        for j in enemy[i]:
-            now.add(j)
-        best = max(best, 1 + binpack(enemy, now, prism, i + 1, end, numPD, budget - prism[i - numPD]))
-    return(best)
+    if (dp[budget][i] == -1):
+        if (budget - packages[i][0] >= 0):
+            dp[budget][i] = (packages[i][1][w] - packages[i][1][1 - w]) + binpack(dp, packages, i + 1, budget - packages[i][0], w)
+        aux = binpack(dp, packages, i + 1, budget, w)
+        if (aux > dp[budget][i]): dp[budget][i] = aux
+    return(dp[budget][i])
 
-
-numPD, numPrism, rivalries, budget = map(int, input().split())
-pd = list(map(int, input().split()))
-prism = list(map(int, input().split()))
-size = numPD + numPrism + 10
-enemy = [[] for i in range(size + 2)]
+pdMembers, prismMembers, rivalries, budget = map(int, input().split())
+price = []
+price += list(map(int, input().split()))
+price += list(map(int, input().split()))
+graph = [[] for i in range(pdMembers + prismMembers)]
 for i in range(rivalries):
     u, v = map(int, input().split())
-    u -= 1
-    v += numPD - 1
-    enemy[u] += [v]
-    enemy[v] += [u]
-    # enemy[u][v] = 1
-    # enemy[v][u] = 1
-print("enemy", enemy)
+    u, v = u - 1, v + pdMembers - 1
+    graph[u] += [v]
+    graph[v] += [u]
 
-now = []
-for i in range(0, numPD):
-    now += enemy[i]
-now = set(now)
-print("now", now)
-maxDP = numPD + binpack(enemy, now, prism, numPD, numPD + numPrism, numPD, budget)
+visited = [0] * (pdMembers + prismMembers)
+packages = []
+for i in range(pdMembers + prismMembers):
+    if (not visited[i]):
+        packages += [floodFill(graph, visited, price, i, pdMembers)]
+if (DEBUG):
+    print("packages", packages)
 
-now = []
-for i in range(numPD, numPD + numPrism):
-    now += enemy[i]
-now = set(now)
-print("now", now)
-maxPrism = numPrism + binpack(enemy, now, pd, 0, numPD, 0, budget)
+dp = [[-1] * (pdMembers + prismMembers) for i in range(budget + 1)]
+bestPD = binpack(dp, packages, 0, budget, 1)
+dp = [[-1] * (pdMembers + prismMembers) for i in range(budget + 1)]
+bestPrism = binpack(dp, packages, 0, budget, 0)
 
-print(maxDP, maxPrism)
+print(pdMembers + bestPD, prismMembers + bestPrism)
+
