@@ -48,8 +48,8 @@ int main()
     char name[10]; sprintf(name, "./testCases/%d.in", now);
     FILE *pFile = fopen(name, "wb");
 
-    int y = 999;//2*(125 * ((double)now / quantity)) + 2*(rand() % (int)(1 + 125 * ((double)now / quantity)))+1;
-    int x = 999;//2*(125 * ((double)now / quantity)) + 2*(rand() % (int)(1 + 125 * ((double)now / quantity)))+1;;
+    int y = 2*(125 * ((double)now / quantity)) + 2*(rand() % (int)(1 + 125 * ((double)now / quantity)))+1;
+    int x = 2*(125 * ((double)now / quantity)) + 2*(rand() % (int)(1 + 125 * ((double)now / quantity)))+1;
     int i, j;
     printf("%d %d\n", y, x);
     fprintf(pFile, "%d %d\n", y, x);

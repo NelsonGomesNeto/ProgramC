@@ -59,7 +59,7 @@ int pathFinding(int i, int j, int y, int x, char **maze, int now, char *path)
 int main()
 {
   int y, x; scanf("%d %d", &y, &x);
-  char **maze = (char**) malloc(y * sizeof(char*)); int i, j;
+  char **maze = (char**) malloc(y * sizeof(char*)); int i;
   for (i = 0; i < y; i ++)
   {
     maze[i] = (char*) malloc((x + 1) * sizeof(char));
@@ -70,11 +70,10 @@ int main()
 
   char *path = (char*) malloc((y*x + 1) * sizeof(char)); memset(path, '\0', sizeof(path));
   pathFinding(0, 0, y, x, maze, 0, path);
-  printf("done\n");
   maze[y - 1][x - 1] = 'O';
 
   printMatrix(y, x, maze);
-  //printPath(path);
+  printPath(path);
 
   return(0);
 }
