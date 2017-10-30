@@ -1,4 +1,3 @@
-# DOESN'T WORK!!!!
 from heapq import *
 inf = 2**33
 
@@ -8,12 +7,12 @@ def dijkstra(graph, cost, visited, start, end):
     heappush(pq, [cost[start], start, 0])
     while (pq):
         time, v, paid = heappop(pq)
-        if (visited[v] == 20): continue
-        visited[v] += 1
+        if (visited[v] == 2): continue
+        visited[v] += paid
         for u in graph[v]:
             if (((u[0] == end and 1 - paid == 0) or (u[0] != end)) and time + u[1] < cost[u[0]]):
                 cost[u[0]] = time + u[1]
-            heappush(pq, [cost[u[0]], u[0], 1 - paid])
+            heappush(pq, [time + u[1], u[0], 1 - paid])
 
 cities, streets = map(int, input().split())
 graph = [[] for i in range(cities + 1)]

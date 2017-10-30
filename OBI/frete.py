@@ -7,13 +7,11 @@ def dijkstra(graph, cost, visited, path, start):
     heappush(queue, [cost[start], start])
     while (queue):
         v = heappop(queue)[1]
-        if (not visited[v]):
-            visited[v] = 1
-            for u in graph[v]:
-                if (cost[v] + u[1] < cost[u[0]]):
-                    cost[u[0]] = cost[v] + u[1]
-                    path[u[0]] = v
-                    heappush(queue, [cost[u[0]], u[0]])
+        for u in graph[v]:
+            if (cost[v] + u[1] < cost[u[0]]):
+                cost[u[0]] = cost[v] + u[1]
+                path[u[0]] = v
+                heappush(queue, [cost[u[0]], u[0]])
 
 cities, connections = map(int, input().split())
 #print(cities, connections)

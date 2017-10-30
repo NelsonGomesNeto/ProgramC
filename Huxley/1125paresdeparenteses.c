@@ -15,7 +15,7 @@ void fill(char string[], int stack, int i, int size, int *newest)
     return;
   }
 
-  if (stack  + 1 <= size - i)
+  if (stack + 1 <= size - i)
   {
     string[i] = '(';
     fill(string, stack + 1, i + 1, size, &(*newest));
