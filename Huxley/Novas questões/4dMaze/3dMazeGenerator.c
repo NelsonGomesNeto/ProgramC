@@ -60,9 +60,9 @@ int main()
     char name[10]; sprintf(name, "./testCases/%d.in", now);
     FILE *pFile = fopen(name, "wb");
 
-    int z = 2*(16 * (int)((double)now / quantity)) + 2*(rand() % (int)(1 + 16 * ((double)now / quantity)))+3;
-    int y = 2*(16 * (int)((double)now / quantity)) + 2*(rand() % (int)(1 + 16 * ((double)now / quantity)))+3;
-    int x = 2*(16 * (int)((double)now / quantity)) + 2*(rand() % (int)(1 + 16 * ((double)now / quantity)))+3;
+    int z = 2*((int)(16 * ((double)now / quantity))) + 2*(rand() % (int)(1 + 16 * ((double)now / quantity)))+3;
+    int y = 2*((int)(16 * ((double)now / quantity))) + 2*(rand() % (int)(1 + 16 * ((double)now / quantity)))+3;
+    int x = 2*((int)(16 * ((double)now / quantity))) + 2*(rand() % (int)(1 + 16 * ((double)now / quantity)))+3;
     int i, j, k;
     printf("%d %d %d\n", z, y, x);
     fprintf(pFile, "%d %d %d\n", z, y, x);

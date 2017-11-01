@@ -39,19 +39,18 @@ int pathFinding(int i, int j, int y, int x, char **maze, int now, char *path)
   //printf("%d %d %d\n", i, j, now); fflush(stdout);
   if (i < 0 || j < 0 || i >= y || j >= x || maze[i][j] == '#') return(0);
   if (i == y - 1 && j == x - 1) return(1);
+
   char aux = maze[i][j];
   maze[i][j] = '#';
-
   int k, res = 0;
   for (k = 0; k < 4; k ++)
-  {
     if (pathFinding(i + dy[k], j + dx[k], y, x, maze, now + 1, path))
     {
       path[now] = getCom(k);
       maze[i][j] = getDir(k);
       return(1);
     }
-  }
+    
   if (!res) maze[i][j] = aux;
   return(0);
 }

@@ -3,7 +3,7 @@
 gcc pathFinding.c -o path
 gcc mazeGenerator.c -o gen
 ./gen < ./in
-for ((i = 1; i <= 25; i ++))
+for ((i = 1; i <= 50; i ++))
 do
   #./amo < ./maze > ./out
   echo $i

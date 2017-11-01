@@ -48,10 +48,10 @@ int main()
     char name[10]; sprintf(name, "./testCases/%d.in", now);
     FILE *pFile = fopen(name, "wb");
 
-    int y = 2*(125 * ((double)now / quantity)) + 2*(rand() % (int)(1 + 125 * ((double)now / quantity)))+1;
-    int x = 2*(125 * ((double)now / quantity)) + 2*(rand() % (int)(1 + 125 * ((double)now / quantity)))+1;
+    int y = 2*((int)(125 * ((double)now / quantity))) + 2*(rand() % (int)(1 + 125 * ((double)now / quantity)))+1;
+    int x = 2*((int)(125 * ((double)now / quantity))) + 2*(rand() % (int)(1 + 125 * ((double)now / quantity)))+1;
     int i, j;
-    printf("%d %d\n", y, x);
+    printf("Size: %d %d\n", y, x);
     fprintf(pFile, "%d %d\n", y, x);
 
     char **maze = (char**) malloc(y * sizeof(char**));
