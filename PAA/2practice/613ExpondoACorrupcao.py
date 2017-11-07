@@ -41,9 +41,9 @@ for i in range(pdMembers + prismMembers):
 if (DEBUG):
     print("packages", packages)
 
-dp = [[-1] * (pdMembers + prismMembers) for i in range(budget + 1)]
+dp = [[-1] * (len(packages) + 1) for i in range(budget + 1)]
 bestPD = binpack(dp, packages, 0, budget, 1)
-dp = [[-1] * (pdMembers + prismMembers) for i in range(budget + 1)]
+dp = [[-1] * (len(packages) + 1) for i in range(budget + 1)]
 bestPrism = binpack(dp, packages, 0, budget, 0)
 
 print(pdMembers + bestPD, prismMembers + bestPrism)
