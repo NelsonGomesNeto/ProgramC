@@ -12,8 +12,10 @@ int main()
   sort(puzzles, puzzles + m);
 
   int best = inf;
-  for (i = 0; i < m - n; i ++)
-    best = min()
+  for (i = 0; i <= m - n; i ++)
+    best = min(best, puzzles[(n + i) - 1] - puzzles[i]);
+
+  printf("%d\n", best);
 
   return(0);
 }
