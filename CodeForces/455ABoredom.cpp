@@ -1,38 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
+int MAX = 100001;
 
 int main()
 {
-  int numbers; scanf("%d", &numbers);
-  int array[numbers], dp[100001], i; memset(dp, 0, sizeof(dp));
-  for (i = 0; i < numbers; i ++)
+  int n; scanf("%d", &n);
+  int i, num, biggest = 0; long long int freq[MAX], dp[MAX];
+  memset(freq, 0, sizeof(freq));
+  for (i = 0; i < n; i ++)
   {
-    scanf("%d", &array[i]);
-    dp[array[i]] ++;
+    scanf("%d", &num);
+    biggest = max(biggest, num);
+    freq[num] ++;
   }
 
-  sort(array, array + numbers);
+  dp[0] = 0; dp[1] = freq[1];
 
-  int total = 0;
-  for (i = 100000; i >= 1; i --)
-  {
-    //printf("%d %d %d %d\n", i, dp[i - 1] * (i - 1), dp[i] * i, dp[i + 1] * (i + 1));
-    if (dp[i] * i >= dp[i - 1] * (i - 1) + (dp[i + 1] * (i + 1)))
-    {
-      total += (dp[i] * i);
-      dp[i - 1] = 0;
-      //i --;
-    }
-    else
-    {
-      if (dp[i - 1] * (i - 1) && (dp[i + 1] * (i + 1)))
-        total += dp[i - 1] * (i - 1) + (dp[i + 1] * (i + 1));
-      //dp[i - 1] = 0;
-      i --;
-    }
-  }
+  for (i = 2; i <= biggest; i ++)
+    dp[i] = max(dp[i - 2] + (freq[i]*i), dp[i - 1]);
 
-  printf("%d\n", total);
+  printf("%lld\n", dp[biggest]);
 
   return(0);
 }
