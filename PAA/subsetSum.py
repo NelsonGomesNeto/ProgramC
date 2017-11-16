@@ -23,51 +23,52 @@ for i in items:
 
 if (target == 0):
     if (target in items):
-        print("done")
+        print("Yes")
     else:
-        sumMin, done = min( sum(positive), sum(negative) ), False
+        sumMin, Yes = min( sum(positive), sum(negative) ), False
         for i in range(1, sumMin + 1):
-            if (done):
+            if (Yes):
                 break
             dp = {}
             posAnswer = binPack(0, positive, i, dp)
             dp = {}
             negAnswer = binPack(0, negative, i, dp)
             if (posAnswer == negAnswer):
-                done = True
-        if (done):
-            print("done")
+                Yes = True
+        if (Yes):
+            print("Yes")
         else:
-            print("fock")
+            print("No")
 elif (target > 0):
-    sumMin, done = sum(positive), False
+    sumMin, Yes = sum(positive), False
     for i in range(target, sumMin + 1):
-        if (done):
+        if (Yes):
             break
         dp = {}
         posAnswer = binPack(0, positive, i, dp)
         dp = {}
         negAnswer = binPack(0, negative, i - target, dp)
-        print(negAnswer, posAnswer)
-        if (posAnswer - negAnswer == target):
-            done = True
-    if (done):
-        print("done")
+        #print(negAnswer, posAnswer)
+        total = sum(positive)
+        if (abs(posAnswer - (total - posAnswer)) == target):
+            Yes = True
+    if (Yes):
+        print("Yes")
     else:
-        print("fock")
+        print("No")
 else:
-    sumMin, done = sum(negative), False
+    sumMin, Yes = sum(negative), False
     for i in range(-target, sumMin + 1):
-        if (done):
+        if (Yes):
             break
         dp = {}
         negAnswer = binPack(0, negative, i, dp)
         dp = {}
         posAnswer = binPack(0, positive, i + target, dp)
-        print(i, negAnswer, posAnswer)
+        #print(i, negAnswer, posAnswer)
         if (posAnswer - negAnswer == target):
-            done = True
-    if (done):
-        print("done")
+            Yes = True
+    if (Yes):
+        print("Yes")
     else:
-        print("fock")
+        print("No")
