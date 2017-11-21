@@ -2,10 +2,11 @@
 using namespace std;
 
 int dp[101][3][2];
-char word[110], end;
+char word[110], aux;
 
 int findAll(int i, int now, int size, int done)
 {
+  if (now == 0 && done) return(1);
   if (i == size && !now && done) return(1);
   if (i == size) return(0);
 
@@ -30,12 +31,12 @@ int main()
 {
   memset(dp, -1, sizeof(dp));
   int size = 0, q = 0;
-  while (scanf("%c", &end) != EOF && end != '\n')
+  while (scanf("%c", &aux) != EOF && aux != '\n')
   {
-    q += end == 'Q';
+    q += aux == 'Q';
     if (!q) continue;
-    if (end == 'Q' || end == 'A')
-      word[size ++] = end;
+    if (aux == 'Q' || aux == 'A')
+      word[size ++] = aux;
   }
 
   //printf("%s\n", word);
