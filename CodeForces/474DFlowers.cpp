@@ -1,66 +1,41 @@
 #include <bits/stdc++.h>
-#define DEBUG if(1)
-#define MOD % ((long long int) 1e9 + 7)
-char formed[(int) 1e5 + 1];
+#define DEBUG if(0)
 
-long long int fibonacci[(int) 1e5 + 1];
+long long int mod = (long long int) 1e9 + 7;
+long long int way[(int) 1e5 + 1];
 
-int ways(int i, int now, int size, int k) // HOLLY SHIT, THIS IS FIBONACCI HAHAHAHAHAA
+int fillWays(int size, int k)
 {
-  if (i == size)
-  {
-    formed[i] = '\0';
-    //printf("%s\n", formed);
-    return(1);
-  }
-
-  int ans = 0;
-  if (now == k || !now)
-  {
-    formed[i] = 'R';
-    ans = ways(i + 1, 0, size, k);
-  }
-  if (size - i >= k - now)
-  {
-    formed[i] = 'W';
-    ans += ways(i + 1, (now + 1) % k, size, k);
-  }
-
-  return(ans);
+  if (size < 0) return(0);
+  if (!size) return(1);
+  if (way[size] == -1)
+    way[size] = (fillWays(size - k, k) + fillWays(size - 1, k)) % mod;
+  return(way[size]);
 }
 
-void fillFib()
+long long int module(long long int num)
 {
-  long long int a1 = 0, a2 = 1, aux;
-  for (int i = 1; i <= 1e5; i ++)
-  {
-    fibonacci[i] = (a1 + a2) MOD;
-    a1 = a2; a2 = fibonacci[i];
-  }
+  long long int ret = (num % mod);
+  return(ret < 0 ? ret + mod : ret);
 }
 
 int main()
 {
-  fillFib();
+  memset(way, -1, sizeof(way));
   int tests, k; scanf("%d %d", &tests, &k);
-  long long int ans[(int) 1e5 + 1], now = 0; ans[0] = 0;
+  fillWays((int) 1e5, k);
+
+  long long int acc[(int) 1e5 + 1]; acc[0] = 0;
   for (int i = 1; i <= 1e5; i ++)
-  {
-    if (i < k)
-      now = (now + 1);
-    else
-      now = (now + fibonacci[i - k + 2]);
-    ans[i] = now;
-    //printf("%d %lld %lld\n", i, now, ans[i]);
-  }
+    acc[i] = (way[i] + acc[i - 1]) % mod;
+
   while (tests -- > 0)
   {
     int a, b; scanf("%d %d", &a, &b);
-    //DEBUG for (int i = 1; i <= 1e5; i ++) printf("%d -> %d\n", i, ways(0, 0, i, k));
-    DEBUG for (int i = 1; i <= 1e5; i ++) printf("%d -> %lld\n", i, fibonacci[i]);
+    DEBUG for (int i = 1; i <= 1e5; i ++) printf("%d -> %lld\n", i, acc[i]);
 
-    //printf("%lld %lld\n", ans[b - 1], ans[a - 1]);
-    printf("%lld\n", (ans[b] - ans[a - 1]) MOD);
+    printf("%lld\n", module(acc[b] - acc[a - 1]));
   }
+
   return(0);
 }
