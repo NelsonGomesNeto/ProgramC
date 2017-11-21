@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-int dp[100001][2];
+int dp[100001][3];
 
 int bt(int tree[][2], int i, int n, int blocked, int done)
 {
@@ -10,7 +10,7 @@ int bt(int tree[][2], int i, int n, int blocked, int done)
   {
     int ans = bt(tree, i + 1, n, tree[i][0], 0);
     if (blocked < tree[i][0] - tree[i][1]) ans = max(ans, 1 + bt(tree, i + 1, n, tree[i][0], 1));
-    if (tree[i+1][0] > tree[i][0] + tree[i][1]) ans = max(ans, 1 + bt(tree, i + 1, n, tree[i][1], 1));
+    if (tree[i+1][0] > tree[i][0] + tree[i][1]) ans = max(ans, 1 + bt(tree, i + 1, n, tree[i][0] + tree[i][1], 2));
     dp[i][done] = ans;
   }
 
