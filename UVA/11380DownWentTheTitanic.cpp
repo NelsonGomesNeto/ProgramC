@@ -16,6 +16,7 @@ int getCapacity(char place)
   if (place == '.') return(1);
   if (place == '@') return(inf);
   if (place == '#') return(inf);
+  return(1);
 }
 
 int bfs(vector<int> graph[], int source, int target, int parent[])
