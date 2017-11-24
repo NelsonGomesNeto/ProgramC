@@ -26,7 +26,8 @@ int main()
   red = n - blue;
   //printf("%d %d\n", blue, red);
 
-  printf("%lld\n", (blue - 1) * (red - 1));
+  //printf("%lld\n", (blue - 1) * (red - 1));
+  printf("%lld\n", blue * red - n + 1);
 
   return(0);
 }
