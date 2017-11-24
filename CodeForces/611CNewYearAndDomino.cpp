@@ -54,7 +54,7 @@ int main()
     scanf("%d", &q);
     int li, lf, hi, hf; scanf("%d %d %d %d", &li, &lf, &hi, &hf);
     li --; lf --; hi --; hf --;
-    printf("%d\n", (right[lf][hf] - right[li][hi]) - (left[lf][hf] - left[li][hi]));
+    printf("%d\n", (right[lf][hf] + right[li][hi]) + (left[lf][hf] + left[li][hi]));
   }
 
 
