@@ -5,7 +5,7 @@ using namespace std;
 const int MAX = 100;
 char board[MAX][MAX + 1];
 int line[MAX][MAX], row[MAX][MAX], inf = 1<<20;
-int matrixGraph[5002][5002];
+int matrixGraph[10002][10002];
 
 void fillAuxBoard(int size)
 {
@@ -34,8 +34,6 @@ void fillAuxBoard(int size)
           k += board[k][j] != 'X';
         }
       }
-      line[j][i] = line[j][i] == inf ? 0 : line[j][i];
-      row[i][j] = row[i][j] == inf ? 0 : row[i][j];
     }
 }
 
@@ -46,7 +44,7 @@ void fillGraph(set<int> graph[], int size)
 
 int bfs(set<int> graph[], int source, int target, int parent[])
 {
-  int visited[5002]; memset(visited, 0, sizeof(visited));
+  int visited[10002]; memset(visited, 0, sizeof(visited));
   deque<int> queue;
   queue.push_back(source);
   visited[source] = 1;
@@ -66,7 +64,7 @@ int bfs(set<int> graph[], int source, int target, int parent[])
 
 int fordFulkerson(set<int> graph[], int source, int target)
 {
-  int maxFlow = 0, parent[5002]; memset(parent, -1, sizeof(parent));
+  int maxFlow = 0, parent[10002]; memset(parent, -1, sizeof(parent));
   while (bfs(graph, source, target, parent))
   {
     int pathFlow = inf, v = target, u;
@@ -94,7 +92,7 @@ int main()
   int size;
   while (scanf("%d", &size) != EOF)
   {
-    memset(matrixGraph, 0, sizeof(matrixGraph));
+    //memset(matrixGraph, 0, sizeof(matrixGraph));
     memset(line, 0, sizeof(line)); memset(row, 0, sizeof(row));
     for (int i = 0; i < size; i ++)
     {
@@ -115,37 +113,37 @@ int main()
       printf("\n");
     }
 
-    set<int> graph[5002];
+    set<int> graph[10002];
     for (int i = 0; i < size; i ++)
       for (int j = 0; j < size; j ++)
       {
         if (line[i][j])
         {
           graph[0].insert(line[i][j]);
-          matrixGraph[0][line[i][j]] = 1;
+          matrixGraph[0][line[i][j]] = 1; matrixGraph[line[i][j]][0] = 0;
           graph[line[i][j]].insert(0);
           for (int k = j; k < size && board[i][k] != 'X'; k ++)
           {
             if (row[i][k])
             {
-              graph[line[i][j]].insert(row[i][k] + 2500);
-              matrixGraph[line[i][j]][row[i][k] + 2500] = 1;
-              graph[row[i][k] + 2500].insert(line[i][j]);
+              graph[line[i][j]].insert(row[i][k] + 5000);
+              matrixGraph[line[i][j]][row[i][k] + 5000] = 1; matrixGraph[row[i][k] + 5000][line[i][j]] = 0;
+              graph[row[i][k] + 5000].insert(line[i][j]);
             }
           }
           for (int k = i, m = i; k < size && m >= 0 && (row[m][j] != 0 || row[k][j] != 0);)
           {
             if (row[k][j])
             {
-              graph[line[i][j]].insert(row[k][j] + 2500);
-              matrixGraph[line[i][j]][row[k][j] + 2500] = 1;
-              graph[row[k][j] + 2500].insert(line[i][j]);
+              graph[line[i][j]].insert(row[k][j] + 5000);
+              matrixGraph[line[i][j]][row[k][j] + 5000] = 1; matrixGraph[row[k][j] + 5000][line[i][j]] = 0;
+              graph[row[k][j] + 5000].insert(line[i][j]);
             }
             if (row[m][j])
             {
-              graph[line[i][j]].insert(row[m][j] + 2500);
-              matrixGraph[line[i][j]][row[m][j] + 2500] = 1;
-              graph[row[m][j] + 2500].insert(line[i][j]);
+              graph[line[i][j]].insert(row[m][j] + 5000);
+              matrixGraph[line[i][j]][row[m][j] + 5000] = 1; matrixGraph[row[m][j] + 5000][line[i][j]] = 0;
+              graph[row[m][j] + 5000].insert(line[i][j]);
             }
             if (row[m][j] != 0) m --;
             if (row[k][j] != 0) k ++;
@@ -158,14 +156,14 @@ int main()
       for (int j = 0; j < size; j ++)
         if (row[i][j])
         {
-          graph[row[i][j] + 2500].insert(5001);
-          matrixGraph[row[i][j] + 2500][5001] = 1;
-          graph[5001].insert(row[i][j] + 2500);
+          graph[row[i][j] + 5000].insert(10001);
+          matrixGraph[row[i][j] + 5000][10001] = 1; matrixGraph[10001][row[i][j] + 5000] = 0;
+          graph[10001].insert(row[i][j] + 5000);
         }
     //fillGraph(graph, size);
 
     DEBUG {
-      for (int i = 0; i < 5002; i ++)
+      for (int i = 0; i < 10002; i ++)
       {
         if (graph[i].size() > 0)
         {
@@ -177,15 +175,15 @@ int main()
       }
     }
 
-    int ans = fordFulkerson(graph, 0, 5001);
+    int ans = fordFulkerson(graph, 0, 10001);
 
     // int aux[size][size]; memset(aux, 0, sizeof(aux));
-    // for (auto v: graph[5001])
+    // for (auto v: graph[10001])
     // {
-    //   if (matrixGraph[5001][v])
+    //   if (matrixGraph[10001][v])
     //     for (auto u: graph[v])
     //       if (matrixGraph[v][u])
-    //         printf("%d %d\n", v - 2500, u);
+    //         printf("%d %d\n", v - 5000, u);
     // }
     // for (int i = 0; i < size; i ++)
     // {
