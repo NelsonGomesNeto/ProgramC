@@ -5,7 +5,7 @@ using namespace std;
 const int MAX = 100;
 char board[MAX][MAX + 1];
 int line[MAX][MAX], row[MAX][MAX], inf = 1<<20;
-int matrixGraph[10002][10002];
+int matrixGraph[10012][10012], dist[10012], level[10012];
 
 void fillAuxBoard(int size)
 {
@@ -44,7 +44,7 @@ void fillGraph(set<int> graph[], int size)
 
 int bfs(set<int> graph[], int source, int target, int parent[])
 {
-  int visited[10002]; memset(visited, 0, sizeof(visited));
+  int visited[10012]; memset(visited, 0, sizeof(visited));
   deque<int> queue;
   queue.push_back(source);
   visited[source] = 1;
@@ -64,7 +64,7 @@ int bfs(set<int> graph[], int source, int target, int parent[])
 
 int fordFulkerson(set<int> graph[], int source, int target)
 {
-  int maxFlow = 0, parent[10002]; memset(parent, -1, sizeof(parent));
+  int maxFlow = 0, parent[10012]; memset(parent, -1, sizeof(parent));
   while (bfs(graph, source, target, parent))
   {
     int pathFlow = inf, v = target, u;
@@ -83,6 +83,92 @@ int fordFulkerson(set<int> graph[], int source, int target)
       v = parent[v];
     }
     maxFlow += pathFlow;
+  }
+  return(maxFlow);
+}
+
+int findPath(int visited[], int source, int target, int flow)
+{
+  if (source == target) return(flow);
+  visited[source] = 1;
+  for (int v = 0; v < 10012; v ++)
+    if (!visited[v] && matrixGraph[source][v] > 0)
+    {
+      int pathFlow = findPath(visited, v, target, min(flow, matrixGraph[source][v]));
+      if (pathFlow > 0)
+      {
+        matrixGraph[source][v] -= pathFlow;
+        matrixGraph[v][source] += pathFlow;
+        return(pathFlow);
+      }
+    }
+  return(0);
+}
+
+int dfsFordFulkerson(int source, int target)
+{
+  int maxFlow = 0;
+  while (1)
+  {
+    int visited[10012]; memset(visited, 0, sizeof(visited));
+    int pathFlow = findPath(visited, source, target, inf);
+    if (!pathFlow)
+      return(maxFlow);
+    maxFlow += pathFlow;
+  }
+}
+
+int dinicBFS(set<int> graph[], int source, int target)
+{
+  memset(dist, -1, sizeof(dist));
+  dist[source] = 0;
+  int nowLevel = 0;
+  level[nowLevel ++] = source;
+  for (int i = 0; i < nowLevel; i ++)
+  {
+    int u = level[i];
+    for (auto v: graph[u])
+    {
+      if (dist[v] < 0 && matrixGraph[u][v] > 0)
+      {
+        dist[v] = dist[u] + 1;
+        level[nowLevel ++] = v;
+      }
+    }
+  }
+  return(dist[target] >= 0);
+}
+
+int dinicDFS(set<int> graph[], int source, int target, int flow)
+{
+  if (source == target) return(flow);
+  for (auto v: graph[source])
+  {
+    if (matrixGraph[source][v] <= 0) continue;
+    if (dist[v] == dist[source] + 1)
+    {
+      int pathFlow = dinicDFS(graph, v, target, min(flow, matrixGraph[source][v]));
+      if (pathFlow > 0)
+      {
+        matrixGraph[source][v] -= pathFlow;
+        matrixGraph[v][source] += pathFlow;
+        return(pathFlow);
+      }
+    }
+  }
+  return(0);
+}
+
+int dinic(set<int> graph[], int source, int target)
+{
+  int maxFlow = 0, pathFlow = 0;
+  while (dinicBFS(graph, source, target))
+  {
+    do
+    {
+      pathFlow = dinicDFS(graph, source, target, inf);
+      maxFlow += pathFlow;
+    } while(pathFlow);
   }
   return(maxFlow);
 }
@@ -113,7 +199,7 @@ int main()
       printf("\n");
     }
 
-    set<int> graph[10002];
+    set<int> graph[10012];
     for (int i = 0; i < size; i ++)
       for (int j = 0; j < size; j ++)
       {
@@ -156,15 +242,14 @@ int main()
       for (int j = 0; j < size; j ++)
         if (row[i][j])
         {
-          graph[row[i][j] + 5000].insert(10001);
-          matrixGraph[row[i][j] + 5000][10001] = 1; matrixGraph[10001][row[i][j] + 5000] = 0;
-          graph[10001].insert(row[i][j] + 5000);
+          graph[row[i][j] + 5000].insert(10011);
+          matrixGraph[row[i][j] + 5000][10011] = 1; matrixGraph[10011][row[i][j] + 5000] = 0;
+          graph[10011].insert(row[i][j] + 5000);
         }
     //fillGraph(graph, size);
 
     DEBUG {
-      for (int i = 0; i < 10002; i ++)
-      {
+      for (int i = 0; i < 10012; i ++)
         if (graph[i].size() > 0)
         {
           printf("%d", i);
@@ -172,26 +257,11 @@ int main()
             printf("-> %d", j);
           printf("\n");
         }
-      }
     }
 
-    int ans = fordFulkerson(graph, 0, 10001);
-
-    // int aux[size][size]; memset(aux, 0, sizeof(aux));
-    // for (auto v: graph[10001])
-    // {
-    //   if (matrixGraph[10001][v])
-    //     for (auto u: graph[v])
-    //       if (matrixGraph[v][u])
-    //         printf("%d %d\n", v - 5000, u);
-    // }
-    // for (int i = 0; i < size; i ++)
-    // {
-    //   for (int j = 0; j < size; j ++)
-    //     if (aux[i][j]) printf("R");
-    //     else printf("%c", board[i][j]);
-    //   printf("\n");
-    // }
+    //int ans = fordFulkerson(graph, 0, 10011);
+    //int ans = dfsFordFulkerson(0, 10011);
+    int ans = dinic(graph, 0, 10011);
 
     DEBUG printf("Flow: %d\n", ans);
     printf("%d\n", ans);

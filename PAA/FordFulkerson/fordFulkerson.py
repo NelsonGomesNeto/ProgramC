@@ -54,7 +54,7 @@ def fordFulkerson(graph, matrixGraph, source, target):
         print()
     return(maxFlow)
 
-vertices, edges = map(int, input().split())
+vertices, edges, source, sink = map(int, input().split())
 graph = [[] for i in range(vertices)]
 matrixGraph = [[0] * vertices for i in range(vertices)]
 for i in range(edges):
@@ -63,8 +63,6 @@ for i in range(edges):
     graph[v] += [u]
     matrixGraph[u][v] = w
 
-source = 0
-sink = 9
 print("graph", graph)
 print("matrixGraph", graph)
 print()
