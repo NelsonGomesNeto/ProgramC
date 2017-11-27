@@ -1,13 +1,13 @@
 #include <bits/stdc++.h>
-#define DEBUG if(0)
-#define DEBUG2 if(0)
+//#define DEBUG if(0)
+//#define DEBUG2 if(0)
 using namespace std;
 
-clock_t start, stop;
-const int MAX = 100;
+//clock_t start, stop;
+const int MAX = 1000;
 char board[MAX][MAX + 1];
 int line[MAX][MAX], row[MAX][MAX], inf = 1<<20, vertices = 0, iter = 0;
-int matrixGraph[10012][10012], level[10012], lol[10012];
+int matrixGraph[10012][10012], level[10012];
 
 void fillAuxBoard(int size)
 {
@@ -68,37 +68,6 @@ void fillGraph(vector<int> graph[], int size)
     }
 }
 
-int findPath(int visited[], int source, int target, int flow)
-{
-  if (source == target) return(flow);
-  visited[source] = 1;
-  for (int v = 0; v < 10012; v ++)
-    if (!visited[v] && matrixGraph[source][v] > 0)
-    {
-      int pathFlow = findPath(visited, v, target, min(flow, matrixGraph[source][v]));
-      if (pathFlow > 0)
-      {
-        matrixGraph[source][v] -= pathFlow;
-        matrixGraph[v][source] += pathFlow;
-        return(pathFlow);
-      }
-    }
-  return(0);
-}
-
-int dfsFordFulkerson(int source, int target)
-{
-  int maxFlow = 0;
-  while (1)
-  {
-    int visited[10012]; memset(visited, 0, sizeof(visited));
-    int pathFlow = findPath(visited, source, target, inf);
-    if (!pathFlow)
-      return(maxFlow);
-    maxFlow += pathFlow;
-  }
-}
-
 int dinicBFS(vector<int> graph[], int source, int target)
 {
   memset(level, -1, sizeof(level));
@@ -155,57 +124,52 @@ int main()
   int size;
   while (scanf("%d", &size) != EOF)
   {
-    DEBUG2 start = clock();
+    //DEBUG2 start = clock();
     //memset(matrixGraph, 0, sizeof(matrixGraph));
     vertices = 0;
     memset(line, 0, sizeof(line)); memset(row, 0, sizeof(row));
     for (int i = 0; i < size; i ++)
     {
-      char bug;
-      for (int j = 0; j < size; j ++)
-      {
-        scanf("%c", &bug);
-        if (!(bug == '.' || bug == 'X')) j --;
-        else board[i][j] = bug;
-      }
-      DEBUG printf("%s\n", board[i]);
+      getchar();
+      scanf("%s", board[i]);
+      // DEBUG printf("%s\n", board[i]);
     }
 
     fillAuxBoard(size);
-    DEBUG {
-      for (int i = 0; i < size; i ++)
-      for (int j = 0; j < size; j ++)
-      printf("%2d%c", line[i][j], j < size - 1 ? ' ' : '\n');
-      printf("\n");
-      for (int i = 0; i < size; i ++)
-      for (int j = 0; j < size; j ++)
-      printf("%2d%c", row[i][j], j < size - 1 ? ' ' : '\n');
-      printf("\n");
-    }
+    // DEBUG {
+    //   for (int i = 0; i < size; i ++)
+    //   for (int j = 0; j < size; j ++)
+    //   printf("%2d%c", line[i][j], j < size - 1 ? ' ' : '\n');
+    //   printf("\n");
+    //   for (int i = 0; i < size; i ++)
+    //   for (int j = 0; j < size; j ++)
+    //   printf("%2d%c", row[i][j], j < size - 1 ? ' ' : '\n');
+    //   printf("\n");
+    // }
 
     vector<int> graph[10012];
     fillGraph(graph, size);
-    DEBUG {
-      for (int i = 0; i < 10012; i ++)
-        if (graph[i].size() > 0)
-        {
-          printf("%d", i);
-          for (auto j: graph[i])
-            printf("-> %d", j);
-          printf("\n");
-        }
-    }
+    // DEBUG {
+    //   for (int i = 0; i < 10012; i ++)
+    //     if (graph[i].size() > 0)
+    //     {
+    //       printf("%d", i);
+    //       for (auto j: graph[i])
+    //         printf("-> %d", j);
+    //       printf("\n");
+    //     }
+    // }
 
-    DEBUG2 for (int i = 0; i < 10012; i ++) vertices += graph[i].size() > 0;
-    DEBUG2 stop = clock();
-    DEBUG2 printf("Pre  : %ld; Vertices: %d\n", stop - start, vertices);
-    DEBUG2 start = clock();
+    // DEBUG2 for (int i = 0; i < 10012; i ++) vertices += graph[i].size() > 0;
+    // DEBUG2 stop = clock();
+    // DEBUG2 printf("Pre  : %ld; Vertices: %d\n", stop - start, vertices);
+    // DEBUG2 start = clock();
     int ans = dinic(graph, 0, 10011);
     //int ans = dfsFordFulkerson(0, 10011);
-    DEBUG2 stop = clock();
-    DEBUG2 printf("Dinic: %ld\n", stop - start);
+    //DEBUG2 stop = clock();
+    //DEBUG2 printf("Dinic: %ld\n", stop - start);
 
-    DEBUG printf("Flow: %d\n", ans);
+    //DEBUG printf("Flow: %d\n", ans);
     printf("%d\n", ans);
   }
 
