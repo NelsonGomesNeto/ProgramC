@@ -1,11 +1,13 @@
 #include <bits/stdc++.h>
+#define DEBUG if(0)
+#define DEBUG2 if(0)
 using namespace std;
 
-#define DEBUG if(0)
+clock_t start, stop;
 const int MAX = 100;
 char board[MAX][MAX + 1];
-int line[MAX][MAX], row[MAX][MAX], inf = 1<<20;
-int matrixGraph[10012][10012], dist[10012], level[10012];
+int line[MAX][MAX], row[MAX][MAX], inf = 1<<20, vertices = 0, iter = 0;
+int matrixGraph[10012][10012], level[10012], lol[10012];
 
 void fillAuxBoard(int size)
 {
@@ -37,54 +39,33 @@ void fillAuxBoard(int size)
     }
 }
 
-void fillGraph(set<int> graph[], int size)
+void fillGraph(vector<int> graph[], int size)
 {
-
-}
-
-int bfs(set<int> graph[], int source, int target, int parent[])
-{
-  int visited[10012]; memset(visited, 0, sizeof(visited));
-  deque<int> queue;
-  queue.push_back(source);
-  visited[source] = 1;
-  while (!queue.empty())
-  {
-    int u = queue.front(); queue.pop_front();
-    for (auto v: graph[u])
-      if (!visited[v] && matrixGraph[u][v] > 0)
+  for (int i = 0; i < size; i ++)
+    for (int j = 0; j < size; j ++)
+    {
+      if (board[i][j] == '.')
       {
-        queue.push_back(v);
-        parent[v] = u;
-        visited[v] = 1;
+        graph[line[i][j]].push_back(row[i][j] + 5000);
+        matrixGraph[line[i][j]][row[i][j] + 5000] = 1;
+        graph[row[i][j] + 5000].push_back(line[i][j]);
+        matrixGraph[row[i][j] + 5000][line[i][j]] = 0;
       }
-  }
-  return(visited[target]);
-}
-
-int fordFulkerson(set<int> graph[], int source, int target)
-{
-  int maxFlow = 0, parent[10012]; memset(parent, -1, sizeof(parent));
-  while (bfs(graph, source, target, parent))
-  {
-    int pathFlow = inf, v = target, u;
-    while (v != source)
-    {
-      u = parent[v];
-      pathFlow = min(pathFlow, matrixGraph[u][v]);
-      v = parent[v];
+      if (row[i][j])
+      {
+        graph[row[i][j] + 5000].push_back(10011);
+        matrixGraph[row[i][j] + 5000][10011] = 1;
+        graph[10011].push_back(row[i][j] + 5000);
+        matrixGraph[10011][row[i][j] + 5000] = 0;
+      }
+      if (line[i][j])
+      {
+        graph[0].push_back(line[i][j]);
+        matrixGraph[0][line[i][j]] = 1;
+        graph[line[i][j]].push_back(0);
+        matrixGraph[line[i][j]][0] = 0;
+      }
     }
-    v = target;
-    while (v != source)
-    {
-      u = parent[v];
-      matrixGraph[u][v] -= pathFlow;
-      matrixGraph[v][u] += pathFlow;
-      v = parent[v];
-    }
-    maxFlow += pathFlow;
-  }
-  return(maxFlow);
 }
 
 int findPath(int visited[], int source, int target, int flow)
@@ -118,48 +99,44 @@ int dfsFordFulkerson(int source, int target)
   }
 }
 
-int dinicBFS(set<int> graph[], int source, int target)
+int dinicBFS(vector<int> graph[], int source, int target)
 {
-  memset(dist, -1, sizeof(dist));
-  dist[source] = 0;
-  int nowLevel = 0;
-  level[nowLevel ++] = source;
-  for (int i = 0; i < nowLevel; i ++)
+  memset(level, -1, sizeof(level));
+  level[source] = 0;
+  deque<int> queue;
+  queue.push_back(source);
+  while (!queue.empty())
   {
-    int u = level[i];
+    int u = queue.front(); queue.pop_front();
     for (auto v: graph[u])
-    {
-      if (dist[v] < 0 && matrixGraph[u][v] > 0)
+      if (level[v] < 0 && matrixGraph[u][v] > 0)
       {
-        dist[v] = dist[u] + 1;
-        level[nowLevel ++] = v;
+        level[v] = level[u] + 1;
+        queue.push_back(v);
       }
-    }
   }
-  return(dist[target] >= 0);
+  return(level[target] > 0);
 }
 
-int dinicDFS(set<int> graph[], int source, int target, int flow)
+int dinicDFS(vector<int> graph[], int source, int target, int flow)
 {
   if (source == target) return(flow);
+  int totalFlow = 0;
   for (auto v: graph[source])
   {
-    if (matrixGraph[source][v] <= 0) continue;
-    if (dist[v] == dist[source] + 1)
+    if (level[v] == level[source] + 1 && matrixGraph[source][v] > 0)
     {
       int pathFlow = dinicDFS(graph, v, target, min(flow, matrixGraph[source][v]));
-      if (pathFlow > 0)
-      {
-        matrixGraph[source][v] -= pathFlow;
-        matrixGraph[v][source] += pathFlow;
-        return(pathFlow);
-      }
+      flow -= pathFlow;
+      matrixGraph[source][v] -= pathFlow;
+      matrixGraph[v][source] += pathFlow;
+      totalFlow += pathFlow;
     }
   }
-  return(0);
+  return(totalFlow);
 }
 
-int dinic(set<int> graph[], int source, int target)
+int dinic(vector<int> graph[], int source, int target)
 {
   int maxFlow = 0, pathFlow = 0;
   while (dinicBFS(graph, source, target))
@@ -178,12 +155,19 @@ int main()
   int size;
   while (scanf("%d", &size) != EOF)
   {
+    DEBUG2 start = clock();
     //memset(matrixGraph, 0, sizeof(matrixGraph));
+    vertices = 0;
     memset(line, 0, sizeof(line)); memset(row, 0, sizeof(row));
     for (int i = 0; i < size; i ++)
     {
-      getchar();
-      scanf("%s", board[i]);
+      char bug;
+      for (int j = 0; j < size; j ++)
+      {
+        scanf("%c", &bug);
+        if (!(bug == '.' || bug == 'X')) j --;
+        else board[i][j] = bug;
+      }
       DEBUG printf("%s\n", board[i]);
     }
 
@@ -199,55 +183,8 @@ int main()
       printf("\n");
     }
 
-    set<int> graph[10012];
-    for (int i = 0; i < size; i ++)
-      for (int j = 0; j < size; j ++)
-      {
-        if (line[i][j])
-        {
-          graph[0].insert(line[i][j]);
-          matrixGraph[0][line[i][j]] = 1; matrixGraph[line[i][j]][0] = 0;
-          graph[line[i][j]].insert(0);
-          for (int k = j; k < size && board[i][k] != 'X'; k ++)
-          {
-            if (row[i][k])
-            {
-              graph[line[i][j]].insert(row[i][k] + 5000);
-              matrixGraph[line[i][j]][row[i][k] + 5000] = 1; matrixGraph[row[i][k] + 5000][line[i][j]] = 0;
-              graph[row[i][k] + 5000].insert(line[i][j]);
-            }
-          }
-          for (int k = i, m = i; k < size && m >= 0 && (row[m][j] != 0 || row[k][j] != 0);)
-          {
-            if (row[k][j])
-            {
-              graph[line[i][j]].insert(row[k][j] + 5000);
-              matrixGraph[line[i][j]][row[k][j] + 5000] = 1; matrixGraph[row[k][j] + 5000][line[i][j]] = 0;
-              graph[row[k][j] + 5000].insert(line[i][j]);
-            }
-            if (row[m][j])
-            {
-              graph[line[i][j]].insert(row[m][j] + 5000);
-              matrixGraph[line[i][j]][row[m][j] + 5000] = 1; matrixGraph[row[m][j] + 5000][line[i][j]] = 0;
-              graph[row[m][j] + 5000].insert(line[i][j]);
-            }
-            if (row[m][j] != 0) m --;
-            if (row[k][j] != 0) k ++;
-            //k += k < size && board[k][j] != '#';
-          }
-        }
-      }
-
-    for (int i = 0; i < size; i ++)
-      for (int j = 0; j < size; j ++)
-        if (row[i][j])
-        {
-          graph[row[i][j] + 5000].insert(10011);
-          matrixGraph[row[i][j] + 5000][10011] = 1; matrixGraph[10011][row[i][j] + 5000] = 0;
-          graph[10011].insert(row[i][j] + 5000);
-        }
-    //fillGraph(graph, size);
-
+    vector<int> graph[10012];
+    fillGraph(graph, size);
     DEBUG {
       for (int i = 0; i < 10012; i ++)
         if (graph[i].size() > 0)
@@ -259,13 +196,18 @@ int main()
         }
     }
 
-    //int ans = fordFulkerson(graph, 0, 10011);
-    //int ans = dfsFordFulkerson(0, 10011);
+    DEBUG2 for (int i = 0; i < 10012; i ++) vertices += graph[i].size() > 0;
+    DEBUG2 stop = clock();
+    DEBUG2 printf("Pre  : %ld; Vertices: %d\n", stop - start, vertices);
+    DEBUG2 start = clock();
     int ans = dinic(graph, 0, 10011);
+    //int ans = dfsFordFulkerson(0, 10011);
+    DEBUG2 stop = clock();
+    DEBUG2 printf("Dinic: %ld\n", stop - start);
 
     DEBUG printf("Flow: %d\n", ans);
     printf("%d\n", ans);
-
   }
+
   return(0);
 }

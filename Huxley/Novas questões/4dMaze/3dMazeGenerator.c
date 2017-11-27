@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+char freePlace = '.';
 int dx[6] = {0, 0, 0, 0, 1, -1};
 int dy[6] = {1, -1, 0, 0, 0, 0};
 int dz[6] = {0, 0, 1, -1, 0, 0};
@@ -41,10 +42,10 @@ void generate(int i, int j, int k, int z, int y, int x, char ***maze, int ***vis
     n %= 6;
     if (valid(i + 2*dz[n], j + 2*dy[n], k + 2*dx[n], z, y, x) && !visited[i + 2*dz[n]][j + 2*dy[n]][k + 2*dx[n]])
     {
-      maze[i][j][k] = '.';
-      maze[i + dz[n]][j + dy[n]][k + dx[n]] = '.';
+      maze[i][j][k] = freePlace;
+      maze[i + dz[n]][j + dy[n]][k + dx[n]] = freePlace;
       visited[i + dz[n]][j + dy[n]][k + dx[n]] = 1;
-      maze[i + 2*dz[n]][j + 2*dy[n]][k + 2*dx[n]] = '.';
+      maze[i + 2*dz[n]][j + 2*dy[n]][k + 2*dx[n]] = freePlace;
       visited[i + 2*dz[n]][j + 2*dy[n]][k + 2*dx[n]] = 1;
       generate(i + 2*dz[n], j + 2*dy[n], k + 2*dx[n], z, y, x, maze, visited);
     }
