@@ -68,7 +68,7 @@ void fillGraph(vector<int> graph[], int size)
     }
 }
 
-int bfs(set<int> graph[], int source, int target, int parent[])
+int bfs(vector<int> graph[], int source, int target, int parent[])
 {
   int visited[10012]; memset(visited, 0, sizeof(visited));
   deque<int> queue;
@@ -88,7 +88,7 @@ int bfs(set<int> graph[], int source, int target, int parent[])
   return(visited[target]);
 }
 
-int fordFulkerson(set<int> graph[], int source, int target)
+int fordFulkerson(vector<int> graph[], int source, int target)
 {
   int maxFlow = 0, parent[10012]; memset(parent, -1, sizeof(parent));
   while (bfs(graph, source, target, parent))
