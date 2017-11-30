@@ -125,7 +125,7 @@ int main()
         int drink[maxVertices][2], at = 0, actual = 0;
         for (int j = 0; j < intervalsSize - 1; j ++)
         {
-          //printf("Monkey: %d (Had: %d) -> Group: %d (%d) (%d, %d)\n", i, monkey[i][2], j, matrixGraph[j + 100 + 1][i + 1], groups[j][0], groups[j][1]);
+          printf("Monkey: %d (Had: %d) -> Group: %d (%d) (%d, %d)\n", i, monkey[i][2], j, matrixGraph[j + 100 + 1][i + 1], groups[j][0], groups[j][1]);
           if (matrixGraph[j + 100 + 1][i + 1])
           {
             actual += groups[j][1] - groups[j][0];
