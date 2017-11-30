@@ -2,7 +2,7 @@
 #define DEBUG if(1)
 using namespace std;
 const int maxVertices = 2 + 100 + 1000;
-int **matrixGraph; int level[maxVertices], inf = 1<<20;
+int **matrixGraph; int level[maxVertices], inf = 1<<20, used[maxVertices];
 
 int bfs(int **graph, int source, int target)
 {
@@ -118,22 +118,41 @@ int main()
     int maxFlow = dinic(graph, 0, maxVertices - 1);
 
     printf("Case %d: %s\n", test ++, maxFlow == toDrink ? "Yes" : "No");
+    memset(used, 0, sizeof(used));
     if (maxFlow == toDrink)
       for (int i = 0; i < monkeys; i ++)
       {
-        //printf("Monkey: %d (Had: %d) -> Group: %d (%d) (%d, %d)\n", i, monkey[i][2], j, matrixGraph[j + 100 + 1][i + 1], groups[j][0], groups[j][1]);
-        int drink[maxVertices][2], at = 0;
+        int drink[maxVertices][2], at = 0, actual = 0;
         for (int j = 0; j < intervalsSize - 1; j ++)
+        {
+          //printf("Monkey: %d (Had: %d) -> Group: %d (%d) (%d, %d)\n", i, monkey[i][2], j, matrixGraph[j + 100 + 1][i + 1], groups[j][0], groups[j][1]);
           if (matrixGraph[j + 100 + 1][i + 1])
           {
-            if (at > 0 && groups[j][0] == drink[at - 1][1])
-              drink[at - 1][1] = groups[j][1];
+            actual += groups[j][1] - groups[j][0];
+            if (actual < monkey[i][2])
+            {
+              if (at > 0 && groups[j][0] == drink[at - 1][1])
+                drink[at - 1][1] = groups[j][1];
+              else
+              {
+                drink[at][0] = groups[j][0];
+                drink[at ++][1] = groups[j][1];
+              }
+            }
             else
             {
-              drink[at][0] = groups[j][0];
-              drink[at ++][1] = groups[j][1];
+              if (at > 0 && groups[j][0] == drink[at - 1][1])
+              drink[at - 1][1] = groups[j][1] - (actual - monkey[i][2]);
+              else
+              {
+                drink[at][0] = groups[j][0];
+                drink[at ++][1] = groups[j][1] - (actual - monkey[i][2]);
+              }
             }
+            if (used[j] == canDrink) printf("FCOK\n");
+            used[j] ++;
           }
+        }
         printf("%d", at);
         for (int j = 0; j < at; j ++)
           printf(" (%d,%d)", drink[j][0], drink[j][1]);
