@@ -83,21 +83,21 @@ int main()
   {
     memset(matrixGraph, 0, sizeof(matrixGraph));
     vector<int> graph[maxVertices];
-    int destroy[computers], pos, cost;
-    addEdge(graph, 1, 1 + 50, inf, inf);
+    int pos, cost;
+    addEdge(graph, 1, 1 + 50, inf, 0);
     for (int i = 1; i < computers - 1; i ++)
     {
       scanf("%d %d", &pos, &cost);
-      destroy[pos] = cost;
-      addEdge(graph, pos, pos + 50, cost, cost);
+      addEdge(graph, pos, pos + 50, cost, 0);
     }
-    addEdge(graph, computers, computers + 50, inf, inf);
+    addEdge(graph, computers, computers + 50, inf, 0);
 
     int u, v, c;
     for (int i = 0; i < connections; i ++)
     {
       scanf("%d %d %d", &u, &v, &c);
-      addEdge(graph, u + 50, v, c, c);
+      addEdge(graph, u + 50, v, c, 0);
+      addEdge(graph, v + 50, u, c, 0); // FREAKING, I FORGOT THE BIDIRECTION
     }
 
     DEBUG {
@@ -110,18 +110,18 @@ int main()
       }
     }
 
-    memcpy(backUp, matrixGraph, sizeof(matrixGraph));
+    // memcpy(backUp, matrixGraph, sizeof(matrixGraph));
     int maxFlow = dinic(graph, 1, computers + 50);
-    DEBUG printf("maxFlow: %d\n", maxFlow);
-    vector<pair<int, int> > cutted = getCuttedEdges(graph, 1);
-    int cuttedFlow = 0;
-    for (auto i: cutted)
-    {
-      DEBUG printf("%d %d (%d, %d)\n", i.first, i.second, backUp[i.first][i.second], backUp[i.second][i.first]);
-      cuttedFlow += backUp[i.first][i.second];
-    }
-    DEBUG printf("cuttedFlow: %d\n", cuttedFlow);
-    printf("%d %d\n", cuttedFlow, maxFlow);
+    // DEBUG printf("maxFlow: %d\n", maxFlow);
+    // vector<pair<int, int> > cutted = getCuttedEdges(graph, 1);
+    // int cuttedFlow = 0;
+    // for (auto i: cutted)
+    // {
+    //   DEBUG printf("%d %d (%d, %d)\n", i.first, i.second, backUp[i.first][i.second], backUp[i.second][i.first]);
+    //   cuttedFlow += backUp[i.first][i.second];
+    // }
+    // DEBUG printf("cuttedFlow: %d\n", cuttedFlow);
+    printf("%d\n", maxFlow);
   }
   return(0);
 }
