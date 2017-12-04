@@ -1,45 +1,41 @@
 #include <bits/stdc++.h>
-#define DEBUG if(0)
 using namespace std;
+#define DEBUG if(0)
 
 int main()
 {
   int size; scanf("%d", &size);
-  int sequence[size];
-  for (int i = 0; i < size; i ++)
-    scanf("%d", &sequence[i]);
+  int array[size];
+  for (int i = 0; i < size; i ++) scanf("%d", &array[i]);
 
-  int left[size], right[size], now = 1; left[0] = 1; right[size - 1] = 1;
-  for (int i = 1; i < size; i ++)
+  int left[size], right[size]; left[0] = left[size - 1] = 1; right[0] = right[size - 1] = 1;
+  for (int i = 1, j = size - 2; i < size - 1; i ++, j --)
   {
-    if (sequence[i - 1] < sequence[i]) now ++;
-    else now = 1;
-    left[i] = now;
-  }
-
-  now = 1;
-  for (int i = size - 2; i >= 0; i --)
-  {
-    if (sequence[i] < sequence[i + 1]) now ++;
-    else now = 1;
-    right[i] = now;
+    if (array[i] > array[i - 1])
+      left[i] = left[i - 1] + 1;
+    else
+      left[i] = 1;
+      
+    if (array[j] < array[j + 1])
+      right[j] = right[j + 1] + 1;
+    else
+      right[j] = 1;
   }
 
   DEBUG for (int i = 0; i < size; i ++) printf("%d%c", left[i], i < size - 1 ? ' ' : '\n');
   DEBUG for (int i = 0; i < size; i ++) printf("%d%c", right[i], i < size - 1 ? ' ' : '\n');
 
-  int ans = 1 + (size >= 2);
+  int best = 1 + (size > 1);
   for (int i = 1; i < size - 1; i ++)
-  {
-    if (sequence[i - 1] < sequence[i + 1] - 1)
-      ans = max(ans, left[i - 1] + 1 + right[i + 1]);
-    if (sequence[i - 1] >= sequence[i])
-      ans = max(ans, right[i] + 1);
-    if (sequence[i + 1] <= sequence[i])
-      ans = max(ans, left[i] + 1);
-  }
+    if (array[i - 1] < array[i + 1] - 1)
+      best = max(best, left[i - 1] + 1 + right[i + 1]);
+    else
+    {
+      best = max(best, left[i] + 1);
+      best = max(best, 1 + right[i]);
+    }
 
-  printf("%d\n", ans);
+  printf("%d\n", best);
 
   return(0);
 }
