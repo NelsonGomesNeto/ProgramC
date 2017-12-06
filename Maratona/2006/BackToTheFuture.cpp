@@ -29,10 +29,10 @@ int bellmanFord(vector<int> graph[], int source, int target, int parent[])
           parent[v] = u;
         }
 
-  for (int u = 0; u < vertices; u ++)
-    for (auto v: graph[u])
-      if (cost[u] + matrixGraph[u][v][0] < cost[v] && matrixGraph[u][v][1] > 0)
-        return(0);
+  // for (int u = 0; u < vertices; u ++)
+  //   for (auto v: graph[u])
+  //     if (cost[u] + matrixGraph[u][v][0] < cost[v] && matrixGraph[u][v][1] > 0)
+  //       return(0);
 
   //printf("cost: %d\n", cost[target]);
   return(cost[target] != inf);
@@ -47,28 +47,26 @@ int minMax(vector<int> graph[], int source, int target)
     int pathFlow = inf, v = target, u;
     while (v != source)
     {
-      //printf("%d ", v + 1);
       u = parent[v];
       pathFlow = min(pathFlow, matrixGraph[u][v][1]);
       v = parent[v];
     }
     //printf("\npathFlow: %d\n", pathFlow);
-    pathFlow = capacity;
+    //pathFlow = capacity;
     v = target;
     while (v != source)
     {
       u = parent[v];
       matrixGraph[u][v][1] -= pathFlow;
       matrixGraph[v][u][1] += pathFlow;
-      matrixGraph[v][u][0] = matrixGraph[u][v][0] * -1;
       cost += matrixGraph[u][v][0] * min(pathFlow, friends);
       v = parent[v];
     }
     maxFlow += min(pathFlow, friends);
-    //if (maxFlow == friends) break;
+    if (maxFlow == friends) break;
     //printf("maxFlow: %d\n", maxFlow);
   }
-  if (maxFlow != friends) cost = inf;
+  if (maxFlow < friends) cost = inf;
   return(cost);
 }
 
@@ -78,8 +76,8 @@ void addEdge(vector<int> graph[], int u, int v, int dist, int cap)
   matrixGraph[u][v][0] = dist;
   matrixGraph[u][v][1] = cap;
   graph[v].push_back(u);
-  matrixGraph[v][u][0] = dist;
-  matrixGraph[v][u][1] = cap;
+  matrixGraph[v][u][0] = -dist;
+  matrixGraph[v][u][1] = 0;
 }
 
 int main()
@@ -100,9 +98,9 @@ int main()
       addEdge(graph, input[i][0], input[i][1], input[i][2], capacity);
 
     int maxFlow = minMax(graph, 0, cities - 1);
-    if (run > 1) printf("\n");
-    printf("Instancia %d\n", run ++);
-    if (maxFlow == inf) printf("impossivel\n");
+    //if (run > 1) printf("\n");
+    //printf("Instancia %d\n", run ++);
+    if (maxFlow == inf) printf("Impossible.\n");
     else printf("%d\n", maxFlow);
   }
 
