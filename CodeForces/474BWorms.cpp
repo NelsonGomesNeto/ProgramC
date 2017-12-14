@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 
-int binsearch(int array[], int lo, int hi, int target)
+int bsearch(int array[], int lo, int hi, int target)
 {
   int mid = (lo + hi) / 2;
-  if (lo >= hi) return(array[hi] == target ? hi : lo);
-  if (target < array[mid]) return(binsearch(array, lo, mid - 1, target));
-  else return(binsearch(array, mid, hi, target));
+  if (lo >= hi) return(array[hi] == target ? hi : hi - 1);
+  if (target <= array[mid]) return(bsearch(array, lo, mid, target));
+  else return(bsearch(array, mid + 1, hi, target));
 }
 
 int main()
@@ -17,13 +17,13 @@ int main()
     scanf("%d", &pile);
     worms[i] = at;
     at += pile;
-  }
+  } worms[n ++] = at;
 
   int queries, q; scanf("%d", &queries);
   while (queries -- > 0)
   {
     scanf("%d", &q);
-    printf("%d\n", binsearch(worms, 0, at, q));
+    printf("%d\n", bsearch(worms, 0, n - 1, q) + 1);
   }
 
   return(0);
