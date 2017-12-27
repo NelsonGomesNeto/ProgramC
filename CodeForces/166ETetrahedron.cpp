@@ -1,38 +1,64 @@
 #include <bits/stdc++.h>
-#define DEBUG if(0)
 #define lli long long int
-lli mod = (lli) 1e9 + 7;
-lli dp[(int) 1e7 + 1];
+#define DEBUG if(0)
+lli mod = 1e9 + 7;
 
-lli run(int now, int n)
+void copyMatrix(lli f[2][2], lli a[2][2])
 {
-  if (n == 0) return(!now);
-
-  lli ans = 0;
-  for (int i = 0; i < 4; i ++)
-    if (i != now)
-      ans = (ans + run(i, n - 1)) % mod;
-
-  return(ans);
+  for (int i = 0; i < 2; i ++)
+    for (int j = 0; j < 2; j ++)
+      f[i][j] = a[i][j];
 }
 
-void fillDP()
+void multiplyMatrix(lli a[2][2], lli b[2][2])
 {
-  dp[1] = 0; dp[2] = 3;
-  for (int i = 3; i <= 1e7; i ++)
-    dp[i] = ((dp[i - 2] * 3) + (dp[i - 1] * 2)) % mod;
+  lli aux[2][2]; memset(aux, 0, sizeof(aux));
+  for (int i = 0; i < 2; i ++)
+    for (int j = 0; j < 2; j ++)
+      for (int k = 0; k < 2; k ++)
+        aux[i][j] = (aux[i][j] + (a[i][k] * b[k][j]) % mod) % mod;
+  copyMatrix(a, aux);
+}
+
+void powerMatrix(lli matrix[2][2], lli n)
+{
+  lli aux[2][2] = {{1, 0}, {0, 1}};
+  while (n)
+  {
+    if (n & 1) multiplyMatrix(aux, matrix);
+    n /= 2;
+    multiplyMatrix(matrix, matrix);
+  }
+  copyMatrix(matrix, aux);
+}
+
+lli brute(lli at, lli n)
+{
+  if (!n) return(!at);
+  lli paths = 0;
+  for (int i = 0; i < 4; i ++)
+    if (at != i)
+      paths += brute(i, n - 1);
+  return(paths);
 }
 
 int main()
 {
-  fillDP();
-  int n; scanf("%d", &n);
+  int n; scanf("%d", &n); n = n > 1 ? n - 1 : 0;
+  DEBUG for (int i = 1; i <= n; i ++) printf("%d - %lld\n", i, brute(0, i));
 
-  //lli ans = run(0, n);
+  lli base[2][2] = {{2, 3}, {1, 0}};
+  powerMatrix(base, n);
 
-  printf("%lld\n", dp[n]);
-
-  DEBUG for (int i = 1; i < 10; i ++) printf("%d -> %lld\n", i, run(0, i));
+  printf("%lld\n", base[0][1]);
 
   return(0);
 }
+/*
+fibb: F(n) = F(n - 1) + F(n - 2)
+1 1 F(n + 1) F(n)
+1 0 F(n)     F(n - 1)
+tetra: F(n) = 2*F(n - 1) + 3*F(n - 2)
+2 3 F(n + 1) F(n)
+1 0 F(n)     F(n - 1)
+*/
