@@ -6,8 +6,7 @@ int letters[256][(int) 1e6 + 1];
 int binSearch(int array[], int lo, int hi, int target, int minus)
 {
   int mid = (lo + hi) / 2;
-  printf("%d %d %d\n", lo, hi, array[lo]);
-  if (lo >= hi) return(array[lo] - minus >= target ? lo : -1);
+  if (lo >= hi) return(array[lo] - minus == target ? lo : -1);
   if (target <= array[mid] - minus) return(binSearch(array, lo, mid, target, minus));
   else return(binSearch(array, mid + 1, hi, target, minus));
 }
@@ -39,22 +38,24 @@ int main()
   {
     string ss;
     getchar(); cin >> ss;
-    int at = 0, first = -1, last = -1;
-    for (int i = 0; ss[i];)
+    DEBUG cout << ss << endl;
+    int at = 0, first = -1, last = -1, pos = -1, done = 0;
+    for (int i = 0; ss[i] && !done; i ++)
     {
-      char prev = ss[i]; int quantity = 0;
-      while (ss[i ++] && ss[i - 1] == prev) quantity ++;
-      int pos = binSearch(letters[prev], at, s.size() - 1, quantity, !at ? 0 : letters[prev][at]);
-      DEBUG printf("Searching (%c, %d) %d\n", prev, quantity, pos);
+      char prev = ss[i]; int quantity = 1;
+      //while (ss[i] && ss[i] == prev) {quantity ++; i ++;}
+      //done = (!ss[i]);
+      DEBUG printf("Searching (%c, %d) %d (%d, %d)\n", prev, quantity, at, i, ss[i]);
+      pos = binSearch(letters[prev], at, s.size() - 1, quantity, !at ? 0 : letters[prev][at - 1]);
       last = pos;
       if (pos == -1) break;
-      else at = pos;
+      else at = pos + 1;
       if (first == -1) first = pos;
     }
     if (last != -1)
       printf("Matched %d %d\n", first, last);
     else
-      printf("Not Matched\n");
+      printf("Not matched\n");
   }
 
   return(0);
