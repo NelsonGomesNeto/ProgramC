@@ -2,62 +2,63 @@
 #define lli long long int
 using namespace std;
 
-lli dp[(int) 1e5][4];
+lli dp[(int) 1e5][2], cost[(int) 1e5], inf = 1e18;
+string normal[(int) 1e5], reversed[(int) 1e5];
 
-lli solve(lli cost[], string toSort[], int i, int s, int done)
+lli topdown(int i, int s, int done)
 {
-  if (i == s - 1) return(0);
+  if (i == s) return(0);
   if (dp[i][done] == -1)
   {
-    lli ans = 1e12, atLeastOne = 0; string auxb = toSort[i], auxa = toSort[i + 1];
-    if (auxb <= auxa)
-    {
-      ans = min(ans, solve(cost, toSort, i + 1, s, 0));
-      atLeastOne ++;
-    }
-    reverse(auxb.begin(), auxb.end());
-    if (auxb <= auxa && (done != 2 && done != 3))
-    {
-      ans = min(ans, cost[i] + solve(cost, toSort, i + 1, s, 1));
-      atLeastOne ++;
-    }
-    reverse(auxa.begin(), auxa.end());
-    if (auxb <= auxa && (done != 2 && done != 3))
-    {
-      lli aux = cost[i + 1]; cost[i + 1] = 1e9;
-      ans = min(ans, cost[i] + aux + solve(cost, toSort, i + 1, s, 2));
-      cost[i + 1] = aux;
-      atLeastOne ++;
-    }
-    reverse(auxb.begin(), auxb.end());
-    if (auxb <= auxa)
-    {
-      lli aux = cost[i + 1]; cost[i + 1] = 1e9;
-      ans = min(ans, aux + solve(cost, toSort, i + 1, s, 3));
-      cost[i + 1] = aux;
-      atLeastOne ++;
-    }
-    dp[i][done] = atLeastOne ? ans : 1e12;
+    lli ans = inf;
+    if (normal[i - 1] <= normal[i])
+      ans = min(topdown(i + 1, s, 0), ans);
+    if (reversed[i - 1] <= normal[i])
+      ans = min(topdown(i + 1, s, 0) + (1 - done) * cost[i - 1], ans);
+    if (normal[i - 1] <= reversed[i])
+      ans = min(topdown(i + 1, s, 1) + cost[i], ans);
+    if (reversed[i - 1] <= reversed[i])
+      ans = min(topdown(i + 1, s, 1) + (1 - done) * cost[i - 1] + cost[i], ans);
+    dp[i][done] = ans;
   }
   return(dp[i][done]);
 }
 
+lli bottomup(int s)
+{
+  dp[0][0] = 0; dp[0][1] = cost[0];
+  for (int i = 1; i < s; i ++)
+  {
+    dp[i][0] = dp[i][1] = inf;
+    if (normal[i - 1] <= normal[i])
+      dp[i][0] = min(dp[i][0], dp[i - 1][0]);
+    if (reversed[i - 1] <= normal[i])
+      dp[i][0] = min(dp[i][0], dp[i - 1][1]);
+    if (normal[i - 1] <= reversed[i])
+      dp[i][1] = min(dp[i][1], dp[i - 1][0] + cost[i]);
+    if (reversed[i - 1] <= reversed[i])
+      dp[i][1] = min(dp[i][1], dp[i - 1][1] + cost[i]);
+  }
+  return(min(dp[s - 1][0], dp[s - 1][1]));
+}
+
 int main()
 {
-  memset(dp, -1, sizeof(dp));
   int s; scanf("%d", &s);
-  lli cost[s]; string toSort[s];
   for (int i = 0; i < s; i ++)
     scanf("%lld", &cost[i]);
   for (int i = 0; i < s; i ++)
   {
     getchar();
-    cin >> toSort[i];
+    cin >> normal[i];
+    reversed[i] = normal[i];
+    reverse(reversed[i].begin(), reversed[i].end());
   }
 
-  lli best = solve(cost, toSort, 0, s, 0);
+  //lli best = topdown(1, s, 0);
+  lli best = bottomup(s);
 
-  printf("%lld\n", best >= 1e9 ? -1 : best);
+  printf("%lld\n", best >= inf ? -1 : best);
 
   return(0);
 }
