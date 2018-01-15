@@ -1,0 +1,6 @@
+inicio
+  var t1, t2, t3, t4, quantidadeDeTomadas
+  leia t1, t2, t3, t4
+  quantidadeDeTomadas = (t1 - 1) + (t2 - 1) + (t3 - 1) + t4
+  retorne quantidadeDeTomadas
+fim

@@ -1,0 +1,19 @@
+inicio
+  var pessoas, atual, anterior, ligado
+  leia pessoas
+
+  atual = 0
+  anterior = 0
+  ligado = 0
+
+  enquanto (pessoas > 0)
+    anterior = atual
+    leia atual
+    se (atual - anterior > 10 || anterior == 0)
+      ligado = ligado + 10
+    senao
+      ligado = atual - anterior
+    pessoas = pessoas - 1
+
+  imprima(ligado)
+fim

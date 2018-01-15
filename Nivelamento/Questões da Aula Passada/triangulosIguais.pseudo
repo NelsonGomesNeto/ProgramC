@@ -1,0 +1,20 @@
+inicio
+  var t1x1, t1y1, t1x2, t1y2, t1x3, t1y3
+  leia t1x1, t1y1, t1x2, t1y2, t1x3, t1y3
+
+  var t2x1, t2y1, t2x2, t2y2, t2x3, t2y3
+  leia t2x1, t2y1, t2x2, t2y2, t2x3, t2y3
+
+  var t1d1, t1d2, t1d3, t2d1, t2d2, t2d3
+  t1d1 = raiz(elev(t1x2 - t1x1, 2) + elev(t1y2 - t1y1, 2))
+  t1d2 = raiz(elev(t1x3 - t1x2, 2) + elev(t1y3 - t1y2, 2))
+  t1d3 = raiz(elev(t1x1 - t1x3, 2) + elev(t1y1 - t1y3, 2))
+  t2d1 = raiz(elev(t2x2 - t2x1, 2) + elev(t2y2 - t2y1, 2))
+  t2d2 = raiz(elev(t2x3 - t2x2, 2) + elev(t2y3 - t2y2, 2))
+  t2d3 = raiz(elev(t2x1 - t2x3, 2) + elev(t2y1 - t2y3, 2))
+
+  se ((t1d1 == t2d1 && t1d2 == t2d2 && t1d3 == t2d3) || (t1d1 == t2d2 && t1d2 == t2d1 && t1d3 == t2d3) || (t1d1 == t2d3 && t1d2 == t2d1 && t1d3 == t2d2) || (t1d1 == t2d1 && t1d2 == t2d3 && t1d3 == t2d2) || (t1d1 == t2d2 && t1d2 == t2d3 && t1d3 == t2d1) || (t1d1 == t2d3 && t1d2 == t2d2 && t1d3 == t2d1))
+    imprima "SIM"
+  senao
+    imprima "NAO"
+fim

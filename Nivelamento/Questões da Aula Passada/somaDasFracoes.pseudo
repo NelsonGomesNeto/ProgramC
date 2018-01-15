@@ -1,0 +1,25 @@
+inicio
+  var a, b, c, d
+  leia a, b, c, d
+
+  p = a * d + b * c;
+  q = b * d;
+
+  var menor, i
+  se (p < q)
+    menor = p
+  senao
+    menor = q
+  i = 2
+
+  repita menor - 2
+    enquanto (p % i == 0 && q % i == 0)
+      p = p / i
+      q = q / i
+    i = i + 1
+
+  se (b == 0 || d == 0)
+    imprima("entrada invalida!")
+  senao
+    imprima(p, "/", q)
+fim
