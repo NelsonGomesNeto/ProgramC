@@ -1,0 +1,8 @@
+inicio
+  var pi, r, area
+  leia r
+  pi = 3.14159
+  r = r / 100
+  area = pi * r * r
+  imprima("AREA = ", area)
+fim
