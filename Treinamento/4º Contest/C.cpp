@@ -47,7 +47,7 @@ int main()
   while (q -- > 0)
   {
     int lo, hi, k; scanf("%d %d %d", &lo, &hi, &k);
-    //lo ^= lastAns; hi ^= lastAns; k ^= lastAns;
+    lo ^= lastAns; hi ^= lastAns; k ^= lastAns;
     lastAns = getSum(segmentTree, n, lo - 1, hi - 1, k);
     printf("%d\n", lastAns);
   }
