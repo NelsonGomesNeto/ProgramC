@@ -4,23 +4,16 @@ int bitree[(int) 1e6 + 1];
 
 int query(int i)
 {
-  int sum = 0; i ++;
-  while (i > 0)
-  {
+  int sum = 0;
+  for (i = i + 1; i > 0; i += i & (-i))
     sum += bitree[i];
-    i -= i & (-i);
-  }
   return(sum);
 }
 
 void update(int size, int i, int value)
 {
-  i ++;
-  while (i <= size)
-  {
+  for (i = i + 1; i <= size; i += i & (-i))
     bitree[i] += value;
-    i += i & (-i);
-  }
 }
 
 void build(int array[], int size)
