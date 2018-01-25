@@ -18,10 +18,7 @@ void printPiece()
 int bt(int i, int j)
 {
   if (j == 8) { j = 0; i ++; }
-  printf("%d %d\n", i, j);
-  printPiece();
-  printMatrix();
-  if (i == 8) return(1);
+  if (i == 7) return(1);
   if (mat[i][j] == -1) return(bt(i, j + 1));
 
   int ways = 0;
@@ -35,8 +32,8 @@ int bt(int i, int j)
   }
   if (j + 1 < 8 && mat[i][j + 1] != -1 && (piece[mat[i][j]][mat[i][j + 1]] || piece[mat[i][j + 1]][mat[i][j]]))
   {
-    piece[mat[i][j]][mat[i][j + 1]] = 0; piece[mat[i][j + 1]][mat[i][j]] = 0;
-    int aux[2] = {mat[i][j], mat[i][j + 1]}; mat[i][j] = -1; mat[i][j + 1] = -1;
+    piece[mat[i][j]][mat[i][j + 1]] = piece[mat[i][j + 1]][mat[i][j]] = 0;
+    int aux[2] = {mat[i][j], mat[i][j + 1]}; mat[i][j] = mat[i][j + 1] = -1;
     ways += bt(i, j + 1);
     mat[i][j] = aux[0]; mat[i][j + 1] = aux[1];
     piece[mat[i][j]][mat[i][j + 1]] = piece[mat[i][j + 1]][mat[i][j]] = 1;
