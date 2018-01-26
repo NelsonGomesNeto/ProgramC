@@ -1,5 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include <stdio.h>
 
 int lowerBound(int array[], int lo, int hi, int target)
 {
@@ -9,19 +8,25 @@ int lowerBound(int array[], int lo, int hi, int target)
   else return(lowerBound(array, mid + 1, hi, target));
 }
 
+int min(int a, int b)
+{
+  return(a < b ? a : b);
+}
+
 int main()
 {
-  int n, l;
-  while (scanf("%d %d", &n, &l) && !(!n && !l))
+  int size, n;
+  while (scanf("%d %d", &size, &n) && !(!size && !n))
   {
-    int spaces[l];
-    for (int i = 0; i < l; i ++)
-      scanf("%d", &spaces[i]);
+    int closet[n], i;
+    for (i = 0; i < n; i ++)
+      scanf("%d", &closet[i]);
 
     int minMoves = 1<<20;
-    for (int i = 0; i < l; i ++)
-      minMoves = min(minMoves, n - (lowerBound(spaces, 0, l - 1, spaces[i] + n) - i));
+    for (i = 0; i < n; i ++)
+      minMoves = min(minMoves, size - (lowerBound(closet, 0, n - 1, closet[i] + size) - i));
     printf("%d\n", minMoves);
   }
+
   return(0);
 }
