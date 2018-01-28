@@ -1,73 +1,69 @@
 #include <bits/stdc++.h>
+#define DEBUG if(0)
 #define lli long long int
 lli mod = (lli) 1e9 + 7;
 char n[101], sequence[100001];
-int nSize, sequenceSize;
+int nSize, sequenceSize, s[100001];
+lli dp[100001];
 
-int comp(char a[], char b[])
+void printTra(int q)
 {
-  int endA = strlen(a), endB = strlen(b);
-  if (endB > endA) return(0);
-  if (endA > endB) return(1);
-  for (int i = 0; i < endA; i ++)
-    if (a[i] > b[i]) return(1);
-    else if (a[i] < b[i]) return(0);
-  return(0);
+  printf("--> ");
+  for (int k = 0; k < q; k ++)
+  {
+    for (int l = !k ? 0 : s[k - 1] + 1; l <= s[k]; l ++)
+      printf("%c", sequence[l]);
+    printf("%c", k < q - 1 ? ' ' : '\n');
+  }
 }
 
-lli findAll(int i, int sequenceSize, int j, char now[])
+int smaller(int start, int size)
 {
-  printf("%s %d %d %d\n", now, i, j, comp(now, n));
-  if (j == 0 && sequence[i] == '0') return(0);
-  if (comp(now, n)) return(0);
-  if (i == sequenceSize) return(1);
+  int bigger = -1;
+  for (int i = 0; bigger == -1 && i < size; i ++)
+    if (sequence[start + i] > n[i]) bigger = 1;
+    else if (sequence[start + i] < n[i]) bigger = 0;
+  if (bigger == -1) bigger = sequence[start] > n[0];
+  return(!bigger);
+}
 
-  char aNew[101]; strcpy(aNew, now);
-  char copy[101];
-  lli ans = 0;
-  if (!comp(now, n))
+lli findAll(int i, int q)
+{
+  DEBUG printf("%d\n", i);
+  if (i == sequenceSize)
   {
-    strcpy(copy, aNew);
-    aNew[j] = sequence[i]; aNew[j + 1] = '\0';
-    ans = (ans + findAll(i + 1, sequenceSize, j + 1, aNew)) % mod;
-    strcpy(aNew, copy);
-
-    if (sequence[i] == '0') return(ans);
-    strcpy(copy, aNew);
-    strcpy(aNew, copy);
-    memset(aNew, 0, sizeof(aNew));
-    ans = (ans + findAll(i + 1, sequenceSize, 0, aNew)) % mod;
+    DEBUG printTra(q);
+    return(1);
   }
-
-  // if (j != 0)
-  // {
-  //   strcpy(copy, aNew);
-  //   memset(aNew, 0, sizeof(aNew));
-  //   aNew[0] = sequence[i];
-  //   ans = (ans + findAll(i + 1, sequenceSize, 1, aNew)) % mod;
-  //   strcpy(aNew, copy);
-  // }
-  // else
-  // {
-  //   strcpy(copy, aNew);
-  //   memset(aNew, 0, sizeof(aNew));
-  //   //aNew[0] = sequence[i];
-  //   ans = (ans + findAll(i + 1, sequenceSize, 0, aNew)) % mod;
-  //   strcpy(aNew, copy);
-  // }
-
-  return(ans);
+  if (sequence[i] == '0') return(0);
+  int at = i;
+  if (dp[at] == -1)
+  {
+    int ans = 0, size = 1;
+    while (i < sequenceSize && size < nSize)
+    {
+      s[q] = i;
+      ans = (ans + findAll(i + 1, q + 1)) % mod;
+      i ++; size ++;
+    }
+    DEBUG printf("%d %d\n", i, size);
+    if (smaller(at, size))
+    {
+      s[q] = i;
+      ans = (ans + findAll(i + 1, q + 1)) % mod;
+    }
+    dp[at] = ans;
+  }
+  return(dp[at]);
 }
 
 int main()
 {
+  memset(dp, -1, sizeof(dp));
   scanf("%s\n%s", n, sequence);
   nSize = strlen(n); sequenceSize = strlen(sequence);
 
-  char aux[101]; memset(aux, 0, sizeof(aux));
-  lli ans = findAll(0, sequenceSize, 0, aux);
-
+  lli ans = findAll(0, 0);
   printf("%lld\n", ans);
-
   return(0);
 }
