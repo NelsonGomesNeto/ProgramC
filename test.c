@@ -1,13 +1,30 @@
 #include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+    float n1, n2, n3, a, b;
+    int c;
+
+    scanf("%f %f %f", &n1, &n2, &n3);
+
+    a = n1 + n2 + n3;
+    b = a / 3.0;
+    c = 0;
+    printf("%f\n", b);
+
+    if (n1 >= b){
+        ++c;
+    }
+    if (n2 >= b){
+        ++c;
+    }
+    if (n3 >= b){
+        ++c;
+    }
 
 
-int main()
-{
-  double phi = 1.61803398875, b; int i;
-  b = phi;
-  for (i = 0; i < 8; i ++)
-  {
-    printf("%d %lf\n", i + 1, phi);
-    phi *= b;
-  }
+    printf("%d", c);
+	return 0;
 }

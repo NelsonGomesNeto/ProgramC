@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+using namespace std;
+#define DEBUG if(0)
 
 int merge(int array[], int lo, int mid, int hi)
 {
@@ -28,6 +30,27 @@ int mergeSort(int array[], int lo, int hi)
   return(changes);
 }
 
+void swap(int *a, int *b)
+{
+  int aux = *a;
+  *a = *b;
+  *b = aux;
+}
+// 5 6 0 6 10 15
+int bucket(int array[], int n)
+{
+  int changes = 0, dec = 0;
+  for (int i = 0; i < n; i ++)
+    if (array[i] != i + 1)
+    {
+      changes += 2*(array[i] - array[array[i] - 1]) - 1;
+      swap(&array[i], &array[array[i] - 1]);
+      i --;
+      //2*(max(array[i], array[array[i] - 1]) - min(array[array[i] - 1], array[i])) - 1;
+    }
+  return(changes);
+}
+
 int main()
 {
   int n;
@@ -37,7 +60,8 @@ int main()
     for (int i = 0; i < n; i ++)
       scanf("%d", &array[i]);
 
-    int changes = mergeSort(array, 0, n - 1);
+    int changes = bucket(array, n);
+    DEBUG printf("%d %d\n", changes, mergeSort(array, 0, n - 1));
     printf("%s\n", (changes & 1) ? "Marcelo" : "Carlos");
   }
   return(0);
