@@ -17,7 +17,7 @@ int lowerBound(int array[], int tail[], int lo, int hi, int target)
 int lis(int ans[], int array[], int n)
 {
   int tail[n + 1], prev[n + 1];
-  memset(tail, 0, sizeof(tail)); memset(prev, -1, sizeof(prev));
+  tail[0] = tail[1] = 0;
 
   int size = 0;
   for (int i = 0; i < n; i ++)
