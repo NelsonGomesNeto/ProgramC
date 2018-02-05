@@ -1,14 +1,19 @@
-def find_eulerian_tour(graph): # Função(grafo)
-    tour=[] # Tour recebe uma lista vazia
-    find_tour(graph[0][0],graph,tour) # Encontra o tour partindo de um nó
-    return tour # Retorna o tour
+def clkCycle(m, i):
+    clk = 0
+    for j in range(4):
+        clk += dx[j] * m[i][j + 1]
+    return(clk)
 
-def find_tour(u,E,tour): # Função(nó, grafo, tour)
-  for (a,b) in E: # Para cada par (a, b) em E
-    if a==u: # Se a == b
-        E.remove((a,b)) # Remove o par (a, b) da lista/grafo E
-        find_tour(b,E,tour) # Recursivamente acha o tour partindo de b
-    elif b==u: # Se b == nó anterior (u)
-        E.remove((a,b)) # Remove o par (a, b) da lista/grafo E
-        find_tour(a,E,tour) # Recursivamente acha o tour partindo de a
-  tour.insert(0,u) # Insere na lista o nó u
+def time(m, i):
+    clk = clkCycle(m, i)
+    return(clk / (m[i][0] * 10**9))
+
+def cpi(m, i):
+    clk = clkCycle(m, i)
+    return(clk / 10**6)
+
+instructions = 10**6
+dx = [0.1*instructions, 0.2*instructions, 0.5*instructions, 0.2*instructions]
+m = [[1.5, 1, 2, 3, 4], [2, 2, 2, 2, 2]]
+for i in range(2):
+    print("Execution time: %lg; CPI: %lg; Cycles: %lf" % (time(m, i), cpi(m, i), clkCycle(m, i)))
