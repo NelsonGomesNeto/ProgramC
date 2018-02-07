@@ -30,14 +30,14 @@ int botup(int n, char s[], char rev[])
 
 int main()
 {
-  memset(dp, -1, sizeof(dp));
+  //memset(dp, -1, sizeof(dp));
   int n; scanf("%d", &n);
   char s[n + 1], rev[n + 1]; scanf("%s", s);
   for (int i = 0; s[i]; i ++)
     rev[i] = s[n - 1 - i];
   s[n] = rev[n] = '\0';
 
-  int ans = n - biggest(0, 0, s, rev);
+  int ans = n - botup(n, s, rev);//biggest(0, 0, s, rev);
   printf("%d\n", ans);
 
   return(0);
