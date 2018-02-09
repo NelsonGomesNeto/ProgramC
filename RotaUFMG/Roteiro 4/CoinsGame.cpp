@@ -1,16 +1,15 @@
 #include <bits/stdc++.h>
 int k, l, n;
 
-int winner(int coins, int player, int dp[])
+int bottomUp(int coins, int dp[])
 {
-  if (coins <= 0) return(1 - player);
-
-  if (1)
+  int at = 1; dp[0] = 0;
+  for (int i = 1; i <= coins; i ++, at = 1 - at)
   {
-    if (winner(coins - l, 1 - player, dp)) return(1);
-    if (winner(coins - k, 1 - player, dp)) return(1);
-    if (winner(coins - 1, 1 - player, dp)) return(1);
-    dp[coins] = 0;
+    dp[i] = 0;
+    if (i - 1 >= 0 && !dp[i - 1]) dp[i] = 1;
+    if (i - k >= 0 && !dp[i - k]) dp[i] = 1;
+    if (i - l >= 0 && !dp[i - l]) dp[i] = 1;
   }
   return(0);
 }
@@ -18,11 +17,12 @@ int winner(int coins, int player, int dp[])
 int main()
 {
   scanf("%d %d %d", &k, &l, &n);
+  int dp[(int) 1e6 + 1];
+  bottomUp(1e6, dp);
   while (n --)
   {
     int coins; scanf("%d", &coins);
-    int dp[coins]; memset(dp, -1, sizeof(dp));
-    printf("%c", winner(coins, 0, dp) ? 'B' : 'A');
+    printf("%c", dp[coins] ? 'A' : 'B');
   } printf("\n");
   return(0);
 }
