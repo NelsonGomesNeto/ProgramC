@@ -1,30 +1,25 @@
 #include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <stdlib.h>
 
-int main() {
-    float n1, n2, n3, a, b;
-    int c;
+int mult(int a, int b)
+{
+  if (!b) return(0);
+  int res = mult(a, b / 2);
+  if (b & 1)
+  {
+    return(res + res + a);
+  }
+  else
+  {
+    return(res + res);
+  }
+}
 
-    scanf("%f %f %f", &n1, &n2, &n3);
-
-    a = n1 + n2 + n3;
-    b = a / 3.0;
-    c = 0;
-    printf("%f\n", b);
-
-    if (n1 >= b){
-        ++c;
-    }
-    if (n2 >= b){
-        ++c;
-    }
-    if (n3 >= b){
-        ++c;
-    }
-
-
-    printf("%d", c);
-	return 0;
+int main()
+{
+  //int a, b; scanf("%d %d", &a, &b);
+  int i, j;
+  for (i = 0; i <= 100; i ++)
+    for (j = 0; j <= 100; j ++)
+      if (mult(i, j) != i * j)
+        printf("Not\n");
 }
