@@ -34,17 +34,13 @@ vector<int> kadane(int y, int x)
 
 int main()
 {
-  int y, x, t; scanf("%d", &t);
-  while (t --)
-  {
-    scanf("%d %d", &y, &x);
-    for (int i = 0; i < y; i ++)
-    for (int j = 0; j < x; j ++)
-    scanf("%d", &mat[i][j]);
+  int y, x;
+  scanf("%d %d", &y, &x);
+  for (int i = 0; i < y; i ++)
+  for (int j = 0; j < x; j ++)
+  scanf("%d", &mat[i][j]);
 
-    vector<int> ans = kadane(y, x);
-    //printf("[%d, %d] - [%d, %d] = %d\n", ans[0], ans[1], ans[2], ans[3], ans[4]);
-    printf("%d\n", ans[4]);
-  }
+  vector<int> ans = kadane(y, x);
+  printf("[%d, %d] - [%d, %d] = %d\n", ans[0], ans[1], ans[2], ans[3], ans[4]);
   return(0);
 }
