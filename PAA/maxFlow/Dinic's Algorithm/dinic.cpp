@@ -56,15 +56,12 @@ int dfs(vector<int> graph[], int u, int target, int flow)
 
 int dinic(vector<int> graph[], int source, int target)
 {
-  int maxFlow = 0, pathFlow = 0;
+  int maxFlow = 0, pathFlow;
   while (bfs(graph, source, target))
   {
-    do
-    {
-      pathFlow = dfs(graph, source, target, inf);
-      DEBUG printf("%d\n", pathFlow);
-      maxFlow += pathFlow;
-    } while (pathFlow);
+    pathFlow = dfs(graph, source, target, inf);
+    DEBUG printf("%d\n", pathFlow);
+    maxFlow += pathFlow;
   }
   return(maxFlow);
 }

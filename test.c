@@ -5,13 +5,9 @@ int mult(int a, int b)
   if (!b) return(0);
   int res = mult(a, b / 2);
   if (b & 1)
-  {
     return(res + res + a);
-  }
   else
-  {
     return(res + res);
-  }
 }
 
 int main()
