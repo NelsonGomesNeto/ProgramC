@@ -15,17 +15,16 @@ int main()
   for (int i = 0; i < y; i ++)
     scanf("%s\n", table[i]);
 
-  int horizontal[500][500], vertical[500][500], total[500][500]; char prev;
+  int horizontal[500][500], vertical[500][500]; char prev;
   for (int i = 0; i < y; i ++)
   {
     prev = table[i][0];
     horizontal[i][0] = 0;
     for (int j = 1; j < x; j ++)
     {
+      horizontal[i][j] = horizontal[i][j - 1];
       if (prev == '.' && table[i][j] == '.')
-        horizontal[i][j] = horizontal[i][j - 1] + 1;
-      else
-        horizontal[i][j] = horizontal[i][j - 1];
+        horizontal[i][j] ++;
       prev = table[i][j];
     }
   }
@@ -35,13 +34,13 @@ int main()
     vertical[0][i] = 0;
     for (int j = 1; j < y; j ++)
     {
+      vertical[j][i] = vertical[j - 1][i];
       if (prev == '.' && table[j][i] == '.')
-        vertical[j][i] = vertical[j - 1][i] + 1;
-      else
-        vertical[j][i] = vertical[j - 1][i];
+        vertical[j][i] ++;
       prev = table[j][i];
     }
   }
+
   for (int i = 1; i < y; i ++)
     for (int j = 0; j < x; j ++)
       horizontal[i][j] += horizontal[i - 1][j];
