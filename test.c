@@ -1,21 +1,18 @@
 #include <stdio.h>
 
-int mult(int a, int b)
-{
-  if (!b) return(0);
-  int res = mult(a, b / 2);
-  if (b & 1)
-    return(res + res + a);
-  else
-    return(res + res);
-}
-
 int main()
 {
-  //int a, b; scanf("%d %d", &a, &b);
-  int i, j;
-  for (i = 0; i <= 100; i ++)
-    for (j = 0; j <= 100; j ++)
-      if (mult(i, j) != i * j)
-        printf("Not\n");
+  int ddp[100], at = 0; double i[100];
+  while (scanf("%dV ->%lf", &ddp[at], &i[at]) != EOF)
+    at ++;
+
+  printf("ddp = c(");
+  for (int j = 0; j < at; j ++)
+    printf("%c%d", j ? ',' : ' ', ddp[j]);
+  printf(")\n");
+  printf("i = c(");
+  for (int j = 0; j < at; j ++)
+    printf("%c%lf", j ? ',' : ' ', i[j]);
+  printf(")\n");
+  return(0);
 }
