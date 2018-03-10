@@ -1,18 +1,21 @@
 #include <stdio.h>
 
+void function(int *b)
+{
+  int num;
+  scanf("%d", &num);
+  if (num == 0)
+    return;
+
+  if (num > (*b))
+    (*b) = num;
+  function(&(*b));
+}
+
 int main()
 {
-  int ddp[100], at = 0; double i[100];
-  while (scanf("%dV ->%lf", &ddp[at], &i[at]) != EOF)
-    at ++;
-
-  printf("ddp = c(");
-  for (int j = 0; j < at; j ++)
-    printf("%c%d", j ? ',' : ' ', ddp[j]);
-  printf(")\n");
-  printf("i = c(");
-  for (int j = 0; j < at; j ++)
-    printf("%c%lf", j ? ',' : ' ', i[j]);
-  printf(")\n");
+  int biggest = -999;
+  function(&biggest);
+  printf("%d\n", biggest);
   return(0);
 }
