@@ -1,62 +1,77 @@
 #include <bits/stdc++.h>
-int y, x;
-char board[501][501];
-int left[501][501], right[501][501];
+#define DEBUG if(0)
+
+void printMatrix(int m[][500], int y, int x)
+{
+  for (int i = 0; i < y; i ++)
+    for (int j = 0; j < x; j ++)
+      printf("%d%c", m[i][j], j < x - 1 ? ' ' : '\n');
+}
 
 int main()
 {
-  scanf("%d %d", &y, &x);
+  int y, x; scanf("%d %d\n", &y, &x);
+  char table[y][x + 1];
   for (int i = 0; i < y; i ++)
-  {
-    getchar();
-    scanf("%s", board[i]);
-  }
+    scanf("%s\n", table[i]);
 
-  int l, r;
+  int horizontal[500][500], vertical[500][500]; char prev;
   for (int i = 0; i < y; i ++)
   {
-    l = board[i][0] == '.'; r = board[i][y - 1] == '.';
+    prev = table[i][0];
+    horizontal[i][0] = 0;
     for (int j = 1; j < x; j ++)
     {
-      if (board[i][y - 1 - j] == '.') r ++;
-      else r = 0;
-      if (board[i][j] == '.') l ++;
-      else l = 0;
-      left[i][j] = (l > 1) + left[i][j - 1];
-      right[i][y - 1 - j] = (r > 1) + right[i][y - j];
+      horizontal[i][j] = horizontal[i][j - 1];
+      if (prev == '.' && table[i][j] == '.')
+        horizontal[i][j] ++;
+      prev = table[i][j];
     }
   }
   for (int i = 0; i < x; i ++)
   {
-    l = board[0][i] == '.'; r = board[y - 1][i] == '.';
+    prev = table[0][i];
+    vertical[0][i] = 0;
     for (int j = 1; j < y; j ++)
     {
-      if (board[y - 1 - j][i] == '.') r ++;
-      else r = 0;
-      if (board[j][i] == '.') l ++;
-      else l = 0;
-      left[j][i] = (l > 1) + left[j - 1][i];
-      right[y - 1 - j][i] = (r > 1) + right[y - j][i];
+      vertical[j][i] = vertical[j - 1][i];
+      if (prev == '.' && table[j][i] == '.')
+        vertical[j][i] ++;
+      prev = table[j][i];
     }
   }
 
-  for (int i = 0; i < y; i ++)
+  for (int i = 1; i < y; i ++)
     for (int j = 0; j < x; j ++)
-      printf("%d%c", left[i][j], j < x - 1 ? ' ' : '\n');
-  printf("\n");
-  for (int i = 0; i < y; i ++)
-    for (int j = 0; j < x; j ++)
-      printf("%d%c", right[i][j], j < x - 1 ? ' ' : '\n');
+      horizontal[i][j] += horizontal[i - 1][j];
+  for (int i = 1; i < x; i ++)
+    for (int j = 0; j < y; j ++)
+      vertical[j][i] += vertical[j][i - 1];
 
-  int queries, q; scanf("%d", &queries);
-  while (queries -- > 0)
+  DEBUG {printMatrix(horizontal, y, x); printf("\n");
+  printMatrix(vertical, y, x);}
+
+  int queries; scanf("%d", &queries);
+  while (queries --)
   {
-    scanf("%d", &q);
-    int li, lf, hi, hf; scanf("%d %d %d %d", &li, &lf, &hi, &hf);
-    li --; lf --; hi --; hf --;
-    printf("%d\n", (right[lf][hf] + right[li][hi]) + (left[lf][hf] + left[li][hi]));
+    int li, lj, hi, hj; scanf("%d %d %d %d", &li, &lj, &hi, &hj); li --; lj --; hi --; hj --;
+    int ans = horizontal[hi][hj] + vertical[hi][hj];
+    if (li)
+    {
+      ans -= horizontal[li - 1][hj] + vertical[li - 1][hj];
+      for (int j = lj; j <= hj; j ++)
+        ans -= (table[li][j] == '.') && (table[li - 1][j] == '.');
+    }
+    if (lj)
+    {
+      ans -= horizontal[hi][lj - 1] + vertical[hi][lj - 1];
+      for (int i = li; i <= hi; i ++)
+        ans -= (table[i][lj] == '.') && (table[i][lj - 1] == '.');
+    }
+    if (li && lj)
+      ans += horizontal[li - 1][lj - 1] + vertical[li - 1][lj - 1];
+    printf("%d\n", ans);
   }
-
 
   return(0);
 }
