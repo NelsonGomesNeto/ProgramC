@@ -1,4 +1,3 @@
-from heapq import merge as mergeArray
 inf = 1<<20
 
 def printGraph(graph):
@@ -57,12 +56,12 @@ edge.sort()
 
 spanningTree, cost, d, m = kruskal(edge)
 
-print("First Spanning Tree:")
-printGraph(spanningTree)
-print("First Spanning Tree Cost", cost, end="\n\n")
+#print("First Spanning Tree:")
+#printGraph(spanningTree)
+print("First Spanning Tree Cost", cost)
 
-print("done:", d)
-print("missing:", m)
+#print("done:", d)
+#print("missing:", m)
 bestSpanningTree, bestCost = [], inf
 for i in range(len(d) - 1):
     newEdge = []
@@ -76,6 +75,6 @@ for i in range(len(d) - 1):
         bestCost = newCost
         bestSpanningTree = newSpanningTree
 
-print("Second Spanning Tree:")
-printGraph(bestSpanningTree)
+#print("Second Spanning Tree:")
+#printGraph(bestSpanningTree)
 print("Second Spanning Tree Cost:", bestCost)

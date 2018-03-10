@@ -30,7 +30,8 @@ def setSize(v):
 testCases = int(input())
 for i in range(1, testCases + 1):
     f = open("%d.in" % (i), "w")
-    vertices = randint(0, 500)
+    vertices = randint(int(500 * ((i - 1)/testCases)), int(500 * (i/testCases)))
+    print(i, "->", vertices)
     done, toPrint = [[0] * vertices for i in range(vertices)], []
     parent = [-1] * vertices
     edges, finalEdges = vertices + vertices // 3, 0
