@@ -51,6 +51,6 @@ int main()
 
   int size = lis(array, ans, n);
   printf("%d\n", size);
-  DEBUG printArray(ans, size);
+  printArray(ans, size);
   return(0);
 }

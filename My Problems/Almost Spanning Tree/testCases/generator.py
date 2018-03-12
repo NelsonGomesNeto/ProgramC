@@ -1,4 +1,5 @@
 from random import randint
+from math import log
 import os
 
 def root(v):
@@ -30,7 +31,7 @@ def setSize(v):
 testCases = int(input())
 for i in range(1, testCases + 1):
     f = open("%d.in" % (i), "w")
-    vertices = randint(int(500 * ((i - 1)/testCases)), int(500 * (i/testCases)))
+    vertices = randint(int(500 * log(i) / log(testCases + 1)), int(500 * log(i + 1) / log(testCases + 1)))
     print(i, "->", vertices)
     done, toPrint = [[0] * vertices for i in range(vertices)], []
     parent = [-1] * vertices

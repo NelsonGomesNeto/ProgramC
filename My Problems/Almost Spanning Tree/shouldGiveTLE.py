@@ -1,4 +1,3 @@
-DEBUG = 0
 inf = 1<<20
 
 def mergeArray(a, b):
@@ -52,7 +51,7 @@ def merge(u, v):
 def setSize(v):
     return(-1 * parent[root(v)])
 
-def kruskal(edge, vertices):
+def kruskal(edge):
     spanningTree, cost = [[] for i in range(vertices)], 0
     done, missing = [], []
     for c, u, v in edge:
@@ -63,8 +62,6 @@ def kruskal(edge, vertices):
             merge(u, v)
             cost += c
         else: missing += [[c, u, v]]
-    if (setSize(0) < vertices):
-        cost = inf
     return(spanningTree, cost, done, missing)
 
 vertices, edges = map(int, input().split())
@@ -75,29 +72,27 @@ for i in range(edges):
     edge += [[c, u, v]]
 edge.sort()
 
-spanningTree, cost, d, m = kruskal(edge, vertices)
+spanningTree, cost, d, m = kruskal(edge)
 
-if (DEBUG): print("First Spanning Tree:")
-if (DEBUG): printGraph(spanningTree)
+#print("First Spanning Tree:")
+#printGraph(spanningTree)
 print("First Spanning Tree Cost", cost)
 
-if (DEBUG): print("done:", d)
-if (DEBUG): print("missing:", m)
+#print("done:", d)
+#print("missing:", m)
 bestSpanningTree, bestCost = [], inf
-for i in range(len(d)):
+for i in range(len(edge) - 1):
     newEdge = []
-    if (i > 0): newEdge += d[0:i]
-    if (i < len(d) - 1): newEdge += d[i + 1:]
-    newEdge += m
-    if (DEBUG): print(newEdge)
-    newEdge.sort()
+    if (i): newEdge += edge[0:i]
+    if (i < len(edge) - 1): newEdge += edge[i + 1:]
+    #newEdge = mergeArray(newEdge, m)
+    #newEdge.sort()
     parent = [-1] * vertices
-    newSpanningTree, newCost, t1, t2 = kruskal(newEdge, vertices)
-    if (DEBUG): print(newCost)
+    newSpanningTree, newCost, t1, t2 = kruskal(newEdge)
     if (newCost < bestCost and newCost != 0 and newCost > cost):
         bestCost = newCost
         bestSpanningTree = newSpanningTree
 
-if (DEBUG): print("Second Spanning Tree:")
-if (DEBUG): printGraph(bestSpanningTree)
+#print("Second Spanning Tree:")
+#printGraph(bestSpanningTree)
 print("Second Spanning Tree Cost:", bestCost)
