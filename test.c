@@ -1,21 +1,14 @@
 #include <stdio.h>
 
-void function(int *b)
+int function(int i)
 {
-  int num;
-  scanf("%d", &num);
-  if (num == 0)
-    return;
-
-  if (num > (*b))
-    (*b) = num;
-  function(&(*b));
+  if (i == 0)
+    return(0);
+  return(i + function(i - 1));
 }
 
 int main()
 {
-  int biggest = -999;
-  function(&biggest);
-  printf("%d\n", biggest);
+  printf("%d\n", function(3));
   return(0);
 }
