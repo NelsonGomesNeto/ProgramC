@@ -1,14 +1,20 @@
 #include <stdio.h>
 
-int function(int i)
+void fpri(double num)
 {
-  if (i == 0)
-    return(0);
-  return(i + function(i - 1));
+  printf("%lf\n", num);
+  if (((int)(num*100)) % 10 == 0)
+    printf("%.1lf\n", num);
+  else
+    printf("%.2lf\n", num);
 }
 
 int main()
 {
-  printf("%d\n", function(3));
+  while (1)
+  {
+    double num; scanf("%lf", &num);
+    fpri(num);
+  }
   return(0);
 }
