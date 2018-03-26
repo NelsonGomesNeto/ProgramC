@@ -7,13 +7,24 @@ int mdc(int a, int d)
   return(mdc(d, a % d));
 }
 
+int mdcbug(int a, int d)
+{
+  while (a % d != 0)
+  {
+    int aux = a;
+    a = d;
+    d = aux % d;
+  }
+  return(d);
+}
+
 void read(int n)
 {
   if (n == 0)
     return;
   int a, d;
   scanf("%d %d", &a, &d);
-  printf("MDC(%d,%d) = %d\n", a, d, mdc(a, d));
+  printf("MDC(%d,%d) = %d\n", a, d, mdcbug(a, d));
   read(n - 1);
 }
 
