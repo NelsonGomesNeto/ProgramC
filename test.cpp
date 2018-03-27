@@ -1,28 +1,29 @@
-#include <stdio.h>
-#include <vector>
-#include <algorithm>
-using namespace std;
+#include <bits/stdc++.h>
+
+void printLine(int start, int size, char separator)
+{
+  int i = 0;
+  while (i ++ < start) printf("%c", separator);
+  while (i <= size - start)
+  {
+    printf("*");
+    if (i != size) printf("%c", separator);
+    i += 2;
+  }
+  while (i ++ <= size) printf("%c", separator);
+}
 
 int main()
 {
-  vector<int> array;
-  int i = 0, num;
-  while (scanf("%d", &num) != EOF)
+  int radious; char separator = '.'; scanf("%d", &radious);
+  int size = radious*2 - 1;
+
+  int start = size / 2;
+  for (int i = 0; i < size; i ++)
   {
-    array.push_back(num);
-    i ++;
-  } array.push_back(num);
-
-  int j;
-  for (j = 0; j < i; j ++)
-    printf("%d\n", array[j]);
-  printf("Ended\n");
-
-  sort(array.begin(), array.end());
-
-  for (j = 0; j < i; j ++)
-    printf("%d\n", array[j]);
-  printf("Ended\n");
-  
+    printLine(start, size, separator); printf("\n");
+    if (i < size / 2) start --;
+    else start ++;
+  }
   return(0);
 }
