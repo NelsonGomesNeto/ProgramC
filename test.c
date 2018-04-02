@@ -1,20 +1,19 @@
 #include <stdio.h>
 
-void fpri(double num)
+void printToR(double a[], int size, char name[])
 {
-  printf("%lf\n", num);
-  if (((int)(num*100)) % 10 == 0)
-    printf("%.1lf\n", num);
-  else
-    printf("%.2lf\n", num);
+  printf("%s = c(", name);
+  for (int i = 0; i < size; i ++)
+    printf("%lf%s", a[i], i < size - 1 ? ", " : ")\n");
 }
 
 int main()
 {
-  while (1)
-  {
-    double num; scanf("%lf", &num);
-    fpri(num);
-  }
+  double u[1000], t[1000]; int i = 0;
+  while (scanf("%lf%lf", &u[i], &t[i]) != EOF) i ++;
+
+  printToR(u, i, "ddp");
+  printToR(t, i, "time");
+
   return(0);
 }
