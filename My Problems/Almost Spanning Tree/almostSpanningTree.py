@@ -79,7 +79,7 @@ spanningTree, cost, d, m = kruskal(edge, vertices)
 
 if (DEBUG): print("First Spanning Tree:")
 if (DEBUG): printGraph(spanningTree)
-print("First Spanning Tree Cost", cost)
+print("First Spanning Tree Cost:", cost)
 
 if (DEBUG): print("done:", d)
 if (DEBUG): print("missing:", m)
