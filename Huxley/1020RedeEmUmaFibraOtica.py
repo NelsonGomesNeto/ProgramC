@@ -55,7 +55,7 @@ cost, visited = [0] * vertices, [0] * vertices
 bfs(mst, 0, cost, visited)
 
 print("########################")
-print("Minimum Cost:", minCost)
+print("Minimum Cost:\n", minCost, sep='')
 print("########################")
 print("Connections:")
 done = [[0] * vertices for i in range(vertices)]
@@ -65,7 +65,7 @@ for i in range(len(mst)):
             done[j[0]][i] = 1
             print(i, j[0])
 print("########################")
-print("Ping:")
+print("Pings:")
 for i in range(1, vertices):
     print("%d: %.3lf" % (i, (cost[i] * 2) / speed), sep='')
 print("########################")
