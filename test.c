@@ -1,44 +1,52 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-void read(int array[], int size)
+void lerarray(int i, int j, int n, int v[][n])
 {
-  if (size == 0) return;
-  read(array, size - 1);
-  scanf("%d", &array[size - 1]);
+
+  if(i >= n)
+  {
+    return;
+  }
+  else
+  {
+    if(j >= n)
+    {
+      j = 0;
+      i = i + 1;
+    }
+      scanf("%d", &v[i][j]);
+      lerarray(i, j+1, n, v);
+  }
 }
 
-void print(int array[], int size)
+void somaarray(int n, int i, int j, int A[][n],int B[][n])
 {
-  if (size == 0) return;
-  printf("%d%c", array[size - 1], size - 1 ? ' ' : '\n');
-  print(array, size - 1);
-}
+  if(i >= n)
+  {
+    return;
+  }
+  else
+  {
+    if(j >= n)
+    {
+      j = 0;
+      i = i + 1;
+    }
+      printf("%d\n", A[i][j]+B[i][j]);
+      somaarray(n, i, j+1, A, B);
+  }
 
-void swap(int *a, int *b)
-{
-  int aux = *a;
-  *a = *b;
-  *b = aux;
-}
-
-void sort(int array[], int i, int j, int size)
-{
-  if (i >= size) return;
-  if (j >= size) return(sort(array, i + 1, i + 2, size));
-  if (array[i] < array[j]) swap(&array[i], &array[j]);
-  sort(array, i, j + 1, size);
 }
 
 int main()
 {
-  int size; scanf("%d", &size);
-  int array[size];
-  read(array, size);
-  print(array, size);
+  int n;
+  scanf("%d", &n);
+  int A[n][n], B[n][n];
+  lerarray(n, 0, 0, A);
+  lerarray(n, 0, 0, B);
+  somaarray(n, 0, 0, A, B);
+  return 0;
 
-  sort(array, 0, 0, size);
-
-  print(array, size);
-
-  return(0);
 }
