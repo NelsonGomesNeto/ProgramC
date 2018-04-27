@@ -1,52 +1,19 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-void lerarray(int i, int j, int n, int v[][n])
+void printArrayToR(char name[], double array[], int size)
 {
-
-  if(i >= n)
-  {
-    return;
-  }
-  else
-  {
-    if(j >= n)
-    {
-      j = 0;
-      i = i + 1;
-    }
-      scanf("%d", &v[i][j]);
-      lerarray(i, j+1, n, v);
-  }
-}
-
-void somaarray(int n, int i, int j, int A[][n],int B[][n])
-{
-  if(i >= n)
-  {
-    return;
-  }
-  else
-  {
-    if(j >= n)
-    {
-      j = 0;
-      i = i + 1;
-    }
-      printf("%d\n", A[i][j]+B[i][j]);
-      somaarray(n, i, j+1, A, B);
-  }
-
+  printf("%s = c(", name);
+  for (int i = 0; i < size; i ++)
+    printf("%lf%c", array[i], i < size - 1 ? ',' : ')');
+  printf("\n");
 }
 
 int main()
 {
-  int n;
-  scanf("%d", &n);
-  int A[n][n], B[n][n];
-  lerarray(n, 0, 0, A);
-  lerarray(n, 0, 0, B);
-  somaarray(n, 0, 0, A, B);
-  return 0;
+  double a[100], mt[100]; int i = 0;
+  while (scanf("%lf %lf", &a[i], &mt[i]) != EOF) i ++;
 
+  printArrayToR("mA", a, i);
+  printArrayToR("degrees", mt, i);
+  return(0);
 }
