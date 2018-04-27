@@ -25,7 +25,7 @@ int main()
 
     int money; scanf("%d", &money);
 
-    printf("Costumer %d:\n", t);
+    printf("Customer %d:\n", t);
     giveChange(kind, money);
   }
 
