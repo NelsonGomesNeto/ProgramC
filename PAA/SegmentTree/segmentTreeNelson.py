@@ -1,8 +1,9 @@
 import sys
+from math import log2, ceil, floor
 sys.setrecursionlimit(2**20)
 
 def printTree(segTree, lo, hi, i):
-    print(lo, hi, segTree[i])
+    print(lo, hi, segTree[i], i)
     if (lo >= hi): return
     mid = (lo + hi) // 2
     printTree(segTree, lo, mid, 2*i + 1)
@@ -40,9 +41,17 @@ def get(segTree, lo, hi, qlo, qhi, i):
     right = get(segTree, mid + 1, hi, qlo, qhi, 2*i + 2)
     return(operation(left, right))
 
+def getSize(n):
+    lo, hi, i = 0, n - 1, 0
+    while (lo <= hi):
+        mid = (lo + hi) // 2
+        lo = mid + 1
+        i = 2*i + 2
+    return(i)
+
 n = int(input())
 array = list(map(int, input().split()))
-segTree = [0] * (n * 3)
+segTree = [-999] * (n * 3)
 build(segTree, array, 0, n - 1, 0)
 printTree(segTree, 0, n - 1, 0)
 
@@ -58,3 +67,8 @@ for i in range(queries):
     if (line[0] == "G"):
         qlo, qhi = int(line[1]), int(line[2])
         print(get(segTree, 0, n - 1, qlo, qhi, 0))
+
+print(segTree[15:24])
+for i in range(len(segTree)):
+    if (segTree[i] == -999):
+        print(n, getSize(n), i)
