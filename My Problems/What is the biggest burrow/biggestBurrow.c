@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <string.h>
+#define DEBUG if(0)
 
 int dig(int hole[], int visited[], int now, int origin)
 {
-  printf("%d -> ", now);
+  DEBUG printf("%d -> ", now);
   visited[now] = 1;
   if (hole[now] == origin)
   {
-    printf("||\n");
+    DEBUG printf("||\n");
     return(1);
   }
   return(1 + dig(hole, visited, hole[now], origin));
