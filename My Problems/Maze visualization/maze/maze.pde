@@ -1,11 +1,11 @@
 char maze[][] = new char[1000][1000];
-int y, x, yx, py = 0, px = 0; float sc = 0.7; int waitTime = 50;
+int y, x, yx, py = 0, px = 0; float sc = 0.7; int waitTime = 5;
 boolean kp = false;
 int[] dx = {0, 1, 0, -1}; int[] dy = {-1, 0, 1, 0};
 
 void setup() {
   frameRate(144);
-  String[] lines = loadStrings("./../realMaze/1.in");
+  String[] lines = loadStrings("./../realMaze/2.in");
   int[] dim = int(split(lines[0], ' '));
   y = dim[0]; x = dim[1]; yx = max(y, x);
   size(1000, 1000);
@@ -33,7 +33,7 @@ float getAngle(char c) {
 
 void drawCircle(int i, int j, color rgb) {
   fill(rgb);
-  ellipse(j * (width / yx) + (width / yx) / 1, i * (height/ yx) + (height / yx) / 1, sc * (width / yx), sc * (height / yx));
+  ellipse(j * (width / yx) + (width / yx) / 1.9, i * (height/ yx) + (height / yx) / 1.9, sc * (width / yx), sc * (height / yx));
 }
 
 void drawArrow(int cy, int cx, int len, float angle, color rgb){
