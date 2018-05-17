@@ -58,8 +58,6 @@ int main()
 
     int y = 2*((int)(125 * ((double)now / quantity))) + 2*(rand() % (int)(1 + 125 * ((double)now / quantity)))+1;
     int x = 2*((int)(125 * ((double)now / quantity))) + 2*(rand() % (int)(1 + 125 * ((double)now / quantity)))+1;
-    y = log2(y); x = log2(x); y += !(y & 1); x += !(x & 1);
-    y += 4; x += 4;
     int i, j;
     printf("Size: %d %d %d %d\n", y, x, now, quantity);
     fprintf(pFile, "%d %d\n", y, x);
