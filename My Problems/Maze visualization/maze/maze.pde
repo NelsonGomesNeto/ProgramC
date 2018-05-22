@@ -1,15 +1,16 @@
 char maze[][] = new char[1000][1000];
-int y, x, yx, myx, mhw, py = 0, px = 0, pn = 0, best = 0, blockSize; float sc = 0.7; int waitTime = 30;
+int y, x, yx, myx, mhw, py = 0, px = 0, pn = 0, best = 0, blockSize; float sc = 0.7; int waitTime = 3;
 //int[] dx = {0, 1, 0, -1}; int[] dy = {-1, 0, 1, 0};
 int[] dx = {0, 0, -1, 1}; int[] dy = {-1, 1, 0, 0};
 PFont f;
 boolean resetAll = false;
+int nowSecond, recursionCalls, rec;
 
 void setup() {
   frameRate(9999);
   f = createFont("Arial", 30, false);
   textFont(f, 30);
-  String[] lines = loadStrings("./11.in");
+  String[] lines = loadStrings("./../realMaze/4.in");
   int[] dim = int(split(lines[0], ' '));
   y = dim[0]; x = dim[1]; yx = max(y, x); myx = min(y, x);
   size(1150, 950);
@@ -65,10 +66,12 @@ void drawArrow(int cy, int cx, int len, float angle, color rgb){
 void drawTreasure(int n) {
   pushMatrix();
   fill(255, 255, 255);
-  rect(width - 200, 0, 200, 100);
+  rect(width - 200, 0, 200, 200);
   fill(0, 0, 200);
   text("best: " + str(best), width - 200, 25);
   text("now: " + str(n), width - 200, 75);
+  text("fps: " + str(frameRate), width - 200, 125);
+  text("rec: " + str(rec), width - 200, 175);
   popMatrix();
 }
 
@@ -111,6 +114,8 @@ void drawMaze() {
 void startGo() {
   while (true) {
     best = 0; resetAll = true; delay(1000); resetAll = false;
+    nowSecond = second();
+    recursionCalls = 0;
     go(0, 0, 0);
   }
 }
@@ -136,6 +141,11 @@ int getScore(char c) {
 }
 
 int go(int i, int j, int n) {
+  recursionCalls ++;
+  if (nowSecond != second()) {
+    nowSecond = second();
+    rec = recursionCalls; recursionCalls = 0;
+  }
   best = max(best, n);
   py = i; px = j; pn = n;
   delay(waitTime);
@@ -148,6 +158,7 @@ int go(int i, int j, int n) {
   for (int k = 0; k < 4; k ++) {
      maze[i][j] = getDir(k);
      now = max(now, go(i + dy[k], j + dx[k], n + getScore(aux)));
+     recursionCalls ++;
      py = i; px = j;
      delay(waitTime);
   }
