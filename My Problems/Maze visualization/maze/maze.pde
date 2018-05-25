@@ -1,7 +1,7 @@
 char maze[][] = new char[1000][1000];
-int y, x, yx, myx, mhw, py = 0, px = 0, pn = 0, best = 0, blockSize; float sc = 0.7; int waitTime = 3;
+int y, x, yx, myx, mhw, py = 0, px = 0, pn = 0, best = 0, blockSize; float sc = 0.7; int waitTime = 30;
 //int[] dx = {0, 1, 0, -1}; int[] dy = {-1, 0, 1, 0};
-int[] dx = {0, 0, -1, 1}; int[] dy = {-1, 1, 0, 0};
+int[] dx = {0, 1, 0, -1}; int[] dy = {-1, 0, 1, 0};
 PFont f;
 boolean resetAll = false;
 int nowSecond, recursionCalls, rec;
@@ -10,7 +10,7 @@ void setup() {
   frameRate(9999);
   f = createFont("Arial", 30, false);
   textFont(f, 30);
-  String[] lines = loadStrings("./../realMaze/4.in");
+  String[] lines = loadStrings("./11.in");
   int[] dim = int(split(lines[0], ' '));
   y = dim[0]; x = dim[1]; yx = max(y, x); myx = min(y, x);
   size(1150, 950);
@@ -149,7 +149,7 @@ int go(int i, int j, int n) {
   best = max(best, n);
   py = i; px = j; pn = n;
   delay(waitTime);
-  while (keyPressed) delay(1);
+  while (!keyPressed) delay(1);
   if (i < 0 || j < 0 || i >= y || j >= x || invalid(maze[i][j]))
     return(0);
   
@@ -162,7 +162,7 @@ int go(int i, int j, int n) {
      py = i; px = j;
      delay(waitTime);
   }
-  maze[i][j] = aux;
+  //maze[i][j] = aux;
   now += getScore(maze[i][j]);
   return(now);
 }
