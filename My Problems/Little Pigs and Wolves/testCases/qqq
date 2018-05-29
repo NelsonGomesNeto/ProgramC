@@ -1,0 +1,1597 @@
+1
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+2 3
+PPW
+W.P
+Participant's output
+2
+Jury's answer
+2
+Checker comment
+ok answer is 2
+
+
+2
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+3 3
+P.W
+.P.
+W.P
+Participant's output
+0
+Jury's answer
+0
+Checker comment
+ok answer is 0
+
+
+3
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+6 5
+.....
+..PW.
+.....
+.WP..
+.....
+.....
+Participant's output
+2
+Jury's answer
+2
+Checker comment
+ok answer is 2
+
+
+4
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+5 5
+.....
+..P..
+.W.W.
+..P..
+.....
+Participant's output
+0
+Jury's answer
+0
+Checker comment
+ok answer is 0
+
+
+5
+
+Time: 30 ms, memory: 4 KB
+Verdict: OK
+Input
+5 5
+.....
+..P..
+..W..
+..P..
+.....
+Participant's output
+1
+Jury's answer
+1
+Checker comment
+ok answer is 1
+
+
+6
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+..........
+..........
+..........
+....P.....
+...PWP....
+....P.....
+..........
+..........
+..........
+..........
+Participant's output
+1
+Jury's answer
+1
+Checker comment
+ok answer is 1
+
+
+7
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+1 1
+P
+Participant's output
+0
+Jury's answer
+0
+Checker comment
+ok answer is 0
+
+
+8
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+2 6
+WW..WW
+.PPPP.
+Participant's output
+2
+Jury's answer
+2
+Checker comment
+ok answer is 2
+
+
+9
+
+Time: 0 ms, memory: 0 KB
+Verdict: OK
+Input
+6 2
+.W
+.W
+.P
+WP
+.P
+PW
+Participant's output
+3
+Jury's answer
+3
+Checker comment
+ok answer is 3
+
+
+10
+
+Time: 30 ms, memory: 4 KB
+Verdict: OK
+Input
+2 10
+W..WWP.P.P
+W..PP.WWP.
+Participant's output
+3
+Jury's answer
+3
+Checker comment
+ok answer is 3
+
+
+11
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+10 2
+P.
+.W
+PW
+..
+W.
+W.
+..
+P.
+WP
+PP
+Participant's output
+2
+Jury's answer
+2
+Checker comment
+ok answer is 2
+
+
+12
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+3 4
+WPPW
+.P..
+PWW.
+Participant's output
+3
+Jury's answer
+3
+Checker comment
+ok answer is 3
+
+
+13
+
+Time: 0 ms, memory: 0 KB
+Verdict: OK
+Input
+4 3
+.WW
+..P
+P.P
+PWW
+Participant's output
+3
+Jury's answer
+3
+Checker comment
+ok answer is 3
+
+
+14
+
+Time: 30 ms, memory: 4 KB
+Verdict: OK
+Input
+3 10
+WPPP...PP.
+.P...WW..W
+.WWP.PP.PW
+Participant's output
+6
+Jury's answer
+6
+Checker comment
+ok answer is 6
+
+
+15
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+10 3
+...
+PWW
+..P
+..P
+P.P
+WP.
+PPW
+..W
+W..
+WPP
+Participant's output
+5
+Jury's answer
+5
+Checker comment
+ok answer is 5
+
+
+16
+
+Time: 30 ms, memory: 4 KB
+Verdict: OK
+Input
+4 8
+..PW..WW
+WWPP.PP.
+P...PW.P
+P.WW...P
+Participant's output
+5
+Jury's answer
+5
+Checker comment
+ok answer is 5
+
+
+17
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+8 4
+P.WW
+W..P
+P..P
+P.WW
+..P.
+W.P.
+WP.W
+P..P
+Participant's output
+6
+Jury's answer
+6
+Checker comment
+ok answer is 6
+
+
+18
+
+Time: 30 ms, memory: 4 KB
+Verdict: OK
+Input
+1 1
+W
+Participant's output
+0
+Jury's answer
+0
+Checker comment
+ok answer is 0
+
+
+19
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+4 10
+..P.PW.P.P
+P.WP.W..WP
+W..P.P..WP
+W.PWW.P.P.
+Participant's output
+7
+Jury's answer
+7
+Checker comment
+ok answer is 7
+
+
+20
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+10 4
+WPPP
+P.PW
+...W
+W..P
+..W.
+.PP.
+W..P
+W.PW
+..P.
+PPW.
+Participant's output
+6
+Jury's answer
+6
+Checker comment
+ok answer is 6
+
+
+21
+
+Time: 0 ms, memory: 4 KB
+Verdict: OK
+Input
+5 1
+.
+P
+.
+.
+W
+Participant's output
+0
+Jury's answer
+0
+Checker comment
+ok answer is 0
+
+
+22
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+1 5
+PW...
+Participant's output
+1
+Jury's answer
+1
+Checker comment
+ok answer is 1
+
+
+23
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+5 10
+P.PPWWP.PP
+.W....P.PP
+PWPP..WW..
+...W..P.P.
+WP.W...PWW
+Participant's output
+7
+Jury's answer
+7
+Checker comment
+ok answer is 7
+
+
+24
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+10 5
+..PWW
+WWP.P
+.PP..
+P..WW
+PW...
+.W..P
+..P.W
+P.PP.
+W..WP
+WPPP.
+Participant's output
+8
+Jury's answer
+8
+Checker comment
+ok answer is 8
+
+
+25
+
+Time: 0 ms, memory: 0 KB
+Verdict: OK
+Input
+6 5
+..WP.
+WP..W
+W.PP.
+.PWW.
+P.PPP
+WP..W
+Participant's output
+6
+Jury's answer
+6
+Checker comment
+ok answer is 6
+
+
+26
+
+Time: 30 ms, memory: 4 KB
+Verdict: OK
+Input
+5 6
+P...PW
+.WWP.W
+.P...P
+WP..W.
+WPPPWP
+Participant's output
+7
+Jury's answer
+7
+Checker comment
+ok answer is 7
+
+
+27
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+6 10
+PPP.WW..PW
+.W.....WP.
+.W.PP..WP.
+.PP..WPP.P
+W.PW.P.PWW
+WP.P..P.P.
+Participant's output
+10
+Jury's answer
+10
+Checker comment
+ok answer is 10
+
+
+28
+
+Time: 60 ms, memory: 0 KB
+Verdict: OK
+Input
+10 6
+.WW.PW
+......
+WP..W.
+PPWP.P
+.PW.PW
+PP.P.W
+P.PWPP
+W..W.P
+WPP..W
+.PWP.W
+Participant's output
+11
+Jury's answer
+11
+Checker comment
+ok answer is 11
+
+
+29
+
+Time: 0 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+..........
+..........
+..........
+..........
+..........
+..........
+..........
+..........
+..........
+..........
+Participant's output
+0
+Jury's answer
+0
+Checker comment
+ok answer is 0
+
+
+30
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+7 3
+WPP
+W.P
+...
+PWP
+PW.
+..P
+..W
+Participant's output
+4
+Jury's answer
+4
+Checker comment
+ok answer is 4
+
+
+31
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+3 7
+WP...PW
+.PW.P..
+PPW.PW.
+Participant's output
+5
+Jury's answer
+5
+Checker comment
+ok answer is 5
+
+
+32
+
+Time: 60 ms, memory: 0 KB
+Verdict: OK
+Input
+7 10
+W..W.PWW.P
+W.P.P.PP.W
+P...W.....
+PWPPW..WW.
+....PPP..P
+WP.WPP.P.P
+PP..PWP.WW
+Participant's output
+11
+Jury's answer
+11
+Checker comment
+ok answer is 11
+
+
+33
+
+Time: 0 ms, memory: 4 KB
+Verdict: OK
+Input
+10 7
+.PW..WP
+W...PW.
+..PW...
+PW..PP.
+.W.P.WW
+.P.P...
+P.PPW..
+.PW...P
+W.P.PPP
+W.PPWPP
+Participant's output
+10
+Jury's answer
+10
+Checker comment
+ok answer is 10
+
+
+34
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+8 8
+.WP....W
+.W..W.PW
+.PPPWPP.
+W..P..W.
+P.WP...P
+.P..WPP.
+P.PPPPWW
+.PWWP...
+Participant's output
+11
+Jury's answer
+11
+Checker comment
+ok answer is 11
+
+
+35
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+8 8
+WP.W...P
+W.P..WW.
+P.W.P.P.
+PPPPPPPP
+WW..WP.W
+P.P.PP..
+..WW..W.
+PP....W.
+Participant's output
+9
+Jury's answer
+9
+Checker comment
+ok answer is 9
+
+
+36
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+8 10
+PWW..P..W.
+PP.PP...W.
+WP..PWW.P.
+P.P.....P.
+PPW.P.P.WW
+PPP.WW.PP.
+W.P....P.P
+..WWPPW..W
+Participant's output
+12
+Jury's answer
+12
+Checker comment
+ok answer is 12
+
+
+37
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+10 8
+.PPW.PWW
+W.PWP.P.
+WP..PP..
+..WP.PPP
+..PP.WW.
+.WP...P.
+..PWW..W
+W.P..PPW
+...P...P
+PWP.WWP.
+Participant's output
+12
+Jury's answer
+12
+Checker comment
+ok answer is 12
+
+
+38
+
+Time: 0 ms, memory: 0 KB
+Verdict: OK
+Input
+9 8
+PP..W..W
+.PP.W..W
+..W...PP
+WP.P.WW.
+W..W.P..
+P.PP..P.
+...PW.PP
+.WPPW..W
+PWP.PPPP
+Participant's output
+12
+Jury's answer
+12
+Checker comment
+ok answer is 12
+
+
+39
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+8 9
+PWWPPW..W
+P.P..WP.P
+W..WPP.PP
+P.PP....W
+.....WWP.
+P.WWP.P..
+W......WW
+PP.PWPP.P
+Participant's output
+13
+Jury's answer
+13
+Checker comment
+ok answer is 13
+
+
+40
+
+Time: 0 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+PPPPPPPPPP
+PPPPPPPPPP
+PPPPPPPPPP
+PPPPPPPPPP
+PPPPPPPPPP
+PPPPPPPPPP
+PPPPPPPPPP
+PPPPPPPPPP
+PPPPPPPPPP
+PPPPPPPPPP
+Participant's output
+0
+Jury's answer
+0
+Checker comment
+ok answer is 0
+
+
+41
+
+Time: 30 ms, memory: 4 KB
+Verdict: OK
+Input
+9 10
+W.PPWW..P.
+W.P.....WP
+P..W......
+..P.PP.W.P
+.PW.P..W..
+..P...PPPP
+PPP.W..PPP
+WW.PW...PP
+.PPP..WW.P
+Participant's output
+8
+Jury's answer
+8
+Checker comment
+ok answer is 8
+
+
+42
+
+Time: 60 ms, memory: 0 KB
+Verdict: OK
+Input
+10 9
+WWP.P.WPP
+..PWP.P.W
+....PWP..
+WW...P.WP
+.P.WP..W.
+PP...W.P.
+P.W..WP.W
+.PWPP..P.
+.PPPPPWW.
+PW..W..PP
+Participant's output
+15
+Jury's answer
+15
+Checker comment
+ok answer is 15
+
+
+43
+
+Time: 0 ms, memory: 4 KB
+Verdict: OK
+Input
+10 1
+.
+W
+W
+P
+P
+.
+.
+.
+W
+P
+Participant's output
+2
+Jury's answer
+2
+Checker comment
+ok answer is 2
+
+
+44
+
+Time: 0 ms, memory: 0 KB
+Verdict: OK
+Input
+1 10
+P.PW.PW..W
+Participant's output
+2
+Jury's answer
+2
+Checker comment
+ok answer is 2
+
+
+45
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+PWPP...PPW
+.P.W...W..
+W.P.PW....
+P.P.PW..WP
+PP.W.PP.P.
+.P.P..WP.W
+.WW.PPP..P
+..P...PPP.
+P.P..WW..W
+.WWP...PPW
+Participant's output
+16
+Jury's answer
+16
+Checker comment
+ok answer is 16
+
+
+46
+
+Time: 0 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+.PW...P.PW
+....W..PPW
+WWP.W..P.P
+.P..PP.P..
+...W...WW.
+PWP..W....
+PW...W..PW
+.P..P.PP.P
+PPPPWP..W.
+PPPPP.W.PP
+Participant's output
+11
+Jury's answer
+11
+Checker comment
+ok answer is 11
+
+
+47
+
+Time: 0 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+PP..PPWPPW
+PPPPPPPP..
+.PPPPPPP.P
+PPPPPPPPPP
+PWP.PPP.PP
+PW.PP.PPPP
+PPPPPP.PPW
+..PPWPPP.P
+WPPPPPPPPP
+WP.WPPPWPP
+Participant's output
+10
+Jury's answer
+10
+Checker comment
+ok answer is 10
+
+
+48
+
+Time: 0 ms, memory: 4 KB
+Verdict: OK
+Input
+10 10
+PPPPPPPPPP
+PPPPPPPWPP
+PPPPPPPPPP
+PPPPPPPPPP
+PPPPPPPPPP
+PPPPPPPPPP
+PPPPPPPPPP
+PPPPPPPPPP
+PPPPPPPPPP
+PPPPPPPPPP
+Participant's output
+1
+Jury's answer
+1
+Checker comment
+ok answer is 1
+
+
+49
+
+Time: 30 ms, memory: 4 KB
+Verdict: OK
+Input
+10 10
+PPPPPPPPWP
+PPPWPPPPPP
+PPPPPPPPPP
+PWWPPWPPPP
+PPPPPPPPPP
+PPPPWPPPPP
+PPPPPPPPPP
+PPPPPPWPPW
+PPPPPPPPPP
+PPWPPPPPWP
+Participant's output
+10
+Jury's answer
+10
+Checker comment
+ok answer is 10
+
+
+50
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+.PWWP..W..
+.....W...W
+WP........
+W...WP....
+P.W..P..WW
+..W...WP.P
+W...W.....
+....WP..P.
+.W....W..W
+.W....W..W
+Participant's output
+8
+Jury's answer
+8
+Checker comment
+ok answer is 8
+
+
+51
+
+Time: 30 ms, memory: 4 KB
+Verdict: OK
+Input
+10 10
+WWWWWWWWWW
+WWWWWWWWWW
+WWWWWWWWWW
+WWWWWWWWWW
+WWWWWWWWWW
+WWWWWWWWWW
+WWWWWWWWWW
+WWWWWWWWWW
+WWWWWWWWWW
+WWWWWWWWWW
+Participant's output
+0
+Jury's answer
+0
+Checker comment
+ok answer is 0
+
+
+52
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+W..W..W...
+W..P..W...
+..W.....WW
+....WW....
+WW.....W..
+.........W
+..WW......
+.......WW.
+W.........
+W..WW....W
+Participant's output
+1
+Jury's answer
+1
+Checker comment
+ok answer is 1
+
+
+53
+
+Time: 0 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+WP..P....W
+W...W..P.W
+....P.WW..
+..WW......
+.........W
+WP....W..W
+W..W..W...
+...WP...W.
+.W.P..P.W.
+PW...PW...
+Participant's output
+7
+Jury's answer
+7
+Checker comment
+ok answer is 7
+
+
+54
+
+Time: 0 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+..P..WWP.W
+PP.WPPPPPP
+WWPP.PPWPP
+PPPPW..PPW
+PP.PW.P.PW
+WW..PPWWP.
+..PW...PP.
+.PPPP.PPPW
+PP.PWP..P.
+PWPPP..WWP
+Participant's output
+20
+Jury's answer
+20
+Checker comment
+ok answer is 20
+
+
+55
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+......W...
+..........
+..........
+..........
+..........
+..........
+..........
+..........
+..........
+........P.
+Participant's output
+0
+Jury's answer
+0
+Checker comment
+ok answer is 0
+
+
+56
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+.........P
+...P.W....
+PP...WP.WP
+.W........
+..........
+.....WP.W.
+........WP
+...P......
+.......W..
+.PW..W....
+Participant's output
+6
+Jury's answer
+6
+Checker comment
+ok answer is 6
+
+
+57
+
+Time: 0 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+.P.PPPP..W
+PWW.PPWPPW
+...PPP.P..
+W..P...WP.
+.PPWPP.W..
+...PPWPPPP
+WP..PW..W.
+PPW.....P.
+P.P...PP.W
+WPPWW.PPPW
+Participant's output
+14
+Jury's answer
+14
+Checker comment
+ok answer is 14
+
+
+58
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+W....W...W
+W....W....
+..WW...WW.
+..........
+.....W...W
+.....W....
+WW........
+........WW
+..W...W...
+W...W.....
+Participant's output
+0
+Jury's answer
+0
+Checker comment
+ok answer is 0
+
+
+59
+
+Time: 30 ms, memory: 4 KB
+Verdict: OK
+Input
+10 10
+W...W.....
+..W...WW..
+.........W
+...WW....W
+WW.....W..
+.....W....
+..W.....W.
+W...W.....
+W.....W..W
+..WW..W..W
+Participant's output
+0
+Jury's answer
+0
+Checker comment
+ok answer is 0
+
+
+60
+
+Time: 0 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+WW..W...WW
+....W.....
+......WW..
+.W.....P..
+.W...W..WW
+...W......
+W..W......
+W....WW..P
+P.........
+...WW...WW
+Participant's output
+2
+Jury's answer
+2
+Checker comment
+ok answer is 2
+
+
+61
+
+Time: 30 ms, memory: 4 KB
+Verdict: OK
+Input
+10 10
+P.PPP.PP.P
+PPP.PPP.P.
+P.PPPP..PW
+P.PPP.PP.P
+PPPPPP.P.P
+PPPP.PP.P.
+.PPWPPPPP.
+PPP...PPPP
+PPP.PPPP.P
+.WPPPP.P.P
+Participant's output
+3
+Jury's answer
+3
+Checker comment
+ok answer is 3
+
+
+62
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+1 4
+W..P
+Participant's output
+0
+Jury's answer
+0
+Checker comment
+ok answer is 0
+
+
+63
+
+Time: 0 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+P.W.P.W.P.
+.W.P.W.P.W
+P.W.P.W.P.
+.W.P.W.P.W
+P.W.P.W.P.
+.W.P.W.P.W
+P.W.P.W.P.
+.W.P.W.P.W
+P.W.P.W.P.
+.W.P.W.P.W
+Participant's output
+0
+Jury's answer
+0
+Checker comment
+ok answer is 0
+
+
+64
+
+Time: 0 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+WPPPWPPPWP
+PPPPPPPPPP
+PPPPPPPPPP
+PPPPPPPPPP
+WPPPWPPPWP
+PPPPPPPPPP
+PPPPPPPPPP
+PPPPPPPPPP
+WPPPWPPPWP
+PPPPPPPPPP
+Participant's output
+9
+Jury's answer
+9
+Checker comment
+ok answer is 9
+
+
+65
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+PPPPPPPPPP
+WWWWWWWWWW
+WWWWWWWWWW
+PPPPPPPPPP
+PPPPPPPPPP
+WWWWWWWWWW
+WWWWWWWWWW
+PPPPPPPPPP
+PPPPPPPPPP
+WWWWWWWWWW
+Participant's output
+50
+Jury's answer
+50
+Checker comment
+ok answer is 50
+
+
+66
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+4 1
+.
+W
+P
+.
+Participant's output
+1
+Jury's answer
+1
+Checker comment
+ok answer is 1
+
+
+67
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+1 10
+P..W.PPWW.
+Participant's output
+1
+Jury's answer
+1
+Checker comment
+ok answer is 1
+
+
+68
+
+Time: 30 ms, memory: 4 KB
+Verdict: OK
+Input
+10 1
+P
+P
+W
+W
+.
+P
+.
+.
+.
+W
+Participant's output
+1
+Jury's answer
+1
+Checker comment
+ok answer is 1
+
+
+69
+
+Time: 30 ms, memory: 4 KB
+Verdict: OK
+Input
+1 1
+.
+Participant's output
+0
+Jury's answer
+0
+Checker comment
+ok answer is 0
+
+
+70
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+PPPWPPPWPP
+PWPPPWPPPP
+PPPPPPPPPP
+WPPWPPWPPW
+PPPPPPPPPP
+PWPPWPPWPP
+PPPPPPPPPP
+PPWPPWPPWP
+PPPPPPPPPP
+WPPWPPWPPW
+Participant's output
+18
+Jury's answer
+18
+Checker comment
+ok answer is 18
+
+
+71
+
+Time: 0 ms, memory: 4 KB
+Verdict: OK
+Input
+10 10
+WPPPPWPPWP
+PPPWPPPPPP
+PWPPPPWPPP
+PPPPWPPPWP
+WPPPPPPPPP
+PPPWPPWPPP
+PWPPPPPPWP
+PPPPWPPPPP
+WPPPPPWPPP
+PPPWPPPPWP
+Participant's output
+18
+Jury's answer
+18
+Checker comment
+ok answer is 18
+
+
+72
+
+Time: 0 ms, memory: 0 KB
+Verdict: OK
+Input
+4 4
+.P..
+.W..
+.P..
+..W.
+Participant's output
+1
+Jury's answer
+1
+Checker comment
+ok answer is 1
+
+
+73
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+4 1
+.
+.
+W
+P
+Participant's output
+1
+Jury's answer
+1
+Checker comment
+ok answer is 1
+
+
+74
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+10 10
+WPPPPWPPWP
+PPPWPPPPPP
+PWPPPPWPPP
+PPPPWPPPWP
+WPPPPPPPPP
+PPPWPPWPPP
+PWPPPPPPWP
+PPPPWPPPPP
+WPPPPPWPPP
+PPPWPPPPWP
+Participant's output
+18
+Jury's answer
+18
+Checker comment
+ok answer is 18
+
+
+75
+
+Time: 30 ms, memory: 0 KB
+Verdict: OK
+Input
+3 3
+PWP
+...
+W..
+Participant's output
+1
+Jury's answer
+1
+Checker comment
+ok answer is 1
+
+
+76
+
+Time: 30 ms, memory: 4 KB
+Verdict: OK
+Input
+2 3
+WWP
+PPP
+Participant's output
+2
+Jury's answer
+2
+Checker comment
+ok answer is 2

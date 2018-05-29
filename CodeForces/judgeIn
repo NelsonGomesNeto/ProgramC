@@ -1,52 +1,13 @@
-inputCopy
+InputCopy
+2 3
+PPW
+W.P
+OutputCopy
 2
-2 0
-0 2
-outputCopy
-90.0000000000
-inputCopy
-3
-2 0
-0 2
--2 2
-outputCopy
-135.0000000000
-inputCopy
-4
-2 0
-0 2
--2 0
-0 -2
-outputCopy
-270.0000000000
-inputCopy
-2
-2 1
-1 2
-outputCopy
-36.8698976458
-input
-10
-21 0
-22 1
-30 0
-20 0
-28 0
-29 0
-21 -1
-30 1
-24 1
-26 0
-output
-5.3288731964
-input
-2
-1 1
-2 2
-output
-0.0000000000
-input
-1
-1 1
-output
-0.0000000000
+InputCopy
+3 3
+P.W
+.P.
+W.P
+OutputCopy
+0

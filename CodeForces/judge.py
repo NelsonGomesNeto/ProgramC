@@ -14,7 +14,7 @@ def inToAuxFile(auxFile, inputFile, stopKey):
         try:
             line = inputFile.readline().decode("ascii")
             data += [line]
-            if (stopKey in data[len(data) - 1] or data[len(data) - 1] == ''):
+            if (stopKey in data[len(data) - 1].lower() or data[len(data) - 1] == ''):
                 normal = data[len(data) - 1] != ''
                 break
         except:
@@ -26,7 +26,7 @@ def inToAuxFile(auxFile, inputFile, stopKey):
     return(normal)
 
 arg = sys.argv
-os.system("g++ %s -o test" % (arg[1]))
+os.system("g++ %s -o test -std=c++11" % (arg[1]))
 
 inputFile = open("judgeIn", "rb")
 inputFile.readline()
@@ -37,9 +37,9 @@ while (True):
     ended = (inToAuxFile(auxIn, inputFile, "output") == 0)
     ended = max(ended, (inToAuxFile(auxOut, inputFile, "input") == 0))
     os.system("./test < auxIn > tryOut")
-    #tryOut = open("tryOut", "rb")
+    tryOut = open("tryOut", "rb")
     print("Test Case %d:" % testCase, filecmp.cmp("auxOut", "tryOut"))
     testCase += 1
     if (ended): break
-    #tryOut.close()
+    tryOut.close()
 inputFile.close()
