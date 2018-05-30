@@ -1,13 +1,15 @@
 InputCopy
-2 3
-PPW
-W.P
+++-+-
++-+-+
 OutputCopy
-2
+1.000000000000
 InputCopy
-3 3
-P.W
-.P.
-W.P
++-+-
++-??
 OutputCopy
-0
+0.500000000000
+InputCopy
++++
+??-
+OutputCopy
+0.000000000000

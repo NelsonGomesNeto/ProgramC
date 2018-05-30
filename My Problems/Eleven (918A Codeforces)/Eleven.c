@@ -1,25 +1,17 @@
 #include <stdio.h>
-int isFib[2000];
 
-int fib(int n)
+void fillWithFib(int a, int b, int n, char name[])
 {
-  if (n <= 1) return(1);
-  int ans = fib(n - 1) + fib(n - 2);
-  isFib[ans] = 1;
-  return(ans);
-}
-
-void print(int i, int n)
-{
-  if (i > n) return;
-  printf("%c%s", isFib[i] ? 'O' : 'o', i == n ? "\n" : "\0");
-  print(i + 1, n);
+  if (a > n) return;
+  name[a - 1] = 'O';
+  fillWithFib(b, a + b, n, name);
 }
 
 int main()
 {
   int n; scanf("%d", &n);
-  fib(16); isFib[1] = isFib[2] = 1;
-  print(1, n);
+  char name[n + 1]; for (int i = 0; i < n; i ++) name[i] = 'o'; name[n] = '\0';
+  fillWithFib(1, 1, n, name);
+  printf("%s\n", name);
   return(0);
 }

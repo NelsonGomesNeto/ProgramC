@@ -1,5 +1,5 @@
 from heapq import *
-DEBUG = 1
+DEBUG = 0
 
 def inOrderPrint(tree):
   if (tree == None): return
@@ -24,7 +24,7 @@ pq = []
 for i in range(256):
   if (frequency[i] == 0):
     continue
-  heappush(pq, [frequency[i], [-i, chr(i), None, None]])
+  heappush(pq, [frequency[i], [i, chr(i), None, None]])
 if (DEBUG): print(pq)
 
 while (len(pq) > 1):
@@ -32,7 +32,7 @@ while (len(pq) > 1):
   b = heappop(pq)
   aF, aT = a
   bF, bT = b
-  heappush(pq, [aF + bF, [-ord('*'), '*', aT, bT]])
+  heappush(pq, [aF + bF, [ord('*'), '*', aT, bT]])
   if (DEBUG): print(pq)
 huffTree = heappop(pq)[1]
 if (DEBUG): print(huffTree)
