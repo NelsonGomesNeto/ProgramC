@@ -1,0 +1,466 @@
+31
+
+
+1
+
+Time: 15 ms, memory: 3276 KB
+Verdict: OK
+Input
+R
+s;;upimrrfod;pbr
+Participant's output
+allyouneedislove
+Jury's answer
+allyouneedislove
+Checker comment
+ok "allyouneedislove"
+
+
+2
+
+Time: 15 ms, memory: 3284 KB
+Verdict: OK
+Input
+R
+wertyuiop;lkjhgfdsxcvbnm,.
+Participant's output
+qwertyuiolkjhgfdsazxcvbnm,
+Jury's answer
+qwertyuiolkjhgfdsazxcvbnm,
+Checker comment
+ok "qwertyuiolkjhgfdsazxcvbnm,"
+
+
+3
+
+Time: 15 ms, memory: 3284 KB
+Verdict: OK
+Input
+L
+zxcvbnm,kjhgfdsaqwertyuio
+Participant's output
+xcvbnm,.lkjhgfdswertyuiop
+Jury's answer
+xcvbnm,.lkjhgfdswertyuiop
+Checker comment
+ok "xcvbnm,.lkjhgfdswertyuiop"
+
+
+4
+
+Time: 0 ms, memory: 3280 KB
+Verdict: OK
+Input
+R
+bubbuduppudup
+Participant's output
+vyvvysyooysyo
+Jury's answer
+vyvvysyooysyo
+Checker comment
+ok "vyvvysyooysyo"
+
+
+5
+
+Time: 0 ms, memory: 3268 KB
+Verdict: OK
+Input
+L
+gggggggggggggggggggggggggggggggggggggggggg
+Participant's output
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+Jury's answer
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+Checker comment
+ok "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+
+
+6
+
+Time: 15 ms, memory: 3264 KB
+Verdict: OK
+Input
+R
+gggggggggggggggggggggggggggggggggggggggggg
+Participant's output
+ffffffffffffffffffffffffffffffffffffffffff
+Jury's answer
+ffffffffffffffffffffffffffffffffffffffffff
+Checker comment
+ok "ffffffffffffffffffffffffffffffffffffffffff"
+
+
+7
+
+Time: 15 ms, memory: 3276 KB
+Verdict: OK
+Input
+L
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+Participant's output
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+Jury's answer
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+Checker comment
+ok "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh...hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+
+
+8
+
+Time: 15 ms, memory: 3264 KB
+Verdict: OK
+Input
+R
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+Participant's output
+fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+Jury's answer
+fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+Checker comment
+ok "ffffffffffffffffffffffffffffff...fffffffffffffffffffffffffffffff"
+
+
+9
+
+Time: 15 ms, memory: 3276 KB
+Verdict: OK
+Input
+L
+xgwurenkxkiau,c,vonei.zltazmnkhqtwuogkgvgckvja,z.rhanuy.ybebmzcfwozkwvuuiolaqlgvvvewnbuinrncgjwjdsfw
+Participant's output
+cheitrmlclosi.v.bpmro/x;ysx,mljwyeiphlhbhvlbks.x/tjsmiu/unrn,xvgepxlebiiop;sw;hbbbremniomtmvhkekfdge
+Jury's answer
+cheitrmlclosi.v.bpmro/x;ysx,mljwyeiphlhbhvlbks.x/tjsmiu/unrn,xvgepxlebiiop;sw;hbbbremniomtmvhkekfdge
+Checker comment
+ok "cheitrmlclosi.v.bpmro/x;ysx,ml...biiop;sw;hbbbremniomtmvhkekfdge"
+
+
+10
+
+Time: 0 ms, memory: 3252 KB
+Verdict: OK
+Input
+L
+uoz.vmks,wxrb,nwcvdzh.m,hwsios.lvu,ktes,,ythddhm.sh,d,c,cfj.wqam,bowofbyx,jathqayhreqvixvbmgdokofmym
+Participant's output
+ipx/b,ld.ectn.mevbfxj/,.jedopd/;bi.lyrd..uyjffj,/dj.f.v.vgk/ews,.npepgnuc.ksyjwsujtrwbocbn,hfplpg,u,
+Jury's answer
+ipx/b,ld.ectn.mevbfxj/,.jedopd/;bi.lyrd..uyjffj,/dj.f.v.vgk/ews,.npepgnuc.ksyjwsujtrwbocbn,hfplpg,u,
+Checker comment
+ok "ipx/b,ld.ectn.mevbfxj/,.jedopd...gnuc.ksyjwsujtrwbocbn,hfplpg,u,"
+
+
+11
+
+Time: 15 ms, memory: 3276 KB
+Verdict: OK
+Input
+R
+oedjyrvuw/rn.v.hdwndbiposiewgsn.pnyf;/tsdohp,hrtd/mx,;coj./billd..mwbneohcikrdes/ucjr,wspthleyp,..f,
+Participant's output
+iwshtecyq.eb,c,gsqbsvuoiauwqfab,obtdl.rasigomgers.nzmlxih,.vukks,,nqvbwigxujeswa.yxhemqaorgkwtom,,dm
+Jury's answer
+iwshtecyq.eb,c,gsqbsvuoiauwqfab,obtdl.rasigomgers.nzmlxih,.vukks,,nqvbwigxujeswa.yxhemqaorgkwtom,,dm
+Checker comment
+ok "iwshtecyq.eb,c,gsqbsvuoiauwqfa...bwigxujeswa.yxhemqaorgkwtom,,dm"
+
+
+12
+
+Time: 15 ms, memory: 3272 KB
+Verdict: OK
+Input
+R
+vgj;o;ijrtfyck,dthccioltcx,crub;oceooognsuvfx/kgo.fbsudv,yod.erdrxhbeiyltxhnrobbb;ydrgroefcr/f;uvdjd
+Participant's output
+cfhliluherdtxjmsrgxxuikrxzmxeyvlixwiiifbaycdz.jfi,dvayscmtis,wesezgvwutkrzgbeivvvltsefeiwdxe.dlycshs
+Jury's answer
+cfhliluherdtxjmsrgxxuikrxzmxeyvlixwiiifbaycdz.jfi,dvayscmtis,wesezgvwutkrzgbeivvvltsefeiwdxe.dlycshs
+Checker comment
+ok "cfhliluherdtxjmsrgxxuikrxzmxey...utkrzgbeivvvltsefeiwdxe.dlycshs"
+
+
+13
+
+Time: 15 ms, memory: 3288 KB
+Verdict: OK
+Input
+L
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+Participant's output
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+Jury's answer
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+Checker comment
+ok "wwwwwwwwwwwwwwwwwwwwwwwwwwwwww...wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
+
+
+14
+
+Time: 15 ms, memory: 3264 KB
+Verdict: OK
+Input
+L
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+Participant's output
+pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
+Jury's answer
+pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
+Checker comment
+ok "pppppppppppppppppppppppppppppp...ppppppppppppppppppppppppppppppp"
+
+
+15
+
+Time: 15 ms, memory: 3280 KB
+Verdict: OK
+Input
+L
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Participant's output
+....................................................................................................
+Jury's answer
+....................................................................................................
+Checker comment
+ok "................................................................"
+
+
+16
+
+Time: 0 ms, memory: 3268 KB
+Verdict: OK
+Input
+L
+zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+Participant's output
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Jury's answer
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Checker comment
+ok "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+
+17
+
+Time: 15 ms, memory: 3272 KB
+Verdict: OK
+Input
+R
+....................................................................................................
+Participant's output
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Jury's answer
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Checker comment
+ok ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,...,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"
+
+
+18
+
+Time: 0 ms, memory: 3276 KB
+Verdict: OK
+Input
+R
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+Participant's output
+iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+Jury's answer
+iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+Checker comment
+ok "iiiiiiiiiiiiiiiiiiiiiiiiiiiiii...iiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+
+
+19
+
+Time: 15 ms, memory: 3288 KB
+Verdict: OK
+Input
+R
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+Participant's output
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+Jury's answer
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+Checker comment
+ok "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqq...qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
+
+
+20
+
+Time: 0 ms, memory: 3276 KB
+Verdict: OK
+Input
+R
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Participant's output
+zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+Jury's answer
+zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+Checker comment
+ok "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz...zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+
+
+21
+
+Time: 15 ms, memory: 3272 KB
+Verdict: OK
+Input
+L
+q
+Participant's output
+w
+Jury's answer
+w
+Checker comment
+ok "w"
+
+
+22
+
+Time: 15 ms, memory: 3280 KB
+Verdict: OK
+Input
+L
+o
+Participant's output
+p
+Jury's answer
+p
+Checker comment
+ok "p"
+
+
+23
+
+Time: 15 ms, memory: 3268 KB
+Verdict: OK
+Input
+L
+,
+Participant's output
+.
+Jury's answer
+.
+Checker comment
+ok "."
+
+
+24
+
+Time: 0 ms, memory: 3284 KB
+Verdict: OK
+Input
+L
+z
+Participant's output
+x
+Jury's answer
+x
+Checker comment
+ok "x"
+
+
+25
+
+Time: 15 ms, memory: 3284 KB
+Verdict: OK
+Input
+R
+.
+Participant's output
+,
+Jury's answer
+,
+Checker comment
+ok ","
+
+
+26
+
+Time: 15 ms, memory: 3284 KB
+Verdict: OK
+Input
+R
+o
+Participant's output
+i
+Jury's answer
+i
+Checker comment
+ok "i"
+
+
+27
+
+Time: 0 ms, memory: 3272 KB
+Verdict: OK
+Input
+R
+w
+Participant's output
+q
+Jury's answer
+q
+Checker comment
+ok "q"
+
+
+28
+
+Time: 15 ms, memory: 3264 KB
+Verdict: OK
+Input
+R
+x
+Participant's output
+z
+Jury's answer
+z
+Checker comment
+ok "z"
+
+
+29
+
+Time: 0 ms, memory: 3260 KB
+Verdict: OK
+Input
+R
+,./
+Participant's output
+m,.
+Jury's answer
+m,.
+Checker comment
+ok "m,."
+
+
+30
+
+Time: 15 ms, memory: 3248 KB
+Verdict: OK
+Input
+R
+wertuk;;/
+Participant's output
+qweryjll.
+Jury's answer
+qweryjll.
+Checker comment
+ok "qweryjll."
+
+
+31
+
+Time: 15 ms, memory: 3280 KB
+Verdict: OK
+Input
+L
+..
+Participant's output
+//
+Jury's answer
+//
+Checker comment
+ok "//"
