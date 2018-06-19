@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #define DEBUG if(0)
 using namespace std;
-double pi = acos(-1);
+double pi = acos(-1); int n;
 
 typedef struct point
 {
@@ -41,19 +41,20 @@ void printPoints(point p[], int size)
   printf("\n");
 }
 
-int dfs(vector<int> graph[], int u, int visited[])
+int dfs(vector<int> graph[], int u, int level[])
 {
-  if (visited[u]) return(0);
-  visited[u] = 1;
-  int maxLevel = 0;
-  for (auto v: graph[u])
-    maxLevel = max(maxLevel, 1 + dfs(graph, v, visited));
-  return(maxLevel);
+  if (level[u] == -1)
+  {
+    level[u] = 0;
+    for (auto v: graph[u])
+      level[u] = max(level[u], 1 + dfs(graph, v, level));
+  }
+  return(level[u]);
 }
 
 int main()
 {
-  int n, xa, xb; scanf("%d %d %d", &n, &xa, &xb);
+  int xa, xb; scanf("%d %d %d", &n, &xa, &xb);
   point p[n];
   for (int i = 0; i < n; i ++)
   {
@@ -65,17 +66,21 @@ int main()
   sort(p, p+n, sortByY);
   DEBUG printPoints(p, n);
 
-  vector<int> canPair[n], canPair2[n];
+  vector<int> canPair[n];
 
-  for (int i = 0; i < n; i ++)
-    for (int j = i + 1; j < n; j ++)
-      if (p[i].y < p[j].y && p[i].angleA < p[j].angleA && p[i].angleB < p[j].angleB)
-        canPair[i].push_back(j);
+  // for (int i = n - 1; i >= 0; i --)
+  //   for (int j = i - 1; j >= 0; j --)
+  //   {
+  //     double mod = module({p[i].x - p[j].x, p[i].y - p[j].y}), co = (p[i].y - p[j].y);
+  //     double h1 = co / sin(p[i].angleA), h2 = co / sin(p[i].angleB);
+  //     if ((p[j].x < p[i].x && mod < h1) || (p[j].x >= p[i].x && mod < h2))
+  //       canPair[j].push_back(i);
+  //   }
 
   for (int i = n - 1; i >= 0; i --)
     for (int j = i - 1; j >= 0; j --)
       if (p[i].y > p[j].y && p[i].angleA > p[j].angleA && p[i].angleB > p[j].angleB)
-        canPair2[i].push_back(j);
+        canPair[j].push_back(i); // The order doesn't matter
 
   DEBUG for (int i = 0; i < n; i ++)
   {
@@ -85,20 +90,15 @@ int main()
     printf(" ¬\n");
   }
 
-  int visited[n], ans = 0;
+  int level[n], ans = 0;
   for (int i = 0; i < n; i ++)
   {
-    memset(visited, 0, sizeof(visited));
-    ans = max(ans, 1 + dfs(canPair, i, visited));
-    memset(visited, 0, sizeof(visited));
-    ans = max(ans, 1 + dfs(canPair2, i, visited));
+    memset(level, -1, sizeof(level));
+    ans = max(ans, 1 + dfs(canPair, i, level));
   }
 
   printf("%d\n", ans);
 
   return(0);
-}
-
-// sin = CO/H || H = CO / sin
-// if (H > module(p1, p2))
+} // sin = CO / H || H = CO / sin
 
