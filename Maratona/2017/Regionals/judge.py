@@ -1,6 +1,9 @@
 import os
+import filecmp
 
-os.system("g++ BBrincadeira.cpp -o test")
-for i in range(1, 49):
-    os.system("./test < ./B/input/B_%d > out" % (i))
-    os.system("cmp out ./B/output/B_%d" % (i))
+os.system("g++ HHipercampo.cpp -o test -std=c++11")
+testCases = os.listdir("./H/input/")
+
+for i in range(1, len(testCases)):
+    os.system("./test < ./H/input/H_%d > out" % (i))
+    print(i, ": ", filecmp.cmp("./H/output/H_%d" % (i), "out"), sep='')
