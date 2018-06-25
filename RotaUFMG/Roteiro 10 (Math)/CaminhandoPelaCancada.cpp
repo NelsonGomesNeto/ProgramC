@@ -1,32 +1,22 @@
 #include <bits/stdc++.h>
+#define lli long long int
+using namespace std;
 
-typedef struct point
+lli euclidesGcd(lli a, lli b)
 {
-  int x, y;
-} point;
-
-double norm(point p)
-{
-  return(sqrt(p.x * p.x + p.y * p.y));
-}
-
-double internProduct(point a, point b)
-{
-  return(a.x * b.x + a.y * b.y);
-}
-
-double angle(point a, point o, point b)
-{
-  point v1 = {b.x - o.x, b.y - o.y}, v2 = {a.x - o.x, a.y - o.y};
-  return(acos(internProduct(v1, v2)/(norm(v1)*norm(v2))));
+  if (!b) return(a);
+  return(euclidesGcd(b, a % b));
 }
 
 int main()
 {
   int t; scanf("%d", &t);
-  int a, b, c, d; scanf("%d %d %d %d", &a, &b, &c, &d);
-  point p1 = {a, b}, p2 = {c, d};
-
-  double cossine = cos()
+  while (t --)
+  {
+    lli a, b, c, d; scanf("%lld %lld %lld %lld", &a, &b, &c, &d);
+    lli x = abs(c - a), y = abs(d - b);
+    lli ans = euclidesGcd(max(x, y), min(y, x));
+    printf("%lld\n", ans + 1);
+  }
   return(0);
 }
