@@ -26,7 +26,7 @@ def inToAuxFile(auxFile, inputFile, stopKey):
     return(normal)
 
 arg = sys.argv
-os.system("g++ %s -o test" % (arg[1]))
+os.system("g++-7 %s -o test -std=c++17" % (arg[1]))
 
 inputFile = open("judgeIn", "rb")
 inputFile.readline()
