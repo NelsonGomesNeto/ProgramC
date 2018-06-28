@@ -1,15 +1,26 @@
 inputCopy
-15 3
-cccaabababaccbc
+3
+XS
+XS
+M
+XL
+S
+XS
 outputCopy
-cccbbabaccbc
+2
 inputCopy
-15 9
-cccaabababaccbc
+2
+XXXL
+XXL
+XXL
+XXXS
 outputCopy
-cccccc
+1
 inputCopy
-1 1
-u
+2
+M
+XS
+XS
+M
 outputCopy
-
+0
