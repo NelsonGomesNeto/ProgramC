@@ -1,31 +1,49 @@
 #include <bits/stdc++.h>
+#define DEBUG if(0)
 using namespace std;
 
-#define ll long long
+void printArray(int a[], int size)
+{
+  for (int i = 0; i < size; i ++) printf("%d%c", a[i], i < size - 1 ? ' ' : '\n');
+}
 
-const int mxN=2e5;
-int n, a[2*mxN];
-ll l[mxN], r[mxN], pts[2*mxN], ans[mxN+1];
+void printSet(set<int> s)
+{
+  for (auto i: s) printf("%d ", i);
+  printf("\n");
+}
 
-int main() {
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);
+int validRange(set<int> range)
+{
+  if (range.empty()) return(1);
+  return((*range.rbegin() - *range.begin()) <= 1);
+}
 
-	cin >> n;
-	for(int i=0; i<n; ++i) {
-		cin >> l[i] >> r[i];
-		pts[2*i]=l[i];
-		pts[2*i+1]=r[i]+1;
-	}
-	sort(pts, pts+2*n);
-	for(int i=0; i<n; ++i) {
-		++a[lower_bound(pts, pts+2*n, l[i])-pts];
-		--a[upper_bound(pts, pts+2*n, r[i])-pts];
-	}
-	for(int i=0; i<2*n-1; ++i) {
-		ans[a[i]]+=pts[i+1]-pts[i];
-		a[i+1]+=a[i];
-	}
-	for(int i=1; i<=n; ++i)
-		cout << ans[i] << " ";
+int main()
+{
+  int n; scanf("%d", &n);
+  int a[n]; for (int i = 0; i < n; i ++) scanf("%d", &a[i]);
+
+  int app[100001]; memset(app, 0, sizeof(app));
+  int lo = 0, hi = 0, ans = 1; set<int> range;
+  while (lo < n && hi < n)
+  {
+    while (hi < n && validRange(range))
+    {
+      // printSet(range);
+      // printf("%d %d (%d %d) %d\n", lo, hi, *range.end(), *range.begin(), a[hi]);
+      app[a[hi]] ++; range.insert(a[hi]);
+      if (validRange(range)) ans = max(ans, hi - lo + 1);
+      hi ++;
+    }
+    while (lo < n && hi < n && !validRange(range))
+    {
+      app[a[lo]] --; if (!app[a[lo]]) range.erase(a[lo]);
+      lo ++;
+    }
+  }
+
+  printf("%d\n", ans);
+
+  return(0);
 }

@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#define DEBUG if(1)
+#define DEBUG if(0)
 using namespace std;
 
 void printArray(int a[], int size)
@@ -24,23 +24,29 @@ int main()
   int n; scanf("%d", &n);
   int a[n]; for (int i = 0; i < n; i ++) scanf("%d", &a[i]);
 
-  int app[100001]; memset(app, 0, sizeof(app));
-  int lo = 0, hi = 0, ans = 1; set<int> range;
-  while (lo < n && hi < n)
+  int last[100001], lo = 0, hi = 0, minimum = a[0], maximum = a[0], ans = 1;
+  while (hi < n)
   {
-    while (hi < n && validRange(range))
+    last[a[hi]] = hi;
+    while (hi + 1 < n && a[hi] == a[hi + 1]) hi ++;
+    maximum = max(maximum, a[hi]);
+    minimum = min(minimum, a[hi]);
+    DEBUG printf("%d %d %d %d\n", lo, hi, maximum, minimum);
+    if (maximum - minimum > 1)
     {
-      // printSet(range);
-      // printf("%d %d (%d %d) %d\n", lo, hi, *range.end(), *range.begin(), a[hi]);
-      app[a[hi]] ++; range.insert(a[hi]);
-      if (validRange(range)) ans = max(ans, hi - lo + 1);
-      hi ++;
+      if (minimum == a[hi])
+      {
+        lo = last[a[hi] + 1];
+        maximum = a[hi] + 1;
+      }
+      else if (maximum == a[hi])
+      {
+        lo = last[a[hi] - 1];
+        minimum = a[hi] - 1;
+      }
     }
-    while (lo < n && hi < n && !validRange(range))
-    {
-      app[a[lo]] --; if (!app[a[lo]]) range.erase(a[lo]);
-      lo ++;
-    }
+    ans = max(ans, hi - lo + 1);
+    hi ++;
   }
 
   printf("%d\n", ans);
