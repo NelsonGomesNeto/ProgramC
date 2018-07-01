@@ -2,18 +2,13 @@ from random import random, randint, shuffle
 import filecmp, os
 
 while (1):
-  n = 10
+  n, b = randint(2, 10), randint(1, 100)
   a = []
-  now = randint(1, 10)
   for i in range(n):
-    a += [now]
-    now = randint(1, 10)
-    # next = randint(-1, 1)
-    # if (now + next > 0):
-    #   now += next
+    a += [randint(1, 100)]
 
   f = open("auxIn", "w")
-  print(n, file=f)
+  print(n, b, file=f)
   print(*a, file=f)
   f.close()
   print(*a)

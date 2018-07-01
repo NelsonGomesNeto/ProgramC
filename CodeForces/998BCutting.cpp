@@ -12,11 +12,11 @@ int solve(int a[], int i, int prev, int b)
   }
   if (b < 0) return(-inf);
 
-  if (dp[i][b][prev] != -2)
+  if (dp[i][b][prev] == -1)
   {
     int ans = solve(a, i + 1, prev, b);
     if (even[i] - even[prev] == odd[i] - odd[prev])
-      ans = max(ans, 1 + solve(a, i + 1, i, b - abs(a[i] - a[prev])));
+      ans = max(ans, 1 + solve(a, i + 1, i, b - abs(a[i] - a[i - 1])));
     dp[i][b][prev] = ans;
   }
 
