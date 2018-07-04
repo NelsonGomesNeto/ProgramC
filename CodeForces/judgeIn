@@ -1,20 +1,25 @@
 inputCopy
-5 1 10
-01000
-outputCopy
-11
-inputCopy
-5 10 1
-01000
+3
+0 0 10
 outputCopy
 2
 inputCopy
-7 2 3
-1111111
+5
+0 1 2 3 4
 outputCopy
-0
+1
 inputCopy
-5 10 10
-10101
+4
+0 0 0 0
 outputCopy
-20
+4
+inputCopy
+9
+0 1 0 2 0 1 1 2 10
+outputCopy
+3
+inputCopy
+10
+5 5 5 5 5 5 5 5 5 5
+outputCopy
+2
