@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#define DEBUG if(0)
 using namespace std;
 #define lli long long int
 unordered_map<lli, lli> dp;
@@ -12,26 +13,34 @@ int main()
   while (q --)
   {
     lli query; scanf("%lld", &query);
-    if (query & 1)
-      printf("-1\n");
-    else
-    {
-      if (!dp.count(query))
+    int amount = 0, qq = query, now = n;
+    // if (!dp.count(qq))
+    // {
+      do
       {
-        int amount = 0, now = n;
-        do
+        int pos = lower_bound(a, a+now, query) - a;
+        pos = min(pos, now - 1);
+        while (pos > -1 && a[pos] > query) pos --;
+        if (pos < 0) { amount = -1; break; }
+        int divi = query / a[pos];
+        if (divi > 1)
         {
-          int pos = lower_bound(a, a+now, query) - a;
-          pos = min(pos, now - 1);
-          // printf("%d %lld %lld\n", pos, a[pos], query);
+          int low = lower_bound(a, a+now, a[pos]) - a;
+          int quantity = min(pos - low + 1, divi);
+          now = pos - quantity + 1; amount += quantity;
+          query -= quantity * a[pos];
+        }
+        else
+        {
           now = pos; amount ++;
-          if (a[pos] == query) break;
           query -= a[pos];
-        } while(1);
-        dp[query] = amount;
-      }
-      printf("%lld\n", dp[query]);
-    }
+        }
+        DEBUG printf("%d %lld %lld\n", pos, a[pos], query);
+      } while(query);
+    //   dp[qq] = amount;
+    // }
+    // printf("%lld\n", dp[qq]);
+    printf("%d\n", amount);
   }
   return(0);
 }
