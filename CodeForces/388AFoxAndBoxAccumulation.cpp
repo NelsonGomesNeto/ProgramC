@@ -13,16 +13,20 @@ int main()
   sort(a, a+n);
 
   int blocks = 0;
-  for (int i = 0; i < n;)
+  for (int i = 1; i <= n; i ++)
   {
-    int now = 0;
-    while (i < n && small == a[i])
+    int can = 1;
+    for (int j = 0; j < i; j ++)
     {
-      i ++;
-      now ++;
+      int now = 1 << 20;
+      for (int at = n - j - 1; at >= 0; at -= i)
+      {
+        now = min(now - 1, a[at]);
+        if (now < 0) can = 0;
+      }
     }
-    blocks = max(blocks, now);
-    if (i < n) small = a[i];
+    blocks = i;
+    if (can) break;
   }
   printf("%d\n", blocks);
 
