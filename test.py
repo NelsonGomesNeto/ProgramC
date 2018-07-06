@@ -1,2 +1,5 @@
-lol = eval(open("in", "r").read())
-print(lol)
+try:
+  lol = input()
+except EOFError:
+  pass
+
