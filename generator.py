@@ -1,15 +1,31 @@
 from random import randint
-import os
+import os, time
+from filecmp import cmp
 
-f = open("judgeIn", "w")
-for i in range(10):
-    size = 1000000
-    a = [randint(-1000000, 1000000) for j in range(size)]
-    print("input", file=f)
-    print(size, file=f)
-    print(*a, file=f)
-    print("output", file=f)
-    a.sort()
-    print(*a, file=f)
-print(file=f)
-f.close()
+while (True):
+
+  size = int(input())
+  a = []
+  for i in range(size):
+    a += [randint(-1000000, 1000000)]
+
+  testCase = open("in", "w")
+  print(size, file=testCase)
+  print(*a, file=testCase)
+  testCase.close()
+
+  correct = open("out", "w")
+  print("Before:", *a, file=correct)
+  a.sort()
+  print("After:", *a, file=correct)
+  correct.close()
+
+  startTime = time.time()
+  os.system("./test < in > tryOut")
+  endTime = time.time()
+
+  print("Size of test:", size)
+  print("Verdict:", cmp("out", "tryOut"))
+  print("Sorting time: %.5lfs" % (endTime - startTime))
+  print()
+
