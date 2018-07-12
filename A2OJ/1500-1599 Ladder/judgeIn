@@ -1,39 +1,15 @@
 inputCopy
-3 4
-AAAA
-ABCA
-AAAA
+4 2
+1 2 2 3
 outputCopy
-Yes
+1 2
 inputCopy
-3 4
-AAAA
-ABCA
-AADA
+8 3
+1 1 2 2 3 3 4 5
 outputCopy
-No
+2 5
 inputCopy
-4 4
-YYYR
-BYBY
-BBBY
-BBBY
+7 4
+4 7 7 4 7 4 7
 outputCopy
-Yes
-inputCopy
-7 6
-AAAAAB
-ABBBAB
-ABAAAB
-ABABBB
-ABAAAB
-ABBBAB
-AAAAAB
-outputCopy
-Yes
-inputCopy
-2 13
-ABCDEFGHIJKLM
-NOPQRSTUVWXYZ
-outputCopy
-No
+-1 -1
