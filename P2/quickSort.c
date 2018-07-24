@@ -27,7 +27,7 @@ void quickSort(int a[], int start, int end)
   }
   else
   {
-    printStep(a, start, end); steps ++;
+    // printStep(a, start, end); steps ++;
     int mid = (start + end) / 2;
     int pivor = a[mid];
     int first = start, last = end;
@@ -47,18 +47,18 @@ void quickSort(int a[], int start, int end)
 
 int main()
 {
-  int i, tam = 0, array[1000];
+  int i, tam = 0, array[1000001];
   while (scanf("%d", &array[tam]) != EOF)
   {
     tam ++;
   }
   steps = 0;
   quickSort(array, 0, tam - 1);
-  printf("%d ~~ ", tam);
+  printf("%d ~~", tam);
   for (i = 0; i < tam; i ++)
   {
-    printf("%d ", array[i]);
+    printf(" %d", array[i]);
   } printf("\n");
-  printf("%d steps\n", steps);
+  // printf("%d steps\n", steps);
   return(0);
 }
