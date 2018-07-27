@@ -1,30 +1,26 @@
-function shellSort(size is int, arr is array[] of int) {
-  h is int
-  h = size / 3
-  repeat while (h > 0) {
-    i is int
-    repeat (i = h to (size - 1)) {
-      temp, j is int
-      temp = arr[i]
-      repeat while (j >= h && arr[j - h] > temp) {
-        arr[j] = a[j - h]
-        j = j - h
-      }
-      arr[j] = temp
-    }
-    h /= 2
-  }
+#include <stdio.h>
+
+void functionWithoutReference(int a)
+{
+  a = 1;
 }
 
-@isEntryPoint
-function main() {
-  i, size is int
-  size = lineIn() as int
-  arr is array[size] of int
-  line is array[size] of string
-  line = split(lineIn(), ' ')
-  repeat (i = 0 to size - 1) {
-    arr[i] = line[i] as int
-  }
-  shellSort(size, arr)
+void functionWithReference(int *a)
+{
+  *a = 1;
+}
+
+void swap(int *a, int *b)
+{
+  int aux = *a;
+  *a = *b;
+  *b = aux;
+}
+
+int main()
+{
+  int a, b; scanf("%d %d", &a, &b);
+  printf("Before: %d %d\n", a, b);
+  swap(&a, &b);
+  printf("After: %d %d\n", a, b);
 }
