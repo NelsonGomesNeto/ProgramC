@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
+#define lli long long int
 using namespace std;
 
-int gdc(int a, int b)
+lli gdc(lli a, lli b)
 {
   if (!b) return(a);
   return(gcd(b, a % b));
@@ -23,9 +24,12 @@ int main()
     g = gcd(g, divi[i]);
   divi.push_back(g);
 
-  for (int i = 0; i < divi.size(); i ++)
-    for (int j = divi[i]; j < k; j += g)
+    for (lli j = g, kk = 0; kk < 2; j += g)
+    {
+      j %= k;
+      if (j == g) kk ++;
       rem[j] = 1;
+    }
 
   // for (int i = 0; i < divi.size(); i ++)
   //   if (divi[i])
