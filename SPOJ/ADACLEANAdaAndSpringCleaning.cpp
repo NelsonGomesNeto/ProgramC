@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-set<deque<char> > activities[(int) 26e5];
+unordered_map<deque<char>, int> activities[(int) 26e5];
 int dp[(int) 26e5];
 
 int main()
@@ -17,7 +17,7 @@ int main()
       scanf("%c", &aux);
       s.push_back(aux); sum += aux - 'a';
     }
-    activities[sum].insert(s); lastBig = sum;
+    activities[sum][s] = 1; lastBig = sum;
 
     int total = 1;
     for (int i = k; i < n; i ++)
@@ -26,7 +26,7 @@ int main()
       scanf("%c", &aux);
       sum += aux - 'a'; s.push_back(aux);
       int prevSize = activities[sum].size();
-      activities[sum].insert(s); lastBig = max(lastBig, sum);
+      activities[sum][s] = 1; lastBig = max(lastBig, sum);
       if (activities[sum].size() > prevSize) total ++;
     }
 
