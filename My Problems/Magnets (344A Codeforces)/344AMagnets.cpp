@@ -11,7 +11,7 @@ int main()
 		if (prev != magnet)
 		{
 			groups ++;
-			if (prev != -1) now = 0;
+			if (prev != -1) now = 1;
 		}
 		else now ++;
 
