@@ -2,13 +2,13 @@ inf = 1e83921839210
 
 def columns(graph):
     s = ""
-    for u in graph:
+    for u in sorted(graph):
         s += "|  " + str(u) + "  "
     return(s)
 
 def inside(array): # It's actually a map haha
     s = ""
-    for i in array:
+    for i in sorted(array):
         size = len(str(array[i]))
         # print(array[i], size)
         s += "| "
@@ -22,8 +22,8 @@ def inside(array): # It's actually a map haha
 
     return(s)
 
-def printEveryPath(graph, prev, source):
-    for u in graph:
+def printEveryPath(graph, prev, cost, source):
+    for u in sorted(graph):
         if (u == source or prev[u] == '-'): continue
         now, path = prev[u], [u]
         while (now != source):
@@ -31,7 +31,7 @@ def printEveryPath(graph, prev, source):
             now = prev[now]
         path += [source]
         path.reverse()
-        print("Path to ", u, ": ", *path, sep='')
+        print("Path to ", u, ": ", *path, ", cost: ", cost[u], sep='')
 
 def bellmanFord(graph, source, verbose):
     cost, prev, step = {}, {}, 1
@@ -74,4 +74,4 @@ cost, prev = bellmanFord(graph, source, True)
 print()
 print("Cost:", cost)
 print("Prev:", prev)
-printEveryPath(graph, prev, source)
+printEveryPath(graph, prev, cost, source)
