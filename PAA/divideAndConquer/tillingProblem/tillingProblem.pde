@@ -69,8 +69,8 @@ void putColor(int mi, int mj, int dir, int col) {
 
 void startSolve() {
   now = 0; for (int i = 0; i <= 360; i ++) done[i] = 0;
-  // solveDFS(0, 0, size - 1, size - 1, y, x, 0);
-  solveBFS();
+  solveDFS(0, 0, size - 1, size - 1, y, x, 0);
+  //solveBFS();
 }
 
 void solveDFS(int li, int lj, int hi, int hj, int y, int x, int c) {
@@ -80,7 +80,9 @@ void solveDFS(int li, int lj, int hi, int hj, int y, int x, int c) {
 
   // int newColor; do newColor = int(random(0, 360)); while (done[newColor] == 1);
   // done[newColor] = 1;
+  pg.beginDraw();
   putColor(mi, mj, dir, c);
+  pg.endDraw();
 
   delay(waitTime);
   now ++;
