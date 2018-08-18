@@ -1,0 +1,13 @@
+Caso 1:
+A distancia de Terra para Proxima eh 5 parsecs.
+A distancia de Terra para Barnards eh 0 parsecs.
+A distancia de Terra para Sirius eh 0 parsecs.
+A distancia de Proxima para Terra eh 5 parsecs.
+A distancia de Barnards para Terra eh 5 parsecs.
+A distancia de Sirius para Terra eh 5 parsecs.
+Caso 2:
+A distancia de z2 para z1 eh 17 parsecs.
+A distancia de z1 para z2 eh 0 parsecs.
+A distancia de z1 para z3 eh 10 parsecs.
+Caso 3:
+A distancia de Marte para Jupiter eh 89894 parsecs.

@@ -1,12 +1,8 @@
 A
-A B 12
-A C 4
-B C 6
-C B 10
-B D 6
-C D 2
-C E 2
-D C 8
-E B 2
-D F 6
-E F 6
+A C 1
+C E 1
+C B 1
+B C 1
+D A 2
+D E 1
+E B 3
