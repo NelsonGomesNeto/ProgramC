@@ -1,22 +1,9 @@
-from heapq import *
-
-def prim(graph):
-    mst = [[] for i in range(len(graph))]
-    visited = [0] * len(graph)
-    pq = []
-    cost = 0
-    heappush(pq, [0, 0, -1])
-    while (pq):
-        c, u, prev = heappop(pq)
-        if (visited[u]): continue
-        visited[u] = 1
-        cost += c
-        if (prev != -1):
-            mst[prev] += [[u, c]]
-            mst[u] += [[prev, c]]
-        for v, cc in graph[u]:
-            heappush(pq, [cc, v, u])
-    return(mst, cost)
+def printGraph(graph):
+    for u in range(len(graph)):
+        print(u, end=': ')
+        for v, c in graph[u]:
+            print(v, end=' ')
+        print()
 
 def root(v):
     if (parent[v] < 0):
@@ -51,18 +38,23 @@ def kruskal(edges, n):
             cost += c
     return(mst, cost)
 
-n, m = map(int, input().split())
-# graph = [[] for i in range(n)]
+source = int(input())
+raw = []
+vertices = set()
+while (True):
+    try:
+        line = list(map(int, input().split()))
+        raw += [line]
+        vertices.add(line[0])
+        vertices.add(line[1])
+    except:
+        break
+n = len(vertices)
 edges = []
-for i in range(m):
-    u, v, c = map(int, input().split())
-    u, v = u - 1, v - 1
-    # graph[u] += [[v, c]]
-    # graph[v] += [[u, c]]
+for u, v, c in raw:
     edges += [[c, u, v]]
     edges += [[c, v, u]]
-
-# mst, cost = prim(graph)
-parent = [-1] * n
-mst, cost = kruskal(edges, n)
-print(cost)
+parent = [-1] * (n + 1)
+mst, cost = kruskal(edges, n + 1)
+printGraph(mst)
+print("MST Cost:", cost)
