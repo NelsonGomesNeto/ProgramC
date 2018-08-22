@@ -29,7 +29,7 @@ double calculateInclination(int lo, int hi, int dist)
   double co = (hi - lo);
   double h = dist * dist + co * co;
   double ca = dist;
-  return((acos(ca / h)));
+  return((atan(co / ca)));
 }
 
 double findSteepestInclination(int heights[], int size, int *lo, int *hi)
