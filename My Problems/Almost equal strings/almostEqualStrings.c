@@ -25,13 +25,13 @@ int compare(char a[], char b[])
 
 int main()
 {
-  char a[1000000], b[1000000];
+  char a[10000], b[10000];
   scanf("%s\n%s", a, b);
   int difference = compare(a, b);
   if (!difference)
-    printf("String A can be equal to string B\n");
+    printf("String A is almost equal to string B\n");
   else
-    printf("String A is different by %d characters\n", difference);
+    printf("They differ by %d characters\n", difference);
 
   return(0);
 }

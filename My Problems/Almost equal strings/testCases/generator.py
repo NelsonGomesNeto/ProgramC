@@ -1,15 +1,17 @@
 import os
 from random import randint, shuffle
-os.system("gcc ./../stringCompare.c -o ./../test")
+os.system("gcc ./../almostEqualStrings.c -o ./../test")
+
+maxSize = 1e4
 
 testCases = int(input())
 for t in range(1, testCases + 1):
     f = open("%d.in" % t, "w")
     stringA = ""
-    sizeA = randint(1, 1e6)
+    sizeA = randint(1, maxSize)
     for i in range(sizeA):
         stringA += chr(randint(ord('a'), ord('z')))
-    sizeB = randint(1, 1e6)
+    sizeB = randint(1, maxSize)
     stringB = ""
     for i in range(sizeB):
         stringB += chr(randint(ord('a'), ord('z')))
