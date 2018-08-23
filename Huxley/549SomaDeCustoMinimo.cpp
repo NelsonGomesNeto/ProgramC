@@ -12,7 +12,7 @@ int main()
 
     priority_queue<lli, vector<lli>, greater<lli> > pq;
     pq.push(seed); lli prev = seed;
-    for (int i = 0; i < n; i ++)
+    for (int i = 1; i < n; i ++)
     {
       lli next = (prev * a + b) % c;
       pq.push(next);
@@ -33,7 +33,7 @@ int main()
       sum = n1 + n2;
       if (!pq.empty()) pq.push(n1 + n2);
     }
-    printf("%lld %lld\n", sum, cost);
+    printf("%lld %lld\n", sum, n > 1 ? cost : 0);
   }
   return(0);
 }
