@@ -7,9 +7,6 @@ int main()
   int n, seed, a, b, c;
   while (scanf("%d %d %d %d %d", &n, &seed, &a, &b, &c) != EOF)
   {
-    // lli array[n]; array[0] = seed;
-    // for (int i = 1; i < n; i ++) array[i] = (array[i - 1] * a + b) % c;
-
     priority_queue<lli, vector<lli>, greater<lli> > pq;
     pq.push(seed); lli prev = seed;
     for (int i = 1; i < n; i ++)
