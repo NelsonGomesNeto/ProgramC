@@ -1,16 +1,17 @@
 from heapq import *
 inf = 2**33
 
-def dijkstra(graph, cost, visited, start, end):
+def dijkstra(graph, cost, start, end):
     cost[start] = [0, 0]
     pq = []
-    heappush(pq, [cost[start], start, 0])
+    heappush(pq, [0, start, 0])
     while (pq):
-        v, paid = heappop(pq)[1:]
-        for u in graph[v]:
-            if (cost[v][paid] + u[1] < cost[u[0]][1 - paid]):
-                cost[u[0]][1 - paid] = cost[v][paid] + u[1]
-                heappush(pq, [cost[u[0]][1 - paid], u[0], 1 - paid])
+        prevC, v, even = heappop(pq)
+        if (prevC > cost[v][even]): continue
+        for u, c in graph[v]:
+            if (cost[v][even] + c < cost[u][1 - even]):
+                cost[u][1 - even] = cost[v][even] + c
+                heappush(pq, [cost[u][1 - even], u, 1 - even])
 
 cities, streets = map(int, input().split())
 graph = [[] for i in range(cities + 1)]
@@ -19,8 +20,8 @@ for i in range(streets):
     graph[u] += [[v, c]]
     graph[v] += [[u, c]]
 
-cost, visited = [[inf, inf] for i in range(cities + 1)], [0] * (cities + 1)
-dijkstra(graph, cost, visited, 1, cities)
+cost = [[inf, inf] for i in range(cities + 1)]
+dijkstra(graph, cost, 1, cities)
 
 if (cost[cities][0] == inf):
     print(-1)

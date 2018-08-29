@@ -1,52 +1,50 @@
-def test1(matrix, bl, bc, el, ec):
-  for i in range(bl, el+1):
-    for j in range(bc, ec+1):
-      if(matrix[i][j] == 0):
-        return False
-  return True
+import heapq
 
-def test0(matrix, bl, bc, el, ec):
-  for i in range(bl, el+1):
-    for j in range(bc, ec+1):
-      if(matrix[i][j] == 1):
-        return False
-  return True
+def dijkstra(start, graph, distances):
+    distances[start] = 0
+    pq = []
+    heapq.heappush(pq,[0, start] )
+    #pq.put([0, start])  # Distancia, Node
+    while pq:
+        curr = heapq.heappop(pq)
+        u = curr[1]
+        # print(u)
+        dist = curr[0]
+        if (dist <= distances[u]):
+            for x in graph[u]:
+                v = x[0]
+                w = x[1]
+                if distances[v] > distances[u] + w:
+                    distances[v] = distances[u] + w
+                    #pq.put([-distances[v], v])
+                    heapq.heappush(pq,[distances[v], v])
 
-def bitmap(ma, supl, infl, supc, infc):
-  end = ""
-  if (supl > infl or supc > infc):
-    return end
-  if(test1(ma, supl, supc, infl, infc)):
-    end += "1"
-    return end
-  elif(test0(ma, supl, supc, infl, infc)):
-    end += "0"
-    return end
-  else:
-    end += "D"
-    mL = (supl+infl)//2
-    mC = (supc+infc)//2
-    end += bitmap(ma,supl, mL, supc, mC)
-    end += bitmap(ma,supl, mL, mC+1, infc)
-    end += bitmap(ma,mL+1, infl, supc, mC)
-    end += bitmap(ma,mL+1, infl, mC+1, infc)
-  return end
+def cnvtCalcula(l):  #Converte pra inteiro e j� soma na "soma". Usei no map.
+    global soma
+    l = int(l) -1
+    soma += distances[l]
+    return l
 
 
-n = int(input())
-for i in range(n):
-
-  l, c = map(int, input().split())
-  matrix = [[0 for x in range(c)] for y in range(l)]
-
-  for i in range(l):
-    s = input()
-    for j in range(len(s)):
-      matrix[i][j] = int(s[j])
-  result = bitmap(matrix, 0, l-1, 0, c-1)
-  #print(result)
-  for i in range(len(result)):
-    if (i and i%50 == 0):
-      print('')
-    print(result[i], end ="")
-  print('')
+t = int(input())
+for a in range(t):
+    n_vertices, n_edges = map(int, input().split())
+    graph = {}
+    for b in range(n_edges):
+        u, v, c = map(int, input().split())
+        u = u - 1
+        v = v - 1
+        if u not in graph:
+            graph[u] = []
+        graph[u].append([v, c])
+        if v not in graph:
+            graph[v] = []
+        graph[v].append([u, c])
+    distances = []
+    for b in range(n_vertices):
+        distances.append(2 ** 20)
+    dijkstra(0, graph, distances)
+    n_pedidos = int(input())
+    soma = 0
+    pedidos = list(map(cnvtCalcula, input().split()))
+    print("caso ",a+1,": ",soma*2,sep='')
