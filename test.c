@@ -1,18 +1,69 @@
 #include <stdio.h>
+#include <string.h>
 #include <math.h>
+#include <stdlib.h>
 
-double series(int i, int end, int oddNum, int oddDivi, int evenNum, int evenDivi)
-{
-  if (i == end) return(0);
-  if (i & 1)
-    return((double) evenNum / evenDivi + series(i + 1, end, oddNum, oddDivi, evenNum * 4, evenDivi + 3));
-  else
-    return((double) oddNum / oddDivi + series(i + 1, end, oddNum + 2, oddDivi * 4, evenNum, evenDivi));
+void printar_permutacao(char x[], int aux, int cont, int aux2) {
+    if(aux == cont) {
+        printf("\n");
+    }
+    else if(aux == 0) {
+        printf("Caso %d: %c", aux2, x[aux]);
+        printar_permutacao(x, aux + 1, cont, aux2);
+    }
+    else {
+        printf("%c", x[aux]);
+        printar_permutacao(x, aux + 1, cont, aux2);
+    }
 }
 
-int main()
-{
-  int s; scanf("%d", &s);
-  printf("S: %.2lf\n", series(0, s, 1, 1, 2, 3));
-  return(0);
+
+void maior(char x[], int aux, int aux2, int cont, int aux3) {
+    if(aux == cont) {
+        return;
+    }
+    else if(aux2 == cont) {
+        maior(x, aux + 1, aux + 2, cont, aux3);
+    }
+    else if(x[aux] <= x[aux2]) {
+        aux3 = x[aux];
+        x[aux] = x[aux2];
+        x[aux2] = aux3;
+        maior(x, aux, aux2 + 1, cont, aux3);
+    }
+    else {
+        maior(x, aux, aux2 + 1, cont, aux3);
+    }
+}
+
+int ler_string(char x[], int aux) {
+    scanf("%c", &x[aux]);
+    printf("<%c>\n", x[aux]); // Preste atenção na saída
+    if(x[aux] == '\n') {
+        return 0;
+    }
+    else {
+        return 1 + ler_string(x, aux + 1);
+    }
+}
+
+void permutacao(int n, int aux, char x[]) {
+    if(aux == n) {
+        return;
+    }
+    else {
+        int resultado = ler_string(x, 0);
+        maior(x, 0, 0, resultado, 0);
+        printar_permutacao(x, 0, resultado, aux);
+        permutacao(n, aux + 1, x);
+    }
+}
+
+int main() {
+    int n;
+    char string[100000];
+    scanf("%d", &n); // Depois teste com: scanf("%d\n", &n);
+    permutacao(n, 0, string);
+
+	return 0;
 }
