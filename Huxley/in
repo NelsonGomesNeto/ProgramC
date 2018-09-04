@@ -1,18 +1,12 @@
-4 2
-0 0
-1 1
-2 2
--1 3
-
-Colher
-Plantar
-3
-Temporada
-Colher
-Ataque
-0 0
-Ataque
-3 1
-Colher
-Temporada
-Colher
+9
+MAT1 QUI3
+ART10 ART9
+ART10 ART2
+ECO8 ART10
+MAT1 ING4
+ECO8 ING4
+ING4 ART10
+ING4 MAT7
+MAT7 BIO6
+1
+A Z

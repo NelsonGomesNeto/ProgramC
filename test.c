@@ -1,69 +1,123 @@
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <stdlib.h>
 
-void printar_permutacao(char x[], int aux, int cont, int aux2) {
-    if(aux == cont) {
-        printf("\n");
-    }
-    else if(aux == 0) {
-        printf("Caso %d: %c", aux2, x[aux]);
-        printar_permutacao(x, aux + 1, cont, aux2);
-    }
-    else {
-        printf("%c", x[aux]);
-        printar_permutacao(x, aux + 1, cont, aux2);
-    }
+#include <stdio.h> //biblioteca para entrada e sa?da de texto;
+#include <math.h> //biblioteca para fun??es matematicas;
+//#include <locale.h> //biblioteca para localiza??o internacional, acentos, etc.
+char *eh_primo(int x)
+{
+int i, div = 0;
+for (i=1; i<=x; i++)
+{
+if (x==2) return "True";
+    if (x % i == 0)
+{
+          div++;
+}
+}
+
+if (div == 2)
+{
+return "True";
+}
+else
+{
+return "False";
+}
+}
+
+long int Fatorial(int n)
+{
+long int Fat;
+int i;
+if (n==0 || n==1)
+{
+Fat = 1;
+return Fat;
+}
+else
+{
+Fat=1;
+}
+
+for (i = 2; i <= n; i = i + 1)  Fat = Fat * i;
+return (Fat);
 }
 
 
-void maior(char x[], int aux, int aux2, int cont, int aux3) {
-    if(aux == cont) {
-        return;
-    }
-    else if(aux2 == cont) {
-        maior(x, aux + 1, aux + 2, cont, aux3);
-    }
-    else if(x[aux] <= x[aux2]) {
-        aux3 = x[aux];
-        x[aux] = x[aux2];
-        x[aux2] = aux3;
-        maior(x, aux, aux2 + 1, cont, aux3);
-    }
-    else {
-        maior(x, aux, aux2 + 1, cont, aux3);
-    }
+int proximo_primo(int y)
+{
+if (eh_primo(y) == "True")
+{
+return y;
+}
+else
+{
+y++;
+proximo_primo(y);
+}
 }
 
-int ler_string(char x[], int aux) {
-    scanf("%c", &x[aux]);
-    printf("<%c>\n", x[aux]); // Preste atenção na saída
-    if(x[aux] == '\n') {
-        return 0;
-    }
-    else {
-        return 1 + ler_string(x, aux + 1);
-    }
+//Inicia funcao principal do programa
+int main()
+{
+//setlocale(LC_ALL,""); //localiza programa para idioma do so.
+int numero, i;
+double fat=0;
+double soma=0;
+scanf("%d", &numero);
+
+for (i=1; i<=numero; i++)
+{
+if (numero==1)
+{
+fat=Fatorial(i);
+soma=soma+(fat/i);
+fat=0;
+printf("%d!/%d\n", i, i);
+}
+if (i<2 && i<numero)
+{
+fat=Fatorial(i);
+soma=soma+(fat/i);
+fat=0;
+printf("%d!/%d + ", i, i);
 }
 
-void permutacao(int n, int aux, char x[]) {
-    if(aux == n) {
-        return;
-    }
-    else {
-        int resultado = ler_string(x, 0);
-        maior(x, 0, 0, resultado, 0);
-        printar_permutacao(x, 0, resultado, aux);
-        permutacao(n, aux + 1, x);
-    }
+
+if (i>=2 && i<numero)
+{
+if (eh_primo(i)=="True")
+{
+fat=Fatorial(i);
+soma=soma+(fat/proximo_primo(i));
+printf("%d!/%d + ", i, proximo_primo(i));
+fat=0;
+}
+else
+{
+fat=Fatorial(i);
+soma=soma+fat/proximo_primo(i);
+printf("%d!/%d + ", i, proximo_primo(i));
+}
+}
+if (i>1 && i==numero)
+{
+if (eh_primo(i)=="True")
+{
+fat=Fatorial(i);
+soma=soma+(fat/proximo_primo(i));
+printf("%d!/%d\n", i, proximo_primo(i));
+fat=0;
+}
+else
+{
+fat=Fatorial(i);
+soma=soma+fat/proximo_primo(i);
+printf("%d!/%d\n", i, proximo_primo(i));
+fat=0;
+}
+}
 }
 
-int main() {
-    int n;
-    char string[100000];
-    scanf("%d", &n); // Depois teste com: scanf("%d\n", &n);
-    permutacao(n, 0, string);
-
-	return 0;
+printf("%.2f\n", soma);
+return 0;
 }
