@@ -33,8 +33,11 @@ public class !@#$$#@!Test {
 		int i = repetitionInfo.getCurrentRepetition() - 1;
 		String expected = InOutReader.getStringFromFile(basePath + "out/" + out[i]);
 		System.setIn(new FileInputStream(basePath + "in/" + in[i]));
-		!@#$$#@!.HuxleyCode.main(null);
-		assertEquals(expected, InOutReader.uniformString(outputStream.toString()), "Failing " + in[i] + " test case");
+		final String myAnswer = assertTimeoutPreemptively(Duration.ofMillis(2000), () -> {
+			!@#$$#@!.HuxleyCode.main(null);
+			return(InOutReader.uniformString(outputStream.toString()));
+		});
+		assertEquals(expected, myAnswer, "Failing " + in[i] + " test case");
 	}
 
 	private void generateInput() throws IOException {
@@ -50,8 +53,10 @@ public class !@#$$#@!Test {
 		final String oracleAnswer = oracle.getAnswer();
 
 		System.setIn(new FileInputStream(NelsonOracle.in));
-		!@#$$#@!.HuxleyCode.main(null);
-		final String myAnswer = InOutReader.uniformString(outputStream.toString());
+		final String myAnswer = assertTimeoutPreemptively(Duration.ofMillis(2000), () -> {
+			!@#$$#@!.HuxleyCode.main(null);
+			return(InOutReader.uniformString(outputStream.toString()));
+		});
 
 		String input = InOutReader.getStringFromFile(NelsonOracle.in);
 
