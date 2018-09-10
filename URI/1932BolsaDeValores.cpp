@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n, c, dp[200000][2];
+int n, c, dp[200001][2];
 
 int solve(int cot[], int i, int b)
 {
