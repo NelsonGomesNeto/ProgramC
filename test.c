@@ -1,123 +1,28 @@
+#include <stdio.h>
 
-#include <stdio.h> //biblioteca para entrada e sa?da de texto;
-#include <math.h> //biblioteca para fun??es matematicas;
-//#include <locale.h> //biblioteca para localiza??o internacional, acentos, etc.
-char *eh_primo(int x)
+int max(int a, int b)
 {
-int i, div = 0;
-for (i=1; i<=x; i++)
-{
-if (x==2) return "True";
-    if (x % i == 0)
-{
-          div++;
-}
+  return(a > b ? a : b);
 }
 
-if (div == 2)
+int min(int a, int b)
 {
-return "True";
-}
-else
-{
-return "False";
-}
+  return(a < b ? a : b);
 }
 
-long int Fatorial(int n)
-{
-long int Fat;
-int i;
-if (n==0 || n==1)
-{
-Fat = 1;
-return Fat;
-}
-else
-{
-Fat=1;
-}
-
-for (i = 2; i <= n; i = i + 1)  Fat = Fat * i;
-return (Fat);
-}
-
-
-int proximo_primo(int y)
-{
-if (eh_primo(y) == "True")
-{
-return y;
-}
-else
-{
-y++;
-proximo_primo(y);
-}
-}
-
-//Inicia funcao principal do programa
 int main()
 {
-//setlocale(LC_ALL,""); //localiza programa para idioma do so.
-int numero, i;
-double fat=0;
-double soma=0;
-scanf("%d", &numero);
+  int n; scanf("%d", &n);
+  int height[n], i; for (i = 0; i < n; i ++) scanf("%d", &height[i]);
+  int left[n], right[n];
+  left[0] = height[0];
+  for (i = 1; i < n; i ++) left[i] = max(left[i - 1], height[i]);
+  right[n - 1] = height[n - 1];
+  for (i = n - 2; i >= 0; i --) right[i] = max(right[i + 1], height[i]);
 
-for (i=1; i<=numero; i++)
-{
-if (numero==1)
-{
-fat=Fatorial(i);
-soma=soma+(fat/i);
-fat=0;
-printf("%d!/%d\n", i, i);
-}
-if (i<2 && i<numero)
-{
-fat=Fatorial(i);
-soma=soma+(fat/i);
-fat=0;
-printf("%d!/%d + ", i, i);
-}
+  int filled = 0;
+  for (i = 1; i < n - 1; i ++) filled += (height[i] < min(left[i - 1], right[i + 1]));
+  printf("%d\n", filled);
 
-
-if (i>=2 && i<numero)
-{
-if (eh_primo(i)=="True")
-{
-fat=Fatorial(i);
-soma=soma+(fat/proximo_primo(i));
-printf("%d!/%d + ", i, proximo_primo(i));
-fat=0;
-}
-else
-{
-fat=Fatorial(i);
-soma=soma+fat/proximo_primo(i);
-printf("%d!/%d + ", i, proximo_primo(i));
-}
-}
-if (i>1 && i==numero)
-{
-if (eh_primo(i)=="True")
-{
-fat=Fatorial(i);
-soma=soma+(fat/proximo_primo(i));
-printf("%d!/%d\n", i, proximo_primo(i));
-fat=0;
-}
-else
-{
-fat=Fatorial(i);
-soma=soma+fat/proximo_primo(i);
-printf("%d!/%d\n", i, proximo_primo(i));
-fat=0;
-}
-}
-}
-
-printf("%.2f\n", soma);
-return 0;
+  return(0);
 }
