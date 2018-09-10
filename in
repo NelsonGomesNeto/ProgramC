@@ -3,6 +3,7 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.Random;
 
 public class !@#$$#@!Test {
@@ -20,6 +21,7 @@ public class !@#$$#@!Test {
 		random.setSeed(seed);
 		in = new File(basePath + "in/").list();
 		out = new File(basePath + "out/").list();
+		Arrays.sort(in); Arrays.sort(out);
 		System.setOut(new PrintStream(outputStream));
 	}
 
