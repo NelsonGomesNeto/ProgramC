@@ -1,63 +1,64 @@
 #include <bits/stdc++.h>
 using namespace std;
-int inf = 1<<20;
-int dp[5003][5003];
-char path[5003];
+#define DEBUG if(0)
+const int limit = 5010;
+int a, n, c, maintenance[limit], sell[limit], junk[limit];
+int dp[limit][limit], path[limit][limit];
 
-int solve(int i, int period, int age, int price, int maintence[], int salePrice[], int scrapPrice[])
+void read(int a[], int start, int size)
 {
-  if (i == period)
-  {
-    //dp[i][age] = scrapPrice[age];
-    return(-scrapPrice[age]);
-  }
-
-  if (dp[i][age] == -1)
-  {
-    int keep = solve(i + 1, period, 1, price, maintence, salePrice, scrapPrice) - salePrice[age] + price + maintence[0];
-    int sell = (age + 1 < period + 5000) ? (solve(i + 1, period, age + 1, price, maintence, salePrice, scrapPrice) + maintence[age]) : inf;
-    dp[i][age] = min(keep, sell);
-  }
-
-  return(dp[i][age]);
+  for (int i = start; i < size; i ++) scanf("%d", &a[i]);
 }
 
-void findPath(int i, int age, int period)
+int solve(int i, int year)
 {
-  if (i == period) return;
+  if (i == n) return(junk[year]);
 
-  if (dp[i + 1][1] < dp[i + 1][age + 1])
+  if (dp[i][year] == -1)
   {
-    path[i] = 'B';
-    findPath(i + 1, 1, period);
+    int ans = solve(i + 1, year + 1) - maintenance[year];
+    int aux = solve(i + 1, 1) + sell[year] - c - maintenance[0];
+    path[i][year] = aux > ans;
+    dp[i][year] = max(ans, aux);
   }
-  else
-  {
-    path[i] = 'M';
-    findPath(i + 1, age + 1, period);
-  }
+
+  return(dp[i][year]);
 }
+
+void followPath(int action[])
+{
+  int year = a;
+  for (int i = 0; i < n; i ++)
+  {
+    if (path[i][year])
+    {
+      DEBUG printf("%d\n", maintenance[year]);
+      action[i] = 1, year ++;
+    }
+    else
+    {
+      DEBUG printf("%d %d %d\n", sell[year], c, maintenance[0]);
+      year = 1;
+    }
+  }
+} // (-60 + 20 - 10) + (-60 + 30 - 10) + (-20) + (15)
 
 int main()
 {
   memset(dp, -1, sizeof(dp));
-  int age, period, price; scanf("%d %d %d", &age, &period, &price);
-  int maintence[period + 5000], salePrice[period + 5000], scrapPrice[period + 5000]; memset(maintence, 0, sizeof(maintence)); memset(salePrice, 0, sizeof(salePrice)); memset(scrapPrice, 0, sizeof(scrapPrice));
-  for (int i = 0; i < period + 2; i ++) scanf("%d", &maintence[i]);
-  for (int i = 0; i < period + 1; i ++) scanf("%d", &salePrice[i + 1]);
-  for (int i = 0; i < period + 1; i ++) scanf("%d", &scrapPrice[i + 1]);
+  memset(path, 0, sizeof(path));
 
-  int ans = solve(0, period, age, price, maintence, salePrice, scrapPrice);
-  findPath(0, age, period);
-  // for (int i = 0; i < period + 2; i ++)
-  // {
-  //   for (int j = 0; j < period + 2; j ++)
-  //     printf("%3d ", dp[i][j]);
-  //   printf("\n");
-  // }
+  scanf("%d %d %d", &a, &n, &c);
+  read(maintenance, 0, n + 2);
+  read(sell, 1, n + 2);
+  read(junk, 1, n + 2);
 
-  path[period] = '\0';
-  printf("%d\n%s\n", ans, path);
+  int ans = solve(0, a);
+  int action[n]; memset(action, 0, sizeof(action));
+  followPath(action);
+  printf("%d\n", -ans);
+  for (int i = 0; i < n; i ++) printf("%c", action[i] ? 'B' : 'M');
+  printf("\n");
 
   return(0);
 }
