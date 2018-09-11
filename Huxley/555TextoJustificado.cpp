@@ -15,7 +15,7 @@ int justifiedText(int i, int midSpaces, int now)
     int lineBreak = justifiedText(i + 1, 0, wordSizes[i]) + spaces * spaces * spaces, hold = inf;
     if (now + (now > 0) + wordSizes[i] <= lineSize)
       hold = justifiedText(i + 1, midSpaces + (now > 0), now + (now > 0)  + wordSizes[i]);
-    if (lineBreak < hold) path[i][now] = 1;
+    path[i][now] = lineBreak < hold;
     dp[i][now] = min(lineBreak, hold);
   }
 
@@ -27,7 +27,7 @@ void printPath()
   int now = 0;
   for (int i = 0; i < qWord; i ++)
   {
-    printf("<%d, %d>\n", now, path[i][now]);
+    DEBUG printf("<%d, %d>\n", now, path[i][now]);
     if (path[i][now])
     {
       printf("%s\n", words[i - 1]);
@@ -38,7 +38,6 @@ void printPath()
       printf("%s ", words[i]);
       now += (now > 0) + wordSizes[i];
     }
-    if (now > lineSize) now = wordSizes[i];
   }
 }
 
@@ -49,10 +48,10 @@ int main()
   scanf("%d\n", &lineSize);
   char end;
   while (scanf("%s%c", words[qWord - 1], &end) != EOF && end != '\n') qWord ++;
-  DEBUG for (int i = 0; i < qWord; i ++)
+  for (int i = 0; i < qWord; i ++)
   {
     wordSizes[i] = strlen(words[i]);
-    printf("%s %d\n", words[i], wordSizes[i]);
+    DEBUG printf("%s %d\n", words[i], wordSizes[i]);
   }
 
   int minCost = justifiedText(0, 0, 0);
