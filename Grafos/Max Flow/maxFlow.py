@@ -1,6 +1,6 @@
 inf = 1<<20
 level = {}
-VERBOSE = 1
+VERBOSE = 0
 
 def printGraph(graph):
     for u in sorted(graph):
@@ -19,7 +19,8 @@ def readGraph():
             u, v, c = line.split()
             if (u not in graph): graph[u] = {}
             if (v not in graph): graph[v] = {}
-            graph[u][v], graph[v][u] = int(c), 0
+            graph[u][v] = int(c)
+            if (u not in graph[v]): graph[v][u] = 0
         except:
             return(graph)
 
