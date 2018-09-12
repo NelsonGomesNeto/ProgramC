@@ -1,6 +1,6 @@
 inf = 1<<20
 level = {}
-
+VERBOSE = 1
 
 def printGraph(graph):
     for u in sorted(graph):
@@ -14,7 +14,9 @@ def readGraph():
     graph = {}
     while (True):
         try:
-            u, v, c = input().split()
+            line = input()
+            if (line == ""): continue
+            u, v, c = line.split()
             if (u not in graph): graph[u] = {}
             if (v not in graph): graph[v] = {}
             graph[u][v], graph[v][u] = int(c), 0
@@ -51,17 +53,17 @@ def dinicMaxFlow(graph, source, target):
     while (bfs(graph, source, target)):
         pathFlow = dfs(graph, source, target, inf)
         maxFlow += pathFlow
-        print("\n\tIteration:", iterations)
-        printGraph(graph)
+        if (VERBOSE): print("\n\tIteration:", iterations)
+        if (VERBOSE): printGraph(graph)
         iterations += 1
     return(maxFlow)
 
 graph = readGraph()
-print("\tGraph:")
-printGraph(graph)
+if (VERBOSE): print("\tGraph:")
+if (VERBOSE): printGraph(graph)
 
-source, target = "Sou", "Tar"
+source, target = "s", "t"
 maxFlow = dinicMaxFlow(graph, source, target)
-print("\n\tMax Flow:", maxFlow)
-print("\tFlow Graph:")
-printGraph(graph)
+print("Max Flow:", maxFlow)
+if (VERBOSE): print("\tFlow Graph:")
+if (VERBOSE): printGraph(graph)
