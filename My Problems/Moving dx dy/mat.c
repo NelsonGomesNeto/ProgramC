@@ -10,7 +10,7 @@ void printMat(int i, int j, int n, int m, int mat[][m])
 
 int fix(int i, int n)
 {
-	return(i < 0 ? (i % n) + n : i % n);
+	return(i < 0 ? ((i % n) + n) % n : i % n);
 }
 
 void go(int i, int j, int dy, int dx, int step, int n, int m, int mat[][m])
