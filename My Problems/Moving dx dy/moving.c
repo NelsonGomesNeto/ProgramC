@@ -12,7 +12,7 @@ void printMat(int mat[][m])
 
 int fix(int i, int size)
 {
-  if (i < 0) return(i % size + size);
+  if (i < 0) i = i % size + size;
   return(i % size);
 }
 
