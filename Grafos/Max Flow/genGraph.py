@@ -14,6 +14,8 @@ for i in range(81):
 	ternary = base3(i)
 	while (len(ternary) < 4):
 		ternary += [0]
+	if (len(ternary) > 4): ternary.pop(0)
+	print(i, ternary)
 	for j, edge in enumerate(edges):
 		if (ternary[j] == 0): print(*reversed(edge), 1200, file=f)
 		elif (ternary[j] == 1): print(*edge, 1200, file=f)
