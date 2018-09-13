@@ -20,8 +20,8 @@ def bellmannFord(graph, prev, source, target):
         done = 0
         for u in graph:
             for v in graph[u]:
-                if (graph[u][v][0] != 0 and cost[u] + graph[u][v][1] < cost[v]):
-                    cost[v] = cost[u] + graph[u][v][1]
+                if (graph[u][v][0] != 0 and max(cost[u], graph[u][v][1]) < cost[v]):
+                    cost[v] = max(cost[u], graph[u][v][1])
                     prev[v] = u
                     done = 1
         if (done == 0): break
@@ -31,11 +31,13 @@ def bellmannFord(graph, prev, source, target):
 def minCostFlow(graph, source, target):
     prev, maxFlow, minCost = {}, 0, 0
     while (bellmannFord(graph, prev, source, target)):
-        v, flow = target, inf
+        v, flow, cost = target, inf, 0
         while (v != source):
             flow = min(flow, graph[prev[v]][v][0])
+            cost = max(cost, graph[prev[v]][v][1])
             v = prev[v]
         maxFlow += flow
+        minCost = max(minCost, cost)
 
         v = target
         while (v != source):
@@ -43,16 +45,6 @@ def minCostFlow(graph, source, target):
             graph[v][prev[v]][0] += flow
             v = prev[v]
         prev = {}
-    #
-    # minCost = []
-    # for v in graph["mid"]:
-    #     if (graph["mid"][v][0]):
-    #         each = inf
-    #         for u in graph[v]:
-    #             if (graph[v][u][0]):
-    #                 # print(u, v, graph[v][u])
-    #                 minCost += [graph[u][v][1]]
-    # minCost.sort()
 
     return(maxFlow, minCost)
 
@@ -75,8 +67,6 @@ for i in range(m):
     graph[check[i]] = {}
     graph[check[i]]["mid"] = [1, 0]
     graph["mid"][check[i]] = [0, 0]
-    for j in range(m):
-        graph[check[i]][check[j]] = [1, inf]
 for i in range(n):
     graph["source"][team[i]] = [1, 0]
     graph[team[i]] = {}
