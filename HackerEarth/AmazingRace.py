@@ -73,6 +73,7 @@ for i in range(n):
     graph[team[i]]["source"] = [0, 0]
     for j in range(m):
         d = distance(teamPos[i], checkPos[j], teamSpeed[i])
+        print(d)
         graph[team[i]][check[j]] = [1, d]
         graph[check[j]][team[i]] = [0, -d]
 graph["mid"]["target"] = [k, 0]
