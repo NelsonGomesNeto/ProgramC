@@ -1,74 +1,52 @@
 #include <bits/stdc++.h>
+using namespace std;
 #define DEBUG if(0)
-#define DEBUG2 if(0)
-#define uli unsigned long long int
-uli all[1000001], sum[1000002];
+#define lli long long int
+int n, t, a0, x, y, tap[31], inf = 1<<16;
+vector<lli> sequence;
 
-void printBin(uli n)
+void generateSequence()
 {
-  if (!n) { printf("0"); return; }
-  printBin(n >> 1);
-  printf("%llu", (n % 2));
+  lli now = a0;
+  while (true)
+  {
+    int bit = now & 1;
+    for (int i = 1; i < t; i ++) bit ^= (now >> tap[i]) & 1;
+    now = (now >> 1) | (bit << (n - 1));
+    if (now != sequence[0]) sequence.push_back(now);
+    else break;
+  }
+  DEBUG for (int i = 0; i < sequence.size(); i ++)
+    printf("%lld%c", sequence[i], i < sequence.size() - 1 ? ' ' : '\n');
 }
 
-uli lfsr(int tap[], int t, int bits, uli at)
+pair<int, int> solve()
 {
-  uli now = at >> 1;
-  bool bit = at & 1;
-  DEBUG2 printBin(bit); DEBUG2 printf("\n\n");
-  for (int i = 1; i < t; i ++)
+  int app[(int) 1e6 + 1]; memset(app, -1, sizeof(app));
+  lli sum = 0; app[0] = 0;
+  for (int i = 0; i <= 2e6; i ++)
   {
-    bit ^= (at & (1 << (tap[i]))) >> tap[i];
-    DEBUG2 printBin((at & (1 << (tap[i]))) >> tap[i]); DEBUG2 printf("\n");
-    DEBUG2 printBin(bit); DEBUG2 printf("\n\n");
+    lli value = sequence[i % sequence.size()];
+    sum = (sum + value) % x;
+    if (app[sum] != -1)
+    {
+      if (i - app[sum] + (i == 0) >= y) return(make_pair(app[sum], i));
+    }
+    else
+      app[sum] = i + 1;
   }
-
-  now |= (bit << (bits - 1));
-  now &= (1 << (bits)) - 1;
-  return(now);
+  return(make_pair(-1, -1));
 }
 
 int main()
 {
-  uli a0;
-  int n, t, x, y; scanf("%d %d %llu %d %d", &n, &t, &a0, &x, &y);
-  int tap[t];
-  for (int i = 0; i < t; i ++)
-    scanf("%d", &tap[i]);
-  DEBUG2 printBin(a0); DEBUG2 printf("\n");
+  scanf("%d %d %d %d %d", &n, &t, &a0, &x, &y);
+  for (int i = 0; i < t; i ++) scanf("%d", &tap[i]);
 
-  uli at = a0; all[0] = a0;
-  sum[0] = 0; sum[1] = a0;
-  for (int i = 1; i <= 1000000; i ++)
-  {
-    all[i] = lfsr(tap, t, n, all[i - 1]);
-    sum[i] = all[i - 1] + sum[i - 1];
-  } sum[1000001] = all[1000000] + sum[1000000];
-
-  DEBUG for (int i = 0; i <= 1000; i ++)
-  {
-    printf("%d %llu ", i, all[i]);
-    printBin(all[i]); printf("\n");
-  }
-
-  int bi, bj; bi = bj = 1<<20;
-  for (int i = 0; i <= bj; i ++)
-  {
-    if (i == 1500) break;
-    for (int j = i + 1; j <= 1000000; j ++)
-    {
-      if ((j - i) >= y && !((sum[j] - sum[i]) % x))
-        if (j < bj || (j == bj && i < bi))
-        {
-          bi = i; bj = j - 1; break;
-        }
-    }
-  }
-
-  if (bi == 1<<20)
-    printf("impossivel\n");
-  else
-    printf("%d %d\n", bi, bj);
+  sequence.push_back(a0);
+  generateSequence();
+  pair<int, int> ans = solve();
+  printf("%d %d\n", ans.first, ans.second);
 
   return(0);
 }
