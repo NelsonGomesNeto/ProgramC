@@ -5,10 +5,21 @@ const int maxFaces = 100 * 100, maxN = 100; lli inf = 1e16;
 // source (0) -> dice (1-100) -> faces (101-100+100*100) -> target (101+100*100) MISSING ONE
 const int maxVertices = 1 + maxN + maxFaces + 1;
 lli matrixGraph[maxVertices][maxVertices][2];
+unordered_map<int, unordered_map<int, lli> > cm[maxVertices];
 vector<int> graph[maxVertices];
-int source = 0, target, vertices, previ[maxVertices], visited[maxVertices], potential[maxVertices]; lli cost[maxVertices], neededFlow = 0; bool inq[maxVertices];
+int source = 0, target, vertices, previ[maxVertices], visited[1], potential[1]; lli cost[maxVertices]; bool inq[1];
 int n;
 unordered_map<lli, int> faceMap;
+
+void copyG(int flag)
+{
+  for (int u = 0; u < vertices; u ++)
+    for (auto v: graph[u])
+      if (flag)
+        cm[u][v][0] = matrixGraph[u][v][0], cm[u][v][1] = matrixGraph[u][v][1];
+      else
+        matrixGraph[u][v][0] = cm[u][v][0], matrixGraph[u][v][1] = cm[u][v][1];
+}
 
 int bellmannFord()
 {
@@ -86,9 +97,9 @@ int dijsktraWithPotentials()
 
 pair<lli, lli> minCostFlow()
 {
-  memset(potential, 0, sizeof(potential));
+  //memset(potential, 0, sizeof(potential));
   lli minCost = 0, maxFlow = 0;
-  while (maxFlow < neededFlow && dijsktraWithPotentials()) //(bellmannFord()) //(spfa())
+  while (spfa()) //(dijsktraWithPotentials()) //(bellmannFord())
   {
     int v = target; lli flow = inf;
     while (v != source)
@@ -139,7 +150,7 @@ void printGraph()
 
 int main()
 {
-  scanf("%d", &n); neededFlow = n;
+  scanf("%d", &n);
   for (int i = 0; i < n; i ++)
   {
     int die = 1 + i;
@@ -155,7 +166,8 @@ int main()
   }
   target = 1 + n + faceMap.size(); vertices = target + 1;
   int faceHasSink[vertices]; memset(faceHasSink, 0, sizeof(faceHasSink));
-  // printGraph();
+  // printGraph()
+  copyG(1);
 
   int q; scanf("%d", &q);
   while (q --)
@@ -168,7 +180,7 @@ int main()
     }
     if (can)
     {
-      swap(&source, &target); minCostFlow(); swap(&source, &target);
+      //swap(&source, &target); minCostFlow(); swap(&source, &target);
       for (auto i: faceMap) matrixGraph[i.second][target][0] = matrixGraph[target][i.second][0] = 0;
       for (int i = 0; i < n; i ++)
       {
@@ -180,6 +192,8 @@ int main()
       pair<lli, lli> ans = minCostFlow();
       // printf("%lld %lld\n", ans.first, ans.second);
       printf("%lld\n", ans.second == n ? ans.first : -1);
+      copyG(0);
+      //return(0);
     }
     else printf("-1\n");
   }

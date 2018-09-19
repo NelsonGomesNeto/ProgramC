@@ -1,9 +1,24 @@
+import sys
 import os
-import filecmp
+import time
+from filecmp import cmp
 
-os.system("g++ HHipercampo.cpp -o test -std=c++11")
-testCases = os.listdir("./H/input/")
+def compileCode(solver):
+    extension = solver.split('.')
+    extension = extension[len(extension) - 1]
+    if (extension == "cpp"):
+        os.system("g++ \"%s\" -o test -std=c++14 -O2" % solver)
+    elif (extension == "c"):
+        os.system("gcc \"%s\" -o test -O2" % solver)
 
-for i in range(1, len(testCases)):
-    os.system("./test < ./H/input/H_%d > out" % (i))
-    print(i, ": ", filecmp.cmp("./H/output/H_%d" % (i), "out"), sep='')
+solver, testCasesPath, timeLimit = sys.argv[1:]
+timeLimit = float(timeLimit)
+compileCode(solver)
+print("Compiled Code", solver)
+inputPath, outputPath = testCasesPath + "/input/", testCasesPath + "/output/"
+testCases = os.listdir(inputPath)
+for test in sorted(testCases, key=lambda x: int(x.split('_')[1])):
+    startTime = time.time()
+    os.system("./test < \"%s\" > auxOut" % (inputPath + test))
+    executionTime = time.time() - startTime
+    print(test.split("_")[1], "- Verdict:", "Accpected" if cmp("auxOut", outputPath + test) and executionTime <= timeLimit else "Wrong Answer" if executionTime <= timeLimit else "Time Limit Exceeded")
