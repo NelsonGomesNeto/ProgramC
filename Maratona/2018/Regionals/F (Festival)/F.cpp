@@ -1,66 +1,47 @@
 #include <bits/stdc++.h>
+#define lli long long int
 using namespace std;
-vector<vector<int> > events[10];
-int n, inf = 1<<20;
-map<set<pair<int, int> >, int> dp[10];
+int n;
+vector<pair<vector<int>, int> > events;
+lli dp[1001][1024];
+int nextEvent[1000];
+lli inf = 1<<30;
 
-int canGo(set<pair<int, int> > coming, vector<int> event)
+lli solve(int i, int done)
 {
-  for (auto c: coming)
-    if (event[0] >= c.second)
-      return(1);
-    else if (event[1] >= c.first)
-      return(0);
-  return(1);
-}
+  if (i == events.size()) return(done == (1 << n) - 1 ? 0 : -inf);
 
-int solve(int i, int j, set<pair<int, int> > coming, int one)
-{
-  // printf("%d\n", i);
-  if (i == n) return(0);
-  if (j == events[i].size()) return(one ? solve(i + 1, 0, coming, 0) : -inf);
+  if (dp[i][done] == -1)
+    dp[i][done] = max(solve(i + 1, done), events[i].first[2] + solve(nextEvent[i], done | (1 << events[i].second)));
 
-  set<pair<int, int> > aux = coming;
-  if (!dp[i].count(aux))
-  {
-    int ans = solve(i, j + 1, coming, one);
-    if (canGo(coming, events[i][j]))
-    {
-      coming.insert({events[i][j][0], events[i][j][1]});
-      ans = max(ans, events[i][j][2] + solve(i, j + 1, coming, 1));
-    }
-    dp[i][aux] = ans;
-  }
-
-  return(dp[i][aux]);
+  return(dp[i][done]);
 }
 
 int main()
 {
+  memset(dp, -1, sizeof(dp));
+
   scanf("%d", &n);
   for (int i = 0; i < n; i ++)
   {
-    int t, s, e, m; scanf("%d", &t);
-    for (int j = 0; j < t; j ++)
+    int m, s, e, o; scanf("%d", &m);
+    for (int j = 0; j < m; j ++)
     {
-      scanf("%d %d %d", &s, &e, &m);
-      events[i].push_back({s, e, m});
+      scanf("%d %d %d", &s, &e, &o);
+      events.push_back({{s, e, o}, i});
     }
-    sort(events[i].begin(), events[i].end());
+  }
+  sort(events.begin(), events.end());
+
+  for (int i = 0; i < events.size(); i ++)
+  {
+    int j = i + 1;
+    while (j < events.size() && events[i].first[1] > events[j].first[0]) j ++;
+    nextEvent[i] = j;
   }
 
-  set<pair<int, int> > coming;
-  int ans = solve(0, 0, coming, 0);
-  printf("%d\n", ans < 0 ? -1 : ans);
+  lli ans = solve(0, 0);
+  printf("%lld\n", ans < 0 ? -1 : ans);
 
   return(0);
 }
-/*
-for (int i = 0; i < n; i ++)
-{
-  printf("%d:", i);
-  for (int j = 0; j < events[i].size(); j ++)
-    printf(" (%d, %d %d)", events[i][j][0], events[i][j][1], events[i][j][2]);
-  printf("\n");
-}
-*/
