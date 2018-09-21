@@ -6,54 +6,49 @@ int n, tree[602][2];
 int nextRace[602];
 vector<pair<int, double> > race[602];
 
-void swap(int *a, int *b)
-{
-  int aux = *a;
-  *a = *b;
-  *b = *a;
-}
-
 void go(int u)
 {
   if (u <= n) return;
+
   if (tree[u][0] <= n && tree[u][1] <= n)
   {
     race[u].push_back({tree[u][0], prob[tree[u][0]][tree[u][1]]});
     race[u].push_back({tree[u][1], prob[tree[u][1]][tree[u][0]]});
     return;
   }
+
   go(tree[u][0]);
   go(tree[u][1]);
-  if (tree[u][0] <= n)// && tree[u][1] > n)
+
+  if (tree[u][0] <= n || tree[u][1] <= n)
   {
     double win = 0;
-    for (auto v: race[tree[u][1]])
+    int competidor = tree[u][0] <= n ? tree[u][0] : tree[u][1];
+    int raceToDiscover = tree[u][0] <= n ? tree[u][1] : tree[u][0];
+    for (auto v: race[raceToDiscover])
     {
-      win += prob[tree[u][0]][v.first] * v.second;
-      // printf("%d (%d) - %d %d\n", u, (int) race[u].size(), tree[u][0], v.first);
-      race[u].push_back({v.first, prob[v.first][tree[u][0]] * v.second});
+      win += prob[competidor][v.first] * v.second;
+      race[u].push_back({v.first, prob[v.first][competidor] * v.second});
     }
-    race[u].push_back({tree[u][0], win});
+    race[u].push_back({competidor, win});
     return;
   }
-  else
+
+  for (auto v: race[tree[u][0]])
   {
-    for (auto v: race[tree[u][0]])
-    {
-      double win = 0;
-      for (auto w: race[tree[u][1]])
-        win += prob[v.first][w.first] * w.second * v.second;
-      race[u].push_back({v.first, win});
-    }
+    double win = 0;
     for (auto w: race[tree[u][1]])
-    {
-      double win = 0;
-      for (auto v: race[tree[u][0]])
-        win += prob[w.first][v.first] * v.second * w.second;
-      race[u].push_back({w.first, win});
-    }
-    return;
+      win += prob[v.first][w.first] * w.second * v.second;
+    race[u].push_back({v.first, win});
   }
+  for (auto w: race[tree[u][1]])
+  {
+    double win = 0;
+    for (auto v: race[tree[u][0]])
+      win += prob[w.first][v.first] * v.second * w.second;
+    race[u].push_back({w.first, win});
+  }
+  return;
 }
 
 int main()
@@ -68,12 +63,11 @@ int main()
     for (int i = n + 1; i < 2*n; i ++)
     {
       scanf("%d %d", &tree[i][0], &tree[i][1]);
-      if (tree[i][1] <= n && tree[i][0] > n) swap(&tree[i][1], &tree[i][0]);
       nextRace[tree[i][0]] = nextRace[tree[i][1]] = i;
       race[i].clear();
     }
 
-    int root = 0, at = nextRace[1];
+    int root = 1, at = 1;
     while (at != -1)
     {
       root = at;
@@ -88,34 +82,11 @@ int main()
       printf("\n");
     }
 
-    int done = 0;
     for (auto winner: race[root])
       if (winner.first == 1)
       {
-        printf("%.6lf\n", winner.second);
-        done = 1; break;
+        printf("%.6lf\n", winner.second); break;
       }
-    if (!done) printf("0.000000\n");
   }
   return(0);
 }
-/*
-
-  if (tree[i][0] > n) go(tree[i][0], nextRace[i][0]);
-  else nextRace[i][0].push_back({tree[i][0], 1});
-  if (tree[i][1] > n) go(tree[i][1], nextRace[i][1]);
-  else nextRace[i][1].push_back({tree[i][1], 1});
-}
-
-for (int i = n + 1; i < 2 * n; i ++)
-{
-  printf("%d |", i);
-  for (int j = 0; j < nextRace[i][0].size(); j ++)
-    printf(" %d", nextRace[i][0][j]);
-  printf(" |");
-  for (int j = 0; j < nextRace[i][1].size(); j ++)
-    printf(" %d", nextRace[i][1][j]);
-  printf("\n");
-}
-printf("\n");
-*/
