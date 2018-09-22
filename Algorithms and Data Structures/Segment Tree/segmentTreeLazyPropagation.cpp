@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-int segtree[4000000];
+int segtree[(int) 4e6], lazy[(int) 4e6];
 
 void printSpacing(int depth)
 {
@@ -36,23 +36,35 @@ void build(int array[], int lo, int hi, int i)
 int query(int qlo, int qhi, int lo, int hi, int i)
 {
   if (lo > qhi || hi < qlo) return(0);
+  if (lazy[i] != 0)
+  {
+    segtree[i] = (hi - lo + 1) * lazy[i];
+    if (lo != hi) lazy[2*i] += lazy[i], lazy[2*i + 1] += lazy[i];
+    lazy[i] = 0;
+  }
   if (lo >= qlo && hi <= qhi) return(segtree[i]);
   int mid = (lo + hi) / 2;
   return(query(qlo, qhi, lo, mid, 2*i) + query(qlo, qhi, mid + 1, hi, 2*i + 1));
 }
 
-void update(int array[], int pos, int value, int lo, int hi, int i)
+void updateRange(int array[], int qlo, int qhi, int value, int lo, int hi, int i, int kind)
 {
-  if (lo > pos || hi < pos) return;
-  if (lo >= hi)
+  if (lazy[i] != 0)
   {
-    segtree[i] += value - array[lo];
-    array[lo] = value;
+    segtree[i] += (hi - lo + 1) * lazy[i];
+    if (lo != hi) lazy[2*i] += lazy[i], lazy[2*i + 1] += lazy[i];
+    lazy[i] = 0;
+  }
+  if (lo > qhi || hi < qlo) return;
+  if (lo >= qlo && hi <= qhi)
+  {
+    segtree[i] = (hi - lo + 1) * value + (kind ? segtree[i] : 0);
+    if (lo != hi) lazy[2*i] += value, lazy[2*i + 1] += value;
     return;
   }
   int mid = (lo + hi) / 2;
-  update(array, pos, value, lo, mid, 2*i);
-  update(array, pos, value, mid + 1, hi, 2*i + 1);
+  updateRange(array, qlo, qhi, value, lo, mid, 2*i, kind);
+  updateRange(array, qlo, qhi, value, mid + 1, hi, 2*i + 1, kind);
   segtree[i] = segtree[2*i] + segtree[2*i + 1];
 }
 
@@ -73,8 +85,14 @@ int main()
     }
     else if (kind == 'U')
     {
-      int pos, value; scanf("%d %d", &pos, &value); update(array, pos, value, 0, n - 1, 1);
-      printf("Update(%d with %d)\n", pos, value);
+      int lo, hi, add; scanf("%d %d %d", &lo, &hi, &add); updateRange(array, lo, hi, add, 0, n - 1, 1, 1);
+      printf("UpdateRange((%d, %d) with %d)\n", lo, hi, add);
+      printSegTree(0, n - 1, 1, 0);
+    }
+    else if (kind == 'S')
+    {
+      int lo, hi, add; scanf("%d %d %d", &lo, &hi, &add); updateRange(array, lo, hi, add, 0, n - 1, 1, 0);
+      printf("SetRange((%d, %d) with %d)\n", lo, hi, add);
       printSegTree(0, n - 1, 1, 0);
     }
   }
