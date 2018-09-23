@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
-int segtree[(int) 4e6], lazy[(int) 4e6];
+#define DEBUG if(0)
+int segtree[(int) 4e6], lazy[(int) 4e6], pending[(int) 4e6];
 
 void printSpacing(int depth)
 {
@@ -33,15 +34,26 @@ void build(int array[], int lo, int hi, int i)
   segtree[i] = segtree[2*i] + segtree[2*i + 1];
 }
 
+void lazyUpdate(int i, int lo, int hi)
+{
+  if (pending[i])
+  {
+    segtree[i] = (hi - lo + 1) * lazy[i] + (pending[i] == 2 ? segtree[i] : 0);
+    if (lo != hi)
+    {
+      lazy[2*i] = lazy[i] + (pending[i] - 1) * lazy[2*i];
+      lazy[2*i + 1] = lazy[i] + (pending[i] - 1) * lazy[2*i + 1];
+      pending[2*i] = pending[2*i] == 1 ? 1 : pending[i];
+      pending[2*i + 1] = pending[2*i + 1] == 1 ? 1 : pending[i];
+    }
+    lazy[i] = 0, pending[i] = 0;
+  }
+}
+
 int query(int qlo, int qhi, int lo, int hi, int i)
 {
+  lazyUpdate(i, lo, hi);
   if (lo > qhi || hi < qlo) return(0);
-  if (lazy[i] != 0)
-  {
-    segtree[i] = (hi - lo + 1) * lazy[i];
-    if (lo != hi) lazy[2*i] += lazy[i], lazy[2*i + 1] += lazy[i];
-    lazy[i] = 0;
-  }
   if (lo >= qlo && hi <= qhi) return(segtree[i]);
   int mid = (lo + hi) / 2;
   return(query(qlo, qhi, lo, mid, 2*i) + query(qlo, qhi, mid + 1, hi, 2*i + 1));
@@ -49,17 +61,18 @@ int query(int qlo, int qhi, int lo, int hi, int i)
 
 void updateRange(int array[], int qlo, int qhi, int value, int lo, int hi, int i, int kind)
 {
-  if (lazy[i] != 0)
-  {
-    segtree[i] += (hi - lo + 1) * lazy[i];
-    if (lo != hi) lazy[2*i] += lazy[i], lazy[2*i + 1] += lazy[i];
-    lazy[i] = 0;
-  }
+  lazyUpdate(i, lo, hi);
   if (lo > qhi || hi < qlo) return;
   if (lo >= qlo && hi <= qhi)
   {
-    segtree[i] = (hi - lo + 1) * value + (kind ? segtree[i] : 0);
-    if (lo != hi) lazy[2*i] += value, lazy[2*i + 1] += value;
+    segtree[i] = (hi - lo + 1) * value + (kind == 2 ? segtree[i] : 0);
+    if (lo != hi)
+    {
+      lazy[2*i] = value + (kind - 1) * lazy[2*i];
+      lazy[2*i + 1] = value + (kind - 1) * lazy[2*i + 1];
+      pending[2*i] = pending[2*i] == 1 ? 1 : kind;
+      pending[2*i + 1] = pending[2*i + 1] == 1 ? 1 : kind;
+    }
     return;
   }
   int mid = (lo + hi) / 2;
@@ -72,28 +85,28 @@ int main()
 {
   int n; scanf("%d", &n);
   int array[n]; for (int i = 0; i < n; i ++) scanf("%d", &array[i]);
-  build(array, 0, n - 1, 1);
-  printSegTree(0, n - 1, 1, 0);
+  build(array, 0, n - 1, 1); memset(lazy, 0, sizeof(lazy)); memset(pending, 0, sizeof(pending));
+  DEBUG printSegTree(0, n - 1, 1, 0);
 
   char kind;
-  while (scanf("%c", &kind) != EOF)
+  while (scanf("\n%c", &kind) != EOF)
   {
     if (kind == 'Q')
     {
       int lo, hi; scanf("%d %d", &lo, &hi);
       printf("Sum(%d, %d) = %d\n", lo, hi, query(lo, hi, 0, n - 1, 1));
     }
-    else if (kind == 'U')
+    else if (kind == 'S') // set set (1)
     {
       int lo, hi, add; scanf("%d %d %d", &lo, &hi, &add); updateRange(array, lo, hi, add, 0, n - 1, 1, 1);
-      printf("UpdateRange((%d, %d) with %d)\n", lo, hi, add);
-      printSegTree(0, n - 1, 1, 0);
+      DEBUG printf("SetRange((%d, %d) with %d)\n", lo, hi, add);
+      DEBUG printSegTree(0, n - 1, 1, 0);
     }
-    else if (kind == 'S')
+    else if (kind == 'U') // add update (2)
     {
-      int lo, hi, add; scanf("%d %d %d", &lo, &hi, &add); updateRange(array, lo, hi, add, 0, n - 1, 1, 0);
-      printf("SetRange((%d, %d) with %d)\n", lo, hi, add);
-      printSegTree(0, n - 1, 1, 0);
+      int lo, hi, add; scanf("%d %d %d", &lo, &hi, &add); updateRange(array, lo, hi, add, 0, n - 1, 1, 2);
+      DEBUG printf("UpdateRange((%d, %d) with %d)\n", lo, hi, add);
+      DEBUG printSegTree(0, n - 1, 1, 0);
     }
   }
   return(0);

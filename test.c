@@ -1,28 +1,29 @@
 #include <stdio.h>
 
-int max(int a, int b)
-{
-  return(a > b ? a : b);
-}
-
-int min(int a, int b)
-{
-  return(a < b ? a : b);
-}
-
 int main()
 {
-  int n; scanf("%d", &n);
-  int height[n], i; for (i = 0; i < n; i ++) scanf("%d", &height[i]);
-  int left[n], right[n];
-  left[0] = height[0];
-  for (i = 1; i < n; i ++) left[i] = max(left[i - 1], height[i]);
-  right[n - 1] = height[n - 1];
-  for (i = n - 2; i >= 0; i --) right[i] = max(right[i + 1], height[i]);
+	int h, m, h2, m2;
+	h=m=h2=m2=1;
 
-  int filled = 0;
-  for (i = 1; i < n - 1; i ++) filled += (height[i] < min(left[i - 1], right[i + 1]));
-  printf("%d\n", filled);
+	while(h!=0 || m!=0 || h2!=0 || m2!=0)
+	{
+		int cont = 0;
+		scanf("%d%d%d%d", &h, &m, &h2, &m2);
 
-  return(0);
+		while(h!=h2 && m!=m2)
+		{
+			printf("%d %d %d %d\n", h, m, h2, m2);
+			m+=1;
+			cont++;
+			if(m==60)
+			{
+				m=0;
+				h+=1;
+				h=h%24;
+			}
+		}
+		printf("%d\n", cont);
+	}
+
+	return 0;
 }

@@ -1,4 +1,0 @@
-#!/bin/sh
-g++ Viagem08.cpp -o  test -std=c++11
-echo "Compiled"
-./test < in
