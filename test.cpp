@@ -1,16 +1,16 @@
 #include <bits/stdc++.h>
 
-void swap(int *a, int *b)
+const int m = 10;
+
+void fun(int **a)
 {
-  int aux = *a;
-  *a = *b;
-  *b = aux;
+
 }
 
 int main()
 {
-  int a = 0, b = 1;
-  swap(&a, &b);
-  printf("%d %d\n", a, b);
+  int** a = new int[5][10];
+  a[1][2] = 117;
+  fun(a);
   return(0);
 }

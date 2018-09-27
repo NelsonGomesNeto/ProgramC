@@ -1,74 +1,29 @@
 #include <stdio.h>
-#include <string.h>
 
-void labirinto(int n, int m, int i,int j,int qtd, char comandos[],int num[][m],int all,int ant_i, int ant_j)
+struct type
 {
-  if(all == qtd)
-  {
-    printf("(%d,%d)\n",i,j);
-  }
-  else
-  {
-    if(comandos[all] == 'C') i--;
-    if(comandos[all] == 'B') i++;
-    if(comandos[all] == 'D') j++;
-    if(comandos[all] == 'E') j--;
+  int value, color;
+};
 
-    if(num[i][j] == 0)
-    {
-      i = ant_i;
-      j = ant_j;
-    }
-    labirinto(n,m,i,j,qtd,comandos,num,all+1,i,j);
-  }
-
-}
-void ler_comandos(int n, int i, char comandos[])
+void swap(struct type *a, struct type *b)
 {
-  // getchar();
-  if(i == n)
-  {
-    return;
-  }
-  else
-  {
-    scanf("%c",&comandos[i]);
-    getchar();
-    ler_comandos(n,i+1,comandos);
-  }
-}
-
-void ler(int n,int m, int i, int j, int num[][m])
-{
-  if(i == n)
-  {
-    return;
-  }
-  else
-  {
-    scanf("%d",&num[i][j]);
-    if(j == m-1) // muda de linha
-    {
-      i++;
-      j=-1;
-    }
-    ler(n,m,i,j+1,num);
-  }
+  struct type aux = *a;
+  *a = *b;
+  *b = aux;
 }
 
 int main()
 {
-  int n,m,qtd;
-  scanf("%d\n%d",&n,&m);
-  getchar();
-  int num[n][m];
-  ler(n,m,0,0,num);
-  scanf("%d",&qtd);
-  getchar();
-  char comandos[qtd];
-  ler_comandos(qtd,0,comandos);
-  int pi,pj;
-  scanf("%d\n%d",&pi,&pj);
-  labirinto(n,m,pi,pj,qtd,comandos,num,0,pi,pj);
-  return 0;
+  struct type miau[3];
+  for (int i = 0; i < 3; i ++)
+    miau[i].value = 3 - i, miau[i].color = i + 1;
+
+  for (int i = 0; i < 3; i ++)
+    for (int j = i + 1; j < 3; j ++)
+      if (miau[i].value > miau[j].value)
+        swap(&miau[i], &miau[j]);
+
+  for (int i = 0; i < 3; i ++)
+    printf("(%d, %d)%c", miau[i].value, miau[i].color, i < 3 - 1 ? ' ' : '\n');
+  return(0);
 }
