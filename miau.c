@@ -1,29 +1,44 @@
 #include <stdio.h>
+#include <string.h>
 
-struct type
+typedef struct miau miau_t;
+
+struct miau
 {
-  int value, color;
+  char name[100];
+  int value;
 };
 
-void swap(struct type *a, struct type *b)
+void printMiau(miau_t nyan[], int n)
 {
-  struct type aux = *a;
+  for (int i = 0; i < n; i ++)
+    printf("%s %d\n", nyan[i].name, nyan[i].value);
+}
+
+void swap(miau_t *a, miau_t *b)
+{
+  miau_t aux = *a;
   *a = *b;
   *b = aux;
 }
 
+void sort(miau_t nyan[], int n)
+{
+  for (int i = 0; i < n; i ++)
+    for (int j = i + 1; j < n; j ++)
+      if (strcmp(nyan[i].name, nyan[j].name) > 0 || (strcmp(nyan[i].name, nyan[j].name) == 0 && nyan[i].value > nyan[j].value))
+        swap(&nyan[i], &nyan[j]);
+}
+
 int main()
 {
-  struct type miau[3];
-  for (int i = 0; i < 3; i ++)
-    miau[i].value = 3 - i, miau[i].color = i + 1;
+  int n; scanf("%d", &n);
+  miau_t nyan[n];
+  for (int i = 0; i < n; i ++)
+    scanf("\n%s %d", nyan[i].name, &nyan[i].value);
 
-  for (int i = 0; i < 3; i ++)
-    for (int j = i + 1; j < 3; j ++)
-      if (miau[i].value > miau[j].value)
-        swap(&miau[i], &miau[j]);
-
-  for (int i = 0; i < 3; i ++)
-    printf("(%d, %d)%c", miau[i].value, miau[i].color, i < 3 - 1 ? ' ' : '\n');
+  printf("\tBefore:\n"); printMiau(nyan, n);
+  sort(nyan, n);
+  printf("\n\tAfter:\n"); printMiau(nyan, n);
   return(0);
 }

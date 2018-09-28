@@ -10,7 +10,7 @@ void setup() {
   frameRate(9999);
   f = createFont("Arial", 30, false);
   textFont(f, 30);
-  String[] lines = loadStrings("./11.in");
+  String[] lines = loadStrings("./in");
   int[] dim = int(split(lines[0], ' '));
   y = dim[0]; x = dim[1]; yx = max(y, x); myx = min(y, x);
   size(1150, 950);
@@ -152,7 +152,7 @@ int go(int i, int j, int n) {
   while (!keyPressed) delay(1);
   if (i < 0 || j < 0 || i >= y || j >= x || invalid(maze[i][j]))
     return(0);
-  
+
   char aux = maze[i][j];
   int now = 0;
   for (int k = 0; k < 4; k ++) {

@@ -1,29 +1,29 @@
 #include <stdio.h>
 
+struct type
+{
+  int value, color;
+};
+
+void swap(struct type *a, struct type *b)
+{
+  struct type aux = *a;
+  *a = *b;
+  *b = aux;
+}
+
 int main()
 {
-	int h, m, h2, m2;
-	h=m=h2=m2=1;
+  struct type miau[3];
+  for (int i = 0; i < 3; i ++)
+    miau[i].value = 3 - i, miau[i].color = i + 1;
 
-	while(h!=0 || m!=0 || h2!=0 || m2!=0)
-	{
-		int cont = 0;
-		scanf("%d%d%d%d", &h, &m, &h2, &m2);
+  for (int i = 0; i < 3; i ++)
+    for (int j = i + 1; j < 3; j ++)
+      if (miau[i].value > miau[j].value)
+        swap(&miau[i], &miau[j]);
 
-		while(h!=h2 && m!=m2)
-		{
-			printf("%d %d %d %d\n", h, m, h2, m2);
-			m+=1;
-			cont++;
-			if(m==60)
-			{
-				m=0;
-				h+=1;
-				h=h%24;
-			}
-		}
-		printf("%d\n", cont);
-	}
-
-	return 0;
+  for (int i = 0; i < 3; i ++)
+    printf("(%d, %d)%c", miau[i].value, miau[i].color, i < 3 - 1 ? ' ' : '\n');
+  return(0);
 }
