@@ -2,7 +2,7 @@ import os
 from random import randint, random
 from filecmp import cmp
 os.system("g++ naive.cpp -o test")
-os.system("g++ segmentTreeLazyPropagation.cpp -o test2")
+os.system("g++ ./../segmentTreeLazyPropagation.cpp -o test2")
 
 f = open("in", "w")
 arraySize = int(input())
