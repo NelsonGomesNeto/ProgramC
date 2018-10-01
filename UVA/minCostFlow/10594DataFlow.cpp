@@ -23,7 +23,7 @@ int bellmannFord(vector<int> graph[])
     int done = 0;
     for (int u = 0; u < vertices; u ++)
       for (auto v: graph[u])
-        if (matrixGraph[u][v][0] > 0 && cost[u] + matrixGraph[u][v][1] < cost[v])
+        if (matrixGraph[u][v][0] && cost[u] + matrixGraph[u][v][1] < cost[v])
         {
           cost[v] = cost[u] + matrixGraph[u][v][1];
           previ[v] = u, done = 1;
@@ -38,7 +38,7 @@ pair<lli, lli> minCostFlow(vector<int> graph[])
   lli minCost = 0, maxFlow = 0;
   while (bellmannFord(graph))
   {
-    lli flow = LLONG_MAX;
+    lli flow = inf;
     for (int v = target; v != source; v = previ[v]) flow = min(flow, matrixGraph[previ[v]][v][0]);
     maxFlow += flow;
     // printf("Here %lld %lld %lld\n", maxFlow, minCost, flow);
