@@ -39,19 +39,19 @@ int dfs(vector<int> graph[], int u, int target, int flow)
 {
   DEBUG printf("At: %d %d\n", u, flow);
   if (u == target) return(flow);
-  int actualFlow = 0;
+  int totalDelivered = 0;
   for (auto v: graph[u])
     if (level[u] == level[v] - 1 && matrixGraph[u][v] > 0)
     {
-      int pathFlow = dfs(graph, v, target, min(flow, matrixGraph[u][v]));
-      DEBUG printf("actualFlow: %d %d %d\n", u, actualFlow + pathFlow, matrixGraph[u][v]);
-      flow -= pathFlow;
-      matrixGraph[u][v] -= pathFlow;
-      matrixGraph[v][u] += pathFlow;
-      actualFlow += pathFlow;
+      int delivered = dfs(graph, v, target, min(flow, matrixGraph[u][v]));
+      DEBUG printf("totalDelivered: %d %d %d\n", u, totalDelivered + delivered, matrixGraph[u][v]);
+      flow -= delivered;
+      matrixGraph[u][v] -= delivered;
+      matrixGraph[v][u] += delivered;
+      totalDelivered += delivered;
       DEBUG printGraph(graph);
     }
-  return(actualFlow);
+  return(totalDelivered);
 }
 
 int dinic(vector<int> graph[], int source, int target)
