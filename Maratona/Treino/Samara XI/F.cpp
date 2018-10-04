@@ -1,63 +1,39 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n;
-
-void dfs(vector<int> tree[], vector<int> needed[], int u, set<int>& now)
-{
-  now.insert(u);
-  for (auto v: tree[u]) dfs(tree, needed, v, now);
-}
-
-int valid(vector<int> tree[], vector<int> needed[])
-{
-  for (int i = 0; i < n; i ++)
-  {
-    set<int> now;
-    dfs(tree, needed, i, now);
-    if (now.size() - 1 != needed[i].size()) return(0);
-    for (auto j: needed[i]) if (j == i || !now.count(j)) return(0);
-  }
-  return(1);
-}
+pair<pair<int, int>, set<int> > successors[(int) 1e3];
 
 int main()
 {
-  scanf("%d", &n);
-  vector<int> c[n], cb[n]; int vi, cc;
-  pair<int, int> sucessors[n], father[n];
+  int n; scanf("%d", &n);
+
   for (int i = 0; i < n; i ++)
   {
-    scanf("%d", &vi); father[i].first = 1001;
-    for (int j = 0; j < vi; j ++)
+    int a, s; scanf("%d", &a);
+    while (a --)
     {
-      scanf("%d", &cc); cc --;
-      c[i].push_back(cc);
-      cb[cc].push_back(i);
+      scanf("%d", &s);
+      successors[i].second.insert(s - 1);
     }
-    sucessors[i] = {vi, i};
+    successors[i].first = {a, i};
   }
-  sort(sucessors, sucessors+n);
+  sort(successors, successors+n);
 
-  vector<int> tree[n]; int root = -1;
-  for (int i = 0; i < n; i ++)
-  {
-    for (int j = 0; j < cb[i].size(); j ++)
-      if (father[i].first > c[cb[i][j]].size())
-      {
-        father[i].first = c[cb[i][j]].size();
-        father[i].second = cb[i][j];
-      }
-    if (father[i].first != 1001) tree[father[i].second].push_back(i);
-    else root = i;
-  }
-
-  if (root == -1 || !valid(tree, c)) printf("NO\n");
+  if (successors[0].first.second) printf("NO\n");
   else
   {
-    printf("YES\n");
-    for (int i = 0; i < n; i ++)
-      if (father[i].first != 1001)
-        printf("%d %d\n", father[i].second + 1, i + 1);
+    vector<int> tree[n]; set<int> leafs; int done = 0;
+    while (done < n)
+    {
+      int l = successors[done].first.first
+      if (!canBeLeaf(l, leafs))
+      leafs.insert(l);
+      for (int i = 0; i < n; i ++)
+      {
+        successors[i].second.erase(l);
+        successors[i].first.first = successors[i].second.size();
+      }
+      done ++;
+    }
   }
 
   return(0);
