@@ -1,666 +1,333 @@
-Case 1: 275
-Case 2: 0
-Case 3: 455
-Case 4: 4
-Case 5: 695
-Case 6: 0
-Case 7: 0
-Case 8: 46
-Case 9: 0
-Case 10: 81
-Case 11: 1
-Case 12: 321
-Case 13: 571
-Case 14: 406
-Case 15: 137
-Case 16: 30
-Case 17: 166
-Case 18: 36
-Case 19: 0
-Case 20: 83
-Case 21: 0
-Case 22: 2
-Case 23: 8
-Case 24: 4
-Case 25: 4377
-Case 26: 2
-Case 27: 15
-Case 28: 156
-Case 29: 34
-Case 30: 3
-Case 31: 0
-Case 32: 4
-Case 33: 0
-Case 34: 0
-Case 35: 0
-Case 36: 112
-Case 37: 176
-Case 38: 3
-Case 39: 3028
-Case 40: 2
-Case 41: 1
-Case 42: 297
-Case 43: 8863
-Case 44: 0
-Case 45: 7
-Case 46: 26
-Case 47: 2
-Case 48: 3
-Case 49: 1
-Case 50: 0
-Case 51: 8
-Case 52: 332
-Case 53: 2430
-Case 54: 90
-Case 55: 1
-Case 56: 5
-Case 57: 262
-Case 58: 2087
-Case 59: 65
-Case 60: 30
-Case 61: 1
-Case 62: 0
-Case 63: 3
-Case 64: 137
-Case 65: 90
-Case 66: 161
-Case 67: 125
-Case 68: 0
-Case 69: 2
-Case 70: 0
-Case 71: 15
-Case 72: 2
-Case 73: 0
-Case 74: 33
-Case 75: 0
-Case 76: 213
-Case 77: 100
-Case 78: 4714
-Case 79: 4881
-Case 80: 23
-Case 81: 1
-Case 82: 155
-Case 83: 0
-Case 84: 1
-Case 85: 1
-Case 86: 8
-Case 87: 3224
-Case 88: 57
-Case 89: 170
-Case 90: 0
-Case 91: 2
-Case 92: 0
-Case 93: 154
-Case 94: 8
-Case 95: 143
-Case 96: 0
-Case 97: 3
-Case 98: 129
-Case 99: 0
-Case 100: 2
-Case 101: 26
-Case 102: 129
-Case 103: 364
-Case 104: 21
-Case 105: 2824
-Case 106: 2
-Case 107: 31
-Case 108: 92
-Case 109: 3
-Case 110: 1
-Case 111: 25
-Case 112: 139
-Case 113: 44
-Case 114: 145
-Case 115: 3266
-Case 116: 40
-Case 117: 3
-Case 118: 33
-Case 119: 0
-Case 120: 1
-Case 121: 116
-Case 122: 23
-Case 123: 3
-Case 124: 1300
-Case 125: 260
-Case 126: 44
-Case 127: 2
-Case 128: 0
-Case 129: 3
-Case 130: 7101
-Case 131: 23
-Case 132: 795
-Case 133: 625
-Case 134: 5189
-Case 135: 2
-Case 136: 860
-Case 137: 215
-Case 138: 12
-Case 139: 0
-Case 140: 264
-Case 141: 0
-Case 142: 8
-Case 143: 1
-Case 144: 1
-Case 145: 0
-Case 146: 24
-Case 147: 1
-Case 148: 2134
-Case 149: 20
-Case 150: 0
-Case 151: 1040
-Case 152: 49
-Case 153: 1
-Case 154: 122
-Case 155: 40
-Case 156: 652
-Case 157: 2
-Case 158: 22
-Case 159: 4
-Case 160: 27
-Case 161: 1705
-Case 162: 145
-Case 163: 36
-Case 164: 34
-Case 165: 66
-Case 166: 36
-Case 167: 97
-Case 168: 0
-Case 169: 0
-Case 170: 6
-Case 171: 48
-Case 172: 387
-Case 173: 187
-Case 174: 8
-Case 175: 30
-Case 176: 74
-Case 177: 7
-Case 178: 39
-Case 179: 6
-Case 180: 0
-Case 181: 2441
-Case 182: 77
-Case 183: 733
-Case 184: 0
-Case 185: 36
-Case 186: 251
-Case 187: 0
-Case 188: 12
-Case 189: 0
-Case 190: 4531
-Case 191: 1
-Case 192: 174
-Case 193: 4416
-Case 194: 6848
-Case 195: 4914
-Case 196: 0
-Case 197: 2
-Case 198: 257
-Case 199: 313
-Case 200: 32
-Case 201: 0
-Case 202: 3996
-Case 203: 2
-Case 204: 980
-Case 205: 1
-Case 206: 1669
-Case 207: 55
-Case 208: 7256
-Case 209: 7
-Case 210: 5
-Case 211: 6
-Case 212: 1
-Case 213: 3695
-Case 214: 50
-Case 215: 131
-Case 216: 19
-Case 217: 46
-Case 218: 2
-Case 219: 0
-Case 220: 1
-Case 221: 227
-Case 222: 258
-Case 223: 3
-Case 224: 0
-Case 225: 43
-Case 226: 7
-Case 227: 1102
-Case 228: 916
-Case 229: 172
-Case 230: 113
-Case 231: 12
-Case 232: 0
-Case 233: 0
-Case 234: 7144
-Case 235: 29
-Case 236: 26
-Case 237: 6
-Case 238: 49
-Case 239: 34
-Case 240: 2
-Case 241: 0
-Case 242: 2
-Case 243: 494
-Case 244: 93
-Case 245: 268
-Case 246: 2
-Case 247: 120
-Case 248: 4
-Case 249: 78
-Case 250: 226
-Case 251: 190
-Case 252: 6871
-Case 253: 6
-Case 254: 343
-Case 255: 1
-Case 256: 0
-Case 257: 222
-Case 258: 1
-Case 259: 6531
-Case 260: 0
-Case 261: 6
-Case 262: 2
-Case 263: 16
-Case 264: 0
-Case 265: 2
-Case 266: 49
-Case 267: 12
-Case 268: 194
-Case 269: 2
-Case 270: 2
-Case 271: 792
-Case 272: 1
-Case 273: 53
-Case 274: 7
-Case 275: 0
-Case 276: 37
-Case 277: 1
-Case 278: 1
-Case 279: 259
-Case 280: 623
-Case 281: 432
-Case 282: 47
-Case 283: 8075
-Case 284: 379
-Case 285: 867
-Case 286: 16
-Case 287: 1134
-Case 288: 2
-Case 289: 13
-Case 290: 4153
-Case 291: 36
-Case 292: 699
-Case 293: 12
-Case 294: 13
-Case 295: 258
-Case 296: 33
-Case 297: 8
-Case 298: 323
-Case 299: 1
-Case 300: 183
-Case 301: 4
-Case 302: 8
-Case 303: 3174
-Case 304: 207
-Case 305: 2
-Case 306: 14
-Case 307: 129
-Case 308: 1264
-Case 309: 7
-Case 310: 1
-Case 311: 131
-Case 312: 2
-Case 313: 1
-Case 314: 239
-Case 315: 170
-Case 316: 3
-Case 317: 79
-Case 318: 251
-Case 319: 3
-Case 320: 4042
-Case 321: 5
-Case 322: 0
-Case 323: 5
-Case 324: 0
-Case 325: 3
-Case 326: 0
-Case 327: 205
-Case 328: 2
-Case 329: 2
-Case 330: 2
-Case 331: 8
-Case 332: 2
-Case 333: 0
-Case 334: 2
-Case 335: 841
-Case 336: 202
-Case 337: 3
-Case 338: 10
-Case 339: 1337
-Case 340: 11
-Case 341: 458
-Case 342: 1202
-Case 343: 3
-Case 344: 1
-Case 345: 1
-Case 346: 1695
-Case 347: 1
-Case 348: 0
-Case 349: 2
-Case 350: 194
-Case 351: 4799
-Case 352: 4
-Case 353: 1
-Case 354: 0
-Case 355: 68
-Case 356: 10
-Case 357: 1129
-Case 358: 5
-Case 359: 12
-Case 360: 111
-Case 361: 4
-Case 362: 5291
-Case 363: 3
-Case 364: 81
-Case 365: 2811
-Case 366: 189
-Case 367: 61
-Case 368: 18
-Case 369: 563
-Case 370: 132
-Case 371: 6
-Case 372: 6
-Case 373: 2297
-Case 374: 0
-Case 375: 1
-Case 376: 13
-Case 377: 6
-Case 378: 2
-Case 379: 4
-Case 380: 748
-Case 381: 3962
-Case 382: 296
-Case 383: 4853
-Case 384: 3448
-Case 385: 3109
-Case 386: 83
-Case 387: 109
-Case 388: 0
-Case 389: 270
-Case 390: 2
-Case 391: 1
-Case 392: 3293
-Case 393: 16
-Case 394: 67
-Case 395: 4
-Case 396: 40
-Case 397: 198
-Case 398: 7
-Case 399: 23
-Case 400: 3843
-Case 401: 1
-Case 402: 2
-Case 403: 2
-Case 404: 805
-Case 405: 8
-Case 406: 208
-Case 407: 1
-Case 408: 0
-Case 409: 6
-Case 410: 6
-Case 411: 27
-Case 412: 1
-Case 413: 20
-Case 414: 8
-Case 415: 5645
-Case 416: 172
-Case 417: 0
-Case 418: 638
-Case 419: 585
-Case 420: 4
-Case 421: 0
-Case 422: 146
-Case 423: 1
-Case 424: 1190
-Case 425: 426
-Case 426: 13
-Case 427: 137
-Case 428: 3503
-Case 429: 383
-Case 430: 2001
-Case 431: 224
-Case 432: 18
-Case 433: 144
-Case 434: 79
-Case 435: 0
-Case 436: 15
-Case 437: 72
-Case 438: 294
-Case 439: 1
-Case 440: 2
-Case 441: 1026
-Case 442: 166
-Case 443: 10
-Case 444: 4
-Case 445: 203
-Case 446: 2
-Case 447: 0
-Case 448: 6
-Case 449: 67
-Case 450: 204
-Case 451: 2
-Case 452: 2
-Case 453: 4
-Case 454: 33
-Case 455: 0
-Case 456: 65
-Case 457: 40
-Case 458: 6
-Case 459: 0
-Case 460: 0
-Case 461: 172
-Case 462: 125
-Case 463: 0
-Case 464: 2
-Case 465: 12
-Case 466: 346
-Case 467: 2
-Case 468: 3
-Case 469: 2
-Case 470: 19
-Case 471: 6
-Case 472: 6
-Case 473: 0
-Case 474: 2
-Case 475: 48
-Case 476: 31
-Case 477: 4
-Case 478: 2104
-Case 479: 4
-Case 480: 544
-Case 481: 227
-Case 482: 158
-Case 483: 63
-Case 484: 16
-Case 485: 0
-Case 486: 2
-Case 487: 1687
-Case 488: 1
-Case 489: 0
-Case 490: 4627
-Case 491: 11
-Case 492: 93
-Case 493: 3546
-Case 494: 0
-Case 495: 275
-Case 496: 0
-Case 497: 177
-Case 498: 2
-Case 499: 55
-Case 500: 2695
-Case 501: 874
-Case 502: 639
-Case 503: 358
-Case 504: 2
-Case 505: 153
-Case 506: 413
-Case 507: 28
-Case 508: 222
-Case 509: 15
-Case 510: 0
-Case 511: 706
-Case 512: 0
-Case 513: 0
-Case 514: 182
-Case 515: 1
-Case 516: 2
-Case 517: 388
-Case 518: 2
-Case 519: 3
-Case 520: 63
-Case 521: 945
-Case 522: 0
-Case 523: 8
-Case 524: 453
-Case 525: 2
-Case 526: 2
-Case 527: 2
-Case 528: 4
-Case 529: 3069
-Case 530: 3003
-Case 531: 0
-Case 532: 491
-Case 533: 36
-Case 534: 133
-Case 535: 9
-Case 536: 330
-Case 537: 8
-Case 538: 2
-Case 539: 2
-Case 540: 1
-Case 541: 0
-Case 542: 14
-Case 543: 436
-Case 544: 32
-Case 545: 3
-Case 546: 2
-Case 547: 3710
-Case 548: 117
-Case 549: 25
-Case 550: 0
-Case 551: 347
-Case 552: 3145
-Case 553: 822
-Case 554: 29
-Case 555: 28
-Case 556: 57
-Case 557: 1
-Case 558: 2
-Case 559: 5
-Case 560: 1523
-Case 561: 0
-Case 562: 23
-Case 563: 6
-Case 564: 12
-Case 565: 0
-Case 566: 1
-Case 567: 4254
-Case 568: 392
-Case 569: 179
-Case 570: 5
-Case 571: 21
-Case 572: 475
-Case 573: 10
-Case 574: 1
-Case 575: 1
-Case 576: 1270
-Case 577: 816
-Case 578: 575
-Case 579: 28
-Case 580: 1132
-Case 581: 8
-Case 582: 1163
-Case 583: 107
-Case 584: 2
-Case 585: 3
-Case 586: 986
-Case 587: 0
-Case 588: 0
-Case 589: 291
-Case 590: 2
-Case 591: 0
-Case 592: 0
-Case 593: 3610
-Case 594: 2
-Case 595: 189
-Case 596: 124
-Case 597: 326
-Case 598: 140
-Case 599: 0
-Case 600: 20
-Case 601: 5044
-Case 602: 0
-Case 603: 3
-Case 604: 239
-Case 605: 10
-Case 606: 6530
-Case 607: 17
-Case 608: 70
-Case 609: 2306
-Case 610: 0
-Case 611: 529
-Case 612: 4574
-Case 613: 1
-Case 614: 38
-Case 615: 1987
-Case 616: 1
-Case 617: 8
-Case 618: 514
-Case 619: 131
-Case 620: 0
-Case 621: 0
-Case 622: 0
-Case 623: 3
-Case 624: 1
-Case 625: 6
-Case 626: 43
-Case 627: 1
-Case 628: 38
-Case 629: 27
-Case 630: 447
-Case 631: 22
-Case 632: 4
-Case 633: 4343
-Case 634: 21
-Case 635: 1
-Case 636: 950
-Case 637: 2
-Case 638: 18
-Case 639: 1
-Case 640: 1
-Case 641: 6014
-Case 642: 1
-Case 643: 4244
-Case 644: 2
-Case 645: 36
-Case 646: 2
-Case 647: 123
-Case 648: 16
-Case 649: 6
-Case 650: 17
-Case 651: 221
-Case 652: 5188
-Case 653: 0
-Case 654: 0
-Case 655: 107
-Case 656: 37
-Case 657: 62
-Case 658: 35
-Case 659: 4
-Case 660: 317
-Case 661: 698
-Case 662: 34
-Case 663: 750
-Case 664: 5
-Case 665: 77
-Case 666: 19
+python seraphic whitby seraphic abase lode galore unfashionable
+adulterous petiole petiole crevasse laureate conventual salty conventual unhindered
+mayonnaise codfish compatriot gleeful satiate
+beatific shad rowdy
+chatty coconut fakir slot
+ares ares porpoise fumble peacemaker carmine wildfire acrimonious peacemaker wildfire deduct esdras americas wildfire prolixity wildfire
+glossary epidemics nubia
+twirl alumina twirl twirl quadrant quadrant alumina twirl quadrant
+geographically pigtail bruising atrium coiffure louse nugget
+leicestershire indemnification invert purposeful nigeria
+underrate underrate underrate bridesmaid atrium atrium allspice
+yokohama yokohama vail dour obituary
+averil porpoise brainless scurry unmerciful
+sunflower walloon underrate palmy rancorous plenary
+cobra tutelary constipation lath
+apoplectic apoplectic seasonal cuckold crystallization
+anthropology buffer aberrations
+deadlock bulkhead yugoslavia falsify scheduled deadlock
+rebirth rebirth dude dude excrement excrement
+hike argent specifying recession broomstick
+hundredweight hundredweight hundredweight hundredweight hundredweight hundredweight hundredweight hundredweight hundredweight hundredweight hundredweight hundredweight hundredweight hundredweight hundredweight hundredweight hundredweight hundredweight
+disembark intermittently briar achieves stipulate
+recession
+joiner truncheon parvenu americana accordant
+swart premeditation swart cremona cremona bugbear
+angelus belittle dour dour dour angelus dour
+lariat buttocks guano furlong heirloom bengali uncritical
+canticle esplanade bengali unadulterated
+rummage rummage mentor breeder repertory breeder
+porpoise feasibility
+allspice ringleader allspice ringleader ringleader
+upholstery indite accordant
+crowbar terrorism calabash deadlock transplant triton mileage crowbar prompter eclat deliberative
+pard leguminous pinafore
+idiomatic wrack pander unmanned idiomatic supernal idiomatic pitfall overtakes
+coerced aliment flaunt stephanie argent arran feldspar petiole
+locus mesquite
+invisibly overtime heirloom invisibly
+diable landau bootless abbreviations unadulterated callow milling
+temperamental gashed idiomatic portend
+ramrod averil wheedle honeycomb honeycomb
+smirk fumble broomstick
+chios
+hiatus trident verger insulation idiomatic penmanship argent
+demerit gran demerit agonising handmaiden gran agonising handmaiden
+ideally fallible stellar allot allot bosh therewithal gesticulation sedan sedan gaff
+gloucestershire
+glossary glossary indemnification
+voicing akimbo allot toothed tags effusive voicing akimbo disinherit tags voicing aesthetics deadlock allot
+mileage incubation boxer boxer madcap bosh
+lesions perceptive fluctuation howitzer howitzer autonomous ovary modem commuted underlie averil ovary acceleration
+simulation wishful simulation howitzer cartoon
+manipulate faggot enrichment enrichment manipulate hundredweight groin groin
+bruising jubilation jubilation tannin
+controller cognate stipulate
+reprisal
+bruit invert awestruck uncritical begrudge emission wheaten
+voicing mingo offshoot lapel sawn
+palpitation
+disinherit roth rotunda blockhouse infanticide rotunda rotunda misanthropy misanthropy headgear
+pasha condone numeral candied stephanie zebra finder
+abbreviations abbreviations ding
+comport awfulness steppe steppe steppe cajole synopsis
+spittle anodyne anodyne
+satiate spittle alumina supervise scheduled tiffany
+catarrh dandelion hypnotism candidacy muss bludgeon catarrh dandelion
+arterial honeycomb milkman honeycomb bras arterial disinherit honeycomb arterial betaken arterial
+jeweler freshet germination ramshackle flop iambic residential
+retracted castaway toothed shakespearean
+truncheon
+propel incest freshet benin hallow magnolia croatia interloper
+effusive
+tragedian augustinian beehive jaguar propel desideratum gelatinous
+hallow crunch chic overdo allspice overdo
+whiting redden firebrand bridesmaid sesame cattleman recast burdett wildfire
+obituary twirl gaff corfu conch conch finder finder scurry twirl appropriateness scapegrace gaff unco
+bigamy
+secede supervise accessions draper
+augustinian esplanade correlated bludgeon unconvinced unconvinced dour betaken betaken microwave
+folklore callow griffiths rowdy hussar colonist tulle geographically colonist flippancy callow chaparral
+pennon sealskin contentious mauritania corfu delos cops
+unmerciful unmerciful esplanade quagmire pard mutable
+hussar tourism uncritical blazon
+afflicts sesame
+oxfordshire shakespearean porpoise bronchitis dude stipulate yank pers tyson pers
+disgorge disgorge disgorge disgorge disgorge disgorge
+sunstroke obituary pajamas anodyne obituary baritone
+crunch magenta abaft taffrail
+vicissitude hock althea gran
+pshaw esplanade cameras headgear recognisable brier
+muffin prompter muffin prompter prompter
+larch pelvis tyson buttocks buttocks amatory larch oxfordshire trestle
+filthiness exhalation rebirth exhalation rebirth
+baiting creased creased unhindered anodyne unhindered creased tartarus tartarus tartarus tartarus anodyne baiting baiting heirloom tartarus unhindered
+amalgamated prolixity
+rajah governance septuagint hittite
+hyperbole frustration kaleidoscope unadulterated bewitch almoner kaleidoscope allspice
+overlap throwed overlap overlap apricot throwed apricot apricot overlap throwed apricot overlap throwed apricot throwed throwed throwed apricot throwed
+lynching cobra rubble lynching
+linnet subsides spittle spittle spittle exemplify frustration spittle frustration crevasse chaparral chaparral
+strumpet litany litany ambrosia litany strumpet strumpet ambrosia strumpet strumpet strumpet litany ambrosia
+catarrh redden
+tyson angelus contrariwise tyson angelus
+tardiness frustration aria crystallization cower tardiness
+saudi broomstick flop septuagint
+wrack zebra bigamy tardily denudation disinherit crescendo flaunt firebrand grill coitus coitus
+uranus draper absented purveyor undeviating milling undeviating brier germination
+unco crystallization gaslight gaslight unco
+complicate lothario sawmill taffrail bulkhead slug protestant
+abaft
+dinghy porpoise bridesmaid porpoise dinghy pelvis amalgamated cowslip
+golly
+topaz bahamas
+forceps forceps awfulness samurai suzerain diablo
+pleiades golly canticles scraggy mantilla
+unmerciful unmerciful engrave unmerciful unmerciful engrave engrave unmerciful unmerciful unmerciful unmerciful engrave unmerciful engrave engrave engrave engrave unmerciful unmerciful engrave engrave
+bewitch fluctuation leakage mileage tyson flier granular granular granular walloon fluctuation
+electrode faro scud electrode absinthe scud pleiades
+demean pajamas fertilisation tapioca protestant probate incubation
+morphine morphine declination wheedle triton priced averil
+ideally
+synonyms
+swivel gleeful
+louse fumble seraglio wheedle colonist sturgeon reiterate wheedle kaleidoscope fertilized smelting traction
+vail hallow unpropitious darlington bemoan
+scapegrace assimilating stipulate braxton handmaiden
+americas reich americas mown
+masturbation durban valerian
+tine londoner recession unveil woodcock curative samurai
+sunflower durban duality appliance durban
+peacemaker acidity zeppelin fend proximate tutelary satiate
+accoutred fiasco falsify accoutred gauzy convene dangle tyson lode tyson
+introspective jaundice pitfall jowl folklore tartarus inquisitively
+dissimilarity dissimilarity dissimilarity steppe dissimilarity steppe steppe steppe steppe steppe steppe dissimilarity steppe dissimilarity steppe steppe dissimilarity steppe steppe steppe steppe
+jubilation underlie ofries laggard yokohama unconcealed ofries
+hairdresser carbolic nudity bayou concerto nite corked morphine dynastic
+carbolic bewitch trends linseed trends cuisine alumina weathercock spaulding madcap
+duffer theocracy coconut truism theocracy
+dualism dualism machinist trigonometry
+bulkhead trends trends
+brothel microwave jacobus
+adorer abbreviations
+deadening zeppelin romania clandestinely rhea gesticulation coiffure romania copyrighted clandestinely triton
+cowslip
+ammonium ammonium ammonium ammonium ammonium ammonium ammonium ammonium ammonium ammonium ammonium ammonium ammonium ammonium ammonium ammonium
+rosewood pard coitus ravenously
+unhindered
+muss modem muss presuppose presuppose
+appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness appropriateness
+comport bras
+contentious desideratum desideratum tights argent
+tights governance indonesia bugbear fertilized topaz tights americanism fertilized indonesia fertilized governance
+apricot malayan norm dualism bombastic
+composes colossus sunstroke anthropology brothel
+shank
+bahamas unicorn unicorn bahamas unicorn unicorn bahamas bahamas unicorn bahamas unicorn
+respiratory rewritten tartarus gaff judicature nimbus
+polemical supernal dinghy dinghy
+faggot forceps
+inquisitiveness voicing orally interjection
+diable synonyms
+aluminium
+howitzer chios dory wishful headgear yank
+assimilating emission
+trident treadmill lynching bootless ideally ideally indite samurai
+undeviating allspice allspice mauritania allspice hike witticism scab scab stilted
+denizen germination vagina complicate
+transplant overtime
+sedimentary arbitrator unco vane chaparral capillary
+pander madhouse boxer madhouse connective americas unencumbered jennifer callow
+finder absentee vane vane oxfordshire priestcraft finder paucity oxfordshire finder paucity paucity finder
+indite quagmire technological technological
+fluctuation geographically chaparral intermittently stilted
+chan swart malayan morphia hoes abbreviations golly fakir truism obituary
+althea calabash
+recession primacy satiate agonising desideratum tricolor
+broomstick stewardess verger ewer idiomatic lender
+askew linseed bakery differentiate linseed rawhide
+backsliding atrium engulf engulf conscript slogan exhalation feasibility
+exordium curative oriole cryptic oriole galore sturgeon
+laggard laggard laggard voicing whiting cajole roth bayou cajole whiting repertory laggard
+incompleteness incompleteness incompleteness incompleteness incompleteness incompleteness incompleteness incompleteness incompleteness incompleteness
+jowl authorization tasty flop authorization strumpet synopsis authorization vestal canticles transfiguration tasty truncheon dagon
+dualism corfu seance coiffure corfu insidiously blanch yokohama boorish frankenstein seance
+scapegrace gongs scapegrace scapegrace carmine asbestos oust treacle
+pestle reunite sadden pestle
+knickerbockers tiffany romania colonist proximate
+awfulness frees spaulding spaulding
+diable ambergris ambergris seasonal florin cajole
+roth roth
+palliation crunch
+norm bosh norm bosh indite granular indite indite tepee tepee norm bosh tepee granular cryptic
+frankenstein steven
+colossus chan purblind colossus furlong penmanship vats
+sawn achieves sawn rewritten
+conventual studios leaks
+misanthropy antediluvian antediluvian
+hypnotism agape
+presuppose authorization prompter backgammon traction maligned pigtail
+ewer ewer
+yearling viscid saudi quagmire capillary morphine stewardess celibate
+unco leicestershire
+unfashionable uranus uranus uranus locus agape invisibly mingo
+prolixity stipulate studios aesthetics coolie demerit
+leguminous prompter scheduled yearling override
+continence transplant underwear agonising dude agonising transplant golly
+czechs butch butch cuisine motif
+intermixture fondle debater quire invisibly
+milkman pico vail aliment nationalism
+geographically scheduled agnostic
+diaphanous rotund steppe tarn phantasy americas quadrant
+joiner gashed ewer liberals
+burman debasement leakage specifying phosphorescence slipshod burman
+pleiades sulphide buzzard
+asbestos menstruation asbestos residential glossary tempering
+roth itinerary copyrighted roth
+minutiae introspective dualism dolt accordant stellar compatriot pitchfork
+stephanie hypnotism linseed linseed
+fractional fractional befit blunderbuss
+digger digger andros
+morphia microwave apricot sesame linguist synonyms
+londoner pennon pennon londoner tasty londoner pennon beatific kilometers emotionally londoner pennon
+draughtsman corset subsides apricot smelting draughtsman doff milkman viscid
+uncritical
+fertilizing sesame brier
+electrode baiting throwed
+eucalyptus rowdy veined adulterous dagon palmy uncritical ideally
+landau perambulator bludgeon mutation perambulator beatific bludgeon beatific landau statuette statuette perambulator unflagging
+adorer linseed diaphanous scurry dynastic cartoon slug masturbation dynastic slug averil cower
+herbaceous quartette calabash magenta wheedle abysmal burman
+fend integration hundredweight scraggy unforgettable
+cobra wrongdoing wrongdoing wrongdoing
+begrudge begrudge begrudge
+achieves achieves filthiness bigamy recapitulate heterodox nowt
+cambrian instigator accessions instigator accessions buttocks instigator cambrian concerto instigator accessions accessions leicestershire pinafore pinafore taffrail
+eucalyptus recast
+zebra priestcraft bombastic fend baiting truism priestcraft baiting
+pander lexicon
+bookish bookish joiner joiner joiner bookish
+draper impecunious betaken betaken betaken pickpocket assimilating assimilating intoxicate
+tardily tagalog accoutred granular gelatinous theocracy
+olfactory
+bahamas nudge
+flippancy nudge insidiously nationalism flier nationalism coitus
+exhalation exordium samoan katrina silica katrina synonyms silica anodyne uranus
+doff constipation spaulding toothed deciduous sitter constipation liberals flop
+muss fertilized ofries godson emotionally incest
+pelvis tenderfoot locus samoan
+tendril menstruation catarrh yank yank
+educator woodcock scraggy restorer restorer obituary heterodox crystallization pendulous larch encomium piebald obituary
+burman itinerary augustinian unpropitious facetiously burman facetiously itinerary burman cacao cacao facetiously itinerary hyperbole hyperbole florin
+boorish leonine clout marge
+malayan homily ignition
+diable satrap beatific joiner joiner flippancy sedimentary heyday somersault somersault
+yank malayan mauritania disconcert cognate
+acidity audit
+routing scurry idiomatic underwear salubrious stellar reciprocate underwear
+unadulterated unadulterated unadulterated unadulterated unadulterated unadulterated unadulterated unadulterated unadulterated unadulterated unadulterated unadulterated unadulterated unadulterated unadulterated
+intoxicate zebra pander capriciously verger coiffure
+hopper assimilating tannin ofries convene reich
+bartender chan hoes
+engulf seraglio whitby
+guano galvanometer paucity laplace uranus
+sadden saudi chios
+cognate overdue demean cognate
+copyrighted buzzard pico oriole
+bostonian gashed tocsin gashed
+chute abnegation reprisal inelegant reich reprisal guano inelegant sturgeon sturgeon valerian reprisal valerian guano
+dandelion laureate triton verger northamptonshire recapitulation maligned underlie diable gran
+aberrations vicissitude youthfulness louse diable
+flaunt coiffure mileage coiffure primacy
+dearborn dearborn dissimilarity dissimilarity askew
+chan conch offshoot propulsion clandestinely offshoot
+rhea primate griffiths subsides akimbo prudish
+cartel
+hundredweight canticles ramrod proboscis backgammon zebra
+tenderfoot menstruation tenderfoot linseed menstruation linseed tenderfoot proboscis proboscis linseed linseed proboscis menstruation tenderfoot tenderfoot proboscis menstruation menstruation
+coolie nubia jowl truism jowl rook jowl katrina
+litany palpitation lariat
+althea nagasaki modem tragedian grinder
+kaleidoscope minutiae blunderbuss blunderbuss
+hexameter puncture
+butch seraph stilted consults grinder foible tabooed suffocate
+eclat copyrighted eclat
+uncritical chute cambrian falsify reopen declination connective falsify chios
+flippancy deadlock insulation unflagging flippancy allspice comport twaddle askew buccaneer twaddle propitiatory
+genitive blockhouse inelegant blockhouse tricolor
+arterial
+kidnap grinder tocsin kidnap esplanade
+coolie nowt puncture accordant moraine
+samurai hessian crunch grinder solder
+exhalation instigator nigeria speciality slipshod vituperation vituperation instigator
+ahoy burman desideratum
+brothel purblind upbringing purblind brothel upbringing purblind dissimilarity upbringing dissimilarity upbringing dissimilarity brothel upbringing brothel dissimilarity dissimilarity dissimilarity elope brothel dissimilarity purblind purblind brothel purblind elope dissimilarity upbringing
+dangle buttocks pard pard dangle buttocks pard
+septuagint departures simulation
+unicameral agape fractional giraffe syringe
+porpoise kimono supernal chic
+humped humped humped humped humped humped
+ideally heyday corset boxer assimilating primacy darlington agog connective
+falsify laplace underlie laplace torso mickle underlie torso laplace torso underlie mickle laplace mickle torso
+hessian hessian fatherhood
+reich atrophy toothed inauspicious inauspicious nudge bengali
+departures departures functioning pander departures disgorge departures functioning departures pander magenta functioning pander buzzard disgorge buzzard functioning functioning magenta pander disgorge departures
+londoner fudge londoner
+muffin vendor mink undeviating fetus pander
+afflicts jacobus throwed jacobus begrudge disinherit denudation dory languorous
+leaks gaslight gaslight appropriateness leaks gaslight leaks gaslight leaks appropriateness
+engulf indite engulf indite chic disconcert engulf indite chic crystallization disconcert crystallization indite engulf crystallization
+malaysia dualism allot sulphide
+rubble coolie therewithal integration celibate americanism
+septuagint tepee septuagint seasonal seasonal tepee tepee seasonal seasonal septuagint
+septuagint madhouse tempering tempering seasick
+boorish encomium scurry boorish flaunt
+theorist ofries brier celibate celibate draper minutiae syringe jeweler ramshackle theorist
+flippancy steppe swivel nipple routing sulphide spaulding howitzer drover suzerain hypnotism taffrail
+quince insidiously rhea gongs hoes norm reprisal
+linseed coitus linseed intermittently
+amass amass amass amass amass amass amass amass amass amass amass amass amass amass amass
+aberrations frees aberrations dietary analytic sunflower onlooker dietary yugoslavia blockhouse
+yank dietary pakistan composes vegetarian
+foible conch pico commuted
+fumble nostrum warbler fakir suzerainty buzzard
+pickpocket transfiguration indonesia abaft gongs
+aniline commuted zebra transcending zebra
+fiasco bahamas bahamas dagon
+befit shoemakers tempering ramshackle burman
+desideratum capriciously dory hessian
+intoxicate jeweler rotunda chaparral purveyor cuckold underlie rotunda jacobus jacobus wildcat
+headgear aliment bern motif gander educator synonyms palliation bern
+capriciously bakery angelus theorist
+unconvinced rectum
+healer folklore leavings freud
