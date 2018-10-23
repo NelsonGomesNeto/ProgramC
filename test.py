@@ -2,12 +2,18 @@
 lines = []
 while (True):
     try:
-        lines += [input()]
+        line = input()
+        if (line == ""): continue
+        lines += [line]
     except:
         break
 
-print(lines)
-
+grammar = {}
 for line in lines:
-    line = line.split('=')
-    print(line[1].strip(' '), "=", line[0].strip(' '))
+    left, right = line.split("=")
+    left = left.strip(' ')
+    grammar[left] = [r.strip(' ') for r in right.split('|')]
+
+for n in grammar:
+    for i in grammar[n]:
+        print(n, "->", i)

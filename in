@@ -1,17 +1,49 @@
-Sheet1.Range("A" + i).Value = TextBox
-Sheet1.Range("B" + i).Value = TextBox1
-Sheet1.Range("C" + i).Value = TextBox2
-Sheet1.Range("D" + i).Value = TextBox3
-Sheet1.Range("E" + i).Value = TextBox4
-Sheet1.Range("F" + i).Value = TextBox5
-Sheet1.Range("G" + i).Value = TextBox6
-Sheet1.Range("H" + i).Value = TextBox7
-Sheet1.Range("I" + i).Value = TextBox8
-Sheet1.Range("J" + i).Value = TextBox9
-Sheet1.Range("K" + i).Value = TextBox10
-Sheet1.Range("L" + i).Value = TextBox11
-Sheet1.Range("M" + i).Value = TextBox12
-Sheet1.Range("N" + i).Value = TextBox13
-Sheet1.Range("O" + i).Value = TextBox14
-Sheet1.Range("P" + i).Value = TextBox15
-Sheet1.Range("Q" + i).Value = TextBox16
+Code = DeclFuncOpt Code | DeclFuncOpt
+
+DeclFuncOpt = 'entryPoint' DeclFunc | DeclFunc
+DeclFunc = 'function' 'id' 'opParen' 'clParen' 'isType' Type Body | 'function' 'id' 'opParen' FuncDeclVar 'clParen' 'isType' Type Body | 'function' 'id' 'opParen' 'clParen' Body | 'function' 'id' 'opParen' FuncDeclVar 'clParen' Body
+
+FuncDeclVar = IdsList 'isType' Type 'comma' FuncDeclVar | IdsList 'isType' Type
+DeclVars = IdsList 'isType' Type
+ParamList = Expr 'comma' ParamList | Expr
+
+IdsList = 'id' 'comma' IdsList | 'id'
+
+Literal = 'bool' | 'int' | 'real' | 'scynot' | 'char' | 'string'
+Value = Literal | FuncCall | Array | 'id'
+
+Type = 'typeBool' | 'typeInt' | 'typeReal' | 'typeChar' | 'typeString' | TypeArray
+TypeArray = 'typeArray' 'opBrackets' 'clBrackets' 'of' Type | 'typeArray' 'opBrackets' Expr 'clBrackets' 'of' Type
+Array = 'id' ArrayPos
+ArrayPos = 'opBrackets' Expr 'clBrackets' ArrayPos | 'opBrackets' Expr 'clBrackets'
+
+Body = 'opBraces' Lines 'clBraces' | 'opBraces' 'clBraces'
+
+Lines = Line Lines | Line | 'returnFun' Expr | 'returnFun'
+Line = Statement 'comma' Line | Statement
+Statement = DeclVars | FuncCall | If | Loop | Attrib
+
+Attrib = LeftAttrib 'attrib' Expr
+LeftAttrib = 'id' | Array
+
+If = 'ifSel' 'opParen' Expr 'clParen' Body | 'ifSel' 'opParen' Expr 'clParen' Body ElIfAux
+ElIfAux = 'elseSel' Body | 'elseSel' If | 'elifSel' 'opParen' Expr 'clParen' ElIf
+ElIf = Body ElIfAux | Body
+
+Expr = Expr 'logicOr' ExprAnd | ExprAnd
+ExprAnd = ExprAnd 'logicAnd' ExprBor | ExprBor
+ExprBor = ExprBor 'bitOr' ExprBxor | ExprBxor
+ExprBxor = ExprBxor 'bitXor' ExprBand | ExprBand
+ExprBand = ExprBand 'bitAnd' ExprEq | ExprEq
+ExprEq = ExprEq 'eqOrDiff' ExprRel | ExprRel
+ExprRel = ExprRel 'relational' ExprShift | ExprShift
+ExprShift = ExprShift 'bitShift' ExprAdd | ExprAdd
+ExprAdd = ExprAdd 'plus' ExprMult | ExprAdd 'minus' ExprMult | ExprMult
+ExprMult = ExprMult 'mult' ExprPow | ExprPow
+ExprPow = ExprPow 'exp' ExprUnary | ExprUnary
+ExprUnary = 'minus' ExprCast | 'unary' ExprCast | ExprCast
+ExprCast = ExprFac 'asCast' Type | ExprFac
+ExprFac = Value | 'opParen' Expr 'clParen'
+
+FuncCall = 'id' 'opParen' ParamList 'clParen' | 'id' 'opParen' 'clParen'
+Loop = 'repeat' 'whileLoop' 'opParen' Expr 'clParen' Body | 'repeat' 'opParen' 'id' 'attrib' Expr 'to' Expr 'clParen' Body
