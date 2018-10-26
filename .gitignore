@@ -29,6 +29,8 @@
 *.x86_64
 *.hex
 test
+__pychache__
+build
 
 # Debug files
 *.dSYM/
