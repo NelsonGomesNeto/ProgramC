@@ -1,33 +1,38 @@
 #include <bits/stdc++.h>
 using namespace std;
+char s[(int) 1e5 + 1];
+
+void printNumber(stack<char> a)
+{
+  vector<char> ans;
+  while (!a.empty())
+  {
+    ans.push_back(a.top()); a.pop();
+  }
+  reverse(ans.begin(), ans.end());
+  for (auto c: ans) printf("%c", c);
+  printf("\n");
+}
 
 int main()
 {
   int t; scanf("%d", &t);
   while (t --)
   {
-    char s[(int) 1e5 + 1]; int n;
-    scanf("\n%s %d", s, &n);
-    deque<char> minimum, maximum; int nmin = n, nmax = n;
+    int toRemove; scanf("\n%s %d", s, &toRemove);
+    stack<char> small, big;
 
-    minimum.push_back(s[0]);
-    for (int i = 1; s[i]; i ++)
+    int k = toRemove, kk = toRemove;
+    for (int i = 0; s[i]; i ++)
     {
-      while (minimum.size() && nmin && minimum.back() > s[i]) nmin --, minimum.pop_back();
-      minimum.push_back(s[i]);
+      while (k && !small.empty() && small.top() > s[i]) k --, small.pop();
+      while (kk && !big.empty() && big.top() < s[i]) kk --, big.pop();
+      small.push(s[i]), big.push(s[i]);
     }
-    while (nmin) nmin --, minimum.pop_back();
+    while (k) k --, small.pop();
+    while (kk) kk --, big.pop();
 
-    maximum.push_back(s[0]);
-    for (int i = 1, done; s[i]; i ++)
-    {
-      while (maximum.size() && nmax && maximum.back() < s[i]) nmax --, maximum.pop_back();
-      maximum.push_back(s[i]);
-    }
-    while (nmax) nmax --, maximum.pop_back();
-
-    for (auto i: minimum) printf("%c", i); printf("\n");
-    for (auto i: maximum) printf("%c", i); printf("\n");
+    printNumber(small); printNumber(big);
   }
   return(0);
 }
