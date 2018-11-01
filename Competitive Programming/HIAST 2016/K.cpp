@@ -2,8 +2,18 @@
 using namespace std;
 // source (0) -> soldiers (1 - n) -> places(n+1 - n+m) - target (n+1+m)
 const int maxVertices = 100 + 1 + 100 + 1; int source = 0, target;
-int matrixGraph[maxVertices][maxVertices], level[maxVertices], inf = 1<<20;
-vector<int> graph[maxVertices];
+int level[maxVertices], inf = 1<<20;
+struct Edge
+{
+  int to, back, flow, capacity;
+};
+vector<Edge> graph[maxVertices];
+
+void addEdge(int u, int v, int f)
+{
+  graph[u].push_back({v, (int) graph[v].size(), f, f});
+  graph[v].push_back({u, (int) graph[u].size() - 1, 0, 0});
+}
 
 int bfs()
 {
@@ -12,9 +22,9 @@ int bfs()
   while (!q.empty())
   {
     int u = q.front(); q.pop_front();
-    for (auto v: graph[u])
-      if (matrixGraph[u][v] && level[v] == -1)
-        level[v] = level[u] + 1, q.push_back(v);
+    for (auto e: graph[u])
+      if (e.flow && level[e.to] == -1)
+        q.push_back(e.to), level[e.to] = level[u] + 1;
   }
   return(level[target] != -1);
 }
@@ -23,31 +33,23 @@ int dfs(int u, int flow)
 {
   if (u == target) return(flow);
   int totalDelivered = 0;
-  for (auto v: graph[u])
-  if (matrixGraph[u][v] && level[u] == level[v] - 1)
-  {
-    int delivered = dfs(v, min(flow, matrixGraph[u][v]));
-    flow -= delivered;
-    matrixGraph[u][v] -= delivered;
-    matrixGraph[v][u] += delivered;
-    totalDelivered += delivered;
-  }
+  for (auto &e: graph[u])
+    if (e.flow && level[u] == level[e.to] - 1)
+    {
+      int delivered = dfs(e.to, min(flow, e.flow));
+      flow -= delivered;
+      e.flow -= delivered;
+      graph[e.to][e.back].flow += delivered;
+      totalDelivered += delivered;
+    }
   return(totalDelivered);
 }
 
 int dinic()
 {
-  int maxFlow = 0;
-  while (bfs()) maxFlow += dfs(source, inf);
+  int maxFlow = 0, flow;
+  while (bfs()) while (flow = dfs(source, inf)) maxFlow += flow;
   return(maxFlow);
-}
-
-void addEdge(int u, int v, int f)
-{
-  graph[u].push_back(v);
-  matrixGraph[u][v] = f;
-  graph[v].push_back(u);
-  matrixGraph[v][u] = 0;
 }
 
 int main()
@@ -55,7 +57,6 @@ int main()
   int t; scanf("%d", &t);
   while (t --)
   {
-    memset(matrixGraph, 0, sizeof(matrixGraph));
     int n, m, w; scanf("%d %d %d", &n, &m, &w); target = n+1+m;
     for (int i = 0; i <= target; i ++) graph[i].clear();
 

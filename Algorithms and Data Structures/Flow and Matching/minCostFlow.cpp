@@ -1,17 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define lli long long int
-// source (0) -> nodes (1, n - 2) -> target (n - 1)
-const int maxVertices = 101;
-lli inf = 1e18, cost[maxVertices], minFlow[maxVertices];
-int source = 0, target, vertices, prevVertice[maxVertices], prevEdge[maxVertices];
-struct Edge
-{
-  int to, back; lli flow, capacity, cost;
-};
-vector<Edge> graph[maxVertices];
+const int maxVertices = 1e5;
+int source, target, vertices, inf = 1e7;
+int cost[maxVertices], prevVertice[maxVertices], prevEdge[maxVertices], minFlow[maxVertices];
 
-void addEdge(int u, int v, lli f, lli c)
+struct Edge { int to, back, flow, capacity, cost; };
+vector<Edge> graph[maxVertices];
+void addEdge(int u, int v, int f, int c)
 {
   graph[u].push_back({v, (int) graph[v].size(), f, f, c});
   graph[v].push_back({u, (int) graph[u].size() - 1, 0, 0, -c});
@@ -40,12 +35,12 @@ int bellmanFord()
   return(cost[target] != inf);
 }
 
-pair<lli, lli> minCostFlow()
+pair<int, int> minCostFlow()
 {
-  lli minCost = 0, totalFlow = 0;
+  int minCost = 0, totalFlow = 0;
   while (bellmanFord())
   {
-    lli flow = minFlow[target];
+    int flow = minFlow[target];
     totalFlow += flow;
     for (int v = target; v != source; v = prevVertice[v])
     {
@@ -60,24 +55,18 @@ pair<lli, lli> minCostFlow()
 
 int main()
 {
-  int n, m;
-  while (scanf("%d %d", &n, &m) != EOF)
+  int n, m; scanf("%d %d", &n, &m); vertices = n;
+  source = 0, target = n - 1;
+
+  int u, v, f, c;
+  for (int i = 0; i < m; i ++)
   {
-    for (int i = 0; i <= n; i ++) graph[i].clear();
-    lli edges[m][3]; for (int i = 0; i < m; i ++) scanf("%lld %lld %lld", &edges[i][0], &edges[i][1], &edges[i][2]);
-    lli data, capacity; scanf("%lld %lld", &data, &capacity);
-
-    target = n, vertices = n + 1;
-    addEdge(0, 1, data, 0);
-    for (int i = 0; i < m; i ++)
-    {
-      addEdge(edges[i][0], edges[i][1], capacity, edges[i][2]);
-      addEdge(edges[i][1], edges[i][0], capacity, edges[i][2]);
-    }
-
-    pair<lli, lli> ans = minCostFlow();
-    if (ans.second < data) printf("Impossible.\n");
-    else printf("%lld\n", ans.first);
+    scanf("%d %d %d %d", &u, &v, &f, &c);
+    addEdge(u, v, f, c);
   }
+
+  pair<int, int> ans = minCostFlow();
+  printf("%d %d\n", ans.first, ans.second);
+
   return(0);
 }
