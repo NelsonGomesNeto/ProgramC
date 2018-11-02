@@ -15,8 +15,7 @@ void addEdge(int u, int v, int f)
 
 int bfs()
 {
-  memset(level, -1, sizeof(level)); level[source] = 0;
-  q.push(source);
+  memset(level, -1, sizeof(level)); level[source] = 0; q.push(source);
   while (!q.empty())
   {
     int u = q.front(); q.pop();
@@ -30,22 +29,18 @@ int bfs()
 int dfs(int u, int flow)
 {
   if (u == target || !flow) return(flow);
-  int totalDelivered = 0;
   for (int &p = ptr[u]; p < graph[u].size(); p ++)
   {
     Edge &e = graph[u][p];
     if (e.flow && level[u] == level[e.to] - 1)
     {
       int delivered = dfs(e.to, min(flow, e.flow));
-      flow -= delivered;
       e.flow -= delivered;
       graph[e.to][e.back].flow += delivered;
-      totalDelivered += delivered;
-      // it's better to let it catch more flow and go with full power
-      if (delivered) return(delivered);
+      if (delivered) return(delivered); // it's better to let it catch more flow and go with full power
     }
   }
-  return(totalDelivered);
+  return(0);
 }
 
 int dinic()

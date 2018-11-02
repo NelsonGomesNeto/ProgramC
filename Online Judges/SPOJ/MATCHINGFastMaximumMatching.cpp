@@ -1,14 +1,13 @@
 #include <bits/stdc++.h>
-#define lli long long int
 using namespace std;
-const int maxVertices = 5001;
-int source = 1, target, vertices, level[maxVertices], ptr[maxVertices];
-lli inf = 1e18;
+// source (0) -> cow (1 : n) -> bull (n+1 : n+m) -> target (n+m+1)
+const int maxVertices = 1e5 + 2;
+int source = 0, target, level[maxVertices], ptr[maxVertices], inf = 1e9;
 queue<int> q;
 
-struct Edge { int to, back; lli flow, capacity; };
+struct Edge { int to, back, flow, capacity; };
 vector<Edge> graph[maxVertices];
-void addEdge(int u, int v, lli f)
+void addEdge(int u, int v, int f)
 {
   graph[u].push_back({v, (int) graph[v].size(), f, f});
   graph[v].push_back({u, (int) graph[u].size() - 1, 0, 0});
@@ -16,8 +15,7 @@ void addEdge(int u, int v, lli f)
 
 bool bfs()
 {
-  memset(level, -1, sizeof(level)); level[source] = 0;
-  q.push(source);
+  memset(level, -1, sizeof(level)); level[source] = 0; q.push(source);
   while (!q.empty())
   {
     int u = q.front(); q.pop();
@@ -28,7 +26,7 @@ bool bfs()
   return(level[target] != -1);
 }
 
-lli dfs(int u, lli flow)
+int dfs(int u, int flow)
 {
   if (u == target || !flow) return(flow);
   for (int &p = ptr[u]; p < graph[u].size(); p ++)
@@ -36,18 +34,18 @@ lli dfs(int u, lli flow)
     Edge &e = graph[u][p];
     if (e.flow && level[u] + 1 == level[e.to])
     {
-      lli delivered = dfs(e.to, min(e.flow, flow));
+      int delivered = dfs(e.to, min(e.flow, flow));
       e.flow -= delivered;
       graph[e.to][e.back].flow += delivered;
-      if (delivered) return(delivered); // because it's usually better to let it reach here again once with a bigger flow
+      if (delivered) return(delivered);
     }
   }
   return(0);
 }
 
-lli dinic()
+int dinic()
 {
-  lli maxFlow = 0, flow;
+  int maxFlow = 0, flow;
   while (bfs())
   {
     memset(ptr, 0, sizeof(ptr));
@@ -58,17 +56,16 @@ lli dinic()
 
 int main()
 {
-  int n, m; scanf("%d %d", &n, &m); vertices = n;
-  int u, v; lli f;
-  for (int i = 0; i < m; i ++)
+  int n, m, p; scanf("%d %d %d", &n, &m, &p); target = n + m + 1;
+  int u, v;
+  for (int i = 0; i < n; i ++) addEdge(source, i + 1, 1);
+  for (int i = 0; i < m; i ++) addEdge(i + 1 + n, target, 1);
+  for (int i = 0; i < p; i ++)
   {
-    scanf("%d %d %lld", &u, &v, &f); if (u == v) continue;
-    addEdge(u, v, f);
-    addEdge(v, u, f);
+    scanf("%d %d", &u, &v);
+    addEdge(u, v + n, 1);
   }
 
-  target = n;
-  lli maxFlow = dinic();
-  printf("%lld\n", maxFlow);
+  printf("%d\n", dinic());
   return(0);
 }
