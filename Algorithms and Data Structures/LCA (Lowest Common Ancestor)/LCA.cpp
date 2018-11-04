@@ -3,13 +3,17 @@ using namespace std;
 vector<int> eulerianTour;
 const int maxN = 1e6, maxLog = floor(log2(2e6)) + 1;
 vector<int> tree[maxN];
-int uMap[2*maxN], revMap[2*maxN], first[2*maxN], now;
+int uMap[maxN], revMap[2*maxN], first[2*maxN], now;
 int sparseTable[2*maxN][maxLog], logdp[2*maxN + 1];
+// The distance between two vertices is very straight forward:
+// first find the level of each node
+// distance(u, v) = (level[u] - level[LCA(u, v)]) + (level[v] - level[LCA(u, v)])
+// distance(u, v) = level[u] + level[u] - 2*level[LCA(u, v)]
 
 void dfs(int u)
 {
   revMap[now] = u; uMap[u] = now ++;
-  first[uMap[u]] = eulerianTour.size();
+  first[u] = eulerianTour.size();
   eulerianTour.push_back(uMap[u]);
   for (auto v: tree[u])
   {
@@ -85,7 +89,7 @@ int main()
 
   while (scanf("%d %d", &u, &v) != EOF)
   {
-    printf("LCA(%d, %d) = %d | %s\n", u, v, LCA(uMap[u], uMap[v]), LCA(uMap[u], uMap[v]) == LCANaive(uMap[u], uMap[v]) ? "true" : "false");
+    printf("LCA(%d, %d) = %d | %s\n", u, v, LCA(u, v), LCA(u, v) == LCANaive(u, v) ? "true" : "false");
   }
 
   return(0);
