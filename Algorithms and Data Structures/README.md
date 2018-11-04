@@ -31,3 +31,5 @@
 # LCA
 * #### Problems
   * [Lowest Common Ancestor](https://www.spoj.com/problems/LCA/) (Pure LCA, no tricks)
+  * [Match Match](http://www.codcad.com/problem/147) (Pure LCA, but queries for distance)
+  * [Ants Colony](http://www.codcad.com/problem/160) (Same as above, but edges have distance)
