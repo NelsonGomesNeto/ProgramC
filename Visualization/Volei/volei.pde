@@ -74,8 +74,10 @@ Boolean insidePolygon(float x, float y) {
   for (int i = 0; i < p; i ++) {
     float x1 = points.get(i).getKey(), x2 = points.get(i + 1).getKey();
     float y1 = points.get(i).getValue(), y2 = points.get(i + 1).getValue();
-    if (y1 == y2 && y == y1 && x >= min(x1, x2) && x <= max(x1, x2)) return(true);
-    if (x1 == x2 && x == x1 && y >= min(y1, y2) && y <= max(y1, y2)) return(true);
+    //if (y1 == y2 && y == y1 && x >= min(x1, x2) && x <= max(x1, x2)) return(true);
+    //if (x1 == x2 && x == x1 && y >= min(y1, y2) && y <= max(y1, y2)) return(true);
+    float h = sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2)), a = sqrt(pow(x - x1, 2) + pow(y - y1, 2)), b = sqrt(pow(x - x2, 2) + pow(y - y2, 2));
+    if (a + b - h <= 1e-6) return(true);
     if ((y1 > y) != (y2 > y) && (x < (x2 - x1) * (y - y1) / (y2 - y1) + x1))
       c = !c;
   }
