@@ -2,12 +2,14 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import javafx.util.Pair;
 import java.util.Queue;
+import java.util.ArrayDeque;
 ArrayList<Pair<Float, Float>> points, judges;
 Integer ptr, p, t, ansPoints; Float lox, hix, loy, hiy, sizeX, sizeY; Boolean loading = true;
 Float scl = 0.5;
 String[] lines, output;
 ArrayList<Float> xa, ya;
 ArrayList<ArrayList<Integer>> graph; int[][] matrixGraph; int[] prev; int source = 0, target;
+HashMap<Float, Integer> xToId, yToId;
 
 void setup() {
   lines = loadStrings("./in");
@@ -44,7 +46,7 @@ void readField() {
 
 void buildGraph() {
   // source (0) -> x (1 : x.size) -> y (1 + x.size() : x.size() + y.size()) -> target (x.size() + y.size() + 1)
-  HashSet<Float> x = new HashSet(), y = new HashSet();
+  HashSet<Float> x = new HashSet(), y = new HashSet(); xToId = new HashMap(); yToId = new HashMap();
   for (int i = 0; i < p; i ++) {
     x.add(points.get(i).getKey());
     y.add(points.get(i).getValue());
@@ -53,12 +55,18 @@ void buildGraph() {
   target = xa.size() + ya.size() + 1;
 
   for (float xi: xa) {
-    graph.get(0).add(1 + xa.indexOf(xi));
+    graph.get(source).add(1 + xa.indexOf(xi));
+    xToId.put(xi, 1 + xa.indexOf(xi));
     for (Pair p: judges)
       if (p.getKey().equals(xi))
         graph.get(1 + xa.indexOf(xi)).add(1 + xa.size() + ya.indexOf(p.getValue()));
   }
-  for (float yi: ya) graph.get(1 + xa.size() + ya.indexOf(yi)).add(target);
+  for (float yi: ya) {
+    graph.get(1 + xa.size() + ya.indexOf(yi)).add(target);
+    yToId.put(yi, 1 + xa.size() + ya.indexOf(yi));
+  }
+
+  text("maxFlow = " + str(maxFlow()), height - 100, height - 100);
 }
 
 Boolean insidePolygon(float x, float y) {
@@ -129,7 +137,6 @@ void findPossibleJudges() {
 
   text(str(x.size()) + " " + str(y.size()), height - 200, 100);
   text(str(judges.size()), 100, height - 100);
-  text("maxFlow = " + maxFlow(), height - 100, height - 100);
 }
 
 void drawPoint(Float x, Float y, Integer i, color col, Boolean number) {
@@ -154,7 +161,10 @@ void draw() {
       line(height * scl / 2.0 + (x1 - lox) * sizeX, height * scl / 2.0 + (y1 - loy) * sizeY, height * scl / 2.0 + (x2 - lox) * sizeX, height * scl / 2.0 + (y2 - loy) * sizeY);
     }
     for (int i = 0; i < p; i ++) drawPoint(points.get(i).getKey(), points.get(i).getValue(), i, color(0, 0, 255), false);
-    for (int i = 0; i < judges.size(); i ++) drawPoint(judges.get(i).getKey(), judges.get(i).getValue(), i, color(255, 0, 0), false);
+    for (int i = 0; i < judges.size(); i ++) {
+      float x = judges.get(i).getKey(), y = judges.get(i).getValue();
+      drawPoint(x, y, i, color(matrixGraph[xToId.get(x)][yToId.get(y)] * 255, (1 - matrixGraph[xToId.get(x)][yToId.get(y)]) * 255, 0), false);
+    }
 
     // graph
     stroke(color(128, 0, 128));
@@ -164,7 +174,7 @@ void draw() {
     point(startX + 0*gx, height / 2.0);
     for (int i = 1; i <= xa.size(); i ++) {
       point(startX + (1.0/3.0)*gx, startY + (i-0.5)/xa.size()*gy);
-      stroke(color(0, 255, 0));
+      stroke(color(matrixGraph[source][i] * 255, (1 - matrixGraph[source][i]) * 255, 0));
       strokeWeight(5);
       line(startX + 0*gx, height / 2.0, startX + (1.0/3.0)*gx, startY + (i-0.5)/xa.size()*gy);
       stroke(color(128, 0, 128));
@@ -172,7 +182,7 @@ void draw() {
     }
     for (int i = 1 + xa.size(); i <= xa.size() + ya.size(); i ++) {
       point(startX + (2.0/3.0)*gx, startY + (i-xa.size()-0.5)/ya.size()*gy);
-      stroke(color(0, 255, 0));
+      stroke(color(matrixGraph[i][target] * 255, (1 - matrixGraph[i][target]) * 255, 0));
       strokeWeight(5);
       line(startX + (2.0/3.0)*gx, startY + (i-xa.size()-0.5)/ya.size()*gy, startX + 1*gx, height / 2.0);
       stroke(color(128, 0, 128));
@@ -180,7 +190,7 @@ void draw() {
     }
     for (int i = 1; i <= xa.size(); i ++)
       for (int j: graph.get(i)) {
-        stroke(color(0, 255, 0));
+        stroke(color(matrixGraph[i][j] * 255, (1 - matrixGraph[i][j]) * 255, 0));
         strokeWeight(5);
         line(startX + (1.0/3.0)*gx, startY + (i-0.5)/xa.size()*gy, startX + (2.0/3.0)*gx, startY + (j-xa.size()-0.5)/ya.size()*gy);
         stroke(color(128, 0, 128));
@@ -198,12 +208,23 @@ void keyPressed() {
 }
 
 Boolean bfs() {
-  
-  Queue<Integer> queue = new Queue(); queue.add(source);
+  Queue<Integer> queue = new ArrayDeque(); queue.add(source); prev[target] = -1;
+  while (!queue.isEmpty()) {
+    int u = queue.poll();
+    for (int v: graph.get(u))
+      if (matrixGraph[u][v] != 0) {
+        queue.add(v);
+        prev[v] = u;
+      }
+  }
+  return(prev[target] != -1);
 }
 
 int maxFlow() {
-  matrixGraph = new int[graph.size()][graph.size()]; path = new int[graph.size()]; prev = new int[graph.size()];
+  matrixGraph = new int[graph.size()][graph.size()]; prev = new int[graph.size()];
+  for (int i = 0; i < graph.size(); i ++)
+    for (int j: graph.get(i))
+      matrixGraph[i][j] = 1;
   int mFlow = 0;
   while (bfs()) {
     int flow = int(1e9);

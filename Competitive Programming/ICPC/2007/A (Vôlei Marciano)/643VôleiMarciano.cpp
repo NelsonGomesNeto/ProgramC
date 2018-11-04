@@ -20,8 +20,10 @@ bool insidePolygon(int x, int y)
   for (int i = 0; i < n; i ++)
   {
     int x1 = points[i].x, x2 = points[i + 1].x, y1 = points[i].y, y2 = points[i + 1].y;
-    if (y1 == y2 && y == y1 && x >= min(x1, x2) && x <= max(x1, x2)) return(true);
-    if (x1 == x2 && x == x1 && y >= min(y1, y2) && y <= max(y1, y2)) return(true);
+    // if (y1 == y2 && y == y1 && x >= min(x1, x2) && x <= max(x1, x2)) return(true);
+    // if (x1 == x2 && x == x1 && y >= min(y1, y2) && y <= max(y1, y2)) return(true);
+    double h = sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2)), a = sqrt(pow(x - x1, 2) + pow(y - y1, 2)), b = sqrt(pow(x - x2, 2) + pow(y - y2, 2));
+    if (a + b - h <= 1e-6) return(true);
     if ((y1 > y) != (y2 > y) && (x < (x2 - x1) * (double) (y - y1) / (y2 - y1) + x1))
       c = !c;
   }
