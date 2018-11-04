@@ -2,12 +2,12 @@
 #define DEBUG if(0)
 using namespace std;
 int length; vector<int> cars;
-map<int, int> dp[(int) 1e4 + 1], path[(int) 1e4 + 1];
+vector<int> dp[(int) 1e4 + 1], path[(int) 1e4 + 1];
 
 int solve(int i, int port, int starboard)
 {
   if (i == cars.size()) return(0);
-  if (!dp[port].count(i))
+  if (dp[port][i] == -1)
   {
     int p = 0, s = 0;
     if (port + cars[i] <= length) p = solve(i + 1, port + cars[i], starboard) + 1;
@@ -37,7 +37,11 @@ int main()
     scanf("%d", &length); length *= 100;
     cars.clear(); int size;
     while (scanf("%d", &size) && size) cars.push_back(size);
-    for (int i = 0; i <= length; i ++) dp[i].clear();
+    for (int i = 0; i <= length; i ++)
+    {
+      dp[i].clear(); dp[i].resize(cars.size()); path[i].clear(); path[i].resize(cars.size());
+      for (int j = 0; j < cars.size(); j ++) dp[i][j] = -1;
+    }
     DEBUG for (int i = 0; i < cars.size(); i ++) printf("%d%c", cars[i], i < cars.size() - 1 ? ' ' : '\n');
 
     int ans = solve(0, 0, 0);
