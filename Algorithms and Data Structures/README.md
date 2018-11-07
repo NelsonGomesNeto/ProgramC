@@ -5,6 +5,7 @@
   * [Fast Flow](https://www.spoj.com/problems/FASTFLOW/) (Heavy optimization needed)
   * [Matching](https://www.spoj.com/problems/MATCHING/) (Heavy optimization needed)
   * [Attacking Rooks](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=602&page=show_problem&problem=4406) (Modeling is pretty incredible)
+  * [Martian Volei](https://thehuxley.com/problem/643) (Modeling is beautiful and a bit simple)
   * [UVA Problem Package](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=685)
 
 ## Min Cost Flow :heart:
@@ -33,3 +34,14 @@
   * [Lowest Common Ancestor](https://www.spoj.com/problems/LCA/) (Pure LCA, no tricks)
   * [Match Match](http://www.codcad.com/problem/147) (Pure LCA, but queries for distance)
   * [Ants Colony](http://www.codcad.com/problem/160) (Same as above, but edges have distance)
+
+
+# Graph
+* #### Problems
+  * [Shipping](https://thehuxley.com/problem/1997) (Very pure Dijkstra)
+  * [Zak Galou](https://www.urionlinejudge.com.br/judge/pt/problems/view/1409) (Coin change DP + Dijkstra)
+  * [Galactic Taxes](https://www.urionlinejudge.com.br/judge/pt/problems/view/2011) (Ternary Search + Dijkstra)
+
+
+# DP
+* #### Problems
