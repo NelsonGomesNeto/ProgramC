@@ -22,8 +22,6 @@ double binSearch(double lo, double hi)
 int main()
 {
   while (scanf("%lf %d", &x, &n) != EOF)
-  {
     printf("%.4g^(1/%d) = %.4g (%.4g)\n", x, n, pow(x, 1.0/n), binSearch(0, max(x, 1.0)));
-  }
   return(0);
 }
