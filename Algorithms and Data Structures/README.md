@@ -45,3 +45,4 @@
 
 # DP
 * #### Problems
+  * [10755 - Garbage Heap](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1696) (Maximum subarray sum, easy to think: O(n^6), mindblowing accSum: O(n^5); both pass very easily though)
