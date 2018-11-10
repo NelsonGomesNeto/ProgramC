@@ -8,12 +8,30 @@ int potentials[maxVertices], visited[maxVertices]; // needed for Dijkstra with P
 // Dijkstra with Potentials is faster then SPFA
 // But can't be used if there are negative edges at the start
 
+
 struct Edge { int to, back, flow, capacity, cost; };
 vector<Edge> graph[maxVertices];
 void addEdge(int u, int v, int f, int c)
 {
   graph[u].push_back({v, (int) graph[v].size(), f, f, c});
   graph[v].push_back({u, (int) graph[u].size() - 1, 0, 0, -c});
+}
+void printGraph()
+{
+  printf("\ncost: %3d\n", cost[target]);
+  for (int v = target, totalCost = 0; v != source; v = prevVertice[v])
+  {
+    totalCost += graph[prevVertice[v]][prevEdge[v]].cost;
+    printf("%d%s", v, prevVertice[v] != source ? " <- " : " <- 0");
+    if (prevVertice[v] == source) printf(" | totalCost: %d\n", totalCost);
+  }
+  for (int i = 0; i < vertices; i ++)
+  {
+    printf("%2d (pot: %2d):", i, potentials[i]); int k = 0;
+    for (Edge &e: graph[i])
+      printf(" (%2d, %2d, %3d)", e.to, e.flow, e.cost);
+    printf("\n");
+  }
 }
 
 bool SPFA()
