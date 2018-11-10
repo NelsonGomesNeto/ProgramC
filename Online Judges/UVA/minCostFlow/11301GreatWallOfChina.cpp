@@ -9,7 +9,7 @@ char field[5][1001];
 // since cost is on the vertices, we're gonna need to duplicate vertices
 const int maxVertices = 1 + 2*5*1000 + 1;
 int source = 0, target, vertices, inf = 1e7;
-int prevVertice[maxVertices], prevEdge[maxVertices], minFlow[maxVertices], cost[maxVertices], inqueue[maxVertices], potentials[maxVertices], visited[maxVertices];
+int prevVertex[maxVertices], prevEdge[maxVertices], minFlow[maxVertices], cost[maxVertices], inqueue[maxVertices], potentials[maxVertices], visited[maxVertices];
 struct Edge { int to, back, flow, capacity, cost; };
 vector<Edge> graph[maxVertices];
 void addEdge(int u, int v, int f, int c)
@@ -34,7 +34,7 @@ bool SPFA()
         if (!inqueue[e.to]) inqueue[e.to] = 1, q.push_back(e.to);
         cost[e.to] = newCost;
         minFlow[e.to] = min(minFlow[u], e.flow);
-        prevVertice[e.to] = u, prevEdge[e.to] = j;
+        prevVertex[e.to] = u, prevEdge[e.to] = j;
       }
     }
   }
@@ -46,7 +46,7 @@ bool dijkstraWithPotentials()
   memset(visited, 0, sizeof(visited));
   for (int i = 0; i < vertices; i ++) cost[i] = minFlow[i] = inf;
   priority_queue<pair<int, int>> q;
-  q.push({0, source}); cost[source] = 0;
+  cost[source] = 0; q.push({cost[source], source});
   while (!q.empty())
   {
     int u = q.top().second; q.pop();
@@ -59,7 +59,7 @@ bool dijkstraWithPotentials()
       {
         cost[e.to] = newCost;
         minFlow[e.to] = min(minFlow[u], e.flow);
-        prevVertice[e.to] = u, prevEdge[e.to] = j;
+        prevVertex[e.to] = u, prevEdge[e.to] = j;
         q.push({-cost[e.to], e.to});
       }
     }
@@ -82,7 +82,7 @@ bool bellmanFord()
         {
           cost[e.to] = cost[u] + e.cost;
           minFlow[e.to] = min(minFlow[u], e.flow);
-          prevVertice[e.to] = u, prevEdge[e.to] = j;
+          prevVertex[e.to] = u, prevEdge[e.to] = j;
           done = 1;
         }
       }
@@ -99,9 +99,9 @@ pair<int, int> minCostFlow()
   {
     int flow = minFlow[target];
     totalFlow += flow;
-    for (int v = target; v != source; v = prevVertice[v])
+    for (int v = target; v != source; v = prevVertex[v])
     {
-      Edge &e = graph[prevVertice[v]][prevEdge[v]];
+      Edge &e = graph[prevVertex[v]][prevEdge[v]];
       e.flow -= flow;
       graph[e.to][e.back].flow += flow;
       minCost += flow * e.cost;

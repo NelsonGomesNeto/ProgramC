@@ -2,7 +2,7 @@
 using namespace std;
 const int maxVertices = 1e5;
 int source, target, vertices, inf = 1e7;
-int cost[maxVertices], prevVertice[maxVertices], prevEdge[maxVertices], minFlow[maxVertices];
+int cost[maxVertices], prevVertex[maxVertices], prevEdge[maxVertices], minFlow[maxVertices];
 int inqueue[maxVertices]; // needed for SPFA
 int potentials[maxVertices], visited[maxVertices]; // needed for Dijkstra with Potentials
 // Dijkstra with Potentials is faster then SPFA
@@ -19,11 +19,11 @@ void addEdge(int u, int v, int f, int c)
 void printGraph()
 {
   printf("\ncost: %3d\n", cost[target]);
-  for (int v = target, totalCost = 0; v != source; v = prevVertice[v])
+  for (int v = target, totalCost = 0; v != source; v = prevVertex[v])
   {
-    totalCost += graph[prevVertice[v]][prevEdge[v]].cost;
-    printf("%d%s", v, prevVertice[v] != source ? " <- " : " <- 0");
-    if (prevVertice[v] == source) printf(" | totalCost: %d\n", totalCost);
+    totalCost += graph[prevVertex[v]][prevEdge[v]].cost;
+    printf("%d%s", v, prevVertex[v] != source ? " <- " : " <- 0");
+    if (prevVertex[v] == source) printf(" | totalCost: %d\n", totalCost);
   }
   for (int i = 0; i < vertices; i ++)
   {
@@ -50,7 +50,7 @@ bool SPFA()
         if (!inqueue[e.to]) inqueue[e.to] = 1, q.push_back(e.to);
         cost[e.to] = newCost;
         minFlow[e.to] = min(minFlow[u], e.flow);
-        prevVertice[e.to] = u, prevEdge[e.to] = j;
+        prevVertex[e.to] = u, prevEdge[e.to] = j;
       }
     }
   }
@@ -75,7 +75,7 @@ bool dijkstraWithPotentials()
       {
         cost[e.to] = newCost;
         minFlow[e.to] = min(minFlow[u], e.flow);
-        prevVertice[e.to] = u, prevEdge[e.to] = j;
+        prevVertex[e.to] = u, prevEdge[e.to] = j;
         q.push({-cost[e.to], e.to});
       }
     }
@@ -97,7 +97,7 @@ bool bellmanFord()
         if (e.flow && cost[u] + e.cost < cost[e.to])
         {
           cost[e.to] = cost[u] + e.cost;
-          prevVertice[e.to] = u, prevEdge[e.to] = j;
+          prevVertex[e.to] = u, prevEdge[e.to] = j;
           minFlow[e.to] = min(minFlow[u], e.flow);
           done = 1;
         }
@@ -115,9 +115,9 @@ pair<int, int> minCostFlow()
   {
     int flow = minFlow[target];
     totalFlow += flow;
-    for (int v = target; v != source; v = prevVertice[v])
+    for (int v = target; v != source; v = prevVertex[v])
     {
-      Edge &e = graph[prevVertice[v]][prevEdge[v]];
+      Edge &e = graph[prevVertex[v]][prevEdge[v]];
       e.flow -= flow;
       graph[e.to][e.back].flow += flow;
       minCost += flow * e.cost;

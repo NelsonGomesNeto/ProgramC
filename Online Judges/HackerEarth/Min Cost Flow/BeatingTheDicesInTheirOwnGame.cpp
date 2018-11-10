@@ -4,7 +4,7 @@ using namespace std;
 const int maxFaces = 100 * 100, maxN = 100; lli inf = 1e16;
 // source (0) -> dice (1-100) -> faces (101-100+100*100) -> target (100+100*100 + 1)
 const int maxVertices = 1 + maxN + maxFaces + 1;
-int source = 0, target, vertices, prevVertice[maxVertices], prevEdge[maxVertices];
+int source = 0, target, vertices, prevVertex[maxVertices], prevEdge[maxVertices];
 lli cost[maxVertices], minFlow[maxVertices];
 unordered_map<lli, int> faceMap;
 
@@ -42,7 +42,7 @@ int bellmanFord()
         if (e.flow && cost[u] + e.cost < cost[e.to])
         {
           cost[e.to] = cost[u] + e.cost;
-          prevVertice[e.to] = u, prevEdge[e.to] = j;
+          prevVertex[e.to] = u, prevEdge[e.to] = j;
           minFlow[e.to] = min(minFlow[u], (lli) e.flow);
           done = 1;
         }
@@ -59,9 +59,9 @@ pair<lli, lli> minCostFlow()
   {
     lli flow = minFlow[target];
     totalFlow += flow;
-    for (int v = target; v != source; v = prevVertice[v])
+    for (int v = target; v != source; v = prevVertex[v])
     {
-      Edge &e = graph[prevVertice[v]][prevEdge[v]];
+      Edge &e = graph[prevVertex[v]][prevEdge[v]];
       e.flow -= flow;
       graph[e.to][e.back].flow += flow;
       minCost += e.cost * flow;

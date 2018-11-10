@@ -4,7 +4,7 @@ using namespace std;
 // source (0) -> nodes (1, n - 2) -> target (n - 1)
 const int maxVertices = 101;
 lli inf = 1e18, cost[maxVertices], minFlow[maxVertices];
-int source = 0, target, vertices, prevVertice[maxVertices], prevEdge[maxVertices];
+int source = 0, target, vertices, prevVertex[maxVertices], prevEdge[maxVertices];
 struct Edge
 {
   int to, back; lli flow, capacity, cost;
@@ -30,7 +30,7 @@ int bellmanFord()
         if (e.flow && cost[u] + e.cost < cost[e.to])
         {
           cost[e.to] = cost[u] + e.cost;
-          prevVertice[e.to] = u, prevEdge[e.to] = j;
+          prevVertex[e.to] = u, prevEdge[e.to] = j;
           minFlow[e.to] = min(minFlow[u], e.flow);
           done = 1;
         }
@@ -47,9 +47,9 @@ pair<lli, lli> minCostFlow()
   {
     lli flow = minFlow[target];
     totalFlow += flow;
-    for (int v = target; v != source; v = prevVertice[v])
+    for (int v = target; v != source; v = prevVertex[v])
     {
-      Edge &e = graph[prevVertice[v]][prevEdge[v]];
+      Edge &e = graph[prevVertex[v]][prevEdge[v]];
       e.flow -= flow;
       graph[e.to][e.back].flow += flow;
       minCost += flow * e.cost;
