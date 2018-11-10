@@ -56,8 +56,9 @@ Pair<Float, Float> dfs(int u, float x, float y, float hx) {
 }
 
 void draw() {
+  ptr = vertices;
   // edges
-  for (int i = 1; i <= vertices; i ++) {
+  for (int i = 1; i <= ptr; i ++) {
     float x1 = vertexPosition.get(i).getKey(), y1 = vertexPosition.get(i).getValue();
     for (int j: tree.get(i)) {
       float x2 = vertexPosition.get(j).getKey(), y2 = vertexPosition.get(j).getValue();
@@ -66,7 +67,7 @@ void draw() {
   }
   
   // vertices
-  for (int i = 1; i <= vertices; i ++) {
+  for (int i = 1; i <= ptr; i ++) {
     float x1 = vertexPosition.get(i).getKey(), y1 = vertexPosition.get(i).getValue();
     
     fill(255);
@@ -74,5 +75,9 @@ void draw() {
     fill(0);
     if (withPosition) text(str(i) + " " + str(x1), radious + (x1 - minX) * xScale, radious + y1 * yScale);
     else text(str(i), radious + (x1 - minX) * xScale, radious + y1 * yScale);
-  }
+ }
+}
+
+void keyPressed() {
+  if (keyCode == ENTER) ptr = min(ptr + 1, vertices);
 }
