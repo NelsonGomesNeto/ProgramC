@@ -45,7 +45,7 @@ int spfa()
   return(cost[target] != inf);
 }
 
-int dijsktraWithPotentials()
+int dijkstraWithPotentials()
 {
   for (int i = 0; i < vertices; i ++) cost[i] = inf;
   memset(visited, 0, sizeof(visited));

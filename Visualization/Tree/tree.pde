@@ -2,34 +2,37 @@ import java.util.ArrayList;
 import javafx.util.Pair;
 
 String[] lines;
-ArrayList<ArrayList<Integer>> tree; int vertices, edges;
+ArrayList<String> vertexLabel;
+ArrayList<ArrayList<Integer>> tree; int vertices, edges, biggestLabel = 0;
 ArrayList<Pair<Float, Float>> vertexPosition;
 
-float radious = 50, xSep = 75, ySep = 100, minX = 1e9, maxX = -1e9, depth = -1e9, scale, xScale, yScale;
+float xBorder = 50, yBorder = 50, xRadious = 200, yRadious = 50, xSep = 150, ySep = 100, minX = 1e9, maxX = -1e9, depth = -1e9, scale, xScale, yScale;
 boolean withPosition = false;
 int ptr = 0;
 
 void setup() {
   lines = loadStrings("./in");
-  tree = new ArrayList(); vertexPosition = new ArrayList();
-  String[] line = lines[0].split(" ");
+  tree = new ArrayList(); vertexPosition = new ArrayList(); vertexLabel = new ArrayList(); int fp = 0;
+  String[] line = lines[fp ++].split(" ");
   vertices = int(line[0]); edges = int(line[1]);
   for (int i = 0; i <= vertices; i ++) {
     tree.add(new ArrayList());
     vertexPosition.add(new Pair(0, 0));
+    biggestLabel = max(biggestLabel, lines[fp].length());
+    vertexLabel.add(i > 0 ? lines[fp ++] : "");
   }
   for (int i = 0; i < edges; i ++) {
-    line = lines[i + 1].split(" ");
+    line = lines[fp ++].split(" ");
     tree.get(int(line[0])).add(int(line[1]));
   }
   dfs(1, width / 2.0, 0, -1e9);
   scale = min(height, width) / max(depth, maxX - minX);
-  radious = 50 * scale;
-  yScale = (height - 2*radious) / depth;
-  xScale = (width - 2*radious) / (maxX - minX);
+  xRadious = xRadious * scale;
+  yScale = (height - 2*yBorder) / depth;
+  xScale = (width - 2*xBorder) / (maxX - minX);
 
-  strokeWeight(2); textSize(32 / str(vertices).length()); textAlign(CENTER, CENTER);
-  size(1000, 800);
+  strokeWeight(2); textSize(132 / max(str(vertices).length(), + biggestLabel)); textAlign(CENTER, CENTER);
+  size(1200, 800);
 }
 
 Pair<Float, Float> dfs(int u, float x, float y, float hx) { 
@@ -62,7 +65,7 @@ void draw() {
     float x1 = vertexPosition.get(i).getKey(), y1 = vertexPosition.get(i).getValue();
     for (int j: tree.get(i)) {
       float x2 = vertexPosition.get(j).getKey(), y2 = vertexPosition.get(j).getValue();
-      line(radious + (x1 - minX) * xScale, radious + y1 * yScale, radious + (x2 - minX) * xScale, radious + y2 * yScale);
+      line(xBorder + (x1 - minX) * xScale, yBorder + y1 * yScale, xBorder + (x2 - minX) * xScale, yBorder + y2 * yScale);
     }
   }
   
@@ -71,10 +74,10 @@ void draw() {
     float x1 = vertexPosition.get(i).getKey(), y1 = vertexPosition.get(i).getValue();
     
     fill(255);
-    ellipse(radious + (x1 - minX) * xScale, radious + y1 * yScale, radious, radious);
+    ellipse(xBorder + (x1 - minX) * xScale, yBorder + y1 * yScale, xRadious, yRadious);
     fill(0);
-    if (withPosition) text(str(i) + " " + str(x1), radious + (x1 - minX) * xScale, radious + y1 * yScale);
-    else text(str(i), radious + (x1 - minX) * xScale, radious + y1 * yScale);
+    if (withPosition) text(str(i) + " " + str(x1), xBorder + (x1 - minX) * xScale, yBorder + y1 * yScale);
+    else text(str(i) + "\n" + vertexLabel.get(i), xBorder + (x1 - minX) * xScale, yBorder + y1 * yScale);
  }
 }
 

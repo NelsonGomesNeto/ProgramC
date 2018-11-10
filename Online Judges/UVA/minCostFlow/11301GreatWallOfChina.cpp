@@ -1,13 +1,15 @@
 #include <bits/stdc++.h>
+#define DEBUG if(0)
 using namespace std;
-const int maxVertices = 1e5;
-int source, target, vertices, inf = 1e7;
-int cost[maxVertices], prevVertice[maxVertices], prevEdge[maxVertices], minFlow[maxVertices];
-int inqueue[maxVertices]; // needed for SPFA
-int potentials[maxVertices], visited[maxVertices]; // needed for Dijkstra with Potentials
-// Dijkstra with Potentials is faster then SPFA
-// But can't be used if there are negative edges at the start
+// it's never going to be necessary to go to the left
+char field[5][1001];
 
+// source (0) -> field (1 : 2 * 5 * 1000) -> target (2*5*1000 + 1)
+// but source will only be conected to alfalfas
+// since cost is on the vertices, we're gonna need to duplicate vertices
+const int maxVertices = 1 + 2*5*1000 + 1;
+int source = 0, target, vertices, inf = 1e7;
+int prevVertice[maxVertices], prevEdge[maxVertices], minFlow[maxVertices], cost[maxVertices], inqueue[maxVertices], potentials[maxVertices], visited[maxVertices];
 struct Edge { int to, back, flow, capacity, cost; };
 vector<Edge> graph[maxVertices];
 void addEdge(int u, int v, int f, int c)
@@ -79,8 +81,8 @@ bool bellmanFord()
         if (e.flow && cost[u] + e.cost < cost[e.to])
         {
           cost[e.to] = cost[u] + e.cost;
-          prevVertice[e.to] = u, prevEdge[e.to] = j;
           minFlow[e.to] = min(minFlow[u], e.flow);
+          prevVertice[e.to] = u, prevEdge[e.to] = j;
           done = 1;
         }
       }
@@ -93,7 +95,7 @@ pair<int, int> minCostFlow()
 {
   memset(potentials, 0, sizeof(potentials));
   int minCost = 0, totalFlow = 0;
-  while (dijkstraWithPotentials())
+  while (SPFA())
   {
     int flow = minFlow[target];
     totalFlow += flow;
@@ -110,18 +112,39 @@ pair<int, int> minCostFlow()
 
 int main()
 {
-  int n, m; scanf("%d %d", &n, &m); vertices = n;
-  source = 0, target = n - 1;
-
-  int u, v, f, c;
-  for (int i = 0; i < m; i ++)
+  int m;
+  while (scanf("%d", &m) && m)
   {
-    scanf("%d %d %d %d", &u, &v, &f, &c);
-    addEdge(u, v, f, c);
+    for (int i = 0; i < 5; i ++) scanf("\n%s", field[i]);
+    DEBUG for (int i = 0; i < 5; i ++) printf("%s\n", field[i]);
+
+    int offset = 5*m; target = 2*5*m + 1; vertices = target + 1;
+    for (int i = 0; i < vertices; i ++) graph[i].clear();
+    for (int i = 0; i < 5; i ++)
+    {
+      if (field[i][0] == '@')
+        addEdge(source, 1 + i*m + 0, 1, 0);
+      addEdge(1 + offset + i*m + m - 1, target, 1, 0);
+    }
+
+    for (int i = 0; i < 5; i ++)
+      for (int j = 0; j < m; j ++)
+      {
+        if (j + 1 < m) addEdge(1 + offset + i*m + j, 1 + i*m + j + 1, 1, 0);
+        if (i - 1 >= 0) addEdge(1 + offset + i*m + j, 1 + (i - 1)*m + j, 1, 0);
+        if (i + 1 < 5) addEdge(1 + offset + i*m + j, 1 + (i + 1)*m + j, 1, 0);
+        addEdge(1 + i*m + j, 1 + offset + i*m + j, 1, field[i][j] == '@' ? 0 : field[i][j] - '0');
+      }
+
+    pair<int, int> ans = minCostFlow();
+    printf("%d\n", ans.first);
+    DEBUG printf("%d %d\n", ans.first, ans.second);
   }
-
-  pair<int, int> ans = minCostFlow();
-  printf("%d %d\n", ans.first, ans.second);
-
   return(0);
 }
+/*
+n = 3, m = 3
+1 [1][1] (0*m + 0) 2 [1][2] (0*m + 1) 3 [1][3] (0*m + 2)
+5 [2][1] (1*m + 0) 6 [2][2] (1*m + 1) 7 [2][3] (1*m + 2)
+8 [3][1] (2*m + 0) 9 [3][2] (2*m + 1) 10 [3][3] (2*m + 2)
+*/

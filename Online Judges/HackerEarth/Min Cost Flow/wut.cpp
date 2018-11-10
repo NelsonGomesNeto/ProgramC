@@ -236,7 +236,7 @@ int spfa()
   return(cost[target] != inf);
 }
 
-int dijsktraWithPotentials()
+int dijkstraWithPotentials()
 {
   for (int i = 0; i < vertices; i ++) cost[i] = inf;
   memset(visited, 0, sizeof(visited));
@@ -267,7 +267,7 @@ pair<lli, lli> minCostFlow()
 {
   memset(potential, 0, sizeof(potential));
   lli minCost = 0, maxFlow = 0;
-  while (dijsktraWithPotentials())//(spfa()) (bellmannFord())
+  while (dijkstraWithPotentials())//(spfa()) (bellmannFord())
   {
     int v = target; lli flow = inf;
     while (v != source)
