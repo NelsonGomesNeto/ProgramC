@@ -6,6 +6,7 @@
   * [Matching](https://www.spoj.com/problems/MATCHING/) (Heavy optimization needed)
   * [Attacking Rooks](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=602&page=show_problem&problem=4406) (Modeling is pretty incredible)
   * [Martian Volei](https://thehuxley.com/problem/643) (Modeling is beautiful and a bit simple)
+  * [670 - The dog task](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=611) (Modeling isn't hard)
   * [UVA Problem Package](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=685)
 
 ## Min Cost Flow :heart:
