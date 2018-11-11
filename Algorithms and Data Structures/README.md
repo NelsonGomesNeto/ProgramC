@@ -23,7 +23,7 @@
   * [10806 - Dijsktra, Dijsktra](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=808&page=show_problem&problem=1747) (Edges must me utilized only once, so modeling is a bit mind blowing, but quite easy)
   * [Beating the dices in their own game](https://www.hackerearth.com/pt-br/practice/algorithms/graphs/minimum-cost-maximum-flow/practice-problems/algorithm/beating-the-dices-in-their-own-game/) (Matrix won't do, use list of edges)
   * [Amazing Race](https://www.hackerearth.com/pt-br/practice/algorithms/graphs/minimum-cost-maximum-flow/practice-problems/algorithm/amazing-race-3/)
-  * [Ciel and Duel](https://codeforces.com/contest/321/problem/B) (maxCostFlow haha, an additional if is needed)
+  * [Ciel and Duel](https://codeforces.com/contest/321/problem/B) (*maxCostFlow* haha, an additional if is needed though)
   * [UVA Problem Package](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=808)
 
 
@@ -44,6 +44,7 @@
   * [Lowest Common Ancestor](https://www.spoj.com/problems/LCA/) (Pure LCA, no tricks)
   * [Match Match](http://www.codcad.com/problem/147) (Pure LCA, but queries for distance)
   * [Ants Colony](http://www.codcad.com/problem/160) (Same as above, but edges have distance)
+  * [10938 - Flea Circus](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1879) (Pretty mind blowing, but very good to practice)
 
 
 # Graph
@@ -55,7 +56,7 @@
 
 # DP
 * #### Problems
-  * [10755 - Garbage Heap](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1696) (Maximum subarray sum, easy to think: O(n^6), mindblowing accSum: O(n^5); both pass very easily though)
+  * [10755 - Garbage Heap](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1696) (Maximum subarray sum, easy to think: O(n^6), mind blowing accSum: O(n^5); both pass very easily though)
 
 
 # Search

@@ -3,7 +3,7 @@ using namespace std;
 vector<int> eulerianTour;
 const int maxN = 1e6, maxLog = floor(log2(2e6)) + 1;
 vector<int> tree[maxN];
-int uMap[maxN], revMap[2*maxN], first[2*maxN], now;
+int uMap[maxN], revMap[2*maxN], first[maxN], now;
 int sparseTable[2*maxN][maxLog], logdp[2*maxN + 1];
 // The distance between two vertices is very straight forward:
 // first find the level of each node
