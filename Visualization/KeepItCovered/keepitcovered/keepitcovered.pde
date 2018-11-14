@@ -28,17 +28,17 @@ void setup() {
 void drawPiece(int i, int j) {
   if (puzzle[i][j] < 3 && puzzle[i][j] == 2) rotate(radians(90));
   else if (puzzle[i][j] >= 3) rotate(radians(-90 * ((puzzle[i][j] - 3) % 4)));
-  
+
   if (puzzle[i][j] < 3) { // line
-    line(0, 0, blockSize * pieceScale / 2, 0);
-    line(0, 0, -blockSize * pieceScale / 2, 0);
+    line(-blockSize * pieceScale / 2, 0, blockSize * pieceScale / 2, 0);
   }
   else if (puzzle[i][j] < 7) { // corner
     line(0, 0, -blockSize * pieceScale / 2, 0);
     line(0, 0, 0, blockSize * pieceScale / 2);
   }
   else if (puzzle[i][j] < 11) {
-    line(0, 0, -blockSize * pieceScale / 2, 0);
+    line(0, -blockSize * pieceScale / 6, -blockSize * pieceScale / 2, -blockSize * pieceScale / 6);
+    line(0, blockSize * pieceScale / 6, -blockSize * pieceScale / 2, blockSize * pieceScale / 6);
     line(0, -blockSize * pieceScale / 6, 0, blockSize * pieceScale / 6);
   }
   else if (puzzle[i][j] < 15) {

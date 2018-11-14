@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#define RETRIEVE if(0)
+#define RETRIEVE if(1)
 using namespace std;
 // left, down, right, up
 int dy[4] = {0, 1, 0, -1}, dx[4] = {-1, 0, 1, 0};
@@ -7,23 +7,28 @@ int dy[4] = {0, 1, 0, -1}, dx[4] = {-1, 0, 1, 0};
 // corner (3 (left, down), 4 (right, down), 5 (right, up), 6 (left, up)) flow 2
 // square (7 (left), 8 (down), 9 (right), 10 (up)) flow 2
 // dot (11 (left), 12 (down), 13 (right), 14 (up)) flow 1
-int dot[4] = {13, 14, 11, 12};
-int square[4] = {9, 10, 7, 8};
-int corner[4][2] = {{4, 5}, {6, 5}, {3, 6}, {3, 4}};
-int line[4] = {1, 2, 1, 2};
-int n, m;
-int puzz[20][20];
 map<pair<int, int>, int> mapDirToCorner = {{{0, 1}, 3}, {{0, 3}, 6}, {{1, 2}, 4}, {{2, 3}, 5}};
 
-const int maxVertices = 15*20*20 + 2, inf = 1<<20;
-// We're gonna map every single cell to every possible piece and configuration
-  // So, we will need one vertex to each cell and 14 vertices for the configurations of that pieces
-  // (kind of a capacity on vertex)
-// First layer: even pieces
-// Second layer: odd pieces
-// source (15*20*20) -> even pieces -> odd pieces -> target (15*20*20 + 1)
-// match will be: n*m - (dots / 2)
-int source = 15*20*20, target = 15*20*20 + 1, vertices = maxVertices;
+const int maxVertices = 4*20*20 + 2, inf = 1<<20;
+/*Explanation:
+  We're gonna map every cell to their neighboars
+    dots are mapped from 0 to n*m - 1 and will have capacity 1
+    not dots will need three vertices: (and will have capacity 2)
+      (1*n*m to 2*n*m - 1) horizontal (1)
+      (2*n*m to 3*n*m - 1) vertical (2)
+      (3*n*m to 4*n*m - 1) unification (3) of vertical and horizontal (to ensure only two of flow will pass to that cell)
+      accordingly to what was choosed, we can map it to a piece and orientation
+      example:
+        horizontal with flow 2
+          if comes from two different sides: horizontal line
+          if comes from the same side: "square" to that side
+        horizontal and vertical with flow 1: corner according to the sides the flows comes
+  First layer: even pieces
+  Second layer: odd pieces
+  source (4*20*20) -> even pieces -> odd pieces -> target (4*20*20 + 1)
+  match will be: n*m - (dots / 2)
+*/
+int source = 4*20*20, target = 4*20*20 + 1, vertices = maxVertices;
 int level[maxVertices], ptr[maxVertices];
 struct Edge { int to, back, flow, capacity; };
 vector<Edge> graph[maxVertices];
@@ -78,14 +83,13 @@ int dinic()
 
 int main()
 {
-  scanf("%d %d", &n, &m);
+  int n, m; scanf("%d %d", &n, &m);
   char puzzle[n][m + 1]; for (int i = 0; i < n; i ++) scanf("\n%s", puzzle[i]);
-  int dots = 0;
 
+  int dots = 0;
   for (int i = 0; i < n; i ++)
     for (int j = 0; j < m; j ++)
     {
-      // 1 - horizontal, 2 - vertical
       if (puzzle[i][j] == 'o') dots ++;
       if ((i + j) & 1)
       {
@@ -111,17 +115,13 @@ int main()
           if (ii < 0 || jj < 0 || ii >= n || jj >= m) continue;
           if (puzzle[i][j] == 'o')
           {
-            if (puzzle[ii][jj] == 'o')
-              addEdge(i*m + j, ii*m + jj, 1);
-            else
-              addEdge(i*m + j, (1 + (k % 2))*n*m + ii*m + jj, 1);
+            if (puzzle[ii][jj] == 'o') addEdge(i*m + j, ii*m + jj, 1);
+            else addEdge(i*m + j, (1 + (k % 2))*n*m + ii*m + jj, 1);
           }
           else
           {
-            if (puzzle[ii][jj] == 'o')
-              addEdge((1 + (k % 2))*n*m + i*m + j, ii*m + jj, 1);
-            else
-              addEdge((1 + (k % 2))*n*m + i*m + j, (1 + (k % 2))*n*m + ii*m + jj, 2);
+            if (puzzle[ii][jj] == 'o') addEdge((1 + (k % 2))*n*m + i*m + j, ii*m + jj, 1);
+            else addEdge((1 + (k % 2))*n*m + i*m + j, (1 + (k % 2))*n*m + ii*m + jj, 2);
           }
         }
       }
@@ -132,89 +132,40 @@ int main()
   printf("%s\n", ans == (n*m - (dots / 2)) ? "Y" : "N");
   RETRIEVE
   {
-    memset(puzz, -1, sizeof(puzz));
+    int puzz[20][20];
     for (int i = 0; i < n; i ++)
       for (int j = 0; j < m; j ++)
       {
-        if ((i + j) & 1)
-        {
-          if (puzzle[i][j] == 'o')
-            for (Edge &e: graph[i*m + j])
-            {
-              if (e.flow)
-              {
-                int ii = (e.to % (n*m)) / m, jj = (e.to % (n*m)) % m;
-                for (int k = 0; k < 4; k ++)
-                  if (ii == i + dy[k] && jj == j + dx[k])
-                    puzz[i][j] = 11+k;
-              }
-            }
-          else
+        if (puzzle[i][j] == 'o')
+          for (Edge &e: graph[i*m + j])
           {
-            vector<int> dir;
-            for (Edge &e: graph[3*n*m + i*m + j])
-              if (e.flow != e.capacity)
-              {
-                for (Edge &ee: graph[e.to])
-                  if (ee.flow != ee.capacity)
-                  {
-                    int ii = (ee.to % (n*m)) / m, jj = (ee.to % (n*m)) % m;
-                    for (int k = 0; k < 4; k ++)
-                    if (ii == i + dy[k] && jj == j + dx[k])
-                    dir.push_back(k);
-                  }
-              }
-            printf("[%d, %d] %c == %d\n", i, j, puzzle[i][j], (int) dir.size());
-            printf("\t");
-            for (int k = 0; k < dir.size(); k ++) printf("%d%c", dir[k], k < dir.size() - 1 ? ' ' : '\n');
-            if (dir.size() == 1) puzz[i][j] = 7+dir[0];
-            else if (dir[0] % 2 == dir[1] % 2) puzz[i][j] = 1 + (dir[0] % 2);
-            else
+            if ((((i + j) & 1) && e.flow) || (!((i + j) & 1) && !e.flow))
             {
-              sort(dir.begin(), dir.end());
-              puzz[i][j] = mapDirToCorner[{dir[0], dir[1]}];
+              int ii = (e.to % (n*m)) / m, jj = (e.to % (n*m)) % m;
+              for (int k = 0; k < 4; k ++)
+                if (ii == i + dy[k] && jj == j + dx[k])
+                  puzz[i][j] = 11+k;
             }
           }
-        }
         else
         {
-          if (puzzle[i][j] == 'o')
-            for (Edge &e: graph[i*m + j])
+          vector<int> dir;
+          for (Edge &e: graph[3*n*m + i*m + j])
+            if (e.flow != e.capacity)
             {
-              if (!e.flow)
-              {
-                int ii = (e.to % (n*m)) / m, jj = (e.to % (n*m)) % m;
-                for (int k = 0; k < 4; k ++)
-                  if (ii == i + dy[k] && jj == j + dx[k])
-                    puzz[i][j] = 11+k;
-              }
-            }
-          else
-          {
-            vector<int> dir;
-            for (Edge &e: graph[3*n*m + i*m + j])
-              if (e.flow != e.capacity)
-              {
-                for (Edge &ee: graph[e.to])
-                  if (ee.flow != ee.capacity)
-                  {
-                    int ii = (ee.to % (n*m)) / m, jj = (ee.to % (n*m)) % m;
-                    for (int k = 0; k < 4; k ++)
+              for (Edge &ee: graph[e.to])
+                if (ee.flow != ee.capacity)
+                {
+                  int ii = (ee.to % (n*m)) / m, jj = (ee.to % (n*m)) % m;
+                  for (int k = 0; k < 4; k ++)
                     if (ii == i + dy[k] && jj == j + dx[k])
-                    dir.push_back(k);
-                  }
-              }
-            printf("[%d, %d] %c == %d\n", i, j, puzzle[i][j], (int) dir.size());
-            printf("\t");
-            for (int k = 0; k < dir.size(); k ++) printf("%d%c", dir[k], k < dir.size() - 1 ? ' ' : '\n');
-            if (dir.size() == 1) puzz[i][j] = 7+dir[0];
-            else if (dir[0] % 2 == dir[1] % 2) puzz[i][j] = 1 + (dir[0] % 2);
-            else
-            {
-              sort(dir.begin(), dir.end());
-              puzz[i][j] = mapDirToCorner[{dir[0], dir[1]}];
+                      dir.push_back(k);
+                }
             }
-          }
+          sort(dir.begin(), dir.end());
+          if (dir.size() == 1) puzz[i][j] = 7+dir[0];
+          else if (dir[0] % 2 == dir[1] % 2) puzz[i][j] = 1 + (dir[0] % 2);
+          else puzz[i][j] = mapDirToCorner[{dir[0], dir[1]}];
         }
       }
     printf("%d %d\n", n, m);
