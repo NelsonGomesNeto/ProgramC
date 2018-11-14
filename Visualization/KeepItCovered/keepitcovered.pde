@@ -37,6 +37,10 @@ void drawPiece(int i, int j) {
     line(0, 0, -blockSize * pieceScale / 2, 0);
     line(0, 0, 0, blockSize * pieceScale / 2);
   }
+  else if (puzzle[i][j] < 15) {
+    ellipse(0, 0, blockSize * pieceScale / 6, blockSize * pieceScale / 6);
+    line(0, 0, -blockSize * pieceScale / 2, 0);
+  }
 
   if (puzzle[i][j] < 3 && puzzle[i][j] == 2) rotate(radians(360 - 90));
   else if (puzzle[i][j] >= 3) rotate(radians(90 * ((puzzle[i][j] - 3) % 4)));
