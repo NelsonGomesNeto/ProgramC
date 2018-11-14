@@ -4,7 +4,7 @@ int n, m;
 float blockSize, pieceScale = 0.8;
 
 void setup() {
-  lines = loadStrings("./in");
+  lines = loadStrings("./out");
   String[] line = lines[0].split(" ");
   n = int(line[0]); m = int(line[1]);
   puzzle = new int[n][m];
@@ -36,6 +36,10 @@ void drawPiece(int i, int j) {
   else if (puzzle[i][j] < 7) { // corner
     line(0, 0, -blockSize * pieceScale / 2, 0);
     line(0, 0, 0, blockSize * pieceScale / 2);
+  }
+  else if (puzzle[i][j] < 11) {
+    line(0, 0, -blockSize * pieceScale / 2, 0);
+    line(0, -blockSize * pieceScale / 6, 0, blockSize * pieceScale / 6);
   }
   else if (puzzle[i][j] < 15) {
     ellipse(0, 0, blockSize * pieceScale / 6, blockSize * pieceScale / 6);
