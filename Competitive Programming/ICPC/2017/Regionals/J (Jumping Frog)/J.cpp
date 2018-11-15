@@ -1,56 +1,44 @@
 #include <bits/stdc++.h>
+#define DEBUG if(0)
 using namespace std;
-int cantDP[(int) 1e5 + 1];
 char s[(int) 1e5 + 1];
-int biggestSpacing = 0, spacing = 0, n = 0;
 
-void markDivisors(int k)
+int gcd(int a, int b)
 {
-  int end = sqrt(k);
-  for (int i = 2; i <= end; i ++)
-    if (k % i == 0) cantDP[i] = cantDP[k / i] = 1;
-}
-
-bool can(int k)
-{
-  bool c = false;
-  for (int i = 0; i < min(k, n - k) && !c; i ++)
-  {
-    c = true; int j = i;
-    do
-    {
-      if (s[j] == 'P') { c = false; break; }
-      j = (j + k) % n;
-    } while(i != j);
-  }
-  return(c);
+  if (!b) return(a);
+  return(gcd(b, a % b));
 }
 
 int main()
 {
-  scanf("%s", s);
-  memset(cantDP, 0, sizeof(cantDP));
-  for (int i = 0; s[i]; i ++)
-  {
-    if (s[i] == 'R') spacing = 0;
-    else spacing ++;
-    biggestSpacing = max(biggestSpacing, spacing);
-    n ++;
-  }
-  if (!biggestSpacing) biggestSpacing = 1;
+  scanf("%s", s); int n = 0; while (s[n]) n ++;
+  set<int> d;
+  for (int i = 1; i < n; i ++) d.insert(gcd(i, n));
 
-  int works = 0;
-  for (int k = n - 1; k >= biggestSpacing; k --)
+  DEBUG
   {
-    // printf("%d\n", k);
-    if (!cantDP[k] && can(k)) works ++;
-    else markDivisors(k);
+    printf("n: %d, d size: %d\n", n, (int) d.size());
+    for (int i: d) printf("%d ", i); printf("\n");
   }
-  printf("%d\n", works);
+
+  bool works[n]; memset(works, false, sizeof(works));
+  for (int k: d)
+  {
+    bool can = false;
+    for (int i = 0; i < k && !can; i ++)
+    {
+      can = true; int pos = i;
+      do
+      {
+        if (s[pos] == 'P') { can = false; break; }
+        pos = (pos + k) % n;
+      } while (pos != i);
+    }
+    works[k] = can;
+  }
+
+  int ans = 0; for (int i = 1; i < n; i ++) ans += works[gcd(i, n)];
+  printf("%d\n", ans);
+
   return(0);
 }
-/*
-try the contrary
-biggestSpacing to n - 1
-but marks all multiples of working ones
-*/
