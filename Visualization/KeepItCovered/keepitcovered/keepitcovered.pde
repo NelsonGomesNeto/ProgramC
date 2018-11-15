@@ -4,7 +4,7 @@ int n, m;
 float blockSize, pieceScale = 0.8;
 
 void setup() {
-  lines = loadStrings("./out");
+  lines = loadStrings("./in");
   String[] line = lines[0].split(" ");
   n = int(line[0]); m = int(line[1]);
   puzzle = new int[n][m];
@@ -55,10 +55,10 @@ void draw() {
   for (int i = 0; i < n; i ++)
     for (int j = 0; j < m; j ++) {
       translate(j * blockSize, i * blockSize);
-      rect(0, 0, blockSize, blockSize);
+      strokeWeight(2); rect(0, 0, blockSize, blockSize);
       fill(0); text(str(puzzle[i][j]), 20, 20); fill(255);
       translate(0.5 * blockSize, 0.5 * blockSize);
-      drawPiece(i, j);
+      strokeWeight(10); drawPiece(i, j);
       translate(-(j + 0.5) * blockSize, -(i + 0.5) * blockSize);
     }
 }
