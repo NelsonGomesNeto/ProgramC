@@ -32,7 +32,8 @@
 # Segment Tree :heart:
 ## Segment Tree without Lazy Propagation :heart:
 * #### Problems
-  * MISSING PROBLEMS, FILL IT PLEASE :)
+  * [Fundraising](https://www.urionlinejudge.com.br/judge/en/problems/view/2700) (It's not trivial, we use a max segtree to apply a greedy approach)
+  * PLEASE ADD MORE PROBLEMS HERE
 
 ## Segment Tree with Lazy Propagation :heart:
 * #### Problems
