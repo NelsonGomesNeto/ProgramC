@@ -32,7 +32,8 @@
 # Segment Tree :heart:
 ## Segment Tree without Lazy Propagation :heart:
 * #### Problems
-  * [Fundraising](https://www.urionlinejudge.com.br/judge/en/problems/view/2700) (It's not trivial, we use a max segtree to apply a greedy approach)
+  * [Fundraising](https://www.urionlinejudge.com.br/judge/en/problems/view/2700) (It's not trivial, we use a max segtree to apply a greedy strategy)
+  * [Keep It Energized](https://www.urionlinejudge.com.br/judge/en/problems/view/2010) (It's not trivial, we use min segtree to apply a greedy strategy)
   * PLEASE ADD MORE PROBLEMS HERE
 
 ## Segment Tree with Lazy Propagation :heart:
@@ -69,7 +70,6 @@
 ## Maximum subarray
 * #### Problems
   * [10755 - Garbage Heap](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1696) (Maximum subarray sum, easy to think: O(n^6), mind blowing accSum: O(n^5); both pass very easily though)
-
 
 
 # Search
