@@ -10,7 +10,7 @@ int dy[4] = {0, 1, 0, -1}, dx[4] = {-1, 0, 1, 0};
 map<pair<int, int>, int> mapDirToCorner = {{{0, 1}, 3}, {{0, 3}, 6}, {{1, 2}, 4}, {{2, 3}, 5}};
 
 const int maxVertices = 4*20*20 + 2, inf = 1<<20;
-/*Explanation:
+/* Explanation:
   We're gonna map every cell to their neighboars
     dots are mapped from 0 to n*m - 1 and will have capacity 1
     not dots will need three vertices: (and will have capacity 2)

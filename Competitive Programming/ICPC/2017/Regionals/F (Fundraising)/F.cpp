@@ -3,7 +3,7 @@
 using namespace std;
 #define lli long long int
 
-/*Explanation:
+/* Explanation:
 max segtree + greedy (I didn't understand the BIT solution...)
 remind we can only join a and b if:
   (a or b) is strictly prettier and richer than (a or b)

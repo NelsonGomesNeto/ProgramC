@@ -3,7 +3,7 @@
 using namespace std;
 char s[(int) 1e5 + 1];
 
-/*Explanation:
+/* Explanation:
 gcd(k, n) = d
   it means that with k, we will only visit (i % d) == 0 places
   d will have to be a divisor of n, so there will be at most 2*sqrt(n) of them
