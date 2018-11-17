@@ -61,7 +61,7 @@
 # Dynamic Programming (DP)
 ## Longest Common Sequence (LCS)
 * #### Problems:
-  * [531 - Compromise](https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=472) (Direct, but needs retrieval)
+  * [531 - Compromise](https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=472) (Pure, but needs retrieval)
 
 ## Coin change
 * #### Problems:
@@ -70,6 +70,10 @@
 ## Maximum subarray
 * #### Problems
   * [10755 - Garbage Heap](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1696) (Maximum subarray sum, easy to think: O(n^6), mind blowing accSum: O(n^5); both pass very easily though)
+
+## Digit DP
+* #### Problems
+  * [Enigma](https://www.urionlinejudge.com.br/judge/en/problems/view/2699) (Pure + mod of bigInteger)
 
 
 # Search
