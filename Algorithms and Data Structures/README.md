@@ -1,5 +1,5 @@
-# Flow and Matching :heart:
-## Max Flow, Maximum Matching :heart:
+# Flow and Matching :star:
+## Max Flow, Maximum Matching :star:
 * #### Dinic's algorithm is enough for every problem I've tested. NEVER change the algorithm, there's always a way to model in a way that it will magically work :smiley:
 * #### Problems
   * [Fast Flow](https://www.spoj.com/problems/FASTFLOW/) (Heavy optimization needed)
@@ -10,7 +10,7 @@
   * [Keep It Covered](https://www.urionlinejudge.com.br/judge/pt/problems/view/2705) (Modeling is quite hard... Probably because I wanted to retrieve exact pieces and orientation (for visualization purpose: [keepitcovered.pde](https://github.com/NelsonGomesNeto/ProgramC/tree/master/Visualization/KeepItCovered/keepitcovered)), but here are some hints: bipartite, needs "unification vertex", checkerboard, only dots and lines need to be mapped)
   * [UVA Problem Package](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=685)
 
-## Min Cost Flow :heart:
+## Min Cost Flow :star:
 * #### minCostFlow with successive shortest paths.
   * ##### Shortest path algorithms (ordered by the fastest first):
     Always use *Dijkstra with Potentials*, unless the graph has negative edges at the first step; in these cases, use *SPFA*
@@ -29,14 +29,14 @@
   * [UVA Problem Package](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=808)
 
 
-# Segment Tree :heart:
-## Segment Tree without Lazy Propagation :heart:
+# Segment Tree :star:
+## Segment Tree without Lazy Propagation :star:
 * #### Problems
   * [Fundraising](https://www.urionlinejudge.com.br/judge/en/problems/view/2700) (It's not trivial, we use a max segtree to apply a greedy strategy)
   * [Keep It Energized](https://www.urionlinejudge.com.br/judge/en/problems/view/2010) (It's not trivial, we use min segtree to apply a greedy strategy)
   * PLEASE ADD MORE PROBLEMS HERE
 
-## Segment Tree with Lazy Propagation :heart:
+## Segment Tree with Lazy Propagation :star:
 * #### Problems
   * [Light Switching](https://www.spoj.com/problems/LITE/) (Pure Segment Tree)
   * [11402 - Ahoy Pirates](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=2397) (Set update, be careful)
@@ -44,6 +44,12 @@
 
 
 # Lowest Common Ancestor (LCA)
+* There are two main implementations of LCA, both use a Sparse Table to speed up their queries and takes O(n\*lg) to preprocess.
+* Eulerian Tour (O(1) queries):
+  * Despite being extremely fast, it's not flexible
+  * I WILL TRY TO ANSWER BINARY LIFTING QUERIES USING THIS TECHNIC
+* Binary Lifting (O(lg) queries):
+  * WAIT FOR IT, I WILL DO YOU AS WELL :)
 * #### Problems
   * [Lowest Common Ancestor](https://www.spoj.com/problems/LCA/) (Pure LCA, no tricks)
   * [Match Match](http://www.codcad.com/problem/147) (Pure LCA, but queries for distance)
