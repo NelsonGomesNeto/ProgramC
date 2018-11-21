@@ -3,9 +3,15 @@ using namespace std;
 
 const int maxN = 1e6, maxLog = floor(log2(1e6)) + 1;
 vector<int> tree[maxN];
-int parent[maxN], level[maxN], ancestor[maxN][maxLog];
+int level[maxN], ancestor[maxN][maxLog];
 int n, logn;
 
+void printBinary(int num)
+{
+  if (!num) return;
+  printBinary(num >> 1);
+  printf("%d", num & 1);
+}
 void printMatrix()
 {
   printf("   |"); for (int i = 0; i <= logn; i ++) printf("%3d%c", i, i < logn ? '|' : '\n');
@@ -33,27 +39,24 @@ void dfs(int u)
 
 void build()
 {
-  level[0] = 0, parent[0] = -1; dfs(0);
+  level[0] = ancestor[0][0] = 0; dfs(0);
   for (int i = 1; i <= logn; i ++)
     for (int u = 0; u < n; u ++)
-      if (ancestor[u][i - 1] != -1)
-        ancestor[u][i] = ancestor[ancestor[u][i - 1]][i - 1];
+      ancestor[u][i] = ancestor[ancestor[u][i - 1]][i - 1];
 }
 
 int LCA(int u, int v)
 {
   if (level[v] > level[u]) swap(u, v);
 
-  int diff = level[u] - level[v];
-  for (int i = 0; i <= logn; i ++)
-    if ((diff >> i) & 1)
-      u = ancestor[u][i];
+  printf("(%d - %d) = %d ", level[u], level[v], level[u] - level[v]); printBinary(level[u] - level[v]); printf("\n");
+  for (int diff = level[u] - level[v], i = 0; diff; diff >>= 1, i ++)
+    if (diff & 1) u = ancestor[u][i];
 
   if (u == v) return(u);
 
-  for (int i = logn; i >= 0; i --)
-    if (ancestor[u][i] != ancestor[v][i])
-      u = ancestor[u][i], v = ancestor[v][i];
+  for (int i = 0; ancestor[u][i] != ancestor[v][i]; i ++)
+    u = ancestor[u][i], v = ancestor[v][i];
 
   return(ancestor[u][0]);
 }
@@ -72,7 +75,7 @@ int main()
 
   while (scanf("%d %d", &u, &v) != EOF)
   {
-    printf("LCA(%d, %d) = %d\n", u, v, LCA(u, v));
+    printf("LCA(%d, %d) = %d\n\n", u, v, LCA(u, v));
   }
   return(0);
 }

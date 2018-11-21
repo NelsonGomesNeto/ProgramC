@@ -46,10 +46,14 @@
 # Lowest Common Ancestor (LCA)
 * There are two main implementations of LCA, both use a Sparse Table to speed up their queries and takes O(n\*lg) to preprocess.
 * Eulerian Tour (O(1) queries):
-  * Despite being extremely fast, it's not flexible
-  * I WILL TRY TO ANSWER BINARY LIFTING QUERIES USING THIS TECHNIC
+  * Despite being extremely fast and very easy to understand, it's not flexible
+  * It works by build a RMQ on top of the tree's Eulerian tour
+    * Run a DFS, *every time* you're in u: add u to the Eulerian tour
+      * Even each single time you return from it's child
+    * Build RMQ on top of the Eulerian Tour
+      * LCA == min RMQ query(from min(first[u], first[v]) to max(first[u], first[v]))
 * Binary Lifting (O(lg) queries):
-  * WAIT FOR IT, I WILL DO YOU AS WELL :)
+  * WAIT FOR IT :star:
 * #### Problems
   * [Lowest Common Ancestor](https://www.spoj.com/problems/LCA/) (Pure LCA, no tricks)
   * [Match Match](http://www.codcad.com/problem/147) (Pure LCA, but queries for distance)
