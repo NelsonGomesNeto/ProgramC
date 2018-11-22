@@ -53,11 +53,26 @@
     * Build RMQ on top of the Eulerian Tour
       * LCA == min RMQ query(from min(first[u], first[v]) to max(first[u], first[v]))
 * Binary Lifting (O(lg) queries):
-  * WAIT FOR IT :star:
+  * Probably more then enough for every problem, and it's very flexible. You can
+  answer not only LCA queries, but also all sort of query that involves the path
+  (and even weight) between two nodes.
+  * It uses DP, where: ancestor(u, i) is the 2^i ancestor of u
+    * ancestor(u, 0) = parent of u (you run a DFS to fill up these, also store the level of each node)
+    * ancestor(u, i) = ancestor(ancestor(u, i - 1), i - 1)
+      * It's saying that the 2^i ancestor is the 2^(i - 1) ancestor of the 2^(i - 1) ancestor
+      * Think this way: what is in the middle between u and it's 2^i ancestor?
+      Yes, the 2^(i - 1) ancestor, which it self has a 2^(i - 1) ancestor; and
+      it's exactly the 2^i ancestor of u. Why this? Because we can bottom up fill it easily.
+      We already have the 2^0 ancestor, therefore, we can fill the 2^1, then 2^2, ...
+    * To answer the query, we first will need u and v to be at the same level, so
+    we go up with the lowest until the levels are the same. Now, we can climb up until
+    the ancestor of them are equal. It's quite tricky to grasp everything that is going
+    on, but I will so do a video about it (*TODO*).
 * #### Problems
-  * [Lowest Common Ancestor](https://www.spoj.com/problems/LCA/) (Pure LCA, no tricks)
+  * [Lowest Common Ancestor](https://www.spoj.com/problems/LCA/) (Pure LCA, no tricks; but test cases are very weak)
   * [Match Match](http://www.codcad.com/problem/147) (Pure LCA, but queries for distance)
   * [Ants Colony](http://www.codcad.com/problem/160) (Same as above, but edges have distance)
+  * [Lowest Common Ancestor](https://www.codechef.com/problems/TALCA) (Clever, but only uses standard and pure LCA)
   * [10938 - Flea Circus](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1879) (Pretty mind blowing, but very good to practice)
 
 
