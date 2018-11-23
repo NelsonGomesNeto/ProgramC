@@ -1,0 +1,27 @@
+Navegação:
+  change directory:
+    cd <path>
+      move para o diretório especificado em <path>
+    cd ..
+      move para o diretório anterior ao atual
+    cd /
+      move para a raíz
+  listing:
+    ls
+      exibe os arquivos e diretórios contidos no diretório atual
+
+Compilação:
+  gcc <nome do código> -o <nome desejado do executável>
+    Compila do código para um executável
+  Exemplo: gcc miau.c -o test
+
+Execução:
+  ./<nome do executável>
+    Executa :)
+  ./<nome do executável> < <nome da entrada>
+    Executa, mas agora a entrada padrão vai receber o conteúdo do arquivo <nome da entrada>
+  ./<nome do executável> > <nome da saída>
+    Executa, mas agora a saída padrão vai entrar no arquivo <nome da saída>
+  ./<nome do executável> < <nome da entrada> > <nome da saída>
+    Maravilhosa mistura dos dois acima
+  Exemplo: ./nyan < in > out

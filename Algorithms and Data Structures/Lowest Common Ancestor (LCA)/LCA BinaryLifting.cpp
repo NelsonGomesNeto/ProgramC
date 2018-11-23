@@ -42,7 +42,11 @@ void build()
   level[0] = ancestor[0][0] = 0; dfs(0);
   for (int i = 1; i <= logn; i ++)
     for (int u = 0; u < n; u ++)
+    {
       ancestor[u][i] = ancestor[ancestor[u][i - 1]][i - 1];
+      // If you want to add something about the path, like weight:
+      // weight[u][i] = combination of weight[u][i - 1] and weight[ancestor[u][i - 1]][i - 1]
+    }
 }
 
 int LCA(int u, int v)

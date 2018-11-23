@@ -1,0 +1,21 @@
+Inclusão de bibliotecas:
+  #include <<nome da biblioteca>>
+    Inclui a biblioteca <nome da biblioteca>
+    Exemplo: #include <stdio.h>
+
+Declaração:
+  <tipo> <nome da variável>
+  Exemplos:
+    int contador;
+    double pi, tau;
+
+Chamada de função:
+  <nome da função>(<lista de parâmetros da função>)
+  Exemplos:
+    myFunction();
+    scanf("%d", &myVar);
+    printf("%d\n", myVar);
+    pow(2, 10);
+
+Comparação, Repetição, Função:
+  Agora não :)
