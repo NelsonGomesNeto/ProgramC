@@ -55,6 +55,7 @@ int LCA(int u, int v)
 
   if (u == v) return(u);
 
+  // (i = logn; i >= 0; i --) works as well
   for (int i = logDP[level[u] - 1]; ancestor[u][0] != ancestor[v][0]; i --)
     if (ancestor[u][i] != ancestor[v][i])
       u = ancestor[u][i], v = ancestor[v][i];
