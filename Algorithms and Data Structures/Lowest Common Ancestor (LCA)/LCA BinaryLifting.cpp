@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int maxN = 1e6, maxLog = floor(log2(1e6)) + 1;
+const int maxN = 1e6, maxLog = ceil(log2(1e6)) + 1;
 vector<int> tree[maxN];
 int level[maxN], ancestor[maxN][maxLog];
 int n, logn;
@@ -55,15 +55,16 @@ int LCA(int u, int v)
 
   if (u == v) return(u);
 
-  for (int i = 0; ancestor[u][i] != ancestor[v][i]; i ++)
-    u = ancestor[u][i], v = ancestor[v][i];
+  for (int i = logDP[level[u] - 1]; ancestor[u][0] != ancestor[v][0]; i --)
+    if (ancestor[u][i] != ancestor[v][i])
+      u = ancestor[u][i], v = ancestor[v][i];
 
   return(ancestor[u][0]);
 }
 
 int main()
 {
-  scanf("%d", &n); logn = floor(log2(n)) + 1;
+  scanf("%d", &n); logn = ceil(log2(n));
   int u, v;
   for (int i = 0; i < n - 1; i ++)
   {

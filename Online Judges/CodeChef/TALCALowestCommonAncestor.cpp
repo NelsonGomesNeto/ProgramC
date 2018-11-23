@@ -29,7 +29,8 @@ int LCA(int u, int v)
 
   if (u == v) return(u);
 
-  for (int i = logDP[level[u]]; i >= 0; i --)
+  // (i = logDP[level[u] - 1]; ancestor[u][0] != ancestor[v][0]; i --) works as well
+  for (i = logn; i >= 0; i --)
     if (ancestor[u][i] != ancestor[v][i])
       u = ancestor[u][i], v = ancestor[v][i];
 
@@ -56,6 +57,10 @@ int main()
     if (level[ru] > level[lca]) lca = ru;
     if (level[rv] > level[lca]) lca = rv;
     printf("%d\n", lca + 1);
+    /* It's kind of easy to see why it works, just think about every possible
+    position for the root to be, and look at the lca, ru and rv; the lowest one
+    will indeed be the answer
+    */
   }
   return(0);
 }
