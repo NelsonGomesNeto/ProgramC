@@ -18,14 +18,8 @@ void printMatrix()
   for (int i = 0; i < n; i ++)
   {
     printf("%3d|", i);
-<<<<<<< HEAD
     for (int j = 0; j < logn; j ++)
       printf("%3d%c", ancestor[i][j], j < logn - 1 ? '|' : '\n');
-=======
-    // TODO VERIFY IF <= LOGN IS REALLY NECESSARY
-    for (int j = 0; j <= logn; j ++)
-      printf("%3d%c", ancestor[i][j], j < logn ? '|' : '\n');
->>>>>>> 57fd82aacc8b8addffb3af283e3481df35cbeb09
   }
 }
 void printSpacing(int s)
