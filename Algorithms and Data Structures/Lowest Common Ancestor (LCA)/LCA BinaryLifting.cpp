@@ -18,6 +18,7 @@ void printMatrix()
   for (int i = 0; i < n; i ++)
   {
     printf("%3d|", i);
+    // TODO VERIFY IF <= LOGN IS REALLY NECESSARY
     for (int j = 0; j <= logn; j ++)
       printf("%3d%c", ancestor[i][j], j < logn ? '|' : '\n');
   }
