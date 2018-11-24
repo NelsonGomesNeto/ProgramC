@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int maxN = 1e6, maxLog = ceil(log2(1e6)) + 1;
+const int maxN = 1e6, maxLog = ceil(log2(1e6));
 vector<int> tree[maxN];
-int level[maxN], ancestor[maxN][maxLog];
+int level[maxN], ancestor[maxN][maxLog], logDP[maxN + 1];
 int n, logn;
 
 void printBinary(int num)
@@ -14,12 +14,12 @@ void printBinary(int num)
 }
 void printMatrix()
 {
-  printf("   |"); for (int i = 0; i <= logn; i ++) printf("%3d%c", i, i < logn ? '|' : '\n');
+  printf("   |"); for (int i = 0; i < logn; i ++) printf("%3d%c", i, i < logn - 1 ? '|' : '\n');
   for (int i = 0; i < n; i ++)
   {
     printf("%3d|", i);
-    for (int j = 0; j <= logn; j ++)
-      printf("%3d%c", ancestor[i][j], j < logn ? '|' : '\n');
+    for (int j = 0; j < logn; j ++)
+      printf("%3d%c", ancestor[i][j], j < logn - 1 ? '|' : '\n');
   }
 }
 void printSpacing(int s)
@@ -40,7 +40,7 @@ void dfs(int u)
 void build()
 {
   level[0] = ancestor[0][0] = 0; dfs(0);
-  for (int i = 1; i <= logn; i ++)
+  for (int i = 1; i < logn; i ++)
     for (int u = 0; u < n; u ++)
     {
       ancestor[u][i] = ancestor[ancestor[u][i - 1]][i - 1];
@@ -59,7 +59,7 @@ int LCA(int u, int v)
 
   if (u == v) return(u);
 
-  // (i = logn; i >= 0; i --) works as well
+  // (i = logn - 1; i >= 0; i --) works as well
   for (int i = logDP[level[u] - 1]; ancestor[u][0] != ancestor[v][0]; i --)
     if (ancestor[u][i] != ancestor[v][i])
       u = ancestor[u][i], v = ancestor[v][i];
@@ -69,6 +69,7 @@ int LCA(int u, int v)
 
 int main()
 {
+  logDP[1] = 0; for (int i = 2; i <= maxN; i ++) logDP[i] = logDP[i >> 1] + 1;
   scanf("%d", &n); logn = ceil(log2(n));
   int u, v;
   for (int i = 0; i < n - 1; i ++)
