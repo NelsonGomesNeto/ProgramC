@@ -1,74 +1,65 @@
 #include <bits/stdc++.h>
-using namespace std;
 #define lli long long int
-const int maxN = 1e4, maxLog = floor(log2(2e4)) + 1;
-vector<pair<int, int>> tree[maxN];
-int parent[maxN]; lli cost[maxN];
+using namespace std;
 
-vector<int> eulerianTour;
-int first[maxN], uMap[maxN], revMap[2*maxN], level[maxN], now;
-void dfs(int u, int prev, lli d, int depth)
+const int maxN = 1e4, maxLog = ceil(log2(1e4)); int n, logn;
+vector<pair<int, int>> tree[maxN];
+int level[maxN], ancestor[maxN][maxLog]; lli dist[maxN];
+void dfs(int u, int prev)
 {
-  parent[u] = prev, cost[u] = d, level[u] = depth;
-  first[u] = eulerianTour.size(); revMap[now] = u; uMap[u] = now ++;
-  eulerianTour.push_back(uMap[u]);
   for (auto v: tree[u])
     if (v.first != prev)
     {
-      dfs(v.first, u, d + v.second, depth + 1);
-      eulerianTour.push_back(uMap[u]);
+      level[v.first] = level[u] + 1, ancestor[v.first][0] = u, dist[v.first] = dist[u] + v.second;
+      dfs(v.first, u);
     }
 }
-
-int sparseTable[2*maxN][maxLog], logDP[2*maxN + 1];
 void build()
 {
-  now = 0; eulerianTour.clear(); dfs(0, -1, 0, 0);
-  int n = eulerianTour.size(), logn = floor(log2(eulerianTour.size())) + 1;
-  for (int i = 0; i < n; i ++) sparseTable[i][0] = eulerianTour[i];
-  for (int j = 1; j <= logn; j ++)
-    for (int i = 0, shift = (1 << (j - 1)); i + shift < n; i ++)
-      sparseTable[i][j] = min(sparseTable[i][j - 1], sparseTable[i + shift][j - 1]);
+  level[0] = ancestor[0][0] = dist[0] = 0; dfs(0, -1);
+  for (int i = 1; i < logn; i ++)
+    for (int u = 0; u < n; u ++)
+      ancestor[u][i] = ancestor[ancestor[u][i - 1]][i - 1];
 }
 int LCA(int u, int v)
 {
-  int lo = min(first[u], first[v]), hi = max(first[u], first[v]);
-  int qs = logDP[hi - lo + 1];
-  return(revMap[min(sparseTable[lo][qs], sparseTable[hi - (1 << qs) + 1][qs])]);
+  if (level[v] > level[u]) swap(u, v);
+  for (int diff = level[u] - level[v], i = 0; diff; diff >>= 1, i ++)
+    if (diff & 1) u = ancestor[u][i];
+  if (u == v) return(u);
+  for (int i = logn - 1; i >= 0; i --)
+    if (ancestor[u][i] != ancestor[v][i])
+      u = ancestor[u][i], v = ancestor[v][i];
+  return(ancestor[u][0]);
 }
 
 int main()
 {
-  logDP[1] = 0; for (int i = 2; i <= 2*maxN; i ++) logDP[i] = logDP[i >> 1] + 1;
   int t; scanf("%d", &t);
   while (t --)
   {
-    int n; scanf("%d", &n);
-    int u, v, c; for (int i = 0; i < n; i ++) tree[i].clear();
+    scanf("%d", &n); logn = ceil(log2(n));
+    for (int i = 0; i < n; i ++) tree[i].clear();
     for (int i = 0; i < n - 1; i ++)
     {
-      scanf("%d %d %d", &u, &v, &c); u --, v --;
+      int u, v, c; scanf("%d %d %d", &u, &v, &c); u --, v --;
       tree[u].push_back({v, c}); tree[v].push_back({u, c});
     }
     build();
 
-    char op[4 + 1]; int k;
-    while (scanf("\n%s", op) && strcmp(op, "DONE"))
+    char op[5]; int u, v, k;
+    while (scanf("%s", op) && strcmp(op, "DONE"))
     {
       scanf("%d %d", &u, &v); u --, v --;
       int lca = LCA(u, v);
-      if (!strcmp(op, "DIST"))
-        printf("%lld\n", cost[u] + cost[v] - 2*cost[lca]);
+      if (!strcmp(op, "DIST")) printf("%lld\n", dist[u] + dist[v] - 2*dist[lca]);
       else
       {
-        scanf("%d", &k); k --;
-        if (k >= level[u] - level[lca])
-        {
-          k = (level[v] - level[lca]) - (k - (level[u] - level[lca]));
-          u = v;
-        }
-        while (k --) u = parent[u];
-        printf("%d\n", u + 1);
+        scanf("%d", &k); k --; int ans = u, diff = k;
+        if (k > level[u] - level[lca]) ans = v, diff = (level[v] - level[lca]) - (k - (level[u] - level[lca]));
+        for (int i = 0; diff; diff >>= 1, i ++)
+          if (diff & 1) ans = ancestor[ans][i];
+        printf("%d\n", ans + 1);
       }
     }
   }
