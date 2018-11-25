@@ -52,7 +52,7 @@
       * Even each single time you return from it's child
     * Build RMQ on top of the Eulerian Tour
       * LCA == min RMQ query(from min(first[u], first[v]) to max(first[u], first[v]))
-* Binary Lifting (O(lg) queries):
+* Binary Lifting (O(lg) queries): [Tutorial](https://codeforces.com/blog/entry/22325)
   * Probably more then enough for every problem, and it's very flexible. You can
   answer not only LCA queries, but also all sort of query that involves the path
   (and even weight) between two nodes.
@@ -75,6 +75,7 @@
   * [Lowest Common Ancestor](https://www.codechef.com/problems/TALCA) (Clever, but only uses standard and pure LCA)
   * [Imperial Roads](https://www.urionlinejudge.com.br/judge/en/problems/view/2703) (Binary Lifting to query heaviest edge from u and v to the LCA)
   * [Blood Cousins](https://codeforces.com/contest/208/problem/E) (Amazingly clever, needs kthAncestor (easy) and <in and out> idea)
+  * [Fools and Roads](https://codeforces.com/contest/191/problem/C) (Mind blowing: After a bunch of queries, print how many times each edge was used; <in and out> idea)
   * [10938 - Flea Circus](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1879) (Pretty mind blowing, but very good to practice)
 
 
