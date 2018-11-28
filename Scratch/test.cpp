@@ -1,16 +1,14 @@
 #include <bits/stdc++.h>
 
-const int m = 10;
-
-void fun(int **a)
+struct lol
 {
-
-}
+  int miau;
+};
 
 int main()
 {
-  int** a = new int[5][10];
-  a[1][2] = 117;
-  fun(a);
+  struct lol *a = (struct lol*) malloc(1*sizeof(struct lol));
+  (*a).miau = 1;
+  printf("%d %d\n", (*a).miau, a->miau);
   return(0);
 }
