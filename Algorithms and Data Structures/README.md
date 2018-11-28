@@ -78,6 +78,7 @@
   * [Fools and Roads](https://codeforces.com/contest/191/problem/C) (Mind blowing: After a bunch of queries, print how many times each edge was used; <in and out> idea)
   * [A and B and Lecture Rooms](https://codeforces.com/contest/519/problem/E) (Interesting: dp count nodes reachable from u and binary lift to answer queries; NICE)
   * [Duff in the Army](https://codeforces.com/contest/587/problem/C) (Mind blowing binary lifting to slit people)
+  * [Greedy Merchants](https://codeforces.com/contest/178/problem/B3) (Bridge + LCA, it's marvelous ^~^)
   * [10938 - Flea Circus](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1879) (Pretty mind blowing, but very good to practice)
 
 
