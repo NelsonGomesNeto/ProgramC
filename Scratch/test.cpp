@@ -1,14 +1,10 @@
 #include <bits/stdc++.h>
-
-struct lol
-{
-  int miau;
-};
+using namespace std;
 
 int main()
 {
-  struct lol *a = (struct lol*) malloc(1*sizeof(struct lol));
-  (*a).miau = 1;
-  printf("%d %d\n", (*a).miau, a->miau);
+  set<int> a; a.insert(1);
+  set<int>::iterator it = a.find(2);
+  printf("%d %d %d\n", a.begin(), a.end(), it);
   return(0);
 }

@@ -2,10 +2,23 @@
 #define lli long long int
 using namespace std;
 
+/* Explanation:
+First you will DFS count the time in which you've visited each vertex.
+Now think this way: you have a subtree with k vertices. Sort them by visiting order.
+If you went throught this path: v_1 -> v_2 -> ... -> v_(k-1) -> v_k -> v_1
+You would've passed thought each edge (of the subtree) *exactly* twice.
+Instead of sorting, you better store the subtree's vertices in a set<pair<int, int>>
+Queries will be like:
+  ?: sum / 2.
+  + and -: u might end at the beginning, end or middle, but you will always do:
+    total (+-)= distance(prev(u), u) + distance(u, next(u)) - distance(prev(u), next(u))
+    prev and next will vary accordingly to where u is, but it's easy to add ifs for that
+*/
+
 const int maxN = 1e5, maxLog = ceil(log2(1e5)); int n, logn;
 vector<pair<int, lli>> tree[maxN];
-int level[maxN], ancestor[maxN][maxLog], in[maxN], t; lli dist[maxN];
-set<pair<int, int>> nowTree; lli total = 0;
+int level[maxN], ancestor[maxN][maxLog], in[maxN], t; lli dist[maxN], total;
+set<pair<int, int>> subtree; // (in[u], u)
 void dfs(int u, int prev)
 {
   in[u] = ++ t;
@@ -34,60 +47,37 @@ int LCA(int u, int v)
       u = ancestor[u][i], v = ancestor[v][i];
   return(ancestor[u][0]);
 }
-int distance(int u, int v)
+lli distance(int u, int v)
 {
-  int lca = LCA(u, v);
-  return(dist[u] + dist[v] - 2*dist[lca]);
+  return(dist[u] + dist[v] - 2*dist[LCA(u, v)]);
 }
 
 void rem(int u)
 {
-  if (nowTree.size() < 4)
-  {
-    if (nowTree.count({in[u], u})) nowTree.erase({in[u], u});
-    total = 0;
-    if (nowTree.size() <= 1) return;
-    else
-    {
-      total += distance(nowTree.begin()->second, prev(nowTree.end(), 1)->second);
-      if (nowTree.size() == 3) total += (dist[next(nowTree.begin(),1)->second] - dist[LCA(next(nowTree.begin(),1)->second, nowTree.begin()->second)]);
-      return;
-    }
-  }
+  set<pair<int, int>>::iterator it = subtree.find({in[u], u});
+  if (it == subtree.end()) return;
+  if (subtree.size() <= 2) { subtree.erase(it); total = 0; return; }
+  else if (subtree.size() == 3) { subtree.erase(it); total = 2*distance(subtree.begin()->second, prev(subtree.end(), 1)->second); }
   else
   {
-    set<pair<int, int>>::iterator it = nowTree.find({in[u], u});
-    if (it == nowTree.begin()) total -= (dist[it->second] - dist[LCA(it->second, next(it,1)->second)]);
-    else if (it == prev(nowTree.end(), 1)) total -= (dist[it->second] - dist[LCA(it->second, prev(it,1)->second)]);
-    else total -= (distance(it->second, prev(it,1)->second) + (dist[next(it,1)->second] - dist[LCA(it->second, next(it,1)->second)]) - distance(prev(it,1)->second, next(it,1)->second));
-    nowTree.erase(it);
+    if (it == subtree.begin()) total -= distance(it->second, next(subtree.begin(), 1)->second) + distance(prev(subtree.end(), 1)->second, it->second) - distance(prev(subtree.end(), 1)->second, next(subtree.begin(), 1)->second);
+    else if (it == prev(subtree.end(), 1)) total -= distance(it->second, subtree.begin()->second) + distance(prev(subtree.end(), 2)->second, it->second) - distance(prev(subtree.end(), 2)->second, subtree.begin()->second);
+    else total -= distance(it->second, next(it, 1)->second) + distance(prev(it, 1)->second, it->second) - distance(prev(it, 1)->second, next(it, 1)->second);
+    subtree.erase(it);
   }
 }
 
 void add(int u)
 {
-  nowTree.insert({in[u], u});
-  if (nowTree.size() < 4)
-  {
-    total = 0;
-    if (nowTree.size() <= 1) return;
-    else
-    {
-      total += distance(nowTree.begin()->second, prev(nowTree.end(), 1)->second);
-      if (nowTree.size() == 3) total += (dist[next(nowTree.begin(),1)->second] - dist[LCA(next(nowTree.begin(),1)->second, nowTree.begin()->second)]);
-      return;
-    }
-  }
+  subtree.insert({in[u], u});
+  if (subtree.size() == 1) return;
+  else if (subtree.size() == 2) total = 2*distance(subtree.begin()->second, prev(subtree.end(), 1)->second);
   else
   {
-    set<pair<int, int>>::iterator it = nowTree.find({in[u], u});
-    if (it == nowTree.begin()) total += dist[it->second] - dist[LCA(it->second, next(it,1)->second)];
-    else if (it == prev(nowTree.end(), 1)) total += dist[it->second] - dist[LCA(it->second, prev(it,1)->second)];
-    else
-    {
-      // printf("%d %d %d\n", it->second + 1, prev(it,1)->second + 1, next(it,1)->second + 1);
-      total += distance(it->second, prev(it,1)->second) + (dist[next(it,1)->second] - dist[LCA(it->second, next(it,1)->second)]) - distance(prev(it,1)->second, next(it,1)->second);
-    }
+    set<pair<int, int>>::iterator it = subtree.find({in[u], u});
+    if (it == subtree.begin()) total += distance(it->second, next(subtree.begin(), 1)->second) + distance(prev(subtree.end(), 1)->second, it->second) - distance(prev(subtree.end(), 1)->second, next(subtree.begin(), 1)->second);
+    else if (it == prev(subtree.end(), 1)) total += distance(it->second, subtree.begin()->second) + distance(prev(it, 1)->second, it->second) - distance(prev(it, 1)->second, subtree.begin()->second);
+    else total += distance(it->second, next(it, 1)->second) + distance(prev(it, 1)->second, it->second) - distance(prev(it, 1)->second, next(it, 1)->second);
   }
 }
 
@@ -106,13 +96,12 @@ int main()
   while (q --)
   {
     char op; scanf("\n%c", &op);
-    if (op == '?') printf("%lld\n", total);
+    if (op == '?') printf("%lld\n", total >> 1);
     else
     {
       scanf("%d", &u); u --;
       if (op == '+') add(u); else rem(u);
     }
   }
-
   return(0);
 }
