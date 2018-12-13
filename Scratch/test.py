@@ -1,27 +1,17 @@
-# PROBLEM 1
-#
-# Modify the orbit function below to model
-# one revolution of the moon around the earth,
-# assuming that the orbit is circular.
-#
-# Use the math.cos(angle) and math.sin(angle)
-# functions in order to accomplish this.
+import os
+path = "/mnt/d/BrAIn/Images"
 
-import math, numpy
-
-moon_distance = 384e6 # m
-pi = math.acos(-1)
-
-def orbit():
-    num_steps = 359
-    x = numpy.zeros([num_steps + 1, 2])
-    x[0][0], x[0][1] = moon_distance, 0
-    for i in range(1, num_steps + 1):
-        x[i][0] = moon_distance * math.cos((i / (num_steps + 1)) * 2 * pi)
-        x[i][1] = moon_distance * math.sin((i / (num_steps + 1)) * 2 * pi)
-
-    return x
-
-x = orbit()
-for j, i in enumerate(x):
-    print(j, i)
+for i in range(1, 16):
+  df = path + "/Type %d" % i
+  folders = os.listdir(df)
+  for folder in folders:
+    dff = df + "/" + folder
+    files = os.listdir(dff)
+    for f in files:
+      if (".csv" in f):
+        ff = open(dff + "/" + f)
+        lines = ff.readline()
+        separators = lines.count(";")
+        if (separators != 73):
+          print("Deu merda T-T", separators)
+        ff.close()
