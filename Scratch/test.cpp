@@ -3,7 +3,9 @@ using namespace std;
 
 int main()
 {
-  priority_queue<int> pq; pq.push(1); pq.push(2);
-  printf("%d\n", pq.top());
+  vector<int> a;
+  a.push_back(1);
+  int pos = a.end() - a.begin();
+  printf("%d\n", pos);
   return(0);
 }
