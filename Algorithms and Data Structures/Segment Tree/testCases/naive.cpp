@@ -12,6 +12,11 @@ void updateRange(int lo, int hi, int x, int kind)
   for (int i = lo; i <= hi; i ++) a[i] = x + (kind - 1) * a[i];
 }
 
+void update(int position, int value)
+{
+  a[position] = value;
+}
+
 int main()
 {
   int n; scanf("%d", &n);
@@ -21,10 +26,9 @@ int main()
   while (scanf("\n%c", &kind) != EOF)
   {
     int lo, hi, x; scanf("%d %d", &lo, &hi);
-    if (kind != 'Q') scanf("%d", &x);
 
     if (kind == 'Q') printf("Sum(%d, %d) = %d\n", lo, hi, query(lo, hi));
-    else updateRange(lo, hi, x, kind == 'S' ? 1 : 2);
+    else update(lo, hi); //updateRange(lo, hi, x, kind == 'S' ? 1 : 2);
   }
   return(0);
 }
