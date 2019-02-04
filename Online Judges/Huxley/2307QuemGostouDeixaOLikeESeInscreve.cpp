@@ -21,6 +21,6 @@ int main()
     graph[u].push_back(v);
   }
   int subscribed = dfs(0, y);
-  printf("%c\n", subscribed >= x ? 'S' : 'N');
+  printf("%c\n", subscribed > x ? 'S' : 'N');
   return(0);
 }
