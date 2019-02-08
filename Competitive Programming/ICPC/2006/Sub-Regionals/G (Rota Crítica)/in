@@ -1,0 +1,35 @@
+6 10
+PortoAlegre
+Gramado
+Canela
+NovoHamburgo
+Pelotas
+RioGrande
+Canela Gramado
+Canela NovoHamburgo
+Gramado NovoHamburgo
+NovoHamburgo PortoAlegre
+PortoAlegre NovoHamburgo
+RioGrande Pelotas
+Pelotas PortoAlegre
+PortoAlegre Pelotas
+Pelotas RioGrande
+NovoHamburgo Canela
+3 5
+Sacramento
+SanFrancisco
+SantaClara
+SanFrancisco Sacramento
+Sacramento SantaClara
+SantaClara SanFrancisco
+SanFrancisco Sacramento
+Sacramento SanFrancisco
+3 4
+Recife
+Olinda
+Paulista
+Olinda Recife
+Paulista Recife
+Olinda Paulista
+Paulista Olinda
+0 0
