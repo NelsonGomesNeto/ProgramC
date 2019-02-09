@@ -95,6 +95,7 @@
   * [Galactic Taxes](https://www.urionlinejudge.com.br/judge/pt/problems/view/2011) (Ternary Search + Dijkstra)
   * [796 - Critical Links](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=737) (Pure bridge detection)
   * [Series of Tubes](https://www.urionlinejudge.com.br/judge/es/problems/view/2899) (Interesting bridge detection)
+  * [Edges contraction](https://thehuxley.com/problem/1050) (Interesting DSU problem)
   * [HackerEarth ShortestPath](https://www.hackerearth.com/pt-br/practice/algorithms/graphs/shortest-path-algorithms/practice-problems/?sort_by=solved) (There are some interesting problems ^~^)
 
 
