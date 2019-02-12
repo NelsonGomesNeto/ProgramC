@@ -2,7 +2,7 @@
 using namespace std;
 const int maxVertices = 1e3, inf = 1e9;
 vector<pair<int, int>> graph[maxVertices];
-int cost[maxVertices];
+int cost[maxVertices], prv[maxVertices];
 
 int dijkstra(int source, int target)
 {
@@ -15,7 +15,7 @@ int dijkstra(int source, int target)
     for (auto v: graph[u])
       if (cost[u] + v.second < cost[v.first])
       {
-        cost[v.first] = cost[u] + v.second;
+        cost[v.first] = cost[u] + v.second, prv[v.first] = u;
         pq.push({cost[v.first], v.first});
       }
   }
@@ -33,5 +33,7 @@ int main()
     graph[v].push_back({u, c});
   }
   printf("%d\n", dijkstra(0, n - 1));
+  for (int i = 0; i < n; i ++) printf("%3d%c", i, i < n - 1 ? ' ' : '\n');
+  for (int i = 0; i < n; i ++) printf("%3d%c", prv[i], i < n - 1 ? ' ' : '\n');
   return(0);
 }
