@@ -97,6 +97,7 @@
   * [Series of Tubes](https://www.urionlinejudge.com.br/judge/es/problems/view/2899) (Interesting bridge detection)
   * [Edges contraction](https://thehuxley.com/problem/1050) (Interesting DSU problem)
   * [Dima and Bacteria](https://codeforces.com/contest/400/problem/D) (Very interesting bfs/dsu + FloydWarshall problem)
+  * [Rota Crítica](https://br.spoj.com/problems/ROTA/) (Ad-hoc dfs problem)
   * [HackerEarth ShortestPath](https://www.hackerearth.com/pt-br/practice/algorithms/graphs/shortest-path-algorithms/practice-problems/?sort_by=solved) (There are some interesting problems ^~^)
 
 
