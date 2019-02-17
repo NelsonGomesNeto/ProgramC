@@ -10,6 +10,7 @@
   * [Keep It Covered](https://www.urionlinejudge.com.br/judge/pt/problems/view/2705) (Modeling is quite hard... Probably because I wanted to retrieve exact pieces and orientation (for visualization purpose: [keepitcovered.pde](https://github.com/NelsonGomesNeto/ProgramC/tree/master/Visualization/KeepItCovered/keepitcovered)), but here are some hints: bipartite, needs "unification vertex", checkerboard, only dots and lines need to be mapped)
   * [Delivery Bears](https://codeforces.com/contest/653/problem/D) (BinarySearch + MaxFlow)
   * [Soldier And Traveling](https://codeforces.com/contest/546/problem/E) (Easy modeling MaxFlow, needs information recover from flow)
+  * [HackerEarth Problem Package](https://www.hackerearth.com/pt-br/practice/algorithms/graphs/maximum-flow/practice-problems/)
   * [UVA Problem Package](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=685)
 
 ## Min Cost Flow :star:
