@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <stdio.h>
 
 int sumDigits(int num)
 {
@@ -13,10 +13,7 @@ int sumDigits(int num)
 
 int digitalRoot(int num)
 {
-  while (num > 9)
-  {
-    num = sumDigits(num);
-  }
+  while (num > 9) num = sumDigits(num);
   return(num);
 }
 
@@ -28,10 +25,7 @@ int main()
     int k, x; scanf("%d %d", &k, &x);
     int i = 0, found = 0;
     while (found < k)
-    {
-      i = i + 1;
-      if (digitalRoot(i) == x) found ++;
-    }
+      if (digitalRoot(++ i) == x) found ++;
       
     printf("%d\n", i);
   }
