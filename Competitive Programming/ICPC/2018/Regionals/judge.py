@@ -17,13 +17,15 @@ compileCode(solver)
 print("Compiled Code", solver)
 inputPath, outputPath = testCasesPath + "/input/", testCasesPath + "/output/"
 testCases = os.listdir(inputPath)
-accepted = True
+accepted, fails = True, 0
 for test in sorted(testCases, key=lambda x: int(x.split('_')[1])):
     startTime = time.time()
     os.system("./test < \"%s\" > auxOut" % (inputPath + test))
     executionTime = time.time() - startTime
     verdict = "Accepted" if cmp("auxOut", outputPath + test) and executionTime <= timeLimit else "Wrong Answer" if executionTime <= timeLimit else "Time Limit Exceeded"
-    if verdict != "Accepted": accepted = False
+    if verdict != "Accepted": accepted, fails = False, fails + 1
     print(test.split("_")[1], "- Verdict:", verdict, "| time:", round(executionTime, 4))
 if accepted:
     print("ACCEPTED!!!!!!!!")
+else:
+    print("%d test cases failed" % fails)
