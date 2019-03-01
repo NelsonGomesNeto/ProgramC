@@ -3,6 +3,43 @@
 #define lli long long int
 using namespace std;
 
+/* Explanation:
+First simulate to t = 100, this will guarantee that every monster
+have found it's cycle (and answer, if you've already found the solution).
+For every possible intersection: z:
+  every monster will reach z at: a_i + b_i*t_i
+  a_i = time to reach z for the first time
+  b_i = cycle size
+  t_i = the t_i-th time the i-th monster reached z
+
+  We have to find the time in which:
+  a_1 + b_1*t_1 = a_2 + b_2*t_2
+  a_1 + b_1*t_1 = a_3 + b_3*t_3
+  ...
+  a_1 + b_1*t_1 = a_n + b_n*t_n
+  This system can be crunched in a diophantine equation, which
+  can be solved using extended_gcd, it will give us x and y, and
+  we can calculate the periodicity of it, just run through a bunch
+  of them and save the smallest valid.
+  BE VERY CAREFULL WHEN CALCULATING x0, IT CAN *EASILY* OVERFLOW
+  MULT_MOD WILL SAVE YOU
+
+How to crunch that system into a diophantine equation:
+l = lcm(b_2, b_3, ..., b_n)
+Multiply each line by l / b_i, where i is given by the rightmost equation
+We can now add all equations:
+a_1*(l/b_2 + l/b_3 + ... l/b_n) + b_1*(l/b_2 + l/b_3 + ... l/b_n)*t_1
+=
+(a_2*l/b_2 + a_3*l/b_3 + ... + a_n*l/b_n) + l*(t_2 + t_3 + ... + t_n)
+It doesn't matter what t_2, t_3, ..., t_n is, just what the sum means
+therefore (t_2 + t_3 + ... + t_n) = y
+t_1 = x
+a_1*(l/b_2 + l/b_3 + ... l/b_n) - (a_2*l/b_2 + a_3*l/b_3 + ... + a_n*l/b_n) = k
+b_1*(l/b_2 + l/b_3 + ... l/b_n) = g
+This way we can rewrite that big equation as:
+k + g*x = l*y, a diophantine equation
+*/
+
 const int maxB = 10, maxZ = 100; int b, z;
 const lli inf = LLONG_MAX;
 int monsters[maxB][maxZ + 1];
