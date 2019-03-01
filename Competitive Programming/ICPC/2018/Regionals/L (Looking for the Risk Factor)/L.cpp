@@ -1,6 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/* Explanation:
+We will precalculate the answer for every N, but in two different ways
+First, for every prime smaller than 1000, there are less than 200 of them [primeIndex][maxN]
+Second, for every multiple of 1000, there are 100 of them [k / 1000][maxN]
+  In order to precalculate each of them, you will need an array that stores what is the
+  biggest prime divisor of a number, remember that you can find all divisores until the sqrt(n)
+
+To answer the first kind of query, just print(memo1[findPos(primes, k)][n])
+To answer the second kind of query, answer = memo2[k / 1000][n], with this we will have the answer
+until 1000 * floor(k/1000), but we still need to reach k. For each prime between 1000 * floor(k/1000) + 1 and k
+add n / prime to the answer (why?). Now you can print it.
+why: First, remember that (x/y) is how many times y can divide x. Now, notice that "prime" is at least 1000
+and 1000^2 > 100000. So there's no other prime number bigger than "prime" that can be multiplied by it and reach n.
+Concluding: we only need to add the numbers that are multiples of "prime" and smaller than n.
+*/
+
 const int maxN = 1e5, allPrimes = 1e4;
 bool notPrime[maxN + 1];
 vector<int> primes;
