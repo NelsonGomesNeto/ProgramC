@@ -42,37 +42,37 @@ k + g*x = l*y, a diophantine equation
 
 const int maxB = 10, maxZ = 100; int b, z;
 const lli inf = LLONG_MAX;
-int monsters[maxB][maxZ + 1];
+int monsters[maxB][maxZ + 10];
 vector<int> cycles[maxB];
 vector<int> intersections;
 
-lli gcdExtended(lli a, lli b, lli *x, lli *y)
+lli gcdExtended(lli aa, lli bb, lli *x, lli *y)
 {
-  if (!a)
+  if (!aa)
   {
     *x = 0, *y = 1;
-    return(b);
+    return(bb);
   }
   lli x1, y1;
-  lli g = gcdExtended(b % a, a, &x1, &y1);
-  *x = y1 - (b / a) * x1, *y = x1;
+  lli g = gcdExtended(bb % aa, aa, &x1, &y1);
+  *x = y1 - (bb / aa) * x1, *y = x1;
   return(g);
 }
-lli lcm(lli a, lli b) { return(a*b / __gcd(a, b)); }
+lli lcm(lli aa, lli bb) { return((aa / __gcd(aa, bb)) * bb); }
 
-lli modMult(lli a, lli b, lli m)
+lli modMult(lli aa, lli bb, lli m)
 {
-  if (!b) return(0);
-  lli r = modMult(a, b >> 1, m);
+  if (!bb) return(0);
+  lli r = modMult(aa, bb >> 1, m);
   r = (r + r) % m;
-  if (b & 1) r = (r + a) % m;
+  if (bb & 1) r = (r + aa) % m;
   return(r);
 }
 
-bool monstersInSamePlace(int m[maxB][maxZ + 1])
+bool monstersInSamePlace()
 {
   for (int i = 1; i < b; i ++)
-    if (m[0][0] != m[i][0])
+    if (monsters[0][0] != monsters[i][0])
       return(false);
   return(true);
 }
@@ -80,17 +80,16 @@ bool monstersInSamePlace(int m[maxB][maxZ + 1])
 bool canEmulating()
 {
   int t;
-  for (t = 0; t < 1e5; t ++)
+  for (t = 0; t < 1e3; t ++)
   {
-    if (monstersInSamePlace(monsters))
+    if (monstersInSamePlace())
     {
       printf("%d %d\n", monsters[0][0], t);
-      break;
+      return(true);
     }
     for (int i = 0; i < b; i ++) monsters[i][0] = monsters[i][monsters[i][0]];
   }
-  if (t == 1e5) return(false);
-  else return(true);
+  return(false);
 }
 
 int main()
@@ -110,12 +109,13 @@ int main()
       cycles[i].push_back(j);
   }
 
-  for (int target: cycles[0])
+  int first = 0;
+  for (int target: cycles[first])
   {
     bool hasInAll = true;
     for (int i = 0; i < b; i ++)
     {
-      if (i == 0) continue;
+      if (i == first) continue;
       bool has = false;
       for (int j: cycles[i])
         if (j == target)
@@ -128,14 +128,13 @@ int main()
   DEBUG for (int i = 0; i < b; i ++)
     printf("Cycle[%d].size() = %d\n", i, (int) cycles[i].size());
 
-  int first = 0;
   for (int z: intersections)
   {
     DEBUG printf("Intersection: %d\n", z);
     int meetsIn[b]; lli eqa = 0, eqb = -1, meets = 0;
-    for (int i = 0, j, k; i < b; i ++)
+    for (int i = 0, k = 0; i < b; i ++, k = 0)
     {
-      for (j = cycles[i][0], k = 0; j != z; j = cycles[i][++ k]);
+      while (cycles[i][k] != z) k ++;
       meetsIn[i] = k;
       DEBUG printf("meetsIn[%d] = %d, cyclesSize[%d] = %d\n", i, k, i, (int) cycles[i].size());
       if (i == first) continue;
@@ -154,7 +153,7 @@ int main()
     lli x0 = modMult((x < 0 ? -1 : 1) * -meets / g, x < 0 ? -x : x, dx);
     DEBUG printf("Hollly: %lld %lld %lld %lld\n", meets, g, x, x0);
     DEBUG printf("gcd(%lld, %lld) = %lld || %lld || %lld %lld || %lld + %lld*t\n", eqa, eqb, g, meets, x, y, x0, dx);
-    for (int j = 0; j < 1e5; j ++)
+    for (int j = 0; j < 10; j ++)
     {
       lli tt = x0 + dx*j;
       lli timeToReach = (lli) cycles[first].size() * tt + meetsIn[first];
@@ -168,8 +167,8 @@ int main()
       if (valid)
       {
         DEBUG printf("%lld %lld\n", timeToReach, t);
-        if (timeToReach + 100000 < t || (timeToReach == t && z < zoo))
-          t = timeToReach + 100000, zoo = z;
+        if (timeToReach + 1000 < t)
+          t = timeToReach + 1000, zoo = z;
         break;
       }
     }
