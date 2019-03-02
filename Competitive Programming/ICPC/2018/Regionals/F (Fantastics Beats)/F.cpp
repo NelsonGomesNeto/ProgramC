@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#define DEBUG if(0)
 #define lli long long int
 using namespace std;
 
@@ -42,13 +41,13 @@ k + g*x = l*y, a diophantine equation
 
 const int maxB = 10, maxZ = 100; int b, z;
 const lli inf = LLONG_MAX;
-int monsters[maxB][maxZ + 10];
+int monsters[maxB][maxZ + 1];
 vector<int> cycles[maxB];
 vector<int> intersections;
 
 lli gcdExtended(lli aa, lli bb, lli *x, lli *y)
 {
-  if (!aa)
+  if (aa == 0)
   {
     *x = 0, *y = 1;
     return(bb);
@@ -58,11 +57,12 @@ lli gcdExtended(lli aa, lli bb, lli *x, lli *y)
   *x = y1 - (bb / aa) * x1, *y = x1;
   return(g);
 }
-lli lcm(lli aa, lli bb) { return((aa / __gcd(aa, bb)) * bb); }
+lli gcd(lli aa, lli bb) { if (aa == 0) return(bb); return(gcd(bb % aa, aa)); }
+lli lcm(lli aa, lli bb) { return((aa / gcd(aa, bb)) * bb); }
 
 lli modMult(lli aa, lli bb, lli m)
 {
-  if (!bb) return(0);
+  if (bb == 0) return(0);
   lli r = modMult(aa, bb >> 1, m);
   r = (r + r) % m;
   if (bb & 1) r = (r + aa) % m;
@@ -80,7 +80,7 @@ bool monstersInSamePlace()
 bool canEmulating()
 {
   int t;
-  for (t = 0; t < 1e3; t ++)
+  for (t = 0; t < 100; t ++)
   {
     if (monstersInSamePlace())
     {
@@ -101,7 +101,7 @@ int main()
 
   if (canEmulating()) return(0);
 
-  lli t = inf; int zoo;
+  lli t = inf; int zoo = 1;
   for (int i = 0; i < b; i ++)
   {
     cycles[i].push_back(monsters[i][0]);
@@ -125,18 +125,13 @@ int main()
     if (hasInAll) intersections.push_back(target);
   }
 
-  DEBUG for (int i = 0; i < b; i ++)
-    printf("Cycle[%d].size() = %d\n", i, (int) cycles[i].size());
-
   for (int z: intersections)
   {
-    DEBUG printf("Intersection: %d\n", z);
     int meetsIn[b]; lli eqa = 0, eqb = -1, meets = 0;
     for (int i = 0, k = 0; i < b; i ++, k = 0)
     {
       while (cycles[i][k] != z) k ++;
       meetsIn[i] = k;
-      DEBUG printf("meetsIn[%d] = %d, cyclesSize[%d] = %d\n", i, k, i, (int) cycles[i].size());
       if (i == first) continue;
       eqb = eqb == -1 ? cycles[i].size() : lcm(eqb, cycles[i].size());
     }
@@ -151,12 +146,11 @@ int main()
     lli g = gcdExtended(eqa, eqb, &x, &y);
     lli dx = eqb / g;
     lli x0 = modMult((x < 0 ? -1 : 1) * -meets / g, x < 0 ? -x : x, dx);
-    DEBUG printf("Hollly: %lld %lld %lld %lld\n", meets, g, x, x0);
-    DEBUG printf("gcd(%lld, %lld) = %lld || %lld || %lld %lld || %lld + %lld*t\n", eqa, eqb, g, meets, x, y, x0, dx);
-    for (int j = 0; j < 10; j ++)
+    for (int j = 0; j < 100; j ++)
     {
       lli tt = x0 + dx*j;
       lli timeToReach = (lli) cycles[first].size() * tt + meetsIn[first];
+      if (timeToReach <= 0) continue;
       bool valid = true;
       for (int i = 0; i < b; i ++)
       {
@@ -166,9 +160,8 @@ int main()
       }
       if (valid)
       {
-        DEBUG printf("%lld %lld\n", timeToReach, t);
-        if (timeToReach + 1000 < t)
-          t = timeToReach + 1000, zoo = z;
+        if (timeToReach + 100 < t)
+          t = timeToReach + 100, zoo = z;
         break;
       }
     }
