@@ -5,14 +5,17 @@ using namespace std;
 const int maxN = 5e4, maxK = 5e2; int n, k;
 vector<int> tree[maxN];
 
-int memo[maxN][maxK + 1];
-int dfs(int u, int prv, int depth)
+int memo[maxN][maxK + 1], ans;
+void dfs(int u, int prv)
 {
-  memo[u][depth] ++;
-  if (depth < k)
-    for (int v: tree[u])
-      if (v != prv)
-        dfs(v, u, depth + 1);
+  memo[u][0] = 1;
+  for (int v: tree[u])
+  {
+    if (v == prv) continue;
+    dfs(v, u);
+    for (int i = 0; i < k; i ++) ans += memo[u][i] * memo[v][k - i - 1];
+    for (int i = 0; i < k; i ++) memo[u][i + 1] += memo[v][i];
+  }
 }
 
 int main()
@@ -24,14 +27,16 @@ int main()
     tree[u].push_back(v), tree[v].push_back(u);
   }
 
-  for (int i = 0; i < n; i ++) dfs(i, -1, 0);
-
-  int ans = 0;
-  for (int i = 0; i < n; i ++)
+  dfs(0, -1);
+  DEBUG
   {
-    DEBUG printf("%d %d\n", i + 1, memo[i][k]);
-    ans += memo[i][k];
+    printf("    "); for (int i = 0; i <= k; i ++) printf("%3d%c", i, i < k ? ' ' : '\n');
+    for (int  i = 0; i < n; i ++)
+    {
+      printf("%3d ", i + 1);
+      for (int j = 0; j <= k; j ++) printf("%3d%c", memo[i][j], j < k ? ' ' : '\n');
+    }
   }
-  printf("%d\n", ans >> 1);
+  printf("%d\n", ans);
   return(0);
 }
