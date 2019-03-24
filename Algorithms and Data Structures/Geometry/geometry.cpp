@@ -25,3 +25,11 @@ bool insidePolygon(int x, int y)
   return(c);
 }
 */
+/*
+struct Point
+{
+  double x, y, d; int id;
+  double dist(const Point &a) { return(sqrt((a.x - x)*(a.x - x) + (a.y - y)*(a.y - y))); }
+  bool collinear(const Point &a, const Point &b) { return((x - a.x)*(a.y - b.y) - (a.x - b.x)*(y - a.y) == 0); }
+};
+*/
