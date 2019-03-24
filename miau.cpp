@@ -1,21 +1,18 @@
 #include <bits/stdc++.h>
+using namespace std;
 
-int n, m;
-
-void func(int mat[][])
+struct LoL
 {
-  for (int i = 0; i < n; i ++)
-    for (int j = 0; j < m; j ++)
-      printf("%d%c", mat[i][j], j < 10 - 1 ? ' ' : '\n');
-}
+  int num;
+};
+bool l(const LoL &a, const LoL &b) { return(a.num < b.num); }
+bool g(const LoL &a, const LoL &b) { return(a.num > b.num); }
 
 int main()
 {
-  scanf("%d %d", &n, &m);
-  int mat[n][m];
-  for (int i = 0, s = 0; i < n; i ++)
-    for (int j = 0; j < m; j ++)
-      mat[i][j] = s ++;
-  func(&mat[0][0]);
+  int n; scanf("%d", &n);
+  LoL array[n];
+  for (int i = 0; i < n; i ++) scanf("%d", &array[i].num);
+  sort(array, array+n, l);
   return(0);
 }
