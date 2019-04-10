@@ -14,14 +14,15 @@ void dfs(int u, int d)
 
 bool bfs()
 {
-  queue<pair<int, int>> q; q.push({root, 0});
+  queue<pair<int, pair<int, int>>> q; q.push({root, {0, 0}});
   while (!q.empty())
   {
-    int u = q.front().first, level = q.front().second; q.pop();
-    if ('A' + level > 'Z') return(false);
+    int u = q.front().first, level = q.front().second.first, odd = q.front().second.second; q.pop();
+    if (level && graph[u].size() > 2) odd = 1; 
+    if (!odd && 'A' + level > 'Z') return(false);
     if (commander[u] != -1) continue;
-    commander[u] = 'A' + level;
-    for (int v: graph[u]) q.push({v, level + 1});
+    commander[u] = !odd ? 'A' + level : 'Z';
+    for (int v: graph[u]) q.push({v, {level + odd, 1 - odd}});
   }
   return(true);
 }
@@ -52,10 +53,10 @@ int main()
   // while (mid --) root = prv[root];
 
   bool can = false;
-  for (root = 0; root < n && !can; root ++)
+  for (root = 0; root < n; root ++)
   {
     memset(commander, -1, sizeof(commander));
-    if (bfs()) can = true;
+    if (bfs()) { can = true; break; }
   }
   if (!can) printf("Impossible!\n");
   else for (int i = 0; i < n; i ++) printf("%c%c", commander[i], i < n - 1 ? ' ' : '\n');
