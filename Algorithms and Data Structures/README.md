@@ -100,9 +100,10 @@
   * [Dima and Bacteria](https://codeforces.com/contest/400/problem/D) (Very interesting bfs/dsu + FloydWarshall problem)
   * [Rota Crítica](https://br.spoj.com/problems/ROTA/) (Ad-hoc dfs problem)
   * [Lonely Island](https://www.hackerearth.com/pt-br/practice/algorithms/graphs/topological-sort/practice-problems/algorithm/lonelyisland-49054110/description/) (Very interesting topological sort problem)
-  * [Checkposts](https://codeforces.com/problemset/problem/427/C) (Amazing Strongly Connected Components problem)
   * [Highway Decommission](https://www.urionlinejudge.com.br/judge/en/problems/view/2910) (Very interesting Dijkstra problem)
   * [Anton and Tree](https://codeforces.com/contest/734/problem/E) (Very interesting DFS + tree diameter problem)
+  * [Checkposts](https://codeforces.com/problemset/problem/427/C) (Amazing Strongly Connected Components problem)
+  * [Misha and Forest](https://codeforces.com/contest/504/problem/A) (Surprising Topological Sort problem)
   * [HackerEarth ShortestPath](https://www.hackerearth.com/pt-br/practice/algorithms/graphs/shortest-path-algorithms/practice-problems/?sort_by=solved) (There are some interesting problems ^~^)
 
 
