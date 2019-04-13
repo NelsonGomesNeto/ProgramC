@@ -137,6 +137,7 @@
 # Search
 * #### Problems
   * [12192 - Grapevine](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3344) (Interesting lowerBound + upperBound)
+  * [Hamburgers](https://codeforces.com/problemset/problem/371/C) (Interesting easy binary search problem)
 
 # Math
 * #### Problems
