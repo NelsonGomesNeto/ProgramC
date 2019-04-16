@@ -133,7 +133,8 @@
 
 ## Tree
 * #### Problems
-  * [Distance in Tree](https://codeforces.com/problemset/problem/161/D) (Awesome DP in Tree)
+  * [Valera and Elections](https://codeforces.com/contest/369/problem/C) (Easy but beautiful DP on Tree)
+  * [Distance in Tree](https://codeforces.com/problemset/problem/161/D) (Awesome DP on Tree)
 
 
 # Search
