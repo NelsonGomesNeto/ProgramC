@@ -129,6 +129,7 @@
 
 ## Simple precalculation
 * #### Problems
+  * [Little Girl and Maximum Sum](https://codeforces.com/problemset/problem/276/C) (Interesting easy in and out problem)
   * [679 - Dropping Balls](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=620) (Very interesting)
 
 ## Tree
