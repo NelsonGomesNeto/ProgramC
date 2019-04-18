@@ -11,15 +11,15 @@ vector<int> graph[maxN]; bool isMax[maxN];
 int dfs(int u, int prv = -1)
 {
   if (graph[u].size() == 1 && u) { leafs ++; return(1); }
-  int sum = 0, maximum = 1e7;
+  int wasted = 0, minimumWaste = 1e7;
   for (int v: graph[u])
     if (v != prv)
     {
-      int received = dfs(v, u);
-      sum += received, maximum = min(maximum, received);
+      int w = dfs(v, u);
+      wasted += w, minimumWaste = min(minimumWaste, w);
     }
-  if (isMax[u]) return(maximum);
-  else return(sum);
+  if (isMax[u]) return(minimumWaste); // maximum node can choose the minimum waste
+  else return(wasted); // minimum node will waste all nodes below it
 }
 
 int main()
@@ -32,8 +32,9 @@ int main()
     graph[p].push_back(i), graph[i].push_back(p);
   }
 
-  int ans = dfs(0);
-  printf("%d\n", leafs - ans + 1);
+  int wastedLeafs = dfs(0);
+  printf("%d\n", leafs - wastedLeafs + 1);
+  // + 1 just because you fill from 1 to k and to from 0 to k - 1
 
   return(0);
 }
