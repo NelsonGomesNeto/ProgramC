@@ -132,6 +132,10 @@
   * [Little Girl and Maximum Sum](https://codeforces.com/problemset/problem/276/C) (Interesting easy in and out problem)
   * [679 - Dropping Balls](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=620) (Very interesting)
 
+## Bin packing
+* #### Problems
+  * [Shovels Shop](https://codeforces.com/contest/1154/problem/F) (Mind blowing bin packing problem)
+
 ## Tree
 * #### Problems
   * [Valera and Elections](https://codeforces.com/contest/369/problem/C) (Easy but beautiful DP on Tree)
@@ -146,3 +150,7 @@
 # Math
 * #### Problems
   * [Jumping Frog](https://www.urionlinejudge.com.br/judge/pt/problems/view/2704) (GCD, it's a very brilliant problem)
+
+# Greedy
+* #### Problems
+  * [Walking Robot](https://codeforces.com/contest/1154/problem/D) (Interesting greedy problem)
