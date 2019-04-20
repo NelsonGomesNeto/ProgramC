@@ -150,6 +150,7 @@
 # Math
 * #### Problems
   * [Jumping Frog](https://www.urionlinejudge.com.br/judge/pt/problems/view/2704) (GCD, it's a very brilliant problem)
+  * [Minimum Possible LCM](https://codeforces.com/contest/1154/problem/G) (LCM, very puzzling problem but interesting)
 
 # Greedy
 * #### Problems
