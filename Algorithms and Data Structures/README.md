@@ -154,6 +154,7 @@
   * [Jumping Frog](https://www.urionlinejudge.com.br/judge/pt/problems/view/2704) (GCD, it's a very brilliant problem)
   * [Minimum Possible LCM](https://codeforces.com/contest/1154/problem/G) (LCM, very puzzling problem but interesting)
   * [Problem for Nazar](https://codeforces.com/contest/1151/problem/C) (Loads of modular stuff + arithmetic progression)
+  * [Number of Components](https://codeforces.com/contest/1151/problem/E) (Contribution to Sum technique)
 
 # Greedy
 * #### Problems
