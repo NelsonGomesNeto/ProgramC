@@ -150,6 +150,7 @@
   * [Minimum Possible LCM](https://codeforces.com/contest/1154/problem/G) (LCM, very puzzling problem but interesting)
   * [Problem for Nazar](https://codeforces.com/contest/1151/problem/C) (Loads of modular stuff + arithmetic progression)
   * [Number of Components](https://codeforces.com/contest/1151/problem/E) (Contribution to Sum technique)
+  * [Valid Sets](https://codeforces.com/contest/486/problem/D) (Beautiful use of produtory and dfs)
 
 # Geometry
 * #### Problems
