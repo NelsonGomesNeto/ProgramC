@@ -159,3 +159,7 @@
 # Greedy
 * #### Problems
   * [Walking Robot](https://codeforces.com/contest/1154/problem/D) (Interesting greedy problem)
+
+# Data Structures
+* #### Problems
+  * [Good Substrings](https://codeforces.com/contest/271/problem/D) (Amazing Trie problem, memeHorse: ILOVEIT)
