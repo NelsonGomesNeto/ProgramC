@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-// inv = pow(r - 1, mod - 2) (since mod is prime)
+// inv = pow(r, mod - 2) (since mod is prime)
 
 int main()
 {

@@ -33,7 +33,6 @@
   * [Almost Permutation](https://codeforces.com/problemset/problem/863/F) (Multiple connections between two vertices: interesting math trick)
   * [UVA Problem Package](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=808)
 
-
 # Segment Tree :star:
 ## Segment Tree without Lazy Propagation :star:
 * #### Problems
@@ -46,7 +45,6 @@
   * [Light Switching](https://www.spoj.com/problems/LITE/) (Pure Segment Tree)
   * [11402 - Ahoy Pirates](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=2397) (Set update, be careful)
   * [Acordes Intergaláticos](https://www.urionlinejudge.com.br/judge/en/problems/view/2658) (Time is very short, be careful with constants)
-
 
 # Lowest Common Ancestor (LCA)
 * There are two main implementations of LCA, both use a Sparse Table to speed up their queries and takes O(n\*lg) to preprocess.
@@ -89,7 +87,6 @@
   * [Kth Ancestor](https://www.hackerrank.com/challenges/kth-ancestor/problem) (Easy pure but very interesting ^~^)
   * [10938 - Flea Circus](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1879) (Pretty mind blowing, but very good to practice)
 
-
 # Graph
 * #### Problems
   * [Shipping](https://thehuxley.com/problem/1997) (Very pure Dijkstra)
@@ -109,7 +106,6 @@
   * [Teletransport](https://www.urionlinejudge.com.br/judge/en/problems/view/1713) (Exponentiate graph to count all possible paths from u to v)
   * [Miss Worm](https://www.urionlinejudge.com.br/judge/en/problems/view/1711) (Very interesting cycle finding + dijkstra problem)
   * [HackerEarth ShortestPath](https://www.hackerearth.com/pt-br/practice/algorithms/graphs/shortest-path-algorithms/practice-problems/?sort_by=solved) (There are some interesting problems ^~^)
-
 
 # Dynamic Programming (DP)
 ## Longest Common Sequence (LCS)
@@ -143,7 +139,6 @@
   * [Valera and Elections](https://codeforces.com/contest/369/problem/C) (Easy but beautiful DP on Tree)
   * [Distance in Tree](https://codeforces.com/problemset/problem/161/D) (Awesome DP on Tree)
 
-
 # Search
 * #### Problems
   * [12192 - Grapevine](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3344) (Interesting lowerBound + upperBound)
@@ -155,6 +150,10 @@
   * [Minimum Possible LCM](https://codeforces.com/contest/1154/problem/G) (LCM, very puzzling problem but interesting)
   * [Problem for Nazar](https://codeforces.com/contest/1151/problem/C) (Loads of modular stuff + arithmetic progression)
   * [Number of Components](https://codeforces.com/contest/1151/problem/E) (Contribution to Sum technique)
+
+# Geometry
+* #### Problems
+  * [Confederation](https://www.urionlinejudge.com.br/judge/en/problems/view/1710) (Dividing space with planes, very nice (map))
 
 # Greedy
 * #### Problems
