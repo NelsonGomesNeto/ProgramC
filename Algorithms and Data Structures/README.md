@@ -145,6 +145,7 @@
 * #### Problems
   * [12192 - Grapevine](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3344) (Interesting lowerBound + upperBound)
   * [Hamburgers](https://codeforces.com/problemset/problem/371/C) (Interesting easy binary search problem)
+  * [Wonder Room](https://codeforces.com/contest/466/problem/B) (Seems very easy, but binary search the area (and use math) is the way)
 
 # Math
 * #### Problems
