@@ -130,9 +130,10 @@
   * [Little Girl and Maximum Sum](https://codeforces.com/problemset/problem/276/C) (Interesting easy in and out problem)
   * [679 - Dropping Balls](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=620) (Very interesting)
 
-## Bin packing
+## Knapsack
 * #### Problems
-  * [Shovels Shop](https://codeforces.com/contest/1154/problem/F) (Mind blowing bin packing problem)
+  * [Shovels Shop](https://codeforces.com/contest/1154/problem/F) (Mind blowing knapsack problem)
+  * [Beautiful Array](https://codeforces.com/contest/1155/problem/D) (Very beautiful knapsack problem)
 
 ## Tree
 * #### Problems
