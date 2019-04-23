@@ -139,6 +139,7 @@
 * #### Problems
   * [Valera and Elections](https://codeforces.com/contest/369/problem/C) (Easy but beautiful DP on Tree)
   * [Distance in Tree](https://codeforces.com/problemset/problem/161/D) (Awesome DP on Tree)
+  * [Serval and Rooted Tree](https://codeforces.com/contest/1153/problem/D) (Very interesting use of recursion (no DP actually needed))
 
 # Search
 * #### Problems

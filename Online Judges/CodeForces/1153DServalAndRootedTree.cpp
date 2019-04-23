@@ -1,8 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/* Explanation:
-The core idea is to count how many leafs were wasted
+/* Tutorial:
+  The core idea is to count how many leafs were wasted
+  Do a DFS following these rules:
+    If node is maximum: it will carry only the minimum waste possible
+    If node is minimum: it will carry every the sum of wastes
+    If node if lead: waste == 1
+  The answer will be: leafs - wasted leafs + 1
+  (+ 1 is just because you will assign numbers starting from 1)
 */
 
 const int maxN = 3e5; int n, leafs;
