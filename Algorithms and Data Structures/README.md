@@ -167,6 +167,7 @@
   * [Increasing Subsequence](https://codeforces.com/contest/1157/problem/C2) (No DP, go straight to greedy)
   * [N Problems During K Days](https://codeforces.com/contest/1157/problem/D) (Math + BinarySearch + Greedy)
   * [Minimum Array](https://codeforces.com/contest/1157/problem/E) (Much easier than it seems)
+  * [Maximum Balanced Circle](https://codeforces.com/contest/1157/problem/F) (AWESOME, remeber that it's a circle (so it goes back and forth))
 
 # Data Structures
 * #### Problems
