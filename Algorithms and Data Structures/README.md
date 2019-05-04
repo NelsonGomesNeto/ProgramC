@@ -156,6 +156,7 @@
   * [Number of Components](https://codeforces.com/contest/1151/problem/E) (Contribution to Sum technique)
   * [Valid Sets](https://codeforces.com/contest/486/problem/D) (Beautiful use of produtory and dfs)
   * [Neko does Maths](https://codeforces.com/contest/1152/problem/C) (LCM + GCD, you have to understand both (open their formulas))
+  * [Save Energy!](https://codeforces.com/contest/936/problem/A) (Amazing pure math problem (finding the cycle and jumping by it works, but math is way prettier))
 
 # Geometry
 * #### Problems
