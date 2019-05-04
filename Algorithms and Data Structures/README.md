@@ -170,5 +170,12 @@
   * [Maximum Balanced Circle](https://codeforces.com/contest/1157/problem/F) (AWESOME, remeber that it's a circle (so it goes back and forth))
 
 # Data Structures
+## Trie
 * #### Problems
   * [Good Substrings](https://codeforces.com/contest/271/problem/D) (Amazing Trie problem, memeHorse: ILOVEIT)
+
+## DSU
+* #### Problems
+  * [0-1-Tree](https://codeforces.com/contest/1156/problem/D) (Amazing DSU + combinatory problem)
+  * [Quantity of String](https://codeforces.com/contest/151/problem/D) (Very interesting use of DSU on palindromes)
+  * [HackerEarth DSU Problems](https://www.hackerearth.com/pt-br/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/practice-problems/) (There are some interesting problems)
