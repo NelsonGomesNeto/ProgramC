@@ -179,4 +179,5 @@
 * #### Problems
   * [0-1-Tree](https://codeforces.com/contest/1156/problem/D) (Amazing DSU + combinatory problem)
   * [Quantity of String](https://codeforces.com/contest/151/problem/D) (Very interesting use of DSU on palindromes)
+  * [Monk missing home](https://www.hackerearth.com/pt-br/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/practice-problems/algorithm/monk-missing-home-code-monk/description/) (Needs a very interesting modification on merge function)
   * [HackerEarth DSU Problems](https://www.hackerearth.com/pt-br/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/practice-problems/) (There are some interesting problems)
