@@ -1,59 +1,50 @@
 #include <stdio.h>
-typedef struct Person person_t;
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
 
-struct Person
-{
-  int id;
-  char name[100];
-  double grade;
+typedef struct data data_t;
+
+struct data {
+    int plays, distance;
+    char guard[1000];
 };
 
-void printPeople(int n, person_t people[], double mean)
-{
-  printf("Alunos abaixo da media:\n");
-  int i;
-  for (i = 0; i < n; i ++)
-    if (people[i].grade < 7)
-      printf("Matricula: %d Nome: %s Nota: %.1lf\n", people[i].id, people[i].name, people[i].grade);
-  printf("Alunos iguais ou acima da media:\n");
-  for (i = 0; i < n; i ++)
-    if (people[i].grade >= 7)
-      printf("Matricula: %d Nome: %s Nota: %.1lf\n", people[i].id, people[i].name, people[i].grade);
-  printf("Media = %.2lf\n", mean);
+void goThrough(data_t test, int i, int *j, char faces, int count) {
+    if (faces == '7')
+        return;
+    else {
+        test.guard[i] = faces;
+        count += loop(test, i + 1, j);
+    }
+    goThrough(test, i, j, faces + 1, count);
 }
 
-void swap(person_t *a, person_t *b)
-{
-  person_t aux = *a;
-  *a = *b;
-  *b = aux;
+int sum(data_t test, int i, int sumDice) {
+    if (i == test.plays)
+        return sumDice;
+    else
+        sumDice += (test.guard[i] - '0');
+    sum(test, i + 1, sumDice);
 }
 
-void sort(int n, person_t people[])
-{
-  int i, j;
-  for (i = 0; i < n; i ++)
-    for (j = i + 1; j < n; j ++)
-      if (people[i].grade > people[j].grade || (people[i].grade == people[j].grade && people[i].id > people[j].id))
-        swap(&people[i], &people[j]);
+int loop(data_t test, int i, int *j) {
+    if (i == test.plays) {
+        test.guard[i] = '\0';
+        int n = sum(test, 0, 0);
+        printf("%s = %d\n", test.guard, n);
+        return (n >= test.distance) ? *j += 1 : *j; 
+    }
+    else
+        goThrough(test, i, j, '1', 0);
 }
 
-int main()
-{
-  person_t p;
-  int n, i;
-  double mean = 0;
-  scanf("%d", &n);
-  person_t people[n];
-  for (i = 0; i < n; i ++)
-  {
-    scanf("%d-%[^-]-%lf", &people[i].id, people[i].name, &people[i].grade);
-    mean += people[i].grade;
-  }
-  mean /= n;
-
-  sort(n, people);
-  printPeople(n, people, mean);
-
-  return(0);
+int main() {
+    data_t test;
+    scanf("%d %d", &test.plays, &test. distance);
+    
+    int *n = 0;
+    n = loop(test, 0, &n);
+    printf("%d", n);
+	return 0;
 }

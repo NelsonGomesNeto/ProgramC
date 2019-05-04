@@ -1,8 +1,74 @@
 Mapeamento das strings:
 	string A: {compilationUnit {translationUnit {translationUnit {translationUnit {translationUnit {translationUnit {translationUnit {translationUnit {translationUnit {translationUnit {translationUnit {translationUnit {translationUnit {translationUnit externalDeclaration} {externalDeclaration nclude <}} externalDeclaration} {externalDeclaration stdio .}} externalDeclaration} {externalDeclaration h >}} externalDeclaration} {externalDeclaration nclude <}} externalDeclaration} {externalDeclaration stdlib .}} externalDeclaration} {externalDeclaration h >}} {externalDeclaration {functionDefinition {declarator {directDeclarator {directDeclarator main} { }}} {compoundStatement { {blockItemList {blockItem {declaration {declarationSpecifiers {declarationSpecifier {typeSpecifier char}}} {initDeclaratorList {initDeclarator {declarator {directDeclarator {directDeclarator nome} [ {assignmentExpression {conditionalExpression {logicalOrExpression {logicalAndExpression {inclusiveOrExpression {exclusiveOrExpression {andExpression {equalityExpression {relationalExpression {shiftExpression {additiveExpression {multiplicativeExpression {castExpression {unaryExpression {postfixExpression {primaryExpression 255}}}}}}}}}}}}}}}} ]}}}} ;}}} <missing '}'>}}}} <EOF>}
-	0 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 3 4 2 2 5 6 2 2 7 8 2 2 3 4 2 2 9 6 2 2 7 8 2 10 11 12 12 13 14 15 16 17 18 19 20 21 22 23 11 12 12 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46
+	vector A: 0 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 3 4 2 2 5 6 2 2 7 8 2 2 3 4 2 2 9 6 2 2 7 8 2 10 11 12 12 13 14 15 16 17 18 19 20 21 22 23 11 12 12 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46
 	string B: {compilationUnit {translationUnit {translationUnit {translationUnit {translationUnit {translationUnit {translationUnit {translationUnit externalDeclaration} {externalDeclaration nclude <}} externalDeclaration} {externalDeclaration stdio .}} externalDeclaration} {externalDeclaration h >}} {externalDeclaration {functionDefinition {declarator {directDeclarator {directDeclarator main} { }}} {compoundStatement { {blockItemList {blockItemList {blockItemList {blockItemList {blockItemList {blockItemList {blockItemList {blockItemList {blockItem {declaration {declarationSpecifiers {declarationSpecifier {typeSpecifier int}} {declarationSpecifier {typeSpecifier {typedefName cont}}}} ;}}} {blockItem {declaration {declarationSpecifiers {declarationSpecifier {typeSpecifier char}}} {initDeclaratorList {initDeclarator {declarator {directDeclarator {directDeclarator nome} [ {assignmentExpression {conditionalExpression {logicalOrExpression {logicalAndExpression {inclusiveOrExpression {exclusiveOrExpression {andExpression {equalityExpression {relationalExpression {shiftExpression {additiveExpression {multiplicativeExpression {castExpression {unaryExpression {postfixExpression {primaryExpression 120}}}}}}}}}}}}}}}} ]}}}} ;}}} {blockItem {statement {expressionStatement {expression {assignmentExpression {conditionalExpression {logicalOrExpression {logicalAndExpression {inclusiveOrExpression {exclusiveOrExpression {andExpression {equalityExpression {relationalExpression {shiftExpression {additiveExpression {multiplicativeExpression {castExpression {unaryExpression {postfixExpression {postfixExpression {primaryExpression printf}} { {argumentExpressionList {assignmentExpression {conditionalExpression {logicalOrExpression {logicalAndExpression {inclusiveOrExpression {exclusiveOrExpression {andExpression {equalityExpression {relationalExpression {shiftExpression {additiveExpression {multiplicativeExpression {castExpression {unaryExpression {postfixExpression {primaryExpression "Digite o nome do convidado: "}}}}}}}}}}}}}}}}} }}}}}}}}}}}}}}}}} ;}}}} {blockItem {statement {expressionStatement {expression {assignmentExpression {conditionalExpression {logicalOrExpression {logicalAndExpression {inclusiveOrExpression {exclusiveOrExpression {andExpression {equalityExpression {relationalExpression {shiftExpression {additiveExpression {multiplicativeExpression {castExpression {unaryExpression {postfixExpression {postfixExpression {primaryExpression scanf}} { {argumentExpressionList {argumentExpressionList {assignmentExpression {conditionalExpression {logicalOrExpression {logicalAndExpression {inclusiveOrExpression {exclusiveOrExpression {andExpression {equalityExpression {relationalExpression {shiftExpression {additiveExpression {multiplicativeExpression {castExpression {unaryExpression {postfixExpression {primaryExpression "%s"}}}}}}}}}}}}}}}}} , {assignmentExpression {conditionalExpression {logicalOrExpression {logicalAndExpression {inclusiveOrExpression {exclusiveOrExpression {andExpression {equalityExpression {relationalExpression {shiftExpression {additiveExpression {multiplicativeExpression {castExpression {unaryExpression {postfixExpression {primaryExpression nome}}}}}}}}}}}}}}}}} }}}}}}}}}}}}}}}}} ;}}}} {blockItem {statement {expressionStatement {expression {assignmentExpression {conditionalExpression {logicalOrExpression {logicalAndExpression {inclusiveOrExpression {exclusiveOrExpression {andExpression {equalityExpression {relationalExpression {shiftExpression {additiveExpression {multiplicativeExpression {castExpression {unaryExpression {postfixExpression {postfixExpression {primaryExpression system}} { {argumentExpressionList {assignmentExpression {conditionalExpression {logicalOrExpression {logicalAndExpression {inclusiveOrExpression {exclusiveOrExpression {andExpression {equalityExpression {relationalExpression {shiftExpression {additiveExpression {multiplicativeExpression {castExpression {unaryExpression {postfixExpression {primaryExpression "cls"}}}}}}}}}}}}}}}}} }}}}}}}}}}}}}}}}} ;}}}} {blockItem {statement {expressionStatement {expression {assignmentExpression {conditionalExpression {logicalOrExpression {logicalAndExpression {inclusiveOrExpression {exclusiveOrExpression {andExpression {equalityExpression {relationalExpression {shiftExpression {additiveExpression {multiplicativeExpression {castExpression {unaryExpression {postfixExpression {postfixExpression {primaryExpression printf}} { {argumentExpressionList {argumentExpressionList {assignmentExpression {conditionalExpression {logicalOrExpression {logicalAndExpression {inclusiveOrExpression {exclusiveOrExpression {andExpression {equalityExpression {relationalExpression {shiftExpression {additiveExpression {multiplicativeExpression {castExpression {unaryExpression {postfixExpression {primaryExpression "SEJA MUITO BEM VINDO %s"}}}}}}}}}}}}}}}}} , {assignmentExpression {conditionalExpression {logicalOrExpression {logicalAndExpression {inclusiveOrExpression {exclusiveOrExpression {andExpression {equalityExpression {relationalExpression {shiftExpression {additiveExpression {multiplicativeExpression {castExpression {unaryExpression {postfixExpression {primaryExpression nome}}}}}}}}}}}}}}}}} }}}}}}}}}}}}}}}}} ;}}}} {blockItem {statement {expressionStatement {expression {assignmentExpression {conditionalExpression {logicalOrExpression {logicalAndExpression {inclusiveOrExpression {exclusiveOrExpression {andExpression {equalityExpression {relationalExpression {shiftExpression {additiveExpression {multiplicativeExpression {castExpression {unaryExpression {postfixExpression {postfixExpression {primaryExpression getchar}} { }}}}}}}}}}}}}}}}} ;}}}} {blockItem {statement {expressionStatement {expression {assignmentExpression {conditionalExpression {logicalOrExpression {logicalAndExpression {inclusiveOrExpression {exclusiveOrExpression {andExpression {equalityExpression {relationalExpression {shiftExpression {additiveExpression {multiplicativeExpression {castExpression {unaryExpression {postfixExpression {postfixExpression {primaryExpression getchar}} { }}}}}}}}}}}}}}}}} ;}}}} }}}}} <EOF>}
-	0 1 1 1 1 1 1 1 2 2 3 4 2 2 5 6 2 2 7 8 2 10 11 12 12 13 14 15 15 15 15 15 15 15 15 16 17 18 19 20 47 19 20 48 49 44 16 17 18 19 20 21 22 23 11 12 12 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 50 43 44 16 51 52 53 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 40 41 54 55 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 56 44 16 51 52 53 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 40 41 57 55 55 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 58 59 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 24 44 16 51 52 53 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 40 41 60 55 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 61 44 16 51 52 53 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 40 41 54 55 55 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 62 59 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 24 44 16 51 52 53 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 40 41 63 44 16 51 52 53 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 40 41 63 44 46
+	vector B: 0 1 1 1 1 1 1 1 2 2 3 4 2 2 5 6 2 2 7 8 2 10 11 12 12 13 14 15 15 15 15 15 15 15 15 16 17 18 19 20 47 19 20 48 49 44 16 17 18 19 20 21 22 23 11 12 12 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 50 43 44 16 51 52 53 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 40 41 54 55 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 56 44 16 51 52 53 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 40 41 57 55 55 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 58 59 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 24 44 16 51 52 53 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 40 41 60 55 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 61 44 16 51 52 53 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 40 41 54 55 55 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 62 59 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 24 44 16 51 52 53 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 40 41 63 44 16 51 52 53 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 40 41 63 44 46
+######################################################################################################################################################
+Inteiro para string:
+	0: compilationUnit
+	1: translationUnit
+	2: externalDeclaration
+	3: nclude
+	4: <
+	5: stdio
+	6: .
+	7: h
+	8: >
+	9: stdlib
+	10: functionDefinition
+	11: declarator
+	12: directDeclarator
+	13: main
+	14: compoundStatement
+	15: blockItemList
+	16: blockItem
+	17: declaration
+	18: declarationSpecifiers
+	19: declarationSpecifier
+	20: typeSpecifier
+	21: char
+	22: initDeclaratorList
+	23: initDeclarator
+	24: nome
+	25: [
+	26: assignmentExpression
+	27: conditionalExpression
+	28: logicalOrExpression
+	29: logicalAndExpression
+	30: inclusiveOrExpression
+	31: exclusiveOrExpression
+	32: andExpression
+	33: equalityExpression
+	34: relationalExpression
+	35: shiftExpression
+	36: additiveExpression
+	37: multiplicativeExpression
+	38: castExpression
+	39: unaryExpression
+	40: postfixExpression
+	41: primaryExpression
+	42: 255
+	43: ]
+	44: ;
+	45: <missing '}'>
+	46: <EOF>
+	47: int
+	48: typedefName
+	49: cont
+	50: 120
+	51: statement
+	52: expressionStatement
+	53: expression
+	54: printf
+	55: argumentExpressionList
+	56: "Digite o nome do convidado: "
+	57: scanf
+	58: "%s"
+	59: ,
+	60: system
+	61: "cls"
+	62: "SEJA MUITO BEM VINDO %s"
+	63: getchar
 ######################################################################################################################################################
 Matriz de alinhamento:
                                               compilationUnit                translationUnit                translationUnit                translationUnit                translationUnit                translationUnit                translationUnit                translationUnit            externalDeclaration            externalDeclaration                         nclude                              <            externalDeclaration            externalDeclaration                          stdio                              .            externalDeclaration            externalDeclaration                              h                              >            externalDeclaration             functionDefinition                     declarator               directDeclarator               directDeclarator                           main              compoundStatement                  blockItemList                  blockItemList                  blockItemList                  blockItemList                  blockItemList                  blockItemList                  blockItemList                  blockItemList                      blockItem                    declaration          declarationSpecifiers           declarationSpecifier                  typeSpecifier                            int           declarationSpecifier                  typeSpecifier                    typedefName                           cont                              ;                      blockItem                    declaration          declarationSpecifiers           declarationSpecifier                  typeSpecifier                           char             initDeclaratorList                 initDeclarator                     declarator               directDeclarator               directDeclarator                           nome                              [           assignmentExpression          conditionalExpression            logicalOrExpression           logicalAndExpression          inclusiveOrExpression          exclusiveOrExpression                  andExpression             equalityExpression           relationalExpression                shiftExpression             additiveExpression       multiplicativeExpression                 castExpression                unaryExpression              postfixExpression              primaryExpression                            120                              ]                              ;                      blockItem                      statement            expressionStatement                     expression           assignmentExpression          conditionalExpression            logicalOrExpression           logicalAndExpression          inclusiveOrExpression          exclusiveOrExpression                  andExpression             equalityExpression           relationalExpression                shiftExpression             additiveExpression       multiplicativeExpression                 castExpression                unaryExpression              postfixExpression              postfixExpression              primaryExpression                         printf         argumentExpressionList           assignmentExpression          conditionalExpression            logicalOrExpression           logicalAndExpression          inclusiveOrExpression          exclusiveOrExpression                  andExpression             equalityExpression           relationalExpression                shiftExpression             additiveExpression       multiplicativeExpression                 castExpression                unaryExpression              postfixExpression              primaryExpression "Digite o nome do convidado: "                              ;                      blockItem                      statement            expressionStatement                     expression           assignmentExpression          conditionalExpression            logicalOrExpression           logicalAndExpression          inclusiveOrExpression          exclusiveOrExpression                  andExpression             equalityExpression           relationalExpression                shiftExpression             additiveExpression       multiplicativeExpression                 castExpression                unaryExpression              postfixExpression              postfixExpression              primaryExpression                          scanf         argumentExpressionList         argumentExpressionList           assignmentExpression          conditionalExpression            logicalOrExpression           logicalAndExpression          inclusiveOrExpression          exclusiveOrExpression                  andExpression             equalityExpression           relationalExpression                shiftExpression             additiveExpression       multiplicativeExpression                 castExpression                unaryExpression              postfixExpression              primaryExpression                           "%s"                              ,           assignmentExpression          conditionalExpression            logicalOrExpression           logicalAndExpression          inclusiveOrExpression          exclusiveOrExpression                  andExpression             equalityExpression           relationalExpression                shiftExpression             additiveExpression       multiplicativeExpression                 castExpression                unaryExpression              postfixExpression              primaryExpression                           nome                              ;                      blockItem                      statement            expressionStatement                     expression           assignmentExpression          conditionalExpression            logicalOrExpression           logicalAndExpression          inclusiveOrExpression          exclusiveOrExpression                  andExpression             equalityExpression           relationalExpression                shiftExpression             additiveExpression       multiplicativeExpression                 castExpression                unaryExpression              postfixExpression              postfixExpression              primaryExpression                         system         argumentExpressionList           assignmentExpression          conditionalExpression            logicalOrExpression           logicalAndExpression          inclusiveOrExpression          exclusiveOrExpression                  andExpression             equalityExpression           relationalExpression                shiftExpression             additiveExpression       multiplicativeExpression                 castExpression                unaryExpression              postfixExpression              primaryExpression                          "cls"                              ;                      blockItem                      statement            expressionStatement                     expression           assignmentExpression          conditionalExpression            logicalOrExpression           logicalAndExpression          inclusiveOrExpression          exclusiveOrExpression                  andExpression             equalityExpression           relationalExpression                shiftExpression             additiveExpression       multiplicativeExpression                 castExpression                unaryExpression              postfixExpression              postfixExpression              primaryExpression                         printf         argumentExpressionList         argumentExpressionList           assignmentExpression          conditionalExpression            logicalOrExpression           logicalAndExpression          inclusiveOrExpression          exclusiveOrExpression                  andExpression             equalityExpression           relationalExpression                shiftExpression             additiveExpression       multiplicativeExpression                 castExpression                unaryExpression              postfixExpression              primaryExpression      "SEJA MUITO BEM VINDO %s"                              ,           assignmentExpression          conditionalExpression            logicalOrExpression           logicalAndExpression          inclusiveOrExpression          exclusiveOrExpression                  andExpression             equalityExpression           relationalExpression                shiftExpression             additiveExpression       multiplicativeExpression                 castExpression                unaryExpression              postfixExpression              primaryExpression                           nome                              ;                      blockItem                      statement            expressionStatement                     expression           assignmentExpression          conditionalExpression            logicalOrExpression           logicalAndExpression          inclusiveOrExpression          exclusiveOrExpression                  andExpression             equalityExpression           relationalExpression                shiftExpression             additiveExpression       multiplicativeExpression                 castExpression                unaryExpression              postfixExpression              postfixExpression              primaryExpression                        getchar                              ;                      blockItem                      statement            expressionStatement                     expression           assignmentExpression          conditionalExpression            logicalOrExpression           logicalAndExpression          inclusiveOrExpression          exclusiveOrExpression                  andExpression             equalityExpression           relationalExpression                shiftExpression             additiveExpression       multiplicativeExpression                 castExpression                unaryExpression              postfixExpression              postfixExpression              primaryExpression                        getchar                              ;                          <EOF>
@@ -178,12 +244,27 @@ Alinhamento:
 	________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________compilationUnit ________________________________________________________________________________________________________________________translationUnit translationUnit translationUnit translationUnit translationUnit translationUnit translationUnit externalDeclaration externalDeclaration nclude < externalDeclaration externalDeclaration stdio ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________. externalDeclaration externalDeclaration h > externalDeclaration functionDefinition declarator directDeclarator directDeclarator main compoundStatement blockItemList blockItemList blockItemList blockItemList blockItemList blockItemList blockItemList blockItemList blockItem declaration declarationSpecifiers declarationSpecifier typeSpecifier int declarationSpecifier typeSpecifier typedefName cont ; blockItem declaration declarationSpecifiers declarationSpecifier typeSpecifier char initDeclaratorList initDeclarator declarator directDeclarator directDeclarator nome [ assignmentExpression conditionalExpression logicalOrExpression logicalAndExpression inclusiveOrExpression exclusiveOrExpression andExpression equalityExpression relationalExpression shiftExpression additiveExpression multiplicativeExpression castExpression unaryExpression postfixExpression primaryExpression 120 ] ; blockItem statement expressionStatement expression assignmentExpression conditionalExpression logicalOrExpression logicalAndExpression inclusiveOrExpression exclusiveOrExpression andExpression equalityExpression relationalExpression shiftExpression additiveExpression multiplicativeExpression castExpression unaryExpression postfixExpression postfixExpression primaryExpression printf argumentExpressionList assignmentExpression conditionalExpression logicalOrExpression logicalAndExpression inclusiveOrExpression exclusiveOrExpression andExpression equalityExpression relationalExpression shiftExpression additiveExpression multiplicativeExpression castExpression unaryExpression postfixExpression primaryExpression "Digite o nome do convidado: " ; blockItem statement expressionStatement expression assignmentExpression conditionalExpression logicalOrExpression logicalAndExpression inclusiveOrExpression exclusiveOrExpression andExpression equalityExpression relationalExpression shiftExpression additiveExpression multiplicativeExpression castExpression unaryExpression postfixExpression postfixExpression primaryExpression scanf argumentExpressionList argumentExpressionList assignmentExpression conditionalExpression logicalOrExpression logicalAndExpression inclusiveOrExpression exclusiveOrExpression andExpression equalityExpression relationalExpression shiftExpression additiveExpression multiplicativeExpression castExpression unaryExpression postfixExpression primaryExpression "%s" , assignmentExpression conditionalExpression logicalOrExpression logicalAndExpression inclusiveOrExpression exclusiveOrExpression andExpression equalityExpression relationalExpression shiftExpression additiveExpression multiplicativeExpression castExpression unaryExpression postfixExpression primaryExpression nome ; blockItem statement expressionStatement expression assignmentExpression conditionalExpression logicalOrExpression logicalAndExpression inclusiveOrExpression exclusiveOrExpression andExpression equalityExpression relationalExpression shiftExpression additiveExpression multiplicativeExpression castExpression unaryExpression postfixExpression postfixExpression primaryExpression system argumentExpressionList assignmentExpression conditionalExpression logicalOrExpression logicalAndExpression inclusiveOrExpression exclusiveOrExpression andExpression equalityExpression relationalExpression shiftExpression additiveExpression multiplicativeExpression castExpression unaryExpression postfixExpression primaryExpression "cls" ; blockItem statement expressionStatement expression assignmentExpression conditionalExpression logicalOrExpression logicalAndExpression inclusiveOrExpression exclusiveOrExpression andExpression equalityExpression relationalExpression shiftExpression additiveExpression multiplicativeExpression castExpression unaryExpression postfixExpression postfixExpression primaryExpression printf argumentExpressionList argumentExpressionList assignmentExpression conditionalExpression logicalOrExpression logicalAndExpression inclusiveOrExpression exclusiveOrExpression andExpression equalityExpression relationalExpression shiftExpression additiveExpression multiplicativeExpression castExpression unaryExpression postfixExpression primaryExpression "SEJA MUITO BEM VINDO %s" , assignmentExpression conditionalExpression logicalOrExpression logicalAndExpression inclusiveOrExpression exclusiveOrExpression andExpression equalityExpression relationalExpression shiftExpression additiveExpression multiplicativeExpression castExpression unaryExpression postfixExpression primaryExpression nome ; blockItem statement expressionStatement expression assignmentExpression conditionalExpression logicalOrExpression logicalAndExpression inclusiveOrExpression exclusiveOrExpression andExpression equalityExpression relationalExpression shiftExpression additiveExpression multiplicativeExpression castExpression unaryExpression postfixExpression postfixExpression primaryExpression getchar ; blockItem statement expressionStatement expression assignmentExpression conditionalExpression logicalOrExpression logicalAndExpression inclusiveOrExpression exclusiveOrExpression andExpression equalityExpression relationalExpression shiftExpression additiveExpression multiplicativeExpression castExpression unaryExpression postfixExpression postfixExpression primaryExpression getchar ; <EOF> 
 ######################################################################################################################################################
 Operações:
+	Manter compilationUnit
 	Deletar translationUnit
 	Deletar translationUnit
 	Deletar translationUnit
 	Deletar translationUnit
 	Deletar translationUnit
 	Deletar translationUnit
+	Manter translationUnit
+	Manter translationUnit
+	Manter translationUnit
+	Manter translationUnit
+	Manter translationUnit
+	Manter translationUnit
+	Manter translationUnit
+	Manter externalDeclaration
+	Manter externalDeclaration
+	Manter nclude
+	Manter <
+	Manter externalDeclaration
+	Manter externalDeclaration
+	Manter stdio
 	Deletar .
 	Deletar externalDeclaration
 	Deletar externalDeclaration
@@ -196,6 +277,18 @@ Operações:
 	Deletar externalDeclaration
 	Deletar externalDeclaration
 	Deletar stdlib
+	Manter .
+	Manter externalDeclaration
+	Manter externalDeclaration
+	Manter h
+	Manter >
+	Manter externalDeclaration
+	Manter functionDefinition
+	Manter declarator
+	Manter directDeclarator
+	Manter directDeclarator
+	Manter main
+	Manter compoundStatement
 	Inserir blockItemList
 	Inserir blockItemList
 	Inserir blockItemList
@@ -203,6 +296,7 @@ Operações:
 	Inserir blockItemList
 	Inserir blockItemList
 	Inserir blockItemList
+	Manter blockItemList
 	Inserir blockItem
 	Inserir declaration
 	Inserir declarationSpecifiers
@@ -214,7 +308,37 @@ Operações:
 	Inserir typedefName
 	Inserir cont
 	Inserir ;
+	Manter blockItem
+	Manter declaration
+	Manter declarationSpecifiers
+	Manter declarationSpecifier
+	Manter typeSpecifier
+	Manter char
+	Manter initDeclaratorList
+	Manter initDeclarator
+	Manter declarator
+	Manter directDeclarator
+	Manter directDeclarator
+	Manter nome
+	Manter [
+	Manter assignmentExpression
+	Manter conditionalExpression
+	Manter logicalOrExpression
+	Manter logicalAndExpression
+	Manter inclusiveOrExpression
+	Manter exclusiveOrExpression
+	Manter andExpression
+	Manter equalityExpression
+	Manter relationalExpression
+	Manter shiftExpression
+	Manter additiveExpression
+	Manter multiplicativeExpression
+	Manter castExpression
+	Manter unaryExpression
+	Manter postfixExpression
+	Manter primaryExpression
 	Substituir 255 por 120
+	Manter ]
 	Inserir ;
 	Inserir blockItem
 	Inserir statement
@@ -440,6 +564,7 @@ Operações:
 	Inserir postfixExpression
 	Inserir primaryExpression
 	Inserir getchar
+	Manter ;
 	Inserir blockItem
 	Inserir statement
 	Inserir expressionStatement
@@ -463,3 +588,4 @@ Operações:
 	Inserir primaryExpression
 	Inserir getchar
 	Substituir <missing '}'> por ;
+	Manter <EOF>

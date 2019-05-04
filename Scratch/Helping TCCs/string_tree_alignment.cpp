@@ -109,10 +109,15 @@ int main()
 
   buildMaps();
   printf("Mapeamento das strings:\n");
-  printf("\tstring A: %s\n\t", stringA);
-  for (int i = 0; i < vectorA.size(); i ++) printf("%d%c", vectorA[i], i < vectorA.size() - 1 ? ' ' : '\n');
-  printf("\tstring B: %s\n\t", stringB);
-  for (int i = 0; i < vectorB.size(); i ++) printf("%d%c", vectorB[i], i < vectorB.size() - 1 ? ' ' : '\n');
+  printf("\tstring A: %s\n", stringA);
+  printf("\tvector A: "); for (int i = 0; i < vectorA.size(); i ++) printf("%d%c", vectorA[i], i < vectorA.size() - 1 ? ' ' : '\n');
+  printf("\tstring B: %s\n", stringB);
+  printf("\tvector B: "); for (int i = 0; i < vectorB.size(); i ++) printf("%d%c", vectorB[i], i < vectorB.size() - 1 ? ' ' : '\n');
+  printNChar(150, '#'); printf("\n");
+
+  printf("Inteiro para string:\n");
+  for (auto i: revMapForAll)
+    printf("\t%d: %s\n", i.first, i.second.c_str());
   printNChar(150, '#'); printf("\n");
 
   getMinimumPenalty();
@@ -159,6 +164,8 @@ int main()
       modifications.push_back({1, {finalVectorA[i], 0}}); // deletion
     else if (finalVectorB[i] != -1 && (i < finalVectorA.size() && finalVectorA[i] != -1) && finalVectorB[i] != finalVectorA[i])
       modifications.push_back({2, {finalVectorA[i], finalVectorB[i]}}); // substitution
+    else if (finalVectorB[i] != -1 && i < finalVectorA.size() && finalVectorA[i] == finalVectorB[i])
+      modifications.push_back({3, {finalVectorB[i], 0}}); // match
   for (auto i: modifications)
     if (i.first == 0)
       printf("\tInserir %s\n", revMapForAll[i.second.first].c_str());
@@ -166,6 +173,8 @@ int main()
       printf("\tDeletar %s\n", revMapForAll[i.second.first].c_str());
     else if (i.first == 2)
       printf("\tSubstituir %s por %s\n", revMapForAll[i.second.first].c_str(), revMapForAll[i.second.second].c_str());
+    else if (i.first == 3)
+      printf("\tManter %s\n", revMapForAll[i.second.first].c_str());
 
   return(0);
 }
