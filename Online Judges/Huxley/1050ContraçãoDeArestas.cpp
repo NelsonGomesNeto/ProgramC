@@ -39,7 +39,7 @@ bool sameSet(int u, int v)
 void dsuMerge(int u, int v)
 {
   if ((u = root(u)) == (v = root(v))) return;
-  if (parent[u] > parent[v]) swap(parent[u], parent[v]);
+  if (parent[u] > parent[v]) swap(u, v);
   parent[u] += parent[v];
   parent[v] = u;
 }

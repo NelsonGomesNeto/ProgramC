@@ -14,7 +14,7 @@ void merge(int u, int v)
 {
   u = root(u), v = root(v);
   if (u == v) return;
-  if (parent[v] < parent[u]) swap(parent[u], parent[v]);
+  if (parent[v] < parent[u]) swap(u, v);
   parent[u] += parent[v];
   parent[v] = u;
 }

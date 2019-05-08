@@ -33,7 +33,7 @@ lli merge(int u, int v)
 {
   u = root(u), v = root(v);
   if (u == v) return(0); // never gonna happen
-  if (parent[v] < parent[u]) swap(parent[u], parent[v]), swap(parentSet[u], parentSet[v]);
+  if (parent[v] < parent[u]) swap(u, v);
   
   lli sum = 0;
   for (auto i: parentSet[v])
