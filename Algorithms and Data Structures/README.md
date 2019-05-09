@@ -157,6 +157,7 @@
   * [Valid Sets](https://codeforces.com/contest/486/problem/D) (Beautiful use of produtory and dfs)
   * [Neko does Maths](https://codeforces.com/contest/1152/problem/C) (LCM + GCD, you have to understand both (open their formulas))
   * [Save Energy!](https://codeforces.com/contest/936/problem/A) (Amazing pure math problem (finding the cycle and jumping by it works, but math is way prettier))
+  * [Chladni Figure](https://codeforces.com/contest/1162/problem/D) (Interesting math problem (just test with all divisors))
 
 # Geometry
 * #### Problems
@@ -177,9 +178,9 @@
 
 ## DSU
 * #### Problems
-  * [0-1-Tree](https://codeforces.com/contest/1156/problem/D) (Amazing DSU + combinatory problem)
+  * [0-1-Tree](https://codeforces.com/contest/1156/problem/D) (Amazing DSU + combinatorics problem)
   * [Quantity of String](https://codeforces.com/contest/151/problem/D) (Very interesting use of DSU on palindromes)
-  * [Raman's Problem](https://www.hackerearth.com/pt-br/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/practice-problems/algorithm/ramans-problem/) (Very nice DSU + combinatory problem)
+  * [Raman's Problem](https://www.hackerearth.com/pt-br/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/practice-problems/algorithm/ramans-problem/) (Very nice DSU + combinatorics problem)
   * [Monk missing home](https://www.hackerearth.com/pt-br/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/practice-problems/algorithm/monk-missing-home-code-monk/description/) (Needs a very interesting modification on merge function)
   * [City and Campers 2](https://www.hackerearth.com/pt-br/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/practice-problems/algorithm/city-and-campers-2/) (Needs a quite hard implementation on DSU's merge; do the first one before)
   * [Classic task](https://www.hackerearth.com/pt-br/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/practice-problems/algorithm/classic-task-39656dbf/description/) (MIND BLOWING use of binary lifting idea, it's AMAZING)
