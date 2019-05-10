@@ -1,47 +1,29 @@
 #include <bits/stdc++.h>
-#define DEBUG if(1)
 using namespace std;
+
+const int maxN = 1e5; int n, q;
+int a[maxN];
+int up[maxN], down[maxN];
 
 int main()
 {
-  int n, m; scanf("%d %d", &n, &m);
-  int a[n]; for (int i = 0; i < n; i ++) scanf("%d", &a[i]);
-  int lol[n], i = 1, now = 0; lol[n - 1] = n + 1;
-  while (i < n)
-  {
-    lol[0] = 0; if (i == 1 && n > 1) now += a[i + 1] < a[i];
-    while (i < n && a[i] >= a[i - 1])
-    {
-      lol[i] = now;
-      i ++;
-    }
-    if (i < n) lol[i] = now;
-    now ++;
-    while (i < n && a[i] <= a[i - 1])
-    {
-      lol[i] = now;
-      i ++;
-    }
-    if (i < n) lol[i] = now;
-    // now ++;
-  } if (lol[n - 1] == n + 1 && n > 1) lol[n - 1] = lol[n - 2];
-  DEBUG for (int j = 0; j < n; j ++) printf("%d%c", lol[j], j < n - 1 ? ' ' : '\n');
+  scanf("%d %d", &n, &q);
+  for (int i = 0; i < n; i ++) scanf("%d", &a[i]);
 
-  int q[m][2];
-  for (int j = 0; j < m; j ++)
+  for (int i = n - 2; i >= 0; i --)
+    if (a[i] <= a[i + 1])
+      up[i] = up[i + 1] + 1;
+  for (int i = 1; i < n; i ++)
+    if (a[i] <= a[i - 1])
+      down[i] = down[i - 1] + 1;
+
+  for (int i = 0, lo, hi; i < q; i ++)
   {
-    scanf("%d %d", &q[j][0], &q[j][1]);
-    q[j][0] --; q[j][1] --;
-    if (n == 1) printf("Yes\n");
+    scanf("%d %d", &lo, &hi); lo --, hi --;
+    // printf("%d %d - %d %d\n", lo, hi, up[lo], down[hi]);
+    if (up[lo] + down[hi] + 1 >= hi - lo + 1) printf("Yes\n");
+    else printf("No\n");
   }
 
-  if (n != 1)
-  {
-    for (int j = 0; j < m; j ++)
-    {
-      if (lol[q[j][1]] - lol[q[j][0]] <= 1) printf("Yes\n");
-      else printf("No\n");
-    }
-  }
   return(0);
 }
