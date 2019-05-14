@@ -106,6 +106,7 @@
   * [Sleepy Game](https://codeforces.com/contest/936/problem/B) (Very interesting DFS problem + path construction)
   * [Teletransport](https://www.urionlinejudge.com.br/judge/en/problems/view/1713) (Exponentiate graph to count all possible paths from u to v)
   * [Miss Worm](https://www.urionlinejudge.com.br/judge/en/problems/view/1711) (Very interesting cycle finding + dijkstra problem)
+  * [Neko and Flashback](https://codeforces.com/contest/1152/problem/E) (Awesome eulerian path problem)
   * [HackerEarth ShortestPath](https://www.hackerearth.com/pt-br/practice/algorithms/graphs/shortest-path-algorithms/practice-problems/?sort_by=solved) (There are some interesting problems ^~^)
 
 # Dynamic Programming (DP)
