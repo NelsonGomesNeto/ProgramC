@@ -126,10 +126,11 @@
 * #### Problems
   * [Enigma](https://www.urionlinejudge.com.br/judge/en/problems/view/2699) (Pure + mod of bigInteger)
 
-## Simple precalculation
+## Precalculation
 * #### Problems
   * [Little Girl and Maximum Sum](https://codeforces.com/problemset/problem/276/C) (Interesting easy in and out problem)
   * [679 - Dropping Balls](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=620) (Very interesting)
+  * [Gargari and Bishops](https://codeforces.com/contest/463/problem/C) (Amazing precalculation problem, think of an 1D way to represent the diagonals)
 
 ## Knapsack
 * #### Problems
