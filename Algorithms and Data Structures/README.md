@@ -166,6 +166,7 @@
 # Geometry
 * #### Problems
   * [Confederation](https://www.urionlinejudge.com.br/judge/en/problems/view/1710) (Dividing space with planes, very nice (map))
+  * [Power Transmission](https://codeforces.com/contest/1163/problem/C2) (Amazing lines and intersections problem, use ax + by = c equation)
 
 # Greedy
 * #### Problems
