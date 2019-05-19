@@ -145,6 +145,10 @@
   * [Distance in Tree](https://codeforces.com/problemset/problem/161/D) (Awesome DP on Tree)
   * [Serval and Rooted Tree](https://codeforces.com/contest/1153/problem/D) (Very interesting use of recursion (no DP actually needed))
 
+## Bitmask
+* #### Problems
+  * [Moovie Mooving](http://www.usaco.org/index.php?page=viewproblem2&cpid=515) (Amazing bitmask dp problem)
+
 # Search
 * #### Problems
   * [12192 - Grapevine](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3344) (Interesting lowerBound + upperBound)
