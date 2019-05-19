@@ -148,6 +148,7 @@
 ## Bitmask
 * #### Problems
   * [Moovie Mooving](http://www.usaco.org/index.php?page=viewproblem2&cpid=515) (Amazing bitmask dp problem)
+  * [Guard Mark](http://www.usaco.org/index.php?page=viewproblem2&cpid=494) (Mind blowing bitmask dp + greedy problem)
 
 # Search
 * #### Problems
