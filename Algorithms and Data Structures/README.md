@@ -88,6 +88,7 @@
   * [Kth Ancestor](https://www.hackerrank.com/challenges/kth-ancestor/problem) (Easy pure but very interesting ^~^)
   * [10938 - Flea Circus](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1879) (Pretty mind blowing, but very good to practice)
   * [Tourists](https://open.kattis.com/problems/tourists) (Easy and pure LCA problem, it's AMAZING)
+  * [Boxes](https://open.kattis.com/problems/boxes) (Amazing LCA on forests (it's the, just run the DFS for each root), I LOVED IT)
 
 # Graph
 * #### Problems
