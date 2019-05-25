@@ -167,6 +167,7 @@
   * [Neko does Maths](https://codeforces.com/contest/1152/problem/C) (LCM + GCD, you have to understand both (open their formulas))
   * [Save Energy!](https://codeforces.com/contest/936/problem/A) (Amazing pure math problem (finding the cycle and jumping by it works, but math is way prettier))
   * [Chladni Figure](https://codeforces.com/contest/1162/problem/D) (Interesting math problem (just test with all divisors))
+  * [The LCMs Must be Large](https://codeforces.com/contest/1166/problem/E) (Amazing LCM problem, contradiction is the way)
 
 # Geometry
 * #### Problems
