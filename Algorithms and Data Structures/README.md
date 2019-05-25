@@ -181,6 +181,7 @@
   * [Minimum Array](https://codeforces.com/contest/1157/problem/E) (Much easier than it seems)
   * [Maximum Balanced Circle](https://codeforces.com/contest/1157/problem/F) (AWESOME, remeber that it's a circle (so it goes back and forth))
   * [Trabalho do Papa](https://neps.academy/problem/343) (Mind blowing greedy sorting to allow amazing DP; DO IT)
+  * [Bicoloured RBS](https://codeforces.com/contest/1167/problem/D) (Very interesting parenthesis balancing problem, think simple)
 
 # Data Structures
 ## Trie
