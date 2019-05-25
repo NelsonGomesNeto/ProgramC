@@ -51,7 +51,7 @@
 * There are two main implementations of LCA, both use a Sparse Table to speed up their queries and takes O(n\*lg) to preprocess.
 * Eulerian Tour (O(1) queries):
   * Despite being extremely fast and very easy to understand, it's not flexible
-  * It works by build a RMQ on top of the tree's Eulerian tour
+  * It works by building a RMQ on top of the tree's Eulerian tour
     * Run a DFS, *every time* you're in u: add u to the Eulerian tour
       * Even each single time you return from it's child
     * Build RMQ on top of the Eulerian Tour
@@ -78,8 +78,8 @@
   * [Ants Colony](http://www.codcad.com/problem/160) (Same as above, but edges have distance)
   * [Lowest Common Ancestor](https://www.codechef.com/problems/TALCA) (Clever, but only uses standard and pure LCA)
   * [Imperial Roads](https://www.urionlinejudge.com.br/judge/en/problems/view/2703) (Binary Lifting to query heaviest edge from u and v to the LCA)
-  * [Blood Cousins](https://codeforces.com/contest/208/problem/E) (Amazingly clever, needs kthAncestor (easy) and <in and out> idea)
-  * [Fools and Roads](https://codeforces.com/contest/191/problem/C) (Mind blowing: After a bunch of queries, print how many times each edge was used; <in and out> idea)
+  * [Blood Cousins](https://codeforces.com/contest/208/problem/E) (Amazingly clever, needs kthAncestor (easy) and "in and out" idea)
+  * [Fools and Roads](https://codeforces.com/contest/191/problem/C) (Mind blowing: After a bunch of queries, print how many times each edge was used; "in and out" idea)
   * [A and B and Lecture Rooms](https://codeforces.com/contest/519/problem/E) (Interesting: dp count nodes reachable from u and binary lift to answer queries; NICE)
   * [Duff in the Army](https://codeforces.com/contest/587/problem/C) (Mind blowing binary lifting to slit people)
   * [Greedy Merchants](https://codeforces.com/contest/178/problem/B3) (Bridge + LCA, it's marvelous ^~^)
@@ -87,6 +87,7 @@
   * [Information Graph](https://codeforces.com/contest/466/problem/E) (Mind fireworks: Offline queries + Union Find + (LCA or in out DP))
   * [Kth Ancestor](https://www.hackerrank.com/challenges/kth-ancestor/problem) (Easy pure but very interesting ^~^)
   * [10938 - Flea Circus](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1879) (Pretty mind blowing, but very good to practice)
+  * [Tourists](https://open.kattis.com/problems/tourists) (Easy and pure LCA problem, it's AMAZING)
 
 # Graph
 * #### Problems
