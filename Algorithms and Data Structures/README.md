@@ -47,7 +47,7 @@
   * [Acordes Intergaláticos](https://www.urionlinejudge.com.br/judge/en/problems/view/2658) (Time is very short, be careful with constants)
   * [Present](https://codeforces.com/contest/460/problem/C) ((Min, Pos) Segtree with Lazy Propagation; implementation is interesting ^~^)
 
-# Lowest Common Ancestor (LCA)
+# Lowest Common Ancestor (LCA) :star:
 * There are two main implementations of LCA, both use a Sparse Table to speed up their queries and takes O(n\*lg) to preprocess.
 * Eulerian Tour (O(1) queries):
   * Despite being extremely fast and very easy to understand, it's not flexible
@@ -90,6 +90,7 @@
   * [Tourists](https://open.kattis.com/problems/tourists) (Easy and pure LCA problem, it's AMAZING)
   * [Boxes](https://open.kattis.com/problems/boxes) (Amazing LCA on forests (it's the, just run the DFS for each root), I LOVED IT)
   * [Pokegene](https://open.kattis.com/problems/pokegene) (MIND BLOWING Trie + LCA problem, I LOVED IT)
+  * [Linhas de Metrô](https://www.urionlinejudge.com.br/judge/en/problems/view/2887) (Clever LCA problem, look for combinations of paths, AMAZING)
 
 # Graph
 * #### Problems
