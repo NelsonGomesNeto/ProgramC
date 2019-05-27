@@ -1,11 +1,11 @@
 import os
 
-lines = ["#include <bits/stdc++.h>", "using namespace std;", "", "int main()", "{", "  ", "  return(0);", "}"]
+lines = ["#include <bits/stdc++.h>", "#define lli long long int", "using namespace std;", "", "int main()", "{", "  ", "  return(0);", "}"]
 
 folders = os.listdir()
 i = 0
 for folder in folders:
-    if "Contest " in folder:
+    if "Contest-" in folder:
         i += 1
 contestName = "Contest-%d/" % i
 os.mkdir(contestName)
