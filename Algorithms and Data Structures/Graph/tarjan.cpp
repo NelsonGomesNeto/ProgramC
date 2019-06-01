@@ -34,7 +34,7 @@ void dfs(int u, int prev)
     }
     else if (v != prev) low[u] = min(low[u], in[v]);
 }
-void findBridges()
+void tarjan()
 {
   memset(visited, false, sizeof(visited));
   for (int i = 0; i < n; i ++)
@@ -50,7 +50,7 @@ int main()
     int u, v; scanf("%d %d", &u, &v); u --, v --;
     graph[u].push_back(v); graph[v].push_back(u);
   }
-  findBridges();
+  tarjan();
 
   for (int i = 0; i < bridges.size(); i ++)
     printf("(%d, %d)\n", bridges[i].first + 1, bridges[i].second + 1);
