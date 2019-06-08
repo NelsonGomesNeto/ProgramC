@@ -1,56 +1,31 @@
-def buildMatrix(count,mString,rowBegin,rowEnd,colunmBegin,colunmEnd):
+def vmax(lista):
+    n = 0
+    for c in range(len(lista)):
+        for i in range(len(lista)):
+            if lista[i] > lista[c]:
+                n = i
+    return n
 
-    if len(mString) == count or rowEnd == rowBegin or colunmEnd == colunmBegin:
-        return count
 
-    lengthRow = rowEnd - rowBegin
-    lengthColunm = colunmEnd-colunmBegin
-
-    if mString[count] == 'D':
-
-        count+=1
-        if count == (mString):
-            return count
-
-        if lengthRow == 1:
-            newColunmEnd = lengthColunm//2 + colunmBegin + (lengthColunm % 2)
-            count = buildMatrix(count,mString,rowBegin,rowEnd,colunmBegin,newColunmEnd) #First quadrant
-            count = buildMatrix(count,mString,rowBegin,rowEnd,newColunmEnd,colunmEnd) #Second quadrant
-        elif lengthColunm == 1:
-            newRowEnd = lengthRow//2 + rowBegin + (lengthRow%2)
-            count = buildMatrix(count,mString,rowBegin,newRowEnd,colunmBegin,colunmEnd) # First quadrant
-            count = buildMatrix(count,mString,newRowEnd,rowEnd,colunmBegin,colunmEnd) #Third quadrant
+freq = []
+num = int(input())
+lista = list(range(2, num + 1))
+n = num
+n_1 = 0
+c = 0
+while True:
+    print(n_1)
+    if n_1 <= len(lista) - 1:
+        if n % lista[n_1] == 0:
+            c += 1
+            n = n / lista[n_1]
         else:
-            newRowEnd = lengthRow//2 + rowBegin + (lengthRow%2)
-            newColunmEnd = lengthColunm//2 + colunmBegin + (lengthColunm % 2)
-            count = buildMatrix(count,mString,rowBegin,newRowEnd,colunmBegin,newColunmEnd) #First quadrant
-            count = buildMatrix(count,mString,rowBegin,newRowEnd,newColunmEnd,colunmEnd) #Second quadrant
-            count = buildMatrix(count,mString,newRowEnd,rowEnd,colunmBegin,newColunmEnd) #Third quadrant
-            count = buildMatrix(count,mString,newRowEnd,rowEnd,newColunmEnd,colunmEnd) #Fourth quadrant
-        
-        return count
-
-    elif mString[count] == '1':
-        for i in range(rowBegin,rowEnd):
-            for j in range(colunmBegin,colunmEnd):
-                matrix[i][j] = 1
-    
-    count+=1
-    return count
-
-
-def printM():
-    for i in range(nm[0]):
-        print(*matrix[i], sep='')
-
-
-inputs = int(input())
-while(inputs > 0):
-    nm = list(map(int,input().split()))
-    matrix = [[0]*nm[1] for i in range(nm[0])]
-    mString = list(input())
-    count = buildMatrix(0,mString,rowBegin=0,rowEnd=nm[0],colunmBegin=0,colunmEnd=nm[1])
-    printM()
-    if inputs != 1:
-        print()
-    inputs -= 1
+            n_1 += 1
+            freq.append(c)
+            c = 0
+            n = num
+    else:
+        break
+mais_fre = lista[vmax(freq)]
+frequencia = max(freq)
+print('mostFrequent: {}, frequency: {}'.format(mais_fre, frequencia))
