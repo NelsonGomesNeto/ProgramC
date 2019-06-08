@@ -178,6 +178,7 @@
   * [Save Energy!](https://codeforces.com/contest/936/problem/A) (Amazing pure math problem (finding the cycle and jumping by it works, but math is way prettier))
   * [Chladni Figure](https://codeforces.com/contest/1162/problem/D) (Interesting math problem (just test with all divisors))
   * [The LCMs Must be Large](https://codeforces.com/contest/1166/problem/E) (Amazing LCM problem, contradiction is the way)
+  * [Couples](https://www.urionlinejudge.com.br/judge/en/problems/view/2939) (Interesting combinatorics problem, f(n) * n! * 2^n, the real problem is to find the function f)
 
 # Geometry
 * #### Problems
