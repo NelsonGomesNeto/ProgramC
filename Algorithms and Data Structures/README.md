@@ -119,6 +119,10 @@
 * #### Problems:
   * [531 - Compromise](https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=472) (Pure, but needs retrieval)
 
+## Longest Incresing Sequence (LIS)
+* #### Problems:
+  * [Smider Pan](https://www.urionlinejudge.com.br/judge/en/problems/view/2943) (Pure LIS problem, n² is enough, but learn the nlg)
+
 ## Coin change
 * #### Problems:
   * [357 - Let Me Count The Ways](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=293) (Very pure)
