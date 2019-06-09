@@ -92,6 +92,7 @@
   * [Boxes](https://open.kattis.com/problems/boxes) (Amazing LCA on forests (it's the, just run the DFS for each root), I LOVED IT)
   * [Pokegene](https://open.kattis.com/problems/pokegene) (MIND BLOWING Trie + LCA problem, I LOVED IT)
   * [Linhas de Metrô](https://www.urionlinejudge.com.br/judge/en/problems/view/2887) (Clever LCA problem, look for combinations of paths, AMAZING)
+  * [Company](https://codeforces.com/contest/1062/problem/E) (MIND BLOWING "in and out" + LCA problem, look for the border vertices)
 
 # Graph
 * #### Problems
