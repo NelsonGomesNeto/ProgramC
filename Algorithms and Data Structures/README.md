@@ -169,6 +169,7 @@
   * [Wonder Room](https://codeforces.com/contest/466/problem/B) (Seems very easy, but binary search the area (and use math) is the way)
   * [Multiplication Table](https://codeforces.com/contest/448/problem/D) (Amazing binary search + math)
   * [Increasing by Modulo](https://codeforces.com/contest/1169/problem/C) (Very interesting binary search + math)
+  * [Born This Way](https://codeforces.com/contest/1148/problem/B) (Interesting easy binary search problem, I like to use my own lower bound)
 
 # Math
 * #### Problems
