@@ -115,6 +115,7 @@
   * [Neko and Flashback](https://codeforces.com/contest/1152/problem/E) (Awesome eulerian path problem)
   * [Street Deviation](https://www.urionlinejudge.com.br/judge/en/problems/view/1442) (Interesting tarjan (bridges) + kosaraju (stronglyConnectedComponents) + dfs problem)
   * [Optical Fiber](https://www.urionlinejudge.com.br/judge/en/problems/view/2941) (Interesting MST problem)
+  * [Mania de Par](https://www.urionlinejudge.com.br/judge/en/problems/view/1931) (Remember, Dijkstra is a DP algorithm)
   * [HackerEarth ShortestPath](https://www.hackerearth.com/pt-br/practice/algorithms/graphs/shortest-path-algorithms/practice-problems/?sort_by=solved) (There are some interesting problems ^~^)
 
 # Dynamic Programming (DP)
