@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #define lli long long int
 
+// an = a1 + (n - 1)*q)
 lli apSum(lli a1, lli an, lli n)
 {
   return(n * (a1 + an) / 2.0);
