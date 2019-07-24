@@ -202,6 +202,8 @@
   * [Trabalho do Papa](https://neps.academy/problem/343) (Mind blowing greedy sorting to allow amazing DP; DO IT)
   * [Bicoloured RBS](https://codeforces.com/contest/1167/problem/D) (Very interesting parenthesis balancing problem, think simple)
 
+
+
 # Data Structures
 ## Trie
 * #### Problems
@@ -216,3 +218,7 @@
   * [City and Campers 2](https://www.hackerearth.com/pt-br/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/practice-problems/algorithm/city-and-campers-2/) (Needs a quite hard implementation on DSU's merge; do the first one before)
   * [Classic task](https://www.hackerearth.com/pt-br/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/practice-problems/algorithm/classic-task-39656dbf/description/) (MIND BLOWING use of binary lifting idea, it's AMAZING)
   * [HackerEarth DSU Problems](https://www.hackerearth.com/pt-br/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/practice-problems/) (There are some interesting problems)
+
+# Etc
+* #### Problems
+  * [Balé](http://olimpiada.ic.unicamp.br/pratique/p1/2011/f2/bale/) (Easy inversion count problem)
