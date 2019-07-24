@@ -39,7 +39,7 @@
   * [Fundraising](https://www.urionlinejudge.com.br/judge/en/problems/view/2700) (It's not trivial, we use a max segtree to apply a greedy strategy)
   * [Keep It Energized](https://www.urionlinejudge.com.br/judge/en/problems/view/2010) (It's not trivial, we use min segtree to apply a greedy strategy)
   * [Marathon](http://www.usaco.org/index.php?page=viewproblem2&cpid=495) (MIND BLOWING, store: full, cutLeft, cutMid, cutRight, lo, hi; and merge stuff)
-  * PLEASE ADD MORE PROBLEMS HERE
+  * [Kaori, Asuna e Kirito](https://thehuxley.com/problem/1857) (AMAZING, segment tree's node is a array 32 ints)
 
 ## Segment Tree with Lazy Propagation :star:
 * #### Problems
