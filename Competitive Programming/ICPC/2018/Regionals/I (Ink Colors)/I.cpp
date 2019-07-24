@@ -5,7 +5,7 @@ using namespace std;
 Notice that we can split the Stick Man in 3 levels:
 (0) head, (1) body (and arms), (2) bottom (and legs).
 Also notice that you can start a Stick Man from the
-arm another one, since only edges will be painted.
+arm of another one, since only edges will be painted.
 
 memo[u][level] will store the maximum amount of Stick Men we can
 paint from node u and being at that level. We can fill it with a DFS.
