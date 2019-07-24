@@ -12,32 +12,39 @@ void printMatrix(double a[maxN][maxM], int n, int m)
       printf("%8.5lf%c", a[i][j], j < m - 1 ? ' ' : '\n');
 }
 
-void switchLines(double a[maxN][maxM], int i, int j, int m)
+void switchLines(double a[maxN][maxM], int i, int l, int m)
 {
   for (int k = 0; k < m; k ++)
-    swap(a[i][k], a[j][k]);
+    swap(a[i][k], a[l][k]);
 }
 
-void sumLine(double a[maxN][maxM], int i, int j, double c, int m)
+void subLine(double a[maxN][maxM], int i, int j, double c, int m)
 {
   for (int k = 0; k < m; k ++)
-    a[j][k] += c * a[i][k];
+    a[j][k] -= c * a[i][k];
 }
 
-bool gaussElimination(double a[maxN][maxM], double inv[maxN][maxM], double b[maxN][maxM])
+int gaussElimination(double a[maxN][maxM], double inv[maxN][maxM], double b[maxN][maxM])
 {
   for (int i = 0, l; i < min(an, am); i ++)
   {
     for (l = i; l < an && abs(a[l][i]) < eps; l ++);
-    if (l == an) return(false);
+    if (l == an) { break; return(false); }
     switchLines(a, i, l, am), switchLines(inv, i, l, am), switchLines(b, i, l, bm);
     for (int j = 0; j < an; j ++)
     {
       if (i == j) continue;
-      double c = -a[j][i] / a[i][i];
-      sumLine(a, i, j, c, am), sumLine(inv, i, j, c, am), sumLine(b, i, j, c, bm);
+      double c = a[j][i] / a[i][i];
+      subLine(a, i, j, c, am), subLine(inv, i, j, c, am), subLine(b, i, j, c, bm);
     }
   }
+  for (int i = 0; i < bn; i ++)
+    for (int j = 0; j < bm; j ++)
+      if (abs(b[i][j]) < eps)
+        return(inf);
+  for (int i = 0; i < an; i ++)
+    if (a[i][i] == 0)
+      return(0);
   for (int i = 0; i < an; i ++)
   {
     for (int j = 0; j < am; j ++)
@@ -45,7 +52,7 @@ bool gaussElimination(double a[maxN][maxM], double inv[maxN][maxM], double b[max
     for (int j = 0; j < bm; j ++)
       b[i][j] /= a[i][i];
   }
-  return(true);
+  return(1);
 }
 
 int main()
