@@ -18,9 +18,9 @@ void printGraph(vector<int> g[], int u, int depth)
 
 const int maxV = 1e5; int n, m;
 vector<int> graph[maxV], tree[maxV];
-bool visited[maxV]; int low[maxV], in[maxV], t = 0;
+bool visited[maxV], articulation[maxV]; int low[maxV], in[maxV], t = 0;
 vector<pair<int, int>> bridges;
-void dfs(int u, int prev)
+void dfs(int u, int prv)
 {
   visited[u] = true;
   in[u] = low[u] = ++ t;
@@ -30,9 +30,9 @@ void dfs(int u, int prev)
       tree[u].push_back(v);
       dfs(v, u);
       low[u] = min(low[u], low[v]);
-      if (low[v] > in[u]) bridges.push_back({u, v});
+      if (low[v] > in[u]) bridges.push_back({u, v}), articulation[u] = articulation[v] = true;
     }
-    else if (v != prev) low[u] = min(low[u], in[v]);
+    else if (v != prv) low[u] = min(low[u], low[v]);
 }
 void tarjan()
 {
@@ -40,6 +40,9 @@ void tarjan()
   for (int i = 0; i < n; i ++)
     if (!visited[i])
       dfs(i, -1);
+  for (int i = 0; i < n; i ++)
+    if (graph[i].size() <= 1)
+      articulation[i] = false;
 }
 
 int main()
@@ -52,8 +55,14 @@ int main()
   }
   tarjan();
 
+  printf("Bridges:\n");
   for (int i = 0; i < bridges.size(); i ++)
-    printf("(%d, %d)\n", bridges[i].first + 1, bridges[i].second + 1);
+    printf("\t(%d, %d)\n", bridges[i].first + 1, bridges[i].second + 1);
+  printf("Articulation vertices:\n");
+  for (int i = 0; i < n; i ++)
+    if (articulation[i])
+      printf("\t%d\n", i + 1);
+  printf("Tree:\n");
   printGraph(tree, 0, 0);
   return(0);
 }
