@@ -1,10 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/* Explanation:
+/* Tutorial:
 in[u] stores the time in which u was visited
 low[u] stores the highest node u can reach
 if (low[child of u] > in[u]) bridge
+if ((isRoot and childs > 1) or (!isRoot and low[child of u] >= in[u])) articulation point
+(It's also true that for every bridge (u, v): u and v are articulation points)
 
 If we can somehow reach any node above u, then there are two paths, so the edge isn't a bridge
 */
