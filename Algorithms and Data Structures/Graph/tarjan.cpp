@@ -32,7 +32,7 @@ void dfs(int u, int prv)
       low[u] = min(low[u], low[v]);
       if (low[v] > in[u]) bridges.push_back({u, v}), articulation[u] = articulation[v] = true;
     }
-    else if (v != prv) low[u] = min(low[u], low[v]);
+    else if (v != prv) low[u] = min(low[u], in[v]);
 }
 void tarjan()
 {
